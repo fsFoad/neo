@@ -1,0 +1,775 @@
+D:\WorkApp\party\src
+├── @fuse
+|  ├── animations
+|  |  ├── defaults.ts
+|  |  ├── expand-collapse.ts
+|  |  ├── fade.ts
+|  |  ├── index.ts
+|  |  ├── public-api.ts
+|  |  ├── shake.ts
+|  |  ├── slide.ts
+|  |  └── zoom.ts
+|  ├── components
+|  |  ├── alert
+|  |  |  ├── alert.component.html
+|  |  |  ├── alert.component.scss
+|  |  |  ├── alert.component.ts
+|  |  |  ├── alert.service.ts
+|  |  |  ├── alert.types.ts
+|  |  |  ├── index.ts
+|  |  |  └── public-api.ts
+|  |  ├── card
+|  |  |  ├── card.component.html
+|  |  |  ├── card.component.scss
+|  |  |  ├── card.component.ts
+|  |  |  ├── card.types.ts
+|  |  |  ├── index.ts
+|  |  |  └── public-api.ts
+|  |  ├── drawer
+|  |  |  ├── drawer.component.html
+|  |  |  ├── drawer.component.scss
+|  |  |  ├── drawer.component.ts
+|  |  |  ├── drawer.service.ts
+|  |  |  ├── drawer.types.ts
+|  |  |  ├── index.ts
+|  |  |  └── public-api.ts
+|  |  ├── fullscreen
+|  |  |  ├── fullscreen.component.html
+|  |  |  ├── fullscreen.component.ts
+|  |  |  ├── index.ts
+|  |  |  └── public-api.ts
+|  |  ├── highlight
+|  |  |  ├── highlight.component.html
+|  |  |  ├── highlight.component.scss
+|  |  |  ├── highlight.component.ts
+|  |  |  ├── highlight.service.ts
+|  |  |  ├── index.ts
+|  |  |  └── public-api.ts
+|  |  ├── loading-bar
+|  |  |  ├── index.ts
+|  |  |  ├── loading-bar.component.html
+|  |  |  ├── loading-bar.component.scss
+|  |  |  ├── loading-bar.component.ts
+|  |  |  └── public-api.ts
+|  |  ├── masonry
+|  |  |  ├── index.ts
+|  |  |  ├── masonry.component.html
+|  |  |  ├── masonry.component.ts
+|  |  |  └── public-api.ts
+|  |  └── navigation
+|  |     ├── horizontal
+|  |     |  ├── components
+|  |     |  ├── horizontal.component.html
+|  |     |  ├── horizontal.component.scss
+|  |     |  └── horizontal.component.ts
+|  |     ├── index.ts
+|  |     ├── navigation.service.ts
+|  |     ├── navigation.types.ts
+|  |     ├── public-api.ts
+|  |     └── vertical
+|  |        ├── components
+|  |        ├── styles
+|  |        ├── vertical.component.html
+|  |        ├── vertical.component.scss
+|  |        └── vertical.component.ts
+|  ├── directives
+|  |  ├── scroll-reset
+|  |  |  ├── index.ts
+|  |  |  ├── public-api.ts
+|  |  |  └── scroll-reset.directive.ts
+|  |  └── scrollbar
+|  |     ├── index.ts
+|  |     ├── public-api.ts
+|  |     ├── scrollbar.directive.ts
+|  |     └── scrollbar.types.ts
+|  ├── fuse.provider.ts
+|  ├── index.ts
+|  ├── lib
+|  |  └── mock-api
+|  |     ├── index.ts
+|  |     ├── mock-api.constants.ts
+|  |     ├── mock-api.interceptor.ts
+|  |     ├── mock-api.request-handler.ts
+|  |     ├── mock-api.service.ts
+|  |     ├── mock-api.types.ts
+|  |     ├── mock-api.utils.ts
+|  |     └── public-api.ts
+|  ├── pipes
+|  |  └── find-by-key
+|  |     ├── find-by-key.pipe.ts
+|  |     ├── index.ts
+|  |     └── public-api.ts
+|  ├── services
+|  |  ├── config
+|  |  |  ├── config.constants.ts
+|  |  |  ├── config.service.ts
+|  |  |  ├── config.types.ts
+|  |  |  ├── index.ts
+|  |  |  └── public-api.ts
+|  |  ├── confirmation
+|  |  |  ├── confirmation.service.ts
+|  |  |  ├── confirmation.types.ts
+|  |  |  ├── dialog
+|  |  |  |  ├── dialog.component.html
+|  |  |  |  └── dialog.component.ts
+|  |  |  ├── index.ts
+|  |  |  └── public-api.ts
+|  |  ├── loading
+|  |  |  ├── index.ts
+|  |  |  ├── loading.interceptor.ts
+|  |  |  ├── loading.service.ts
+|  |  |  └── public-api.ts
+|  |  ├── media-watcher
+|  |  |  ├── index.ts
+|  |  |  ├── media-watcher.service.ts
+|  |  |  └── public-api.ts
+|  |  ├── platform
+|  |  |  ├── index.ts
+|  |  |  ├── platform.service.ts
+|  |  |  └── public-api.ts
+|  |  ├── splash-screen
+|  |  |  ├── index.ts
+|  |  |  ├── public-api.ts
+|  |  |  └── splash-screen.service.ts
+|  |  └── utils
+|  |     ├── index.ts
+|  |     ├── public-api.ts
+|  |     └── utils.service.ts
+|  ├── styles
+|  |  ├── components
+|  |  |  ├── example-viewer.scss
+|  |  |  └── input.scss
+|  |  ├── main.scss
+|  |  ├── overrides
+|  |  |  ├── angular-material.scss
+|  |  |  ├── highlightjs.scss
+|  |  |  ├── perfect-scrollbar.scss
+|  |  |  └── quill.scss
+|  |  ├── tailwind.scss
+|  |  ├── themes.scss
+|  |  └── user-themes.scss
+|  ├── tailwind
+|  |  ├── plugins
+|  |  |  ├── icon-size.js
+|  |  |  ├── theming.js
+|  |  |  └── utilities.js
+|  |  └── utils
+|  |     ├── generate-contrasts.js
+|  |     ├── generate-palette.js
+|  |     └── json-to-sass-map.js
+|  ├── validators
+|  |  ├── index.ts
+|  |  ├── public-api.ts
+|  |  └── validators.ts
+|  └── version
+|     ├── fuse-version.ts
+|     ├── index.ts
+|     ├── public-api.ts
+|     └── version.ts
+├── app
+|  ├── app.component.html
+|  ├── app.component.scss
+|  ├── app.component.service.ts
+|  ├── app.component.ts
+|  ├── app.config.ts
+|  ├── app.resolvers.ts
+|  ├── app.routes.ts
+|  ├── AppSetting.ts
+|  ├── core
+|  |  ├── auth
+|  |  |  ├── auth.interceptor.ts
+|  |  |  ├── auth.provider.ts
+|  |  |  ├── auth.service.ts
+|  |  |  ├── auth.utils.ts
+|  |  |  └── guards
+|  |  |     ├── auth.guard.ts
+|  |  |     └── noAuth.guard.ts
+|  |  ├── icons
+|  |  |  ├── icons.provider.ts
+|  |  |  └── icons.service.ts
+|  |  ├── navigation
+|  |  |  ├── navigation.service.ts
+|  |  |  └── navigation.types.ts
+|  |  ├── transloco
+|  |  |  └── transloco.http-loader.ts
+|  |  └── user
+|  |     ├── user.service.ts
+|  |     └── user.types.ts
+|  ├── layout
+|  |  ├── common
+|  |  |  ├── languages
+|  |  |  |  ├── languages.component.html
+|  |  |  |  └── languages.component.ts
+|  |  |  ├── messages
+|  |  |  |  ├── messages.component.html
+|  |  |  |  ├── messages.component.ts
+|  |  |  |  ├── messages.service.ts
+|  |  |  |  └── messages.types.ts
+|  |  |  ├── notifications
+|  |  |  |  ├── notifications.component.html
+|  |  |  |  ├── notifications.component.ts
+|  |  |  |  ├── notifications.service.ts
+|  |  |  |  └── notifications.types.ts
+|  |  |  ├── primeng
+|  |  |  |  ├── configurator
+|  |  |  |  ├── domain
+|  |  |  |  └── services
+|  |  |  ├── quick-chat
+|  |  |  |  ├── quick-chat.component.html
+|  |  |  |  ├── quick-chat.component.scss
+|  |  |  |  ├── quick-chat.component.ts
+|  |  |  |  ├── quick-chat.service.ts
+|  |  |  |  └── quick-chat.types.ts
+|  |  |  ├── search
+|  |  |  |  ├── search.component.html
+|  |  |  |  └── search.component.ts
+|  |  |  ├── settings
+|  |  |  |  ├── settings.component.html
+|  |  |  |  └── settings.component.ts
+|  |  |  ├── shortcuts
+|  |  |  |  ├── shortcuts.component.html
+|  |  |  |  ├── shortcuts.component.ts
+|  |  |  |  ├── shortcuts.service.ts
+|  |  |  |  └── shortcuts.types.ts
+|  |  |  └── user
+|  |  |     ├── user.component.html
+|  |  |     └── user.component.ts
+|  |  ├── layout.component.html
+|  |  ├── layout.component.scss
+|  |  ├── layout.component.ts
+|  |  └── layouts
+|  |     ├── empty
+|  |     |  ├── empty.component.html
+|  |     |  └── empty.component.ts
+|  |     ├── horizontal
+|  |     |  ├── centered
+|  |     |  ├── enterprise
+|  |     |  ├── material
+|  |     |  └── modern
+|  |     └── vertical
+|  |        ├── classic
+|  |        ├── classy
+|  |        ├── compact
+|  |        ├── dense
+|  |        ├── futuristic
+|  |        └── thin
+|  ├── mock-api
+|  |  ├── apps
+|  |  |  ├── academy
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── chat
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── contacts
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── ecommerce
+|  |  |  |  └── inventory
+|  |  |  ├── file-manager
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── help-center
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── mailbox
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── notes
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── scrumboard
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  └── tasks
+|  |  |     ├── api.ts
+|  |  |     └── data.ts
+|  |  ├── common
+|  |  |  ├── auth
+|  |  |  |  └── api.ts
+|  |  |  ├── messages
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── navigation
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── notifications
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── search
+|  |  |  |  └── api.ts
+|  |  |  ├── shortcuts
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  └── user
+|  |  |     ├── api.ts
+|  |  |     └── data.ts
+|  |  ├── dashboards
+|  |  |  ├── analytics
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── crypto
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  ├── finance
+|  |  |  |  ├── api.ts
+|  |  |  |  └── data.ts
+|  |  |  └── project
+|  |  |     ├── api.ts
+|  |  |     └── data.ts
+|  |  ├── index.ts
+|  |  ├── pages
+|  |  |  └── activities
+|  |  |     ├── api.ts
+|  |  |     └── data.ts
+|  |  └── ui
+|  |     └── icons
+|  |        ├── api.ts
+|  |        └── data.ts
+|  └── modules
+|     ├── auth
+|     |  ├── confirmation-required
+|     |  |  ├── confirmation-required.component.html
+|     |  |  ├── confirmation-required.component.ts
+|     |  |  └── confirmation-required.routes.ts
+|     |  ├── forgot-password
+|     |  |  ├── forgot-password.component.html
+|     |  |  ├── forgot-password.component.ts
+|     |  |  └── forgot-password.routes.ts
+|     |  ├── gate-way-login
+|     |  |  ├── gate-way-login.component.html
+|     |  |  ├── gate-way-login.component.scss
+|     |  |  ├── gate-way-login.component.spec.ts
+|     |  |  └── gate-way-login.component.ts
+|     |  ├── reset-password
+|     |  |  ├── reset-password.component.html
+|     |  |  ├── reset-password.component.ts
+|     |  |  └── reset-password.routes.ts
+|     |  ├── sign-in
+|     |  |  ├── sign-in.component.html
+|     |  |  ├── sign-in.component.ts
+|     |  |  └── sign-in.routes.ts
+|     |  ├── sign-out
+|     |  |  ├── sign-out.component.html
+|     |  |  ├── sign-out.component.ts
+|     |  |  └── sign-out.routes.ts
+|     |  ├── sign-up
+|     |  |  ├── sign-up.component.html
+|     |  |  ├── sign-up.component.ts
+|     |  |  └── sign-up.routes.ts
+|     |  └── unlock-session
+|     |     ├── unlock-session.component.html
+|     |     ├── unlock-session.component.ts
+|     |     └── unlock-session.routes.ts
+|     ├── landing
+|     |  └── wallet-home
+|     |     └── wallet-home.component.html
+|     ├── main
+|     |  ├── components
+|     |  |  ├── about
+|     |  |  ├── client-citizen
+|     |  |  ├── client-corporate
+|     |  |  ├── home
+|     |  |  └── main-category
+|     |  ├── main.component.html
+|     |  ├── main.component.scss
+|     |  ├── main.component.spec.ts
+|     |  ├── main.component.ts
+|     |  ├── main.routes.ts
+|     |  └── services
+|     |     ├── api-gateway.service.ts
+|     |     ├── asynchronous-api-gateway.service.ts
+|     |     ├── breadcrumb.service.ts
+|     |     ├── check-tab-valid.service.ts
+|     |     ├── headerName.service.ts
+|     |     ├── home-api-service.ts
+|     |     └── neobank.service.ts
+|     ├── mat-wrapper-components
+|     |  └── projects
+|     |     └── components
+|     └── shared
+|        ├── components
+|        |  ├── amount-box
+|        |  ├── breadcrumbs
+|        |  ├── custom-horizontal-tree
+|        |  ├── development
+|        |  ├── fs-progress-spinner
+|        |  ├── horizontal-tree-node
+|        |  ├── message-selector
+|        |  ├── persian-calendar
+|        |  └── shenasnameh-input
+|        ├── constants
+|        |  ├── api-gateway-constants.service.ts
+|        |  ├── ApiGatewayConstants.ts
+|        |  ├── Constants.ts
+|        |  └── translate-constants.service.ts
+|        ├── models
+|        |  └── citizen-search.model.ts
+|        ├── pipes
+|        |  ├── account-type.pipe.ts
+|        |  ├── action-type-first.pipe.ts
+|        |  ├── actionTypeHub.pipe.ts
+|        |  ├── add-caracter.pipe.ts
+|        |  ├── add-comma.pipe.ts
+|        |  ├── alive-type.pipe.ts
+|        |  ├── billStatus.pipe.ts
+|        |  ├── cache-type.pipe.ts
+|        |  ├── cast-to-date-time.pipe.ts
+|        |  ├── cast-to-date.pipe.ts
+|        |  ├── changeTypeId.pipe.ts
+|        |  ├── chargeType.pipe.ts
+|        |  ├── citizenship-type.pipe.ts
+|        |  ├── commandType.pipe.ts
+|        |  ├── condition.pipe.ts
+|        |  ├── conditionFieldType.pipe.ts
+|        |  ├── conditionType.pipe.ts
+|        |  ├── dataTypeHub.pipe.ts
+|        |  ├── dbEngine.pipe.ts
+|        |  ├── detail-type.pipe.ts
+|        |  ├── en-status.pipe.ts
+|        |  ├── FormatRule.pipe.ts
+|        |  ├── headerType.pipe.ts
+|        |  ├── historyMoreChar.pipe.ts
+|        |  ├── http-methods.pipe.ts
+|        |  ├── isApproval.pipe.ts
+|        |  ├── limitType.pipe.ts
+|        |  ├── mainAccount.pipe.ts
+|        |  ├── messagesCategory.pipe.ts
+|        |  ├── messageType.pipe.ts
+|        |  ├── moduleType.pipe.ts
+|        |  ├── morChar13.pipe.ts
+|        |  ├── morChar32.pipe.ts
+|        |  ├── morChar55.pipe.ts
+|        |  ├── moreChar19.pipe.ts
+|        |  ├── moreCharLong.pipe.ts
+|        |  ├── param-title-pipe.ts
+|        |  ├── paramType.pipe.ts
+|        |  ├── protocols.pipe.ts
+|        |  ├── purchaseType.pipe.ts
+|        |  ├── restriction-type.pipe.ts
+|        |  ├── rial-currency.pipe.ts
+|        |  ├── ruleTemplate.pipe.ts
+|        |  ├── segmentType.pipe.ts
+|        |  ├── status-report-organization.pipe.ts
+|        |  ├── status-test.pipe.ts
+|        |  ├── status.pipe.ts
+|        |  ├── successful.pipe.ts
+|        |  ├── tableId.pipe.ts
+|        |  ├── threeDotBreadcrumb.pipe.ts
+|        |  ├── threeDotDetails.pipe.ts
+|        |  ├── time.pipe.ts
+|        |  └── wageType.pipe.ts
+|        ├── services
+|        |  ├── breadcrumb.service.ts
+|        |  ├── print.service.ts
+|        |  └── ToastService.ts
+|        └── validators
+|           └── common-validations.service.ts
+├── assets
+|  ├── .gitkeep
+|  ├── commonStyles
+|  |  └── commonVariables.scss
+|  ├── const.ts
+|  ├── files.json
+|  ├── files1.json
+|  ├── fonts
+|  |  ├── inter
+|  |  |  ├── Inter-italic.var.woff2
+|  |  |  ├── Inter-roman.var.woff2
+|  |  |  └── inter.css
+|  |  ├── iransans
+|  |  |  ├── eot
+|  |  |  |  ├── iranyekanwebblack.eot
+|  |  |  |  ├── iranyekanwebbold.eot
+|  |  |  |  ├── iranyekanwebextrablack.eot
+|  |  |  |  ├── iranyekanwebextrabold.eot
+|  |  |  |  ├── iranyekanweblight.eot
+|  |  |  |  ├── iranyekanwebmedium.eot
+|  |  |  |  ├── iranyekanwebregular.eot
+|  |  |  |  └── iranyekanwebthin.eot
+|  |  |  ├── FontLicense.txt
+|  |  |  ├── svg
+|  |  |  |  ├── iranyekanwebblack.svg
+|  |  |  |  ├── iranyekanwebbold.svg
+|  |  |  |  ├── iranyekanwebextrablack.svg
+|  |  |  |  ├── iranyekanwebextrabold.svg
+|  |  |  |  ├── iranyekanweblight.svg
+|  |  |  |  ├── iranyekanwebmedium.svg
+|  |  |  |  ├── iranyekanwebregular.svg
+|  |  |  |  └── iranyekanwebthin.svg
+|  |  |  ├── ttf
+|  |  |  |  ├── iranyekanwebblack.ttf
+|  |  |  |  ├── iranyekanwebbold.ttf
+|  |  |  |  ├── iranyekanwebextrablack.ttf
+|  |  |  |  ├── iranyekanwebextrabold.ttf
+|  |  |  |  ├── iranyekanweblight.ttf
+|  |  |  |  ├── iranyekanwebmedium.ttf
+|  |  |  |  ├── iranyekanwebregular.ttf
+|  |  |  |  └── iranyekanwebthin.ttf
+|  |  |  └── woff
+|  |  |     ├── iranyekanwebblack.woff
+|  |  |     ├── iranyekanwebbold.woff
+|  |  |     ├── iranyekanwebextrablack.woff
+|  |  |     ├── iranyekanwebextrabold.woff
+|  |  |     ├── iranyekanweblight.woff
+|  |  |     ├── iranyekanwebmedium.woff
+|  |  |     ├── iranyekanwebregular.woff
+|  |  |     └── iranyekanwebthin.woff
+|  |  ├── iranyekan
+|  |  |  ├── eot
+|  |  |  |  ├── iranyekanwebblackfanum.eot
+|  |  |  |  ├── iranyekanwebboldfanum.eot
+|  |  |  |  ├── iranyekanwebextrablackfanum.eot
+|  |  |  |  ├── iranyekanwebextraboldfanum.eot
+|  |  |  |  ├── iranyekanweblightfanum.eot
+|  |  |  |  ├── iranyekanwebmediumfanum.eot
+|  |  |  |  ├── iranyekanwebregularfanum.eot
+|  |  |  |  └── iranyekanwebthinfanum.eot
+|  |  |  ├── svg
+|  |  |  |  ├── iranyekanwebblackfanum.svg
+|  |  |  |  ├── iranyekanwebboldfanum.svg
+|  |  |  |  ├── iranyekanwebextrablackfanum.svg
+|  |  |  |  ├── iranyekanwebextraboldfanum.svg
+|  |  |  |  ├── iranyekanweblightfanum.svg
+|  |  |  |  ├── iranyekanwebmediumfanum.svg
+|  |  |  |  ├── iranyekanwebregularfanum.svg
+|  |  |  |  └── iranyekanwebthinfanum.svg
+|  |  |  ├── ttf
+|  |  |  |  ├── iranyekanwebblackfanum.ttf
+|  |  |  |  ├── iranyekanwebboldfanum.ttf
+|  |  |  |  ├── iranyekanwebextrablackfanum.ttf
+|  |  |  |  ├── iranyekanwebextraboldfanum.ttf
+|  |  |  |  ├── iranyekanweblightfanum.ttf
+|  |  |  |  ├── iranyekanwebmediumfanum.ttf
+|  |  |  |  ├── iranyekanwebregularfanum.ttf
+|  |  |  |  └── iranyekanwebthinfanum.ttf
+|  |  |  ├── WebFonts
+|  |  |  |  ├── css
+|  |  |  |  ├── fonts
+|  |  |  |  ├── IRANYekan.html
+|  |  |  |  └── WebFonts.png
+|  |  |  └── woff
+|  |  |     ├── iranyekanwebblackfanum.woff
+|  |  |     ├── iranyekanwebboldfanum.woff
+|  |  |     ├── iranyekanwebextrablackfanum.woff
+|  |  |     ├── iranyekanwebextraboldfanum.woff
+|  |  |     ├── iranyekanweblightfanum.woff
+|  |  |     ├── iranyekanwebmediumfanum.woff
+|  |  |     ├── iranyekanwebregularfanum.woff
+|  |  |     └── iranyekanwebthinfanum.woff
+|  |  └── material-icons
+|  |     ├── material-icons.css
+|  |     ├── MaterialIcons-Regular.ttf
+|  |     ├── MaterialIconsOutlined-Regular.otf
+|  |     ├── MaterialIconsRound-Regular.otf
+|  |     ├── MaterialIconsSharp-Regular.otf
+|  |     └── MaterialIconsTwoTone-Regular.otf
+|  ├── Gateway_Doc.docx
+|  ├── i18n
+|  |  ├── en.json
+|  |  ├── fa.json
+|  |  └── tr.json
+|  ├── icons
+|  |  ├── access.png
+|  |  ├── api.png
+|  |  ├── bulletin.png
+|  |  ├── cartable.png
+|  |  ├── chart.png
+|  |  ├── check.png
+|  |  ├── client.png
+|  |  ├── config.png
+|  |  ├── correct.jpeg
+|  |  ├── correct.png
+|  |  ├── cross.jpeg
+|  |  ├── cross.png
+|  |  ├── detail.png
+|  |  ├── endpoint.png
+|  |  ├── factor.png
+|  |  ├── flags
+|  |  |  ├── ir.png
+|  |  |  ├── tr.png
+|  |  |  └── us.png
+|  |  ├── flow.png
+|  |  ├── headerEndpoint.png
+|  |  ├── home.png
+|  |  ├── hub.png
+|  |  ├── less-than-symbol.png
+|  |  ├── limit.png
+|  |  ├── limitIp.png
+|  |  ├── log.png
+|  |  ├── logout.png
+|  |  ├── material-icons
+|  |  |  └── outline
+|  |  |     ├── fonts
+|  |  |     └── style.css
+|  |  ├── mediatorJson.png
+|  |  ├── mediators.png
+|  |  ├── mediatorXml.png
+|  |  ├── message.png
+|  |  ├── meteocons
+|  |  |  ├── demo-files
+|  |  |  |  ├── demo.css
+|  |  |  |  └── demo.js
+|  |  |  ├── demo.html
+|  |  |  ├── fonts
+|  |  |  |  ├── meteocons.svg
+|  |  |  |  ├── meteocons.ttf
+|  |  |  |  └── meteocons.woff
+|  |  |  ├── Read Me.txt
+|  |  |  ├── selection.json
+|  |  |  └── style.css
+|  |  ├── module.png
+|  |  ├── multiply.png
+|  |  ├── node.png
+|  |  ├── notSystemMessage.png
+|  |  ├── party.png
+|  |  ├── reports.png
+|  |  ├── respons.png
+|  |  ├── responsRate.png
+|  |  ├── rule.png
+|  |  ├── rules condition.png
+|  |  ├── rulesClient.png
+|  |  ├── rulesClient.png.png
+|  |  ├── save.png
+|  |  ├── systemMessage.png
+|  |  ├── team.png
+|  |  ├── timeRestart.png
+|  |  ├── timeRestart2.png
+|  |  ├── timeRestart3.png
+|  |  ├── timeRestart4.png
+|  |  ├── timeRestart5.png
+|  |  ├── update.png
+|  |  └── wage.png
+|  ├── images
+|  |  ├── avatars
+|  |  |  └── profile.jpg
+|  |  ├── cartable.png
+|  |  ├── development.png
+|  |  ├── logos
+|  |  |  ├── fuse.svg
+|  |  |  ├── resalat.jpeg
+|  |  |  └── rlogo.png
+|  |  ├── resalat.png
+|  |  ├── resalat3.png
+|  |  └── resalat4.png
+|  └── jsons
+|     └── headerName.json
+├── environments
+|  ├── environment.pre.prod.ts
+|  ├── environment.prod.ts
+|  ├── environment.qc.prod.ts
+|  ├── environment.ts
+|  └── environment.uat.prod.ts
+├── index.html
+├── main.ts
+├── shared
+|  ├── mockObjects
+|  |  └── api-mock-objects.service.ts
+|  ├── models
+|  |  └── field-error-code.ts
+|  ├── repositories
+|  |  ├── connection.service.spec.ts
+|  |  └── connection.service.ts
+|  └── services
+|     ├── DirectionService.ts
+|     ├── xss-input-validation.directive.ts
+|     └── XssControlService.ts
+├── styles
+|  ├── fonts
+|  |  ├── iransans
+|  |  |  ├── eot
+|  |  |  |  ├── iranyekanwebblack.eot
+|  |  |  |  ├── iranyekanwebbold.eot
+|  |  |  |  ├── iranyekanwebextrablack.eot
+|  |  |  |  ├── iranyekanwebextrabold.eot
+|  |  |  |  ├── iranyekanweblight.eot
+|  |  |  |  ├── iranyekanwebmedium.eot
+|  |  |  |  ├── iranyekanwebregular.eot
+|  |  |  |  └── iranyekanwebthin.eot
+|  |  |  ├── FontLicense.txt
+|  |  |  ├── svg
+|  |  |  |  ├── iranyekanwebblack.svg
+|  |  |  |  ├── iranyekanwebbold.svg
+|  |  |  |  ├── iranyekanwebextrablack.svg
+|  |  |  |  ├── iranyekanwebextrabold.svg
+|  |  |  |  ├── iranyekanweblight.svg
+|  |  |  |  ├── iranyekanwebmedium.svg
+|  |  |  |  ├── iranyekanwebregular.svg
+|  |  |  |  └── iranyekanwebthin.svg
+|  |  |  ├── ttf
+|  |  |  |  ├── iranyekanwebblack.ttf
+|  |  |  |  ├── iranyekanwebbold.ttf
+|  |  |  |  ├── iranyekanwebextrablack.ttf
+|  |  |  |  ├── iranyekanwebextrabold.ttf
+|  |  |  |  ├── iranyekanweblight.ttf
+|  |  |  |  ├── iranyekanwebmedium.ttf
+|  |  |  |  ├── iranyekanwebregular.ttf
+|  |  |  |  └── iranyekanwebthin.ttf
+|  |  |  └── woff
+|  |  |     ├── iranyekanwebblack.woff
+|  |  |     ├── iranyekanwebbold.woff
+|  |  |     ├── iranyekanwebextrablack.woff
+|  |  |     ├── iranyekanwebextrabold.woff
+|  |  |     ├── iranyekanweblight.woff
+|  |  |     ├── iranyekanwebmedium.woff
+|  |  |     ├── iranyekanwebregular.woff
+|  |  |     └── iranyekanwebthin.woff
+|  |  ├── IranSans_WOFF2
+|  |  |  ├── IRANSansWeb(FaNum).woff2
+|  |  |  ├── IRANSansWeb(FaNum)_Black.woff2
+|  |  |  ├── IRANSansWeb(FaNum)_Bold.woff2
+|  |  |  ├── IRANSansWeb(FaNum)_Light.woff2
+|  |  |  ├── IRANSansWeb(FaNum)_Medium.woff2
+|  |  |  └── IRANSansWeb(FaNum)_UltraLight.woff2
+|  |  └── iranyekan
+|  |     ├── eot
+|  |     |  ├── iranyekanwebblackfanum.eot
+|  |     |  ├── iranyekanwebboldfanum.eot
+|  |     |  ├── iranyekanwebextrablackfanum.eot
+|  |     |  ├── iranyekanwebextraboldfanum.eot
+|  |     |  ├── iranyekanweblightfanum.eot
+|  |     |  ├── iranyekanwebmediumfanum.eot
+|  |     |  ├── iranyekanwebregularfanum.eot
+|  |     |  └── iranyekanwebthinfanum.eot
+|  |     ├── svg
+|  |     |  ├── iranyekanwebblackfanum.svg
+|  |     |  ├── iranyekanwebboldfanum.svg
+|  |     |  ├── iranyekanwebextrablackfanum.svg
+|  |     |  ├── iranyekanwebextraboldfanum.svg
+|  |     |  ├── iranyekanweblightfanum.svg
+|  |     |  ├── iranyekanwebmediumfanum.svg
+|  |     |  ├── iranyekanwebregularfanum.svg
+|  |     |  └── iranyekanwebthinfanum.svg
+|  |     ├── ttf
+|  |     |  ├── iranyekanwebblackfanum.ttf
+|  |     |  ├── iranyekanwebboldfanum.ttf
+|  |     |  ├── iranyekanwebextrablackfanum.ttf
+|  |     |  ├── iranyekanwebextraboldfanum.ttf
+|  |     |  ├── iranyekanweblightfanum.ttf
+|  |     |  ├── iranyekanwebmediumfanum.ttf
+|  |     |  ├── iranyekanwebregularfanum.ttf
+|  |     |  └── iranyekanwebthinfanum.ttf
+|  |     ├── WebFonts
+|  |     |  ├── css
+|  |     |  ├── fonts
+|  |     |  ├── IRANYekan.html
+|  |     |  └── WebFonts.png
+|  |     └── woff
+|  |        ├── iranyekanwebblackfanum.woff
+|  |        ├── iranyekanwebboldfanum.woff
+|  |        ├── iranyekanwebextrablackfanum.woff
+|  |        ├── iranyekanwebextraboldfanum.woff
+|  |        ├── iranyekanweblightfanum.woff
+|  |        ├── iranyekanwebmediumfanum.woff
+|  |        ├── iranyekanwebregularfanum.woff
+|  |        └── iranyekanwebthinfanum.woff
+|  ├── primeng-custom-styles.scss
+|  ├── splash-screen.css
+|  ├── styles.scss
+|  ├── tailwind.scss
+|  ├── vendors.scss
+|  └── _fonts.scss
+└── _redirects
+
+directory: 198 file: 573
+

@@ -1,0 +1,43 @@
+:host { display: contents; }
+
+/* کانتینر واحد: سه سگمنت چسبیده مثل یک کنترل */
+.combo { display:flex; align-items:stretch; border-radius:9999px;  }
+.seg   { display:flex; align-items:center; padding:.5rem .75rem; }
+.seg + .seg { border-inline-start: 1px solid rgba(0,0,0,.065); }
+.seg.seg-flex   { flex:1 1 0%; min-width:0; }
+.seg.seg-letter { flex:0 0 84px; }
+.seg.seg-number { flex:0 0 96px; }
+
+/* اِلِمان‌های PrimeNG تمام عرض سگمنت را بگیرند و ساده باشند */
+:host ::ng-deep .p-inputtext,
+:host ::ng-deep .p-dropdown { width:100% !important; border:none !important; box-shadow:none !important; background:transparent !important; }
+:host ::ng-deep .p-dropdown .p-dropdown-trigger{ width:1.25rem; }
+:host ::ng-deep .p-dropdown .p-dropdown-label { padding:.125rem .25rem; text-align:center; }
+
+/* استایل‌های دلخواهت را بیرون بده: مثال normal-input */
+:host(.normal-input) .combo {
+    /* اگر Tailwind در global فعال است، بهتره این رو آنجا بنویسی: @apply border rounded-xl px-4 py-2.5 transition w-3/4; */
+    border:1px solid #E5E7EB;
+    border-radius:.75rem;
+    padding:.625rem 1rem;
+    width:75%;
+    height:3.25rem;
+}
+.combo.readonly { background:#f9fafb; }
+.combo.invalid  { outline:2px solid #f43f5e20; outline-offset:0; }
+:host {
+    display: block;
+}
+
+
+:host ::ng-deep .segmented-input-container .p-inputtext,
+:host ::ng-deep .segmented-input-container .p-dropdown {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+
+:host ::ng-deep .rtl-dropdown .p-dropdown-items {
+    direction: rtl;
+    text-align: right;
+}

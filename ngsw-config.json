@@ -1,0 +1,59 @@
+{
+    "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+    "index": "/gateway-ui/index.html",
+    "assetGroups": [
+        {
+            "name": "app-shell",
+            "installMode": "prefetch",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/gateway-ui/favicon.ico",
+                    "/gateway-ui/index.html",
+                    "/gateway-ui/manifest.webmanifest",
+                    "/gateway-ui/*.css",
+                    "/gateway-ui/*.js",
+                    "/gateway-ui/assets/icons/*.png"
+                ],
+                "urls": [
+                    "/gateway-ui/"
+                ]
+            }
+        },
+        {
+            "name": "assets",
+            "installMode": "lazy",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/gateway-ui/assets/**",
+                    "!(*.map|*.json|*.txt)"
+                ],
+                "urls": [
+                    "https://fonts.googleapis.com/**",
+                    "https://fonts.gstatic.com/**"
+                ]
+            }
+        }
+    ],
+    "dataGroups": [
+        {
+            "name": "api-requests",
+            "urls": [
+                "/gateway-ui/api/**"
+            ],
+            "cacheConfig": {
+                "maxSize": 100,
+                "maxAge": "3d",
+                "strategy": "freshness"
+            }
+        }
+    ],
+    "navigationUrls": [
+        "/gateway-ui/**",
+        "!/gateway-ui/**/*.*",
+        "!/gateway-ui/**/*__*",
+        "!/gateway-ui/**/*__*/**"
+    ],
+    "navigationRequestStrategy": "freshness"
+}
