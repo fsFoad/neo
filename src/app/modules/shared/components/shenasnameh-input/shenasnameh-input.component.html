@@ -1,0 +1,139 @@
+<!--
+ میزبان را "contents" می‌گذاریم تا ظاهر واحد بگیری و کلاس‌ها روی combo بنشینند
+<div dir="rtl" class="combo" [ngClass]="hostClass">
+    &lt;!&ndash; سریال &ndash;&gt;
+    <div class="seg seg-flex">
+        <input pInputText
+               [placeholder]="serialPlaceholder" [readonly]="readonly"
+               [attr.inputmode]="'numeric'" [attr.autocomplete]="'off'" [attr.maxlength]="serialMaxLength"
+               [formControl]="serialCtrl" [pattern]="serialPattern.source"
+               class="grow font-medium tracking-wider">
+    </div>
+
+
+
+    &lt;!&ndash; عدد سری &ndash;&gt;
+    <div class="seg seg-number">
+        <input pInputText
+               [placeholder]="seriesNumberPlaceholder" [readonly]="readonly"
+               [attr.inputmode]="'numeric'" [attr.autocomplete]="'off'" [attr.maxlength]="seriesNumberMaxLength"
+               [formControl]="numberCtrl" [pattern]="seriesNumberPattern.source"
+               class="font-medium">
+    </div>
+    &lt;!&ndash; حرف سری (dropdown باریک) &ndash;&gt;
+    <div class="seg seg-letter">
+        <p-dropdown
+            [options]="letterOptions" [formControl]="letterCtrl"
+            appendTo="body" [filter]="false"
+            styleClass="w-full p-0"
+            placeholder="حرف">
+            &lt;!&ndash; [style]="{ width: '84px' }"
+             [panelStyle]="{ 'max-height': '18rem' }"&ndash;&gt;
+        </p-dropdown>
+    </div>
+</div>
+-->
+<!--
+<div dir="rtl" class="segmented-input-container">
+    &lt;!&ndash; رپر واحد با رینگ و فوکوس مشترک &ndash;&gt;
+    <div
+        class="flex flex-row-reverse items-stretch w-full rounded-xl ring-1 ring-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary-500 bg-white">
+
+
+        &lt;!&ndash; بخش A &ndash;&gt;
+        <input
+            pInputText
+            [ngModel]="value.partA"
+            (ngModelChange)="onPartAChange($event)"
+            [placeholder]="placeholderA"
+            maxlength="10"
+            class="grow px-3 py-2 border-0 outline-none focus:ring-0 !shadow-none text-right"
+        />
+
+
+        &lt;!&ndash; اسلش جداکننده &ndash;&gt;
+        <span class="px-2 select-none self-center">/</span>
+
+
+        &lt;!&ndash; بخش B &ndash;&gt;
+        <input
+            pInputText
+            [ngModel]="value.partB"
+            (ngModelChange)="onPartBChange($event)"
+            [placeholder]="placeholderB"
+            maxlength="3"
+            class="w-20 px-3 py-2 border-0 outline-none focus:ring-0 !shadow-none text-center"
+        />
+
+
+        &lt;!&ndash; اسلش جداکننده &ndash;&gt;
+        <span class="px-2 select-none self-center">/</span>
+
+
+        &lt;!&ndash; دراپ‌داون C &ndash;&gt;
+        <p-dropdown
+            [options]="dropdownOptions"
+            [ngModel]="value.partC"
+            (onChange)="onPartCChange($event.value)"
+            [showClear]="true"
+            [style]="{ width: '10rem' }"
+            panelStyleClass="rtl-dropdown"
+            class="border-0 rounded-none outline-none focus:ring-0 !shadow-none"
+        ></p-dropdown>
+    </div>
+
+
+    &lt;!&ndash; نمایش مقدار ترکیبی (اختیاری برای دیباگ) &ndash;&gt;
+    <small class="block mt-2 text-gray-500">{{ combined }}</small>
+</div>
+-->
+<div dir="rtl" class="segmented-input-container">
+    <div
+        class="flex flex-row-reverse items-stretch w-full rounded-lg ring-1 ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-primary-500">
+
+
+        <!-- بخش A -->
+        <input
+            pInputText
+            [ngModel]="value.partA"
+            (ngModelChange)="onPartAChange($event)"
+            [placeholder]="placeholderA"
+            maxlength="8"
+            class="grow px-1 py-2 border-0 outline-none focus:ring-0 !shadow-none text-right"
+        />
+
+
+        <!-- اسلش -->
+        <span class="px-1 select-none self-center">/</span>
+
+
+        <!-- بخش B -->
+        <input
+            pInputText
+            [ngModel]="value.partB"
+            (ngModelChange)="onPartBChange($event)"
+            [placeholder]="placeholderB"
+            maxlength="3"
+            class="w-20 px-1 py-2 border-0 outline-none focus:ring-0 !shadow-none text-center"
+        />
+
+
+        <!-- اسلش -->
+        <span class="px-1 select-none self-center">/</span>
+
+
+        <!-- دراپ‌داون C -->
+        <p-dropdown
+            [options]="dropdownOptions"
+            [ngModel]="value.partC"
+            (onChange)="onPartCChange($event.value)"
+            [showClear]="true"
+            class="w-40 border-0 rounded-none outline-none focus:ring-0 !shadow-none"
+            panelStyleClass="rtl-dropdown"
+        ></p-dropdown>
+    </div>
+
+
+    <!-- مقدار نهایی -->
+    <small class="block mt-2 text-gray-500">{{ combined }}</small>
+</div>

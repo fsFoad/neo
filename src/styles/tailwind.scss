@@ -1,0 +1,16 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Main Tailwind file for injecting utilities.
+/* ----------------------------------------------------------------------------------------------------- */
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
+@layer utilities {
+    .shadow-focus-ring {
+        box-shadow: var(--p-inputtext-focus-ring-shadow);
+    }
+
+    .hover\:shadow-focus-ring:hover {
+        box-shadow: var(--p-inputtext-focus-ring-shadow);
+    }
+}
+
