@@ -1,0 +1,134 @@
+
+<div class="w-full bg-white">
+    <div class="p-8 rounded-xl shadow-sm  mx-auto">
+        <div class="flex flex-col w-full p-4">
+            <div class="flex flex-col items-start text-right w-full">
+                <h3 class="text-2xl font-semibold mb-6">
+                    {{ 'fundingSources.title' | transloco }}
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="p-6 space-y-6 rounded-2xl">
+    <form >
+        <div
+            class="px-5 bg-white p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-end md:gap-4">
+
+            <!-- 🔹 فیلد dropdown -->
+            <div class="flex flex-col md:w-2/6">
+                <label class="mb-1 text-sm text-gray-700 font-medium">
+                    نوع منبع تأمین تسهیلات / تعهدات:
+                </label>
+
+                <!-- فیلد + دکمه در یک خط -->
+                <div class="flex flex-row items-center gap-2">
+                    <p-dropdown
+                        class="normal-dropdown flex-1"
+                        [options]="sourceTypeList"
+                        optionLabel="label"
+                        optionValue="value"
+                        formControlName="sourceTypeId"
+                        placeholder="_"
+                        (onChange)="onSourceTypeChange($event)"
+                        [disabled]="!easySearchFlag">
+                    </p-dropdown>
+
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-search"
+                        iconPos="right"
+                        label="{{ 'جستجو' | transloco }}"
+                        class="normal-button p-button !px-3 !py-1">
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="flex flex-col">
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 ng-untouched ng-pristine ng-valid">
+            <div class="my-2">
+                <button pButton
+                        iconPos="right"
+                        class="p-button-outlined normal-button"
+                        type="button"
+                        icon="pi pi-plus"
+                        label="{{ 'ایجاد' | transloco }}"
+                >
+                </button>
+            </div>
+            <p-table
+                [value]="fundingSourcesTable"
+                [paginator]="true"
+                [rows]="5"
+                [rowsPerPageOptions]="[5,10,20]"
+                styleClass="p-datatable-striped p-datatable-gridlines responsive-table">
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>{{ 'fundingSources.fields.row' | transloco }}</th>
+                        <th>{{ 'fundingSources.fields.code' | transloco }}</th>
+                        <th>{{ 'fundingSources.fields.title' | transloco }}</th>
+                        <th>{{ 'fundingSources.fields.status' | transloco }}</th>
+                        <th>{{ 'fundingSources.fields.actions' | transloco }}</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{ rowIndex + 1 }}</td>
+                        <td>{{ row.code }}</td>
+                        <td>{{ row.title }}</td>
+                        <td>{{ row.active }}</td>
+                        <td class="action-column">
+                            <div class="flex flex-row gap-2">
+                                <button
+                                    pButton
+                                    icon="pi pi-plus"
+                                    class="p-button-sm p-button-rounded p-button-outlined"
+                                    pTooltip="نمایش"
+                                    (click)="viewSource(row)"
+                                ></button>
+
+                                <button
+                                    pButton
+                                    icon="pi pi-pencil"
+                                    class="p-button-sm p-button-rounded p-button-outlined p-button-success"
+                                    pTooltip="ویرایش"
+                                    (click)="editSource(row)"
+                                ></button>
+
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-gray-500">
+                            {{ 'fundingSources.messages.noRecords' | transloco }}
+                        </td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+        </div>
+
+</div>
+</div>
+<!--    <div
+        class="table-scroll-container p-6"
+        infiniteScroll
+        [scrollWindow]="true"
+        [infiniteScrollDistance]="1"
+        [infiniteScrollThrottle]="300"
+        [infiniteScrollDisabled]="loading"
+        (scrolled)="onScrollDown()"
+        *ngIf="isMobile"
+    >-->
+
+
