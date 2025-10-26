@@ -32,6 +32,7 @@ interface SourceTypeOption {
 export class LoanFundingSourcesComponent implements OnInit {
     fundingSourcesForm!: FormGroup;
     easySearchFlag = true;
+
     ngOnInit(): void {
         this.fundingSourcesForm = this.fb.group({
             sourceType: [''],

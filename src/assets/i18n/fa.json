@@ -143,8 +143,8 @@
     "accessList.table.header.apiCount": "تعداد سرویس",
     "accessList.table.header.callCount": "تعداد فراخوانی",
     "accessList.table.header.operation": "عملیات",
-    "accessList.table.header.dialog.row":"ردیف",
-    "accessList.table.header.dialog.apiTitle":"عنوان سرویس",
+    "accessList.table.header.dialog.row": "ردیف",
+    "accessList.table.header.dialog.apiTitle": "عنوان سرویس",
     "accessList.table.header.dialog.apiName": "نام سرویس",
     "accessList.table.header.dialog.retryCount": "تعداد تلاش مجدد",
     "accessList.table.header.dialog.maxCall": "حداکثر تعداد فراخوانی",
@@ -152,7 +152,6 @@
     "accessList.table.header.dialog.status": "وضعیت",
     "accessList.table.detail.dialog.dailyCountApi": "روزانه",
     "accessList.table.detail.dialog.weeklyCountApi": "هفتگی",
-
     "home": "صفحه اصلی",
     "_Title02": "alert-client",
     "alertClient.title": "آلارم های کاربر",
@@ -2277,22 +2276,43 @@
             "nok": "ناقص"
         }
     },
-    "fundingSources": {
-        "title": "انواع منابع تأمین تسهیلات / تعهدات",
+    "product": {
         "fields": {
-            "row": "ردیف",
-            "code": "کد",
-            "title": "عنوان",
-            "status": "وضعیت",
-            "actions": "عملیات",
-            "sourceType": "نوع منبع تأمین تسهیلات / تعهدات"
+            "productCode": "کد محصول",
+            "contractType": "نوع عقد",
+            "planType": "نوع طرح",
+            "usageType": "نوع استفاده",
+            "productTitle": "عنوان محصول",
+            "status": "وضعیت"
         },
         "actions": {
+            "title": "عملیات",
+            "create": "ایجاد محصول",
             "view": "نمایش",
-            "edit": "ویرایش"
+            "edit": "ویرایش",
+            "copy": "کپی محصول"
         },
         "messages": {
             "noRecords": "رکوردی برای نمایش موجود نیست."
         }
-    }
+    },
+        "fundingSources": {
+            "title": "انواع منابع تأمین تسهیلات / تعهدات",
+            "fields": {
+                "row": "ردیف",
+                "code": "کد",
+                "title": "عنوان",
+                "status": "وضعیت",
+                "actions": "عملیات",
+                "sourceType": "نوع منبع تأمین تسهیلات / تعهدات"
+            },
+            "actions": {
+                "view": "نمایش",
+                "edit": "ویرایش"
+            },
+            "messages": {
+                "noRecords": "رکوردی برای نمایش موجود نیست."
+            }
+        }
+
 }
