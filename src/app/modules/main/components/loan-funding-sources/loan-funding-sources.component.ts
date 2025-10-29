@@ -1,81 +1,92 @@
 import { Component, OnInit } from '@angular/core';
-import { NgIf } from '@angular/common';
-import {  ButtonDirective } from 'primeng/button';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TableModule } from 'primeng/table';
-import { Tooltip } from 'primeng/tooltip';
-import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
 import { TranslocoPipe } from '@ngneat/transloco';
-import { Checkbox } from 'primeng/checkbox';
 
-interface SourceTypeOption {
-    label: string;
-    value: string;
-}
 @Component({
     selector: 'app-loan-funding-sources',
+    standalone: true,
     imports: [
-        NgIf,
-        FormsModule,
-        DropdownModule,
-        TableModule,
-        ButtonDirective,
-        InfiniteScrollDirective,
+        CommonModule,
         ReactiveFormsModule,
+        TableModule,
+        DialogModule,
+        InputTextModule,
+        DropdownModule,
+        ButtonModule,
+        CheckboxModule,
         TranslocoPipe,
-        Checkbox,
     ],
     templateUrl: './loan-funding-sources.component.html',
-    styleUrl: './loan-funding-sources.component.scss',
+    styleUrls: ['./loan-funding-sources.component.scss'],
 })
 export class LoanFundingSourcesComponent implements OnInit {
     fundingSourcesForm!: FormGroup;
-    easySearchFlag = true;
+    createSourceForm!: FormGroup;
+    createDialogVisible = false;
 
-    ngOnInit(): void {
-        this.fundingSourcesForm = this.fb.group({
-            sourceType: [''],
-            sourceTypeId: [null]
-        });
-    }
-
-    onScrollDown() {}
-    sourceTypeList: SourceTypeOption[] = [
-
+    sourceTypeList = [
         { label: 'منابع داخلی', value: 'internal' },
         { label: 'منابع سپرده‌ای', value: 'deposit' },
         { label: 'منابع بین‌بانکی', value: 'interbank' },
-        { label: 'منابع خارجی', value: 'external' }
+        { label: 'منابع خارجی', value: 'external' },
     ];
+
     fundingSourcesTable = [
-        { code: '1001', title: 'منابع داخلی', active: "فعال" },
-        { code: '1002', title: 'منابع سپرده‌ای', active: "غیرفعال" },
-        { code: '1003', title: 'منابع بین‌بانکی', active: "فعال" },
+        { code: '1001', title: 'منابع داخلی', active: 'فعال' },
+        { code: '1002', title: 'منابع سپرده‌ای', active: 'غیرفعال' },
+        { code: '1003', title: 'منابع بین‌بانکی', active: 'فعال' },
     ];
 
     constructor(private fb: FormBuilder) {}
 
-    openSourceDialog() {
-        console.log('📘 انتخاب منبع تأمین کلیک شد');
-        // اینجا می‌تونی dialog یا modal باز کنی
+    ngOnInit(): void {
+        this.fundingSourcesForm = this.fb.group({
+            sourceTypeId: [null],
+        });
+
+        this.createSourceForm = this.fb.group({
+            code: ['', Validators.required],
+            title: ['', Validators.required],
+            active: [false],
+        });
+    }
+
+    openCreateDialog() {
+        this.createDialogVisible = true;
+        this.createSourceForm.reset({ active: true });
+    }
+
+    onCreateSubmit() {
+        if (this.createSourceForm.valid) {
+            const newSource = this.createSourceForm.value;
+            newSource.active = newSource.active ? 'فعال' : 'غیرفعال';
+            this.fundingSourcesTable.push(newSource);
+            this.createDialogVisible = false;
+        } else {
+            this.createSourceForm.markAllAsTouched();
+        }
+    }
+
+    onCancelDialog() {
+        this.createDialogVisible = false;
+    }
+
+    onSourceTypeChange(event: any) {
+        console.log('نوع منبع انتخاب‌شده:', event.value);
     }
 
     viewSource(row: any) {
-        console.log('👁 مشاهده جزئیات:', row);
+        console.log('مشاهده:', row);
     }
 
     editSource(row: any) {
-        console.log('✏️ ویرایش ردیف:', row);
-    }
-    onSourceTypeChange(event: any): void {
-        const selectedValue = event.value;
-        console.log('نوع منبع انتخاب‌شده:', selectedValue);
-
-        // مثال: در صورت انتخاب خاص، می‌تونی عملیات خاصی انجام بدی
-        if (selectedValue === 'external') {
-            this.easySearchFlag = false; // مثلاً غیرفعال‌کردن فیلدی دیگر
-        }
+        console.log('ویرایش:', row);
     }
 }
-

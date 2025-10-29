@@ -1,0 +1,88 @@
+<div class="p-6 space-y-6 rounded-2xl bg-white border border-slate-200">
+    <h2 class="text-2xl font-semibold mb-4">مدیریت انواع عقود اسلامی</h2>
+
+    <form [formGroup]="contractForm" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 🔹 کد عقد -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">کد عقد:</label>
+            <input pInputText formControlName="contractCode" class="normal-input" placeholder="مثلاً ۱۲" />
+        </div>
+
+        <!-- 🔹 عنوان عقد -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">عنوان عقد:</label>
+            <input pInputText formControlName="contractTitle" class="normal-input" placeholder="مثلاً مرابحه" />
+        </div>
+
+        <!-- 🔹 کد در بانک مرکزی -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">کد در بانک مرکزی:</label>
+            <input pInputText formControlName="centralBankCode" class="normal-input" placeholder="مثلاً ۱۲۳" />
+        </div>
+
+        <!-- 🔹 گروه عقد -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">گروه عقد:</label>
+            <p-dropdown
+                class="normal-dropdown"
+                [options]="contractGroupList"
+                optionLabel="label"
+                optionValue="value"
+                formControlName="contractGroup"
+                placeholder="انتخاب کنید">
+            </p-dropdown>
+        </div>
+
+        <!-- 🔹 نوع تعهدات -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">نوع تعهدات:</label>
+            <p-dropdown
+                class="normal-dropdown"
+                [options]="commitmentTypeList"
+                optionLabel="label"
+                optionValue="value"
+                formControlName="commitmentType"
+                placeholder="انتخاب کنید">
+            </p-dropdown>
+        </div>
+
+        <!-- 🔹 روش محاسبه سود و کارمزد -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">روش محاسبه سود و کارمزد:</label>
+            <p-dropdown
+                class="normal-dropdown"
+                [options]="profitCalcMethodList"
+                optionLabel="label"
+                optionValue="value"
+                formControlName="profitCalculationMethod"
+                placeholder="انتخاب کنید">
+            </p-dropdown>
+        </div>
+    </form>
+
+    <!-- 🔹 وضعیت -->
+    <div class="flex items-center justify-end gap-3 mt-4">
+        <label class="text-gray-700 font-medium">وضعیت</label>
+        <p-inputSwitch formControlName="active" class="ml-2"></p-inputSwitch>
+    </div>
+
+    <!-- 🔹 دکمه‌ها -->
+    <div class="flex justify-end gap-4 mt-8">
+        <button
+            pButton
+            type="submit"
+            label="ثبت"
+            class="p-button p-button-success w-32 h-10"
+            (click)="onSubmit()"
+            [disabled]="contractForm.invalid">
+        </button>
+
+        <button
+            pButton
+            type="button"
+            label="انصراف"
+            class="p-button p-button-secondary w-32 h-10"
+            (click)="onCancel()">
+        </button>
+    </div>
+</div>

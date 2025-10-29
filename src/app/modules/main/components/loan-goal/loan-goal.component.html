@@ -3,23 +3,22 @@
         <div class="flex flex-col w-full p-4">
             <div class="flex flex-col items-start text-right w-full">
                 <h2 class="text-2xl font-semibold mb-2">
-                    {{ 'fundingSources.title' | transloco }}
+                    {{ 'goals.title' | transloco }}
                 </h2>
             </div>
         </div>
     </div>
 </div>
 <div class="p-6 space-y-6 rounded-2xl">
-    <!-- 🔹 فیلتر و جستجو -->
     <div [formGroup]="fundingSourcesForm" class="bg-white p-6 rounded-xl border border-slate-200">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="flex flex-col">
-                <label class="mb-1 font-medium">نوع منبع:</label>
+                <label class="mb-1 font-medium">{{ 'goals.fields.purpose' |transloco }}</label>
 
                 <div class="flex flex-row items-center gap-2">
                     <p-dropdown
                         class="normal-dropdown"
-                        [options]="sourceTypeList"
+                        [options]="loanGoalList "
                         optionLabel="label"
                         optionValue="value"
                         formControlName="sourceTypeId"
@@ -55,7 +54,7 @@
             </div>
 
             <p-table
-                [value]="fundingSourcesTable"
+                [value]="loanGoalTable"
                 [paginator]="true"
                 [rows]="5"
                 [rowsPerPageOptions]="[5,10,20]"
@@ -63,11 +62,12 @@
             >
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>ردیف</th>
-                        <th>کد نوع منبع</th>
-                        <th>عنوان نوع منبع</th>
-                        <th>وضعیت</th>
-                        <th>عملیات</th>
+                        <th>{{'goals.fields.row' |transloco }}</th>
+                        <th>{{'goals.fields.code' |transloco }}</th>
+                        <th>{{'goals.fields.title' |transloco }}</th>
+                        <th>{{'goals.fields.status' |transloco }}</th>
+                        <th>{{'goals.fields.actions' |transloco }}</th>
+
                     </tr>
                 </ng-template>
 
@@ -76,7 +76,7 @@
                         <td>{{ rowIndex + 1 }}</td>
                         <td>{{ row.code }}</td>
                         <td>{{ row.title }}</td>
-                        <td>{{ row.active }}</td>
+                        <td>{{ row.status }}</td>
                         <td>
                             <div class="flex flex-row gap-2">
                                 <button
@@ -110,7 +110,7 @@
         </div>
     </div>
     <p-dialog
-        header="واسط کاربری نوع منبع تأمین تسهیلات / تعهدات"
+        header="مدیریت اهداف از دریافت تسهیلات"
         [(visible)]="createDialogVisible"
         [modal]="true"
         [closable]="true"
@@ -122,31 +122,29 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- 🔹 کد نوع منبع -->
                 <div class="flex flex-col">
-                    <label class="mb-1 font-medium"
-                    >کد نوع منبع <span class="text-red-500">*</span></label
+                    <label class="mb-1 font-medium">{{'goals.fields.purposeCode' |transloco }} <span class="text-red-500">*</span></label
                     >
                     <input
                         type="text"
                         pInputText
-                        formControlName="code"
+                        formControlName="purposeCode"
                         class="normal-input"
                     />
                 </div>
 
-                <!-- 🔹 عنوان نوع منبع -->
                 <div class="flex flex-col">
                     <label class="mb-1 font-medium"
-                    >عنوان نوع منبع <span class="text-red-500">*</span></label>
+                    >{{'goals.fields.purposeTitle' |transloco }} <span class="text-red-500">*</span></label>
                     <input
                         type="text"
                         pInputText
-                        formControlName="title"
+                        formControlName="purposeTitle"
                         class="normal-input"
                     />
                 </div>
 
                 <div class="flex flex-col">
-                    <label class="text-gray-700 text-sm">فعال</label>
+                    <label class="text-gray-700 text-sm">{{'goals.fields.activate' |transloco }}</label>
                     <p-checkbox formControlName="active" binary="true"></p-checkbox>
                 </div>
 

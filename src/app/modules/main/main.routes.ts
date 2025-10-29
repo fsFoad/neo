@@ -19,6 +19,14 @@ export default [
         path: 'loan-funding-sources',loadComponent: () => import('./components/loan-funding-sources/loan-funding-sources.component')
             .then(c => c.LoanFundingSourcesComponent)
     },
+    {
+        path: 'loan-goal',loadComponent: () => import('./components/loan-goal/loan-goal.component')
+            .then(c => c.LoanGoalComponent)
+    },
+    {
+        path: 'loan-type',loadComponent: () => import('./components/loan-type/loan-type.component')
+            .then(c => c.LoanTypeComponent)
+    },
 
     {
         path: 'about',
