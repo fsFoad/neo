@@ -107,10 +107,7 @@ export class ProductCreateComponent implements OnInit {
 
             // متنی
             productCode: [{ value: '', disabled: true }],
-            productTitle: [
-                '',
-                [Validators.required, Validators.maxLength(100)],
-            ],
+            productTitle: ['', [Validators.required, Validators.maxLength(100)]],
             description: [''],
 
             // عددی

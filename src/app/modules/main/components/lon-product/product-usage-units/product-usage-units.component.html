@@ -1,1 +1,100 @@
-<p>product-usage-units works!</p>
+<div class="p-6 bg-white rounded-2xl border border-slate-200 space-y-6">
+    <h3 class="text-xl font-semibold mb-4">واحدهای استفاده‌کننده محصول</h3>
+
+    <!-- 🔹 اطلاعات محصول -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 bg-gray-50 p-4 rounded-xl border border-slate-200">
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">نوع عقد</label>
+            <span class="text-gray-800 font-semibold">قرض‌الحسنه</span>
+        </div>
+
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">نوع طرح</label>
+            <span class="text-gray-800 font-semibold">خدماتی</span>
+        </div>
+
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">چگونگی استفاده</label>
+            <span class="text-gray-800 font-semibold">استفاده در داخل کشور</span>
+        </div>
+
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">عنوان محصول</label>
+            <span class="text-gray-800 font-semibold">فرزندآوری</span>
+        </div>
+    </div>
+
+    <!-- 🔹 جستجو -->
+    <div class="grid grid-cols-12 gap-4 mt-4">
+        <div class="col-span-12 md:col-span-4">
+            <div class="flex flex-row items-center gap-2">
+                <input
+                    type="text"
+                    pInputText
+                    [(ngModel)]="searchText"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="normal-input flex-1"
+                    placeholder="جستجو واحد سازمانی"
+                />
+                <button
+                    pButton
+                    icon="pi pi-search"
+                    label="جستجو"
+                    class="normal-button p-button !px-3 !py-1"
+                ></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 فرم واحدها -->
+    <form [formGroup]="unitForm" (ngSubmit)="onSubmit()" class="mt-4">
+        <div class="space-y-3">
+            <h4 class="text-gray-700 font-medium">واحدهای سازمانی</h4>
+
+            <div
+                *ngFor="let unitCtrl of filteredUnits; let i = index"
+                class="flex items-center gap-3 border-b border-gray-100 py-2"
+                [formGroup]="unitCtrl"
+            >
+                <p-checkbox formControlName="selected" [binary]="true"></p-checkbox>
+                <span class="text-gray-800 text-sm font-medium">{{ unitCtrl.value.name }}</span>
+            </div>
+        </div>
+
+        <!-- 🔹 دکمه‌ها -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start mt-5" dir="ltr">
+            <button
+                pButton
+                label="ثبت"
+                class="p-button-success normal-button"
+                type="submit"
+            ></button>
+
+            <button
+                icon="pi pi-arrow-left"
+                pButton
+                label="ادامه"
+                type="button"
+                (click)="goNext()"
+                class="p-button-primary normal-button"
+            ></button>
+
+            <button
+                icon="pi pi-arrow-right"
+                pButton
+                label="بازگشت"
+                type="button"
+                (click)="goBack()"
+                class="normal-button"
+            ></button>
+
+            <button
+                pButton
+                label="انصراف"
+                type="button"
+                class="p-button-danger normal-button"
+                (click)="onCancel()"
+            ></button>
+        </div>
+    </form>
+</div>
