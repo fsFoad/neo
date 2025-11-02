@@ -1,47 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TableModule } from 'primeng/table';
-import { DialogModule } from 'primeng/dialog';
-import { InputTextModule } from 'primeng/inputtext';
+import { NgIf } from '@angular/common';
+import {  ButtonDirective } from 'primeng/button';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
-import { ButtonModule } from 'primeng/button';
-import { CheckboxModule } from 'primeng/checkbox';
+import { TableModule } from 'primeng/table';
+import { Tooltip } from 'primeng/tooltip';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { TranslocoPipe } from '@ngneat/transloco';
+import { Checkbox } from 'primeng/checkbox';
 
+interface SourceTypeOption {
+    label: string;
+    value: string;
+}
 @Component({
     selector: 'app-loan-funding-sources',
-    standalone: true,
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        TableModule,
-        DialogModule,
-        InputTextModule,
+        NgIf,
+        FormsModule,
         DropdownModule,
-        ButtonModule,
-        CheckboxModule,
+        TableModule,
+        ButtonDirective,
+        InfiniteScrollDirective,
+        ReactiveFormsModule,
         TranslocoPipe,
+        Checkbox,
     ],
     templateUrl: './loan-funding-sources.component.html',
-    styleUrls: ['./loan-funding-sources.component.scss'],
+    styleUrl: './loan-funding-sources.component.scss',
 })
 export class LoanFundingSourcesComponent implements OnInit {
     fundingSourcesForm!: FormGroup;
-    createSourceForm!: FormGroup;
-    createDialogVisible = false;
+    easySearchFlag = true;
 
-    sourceTypeList = [
+    ngOnInit(): void {
+        this.fundingSourcesForm = this.fb.group({
+            sourceType: [''],
+            sourceTypeId: [null]
+        });
+    }
+
+    onScrollDown() {}
+    sourceTypeList: SourceTypeOption[] = [
+
         { label: 'منابع داخلی', value: 'internal' },
         { label: 'منابع سپرده‌ای', value: 'deposit' },
         { label: 'منابع بین‌بانکی', value: 'interbank' },
-        { label: 'منابع خارجی', value: 'external' },
+        { label: 'منابع خارجی', value: 'external' }
     ];
-
     fundingSourcesTable = [
-        { code: '1001', title: 'منابع داخلی', active: 'فعال' },
-        { code: '1002', title: 'منابع سپرده‌ای', active: 'غیرفعال' },
-        { code: '1003', title: 'منابع بین‌بانکی', active: 'فعال' },
+        { code: '1001', title: 'منابع داخلی', active: "فعال" },
+        { code: '1002', title: 'منابع سپرده‌ای', active: "غیرفعال" },
+        { code: '1003', title: 'منابع بین‌بانکی', active: "فعال" },
     ];
 
     constructor(private fb: FormBuilder) {}
@@ -89,4 +99,14 @@ export class LoanFundingSourcesComponent implements OnInit {
     editSource(row: any) {
         console.log('ویرایش:', row);
     }
+    onSourceTypeChange(event: any): void {
+        const selectedValue = event.value;
+        console.log('نوع منبع انتخاب‌شده:', selectedValue);
+
+        // مثال: در صورت انتخاب خاص، می‌تونی عملیات خاصی انجام بدی
+        if (selectedValue === 'external') {
+            this.easySearchFlag = false; // مثلاً غیرفعال‌کردن فیلدی دیگر
+        }
+    }
 }
+
