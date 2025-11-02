@@ -2296,24 +2296,24 @@
             "noRecords": "رکوردی برای نمایش موجود نیست."
         }
     },
-        "fundingSources": {
-            "title": "انواع منابع تأمین تسهیلات / تعهدات",
-            "fields": {
-                "row": "ردیف",
-                "code": "کد",
-                "title": "عنوان",
-                "status": "وضعیت",
-                "actions": "عملیات",
-                "sourceType": "نوع منبع تأمین تسهیلات / تعهدات"
-            },
-            "actions": {
-                "view": "نمایش",
-                "edit": "ویرایش"
-            },
-            "messages": {
-                "noRecords": "رکوردی برای نمایش موجود نیست."
-            }
+    "fundingSources": {
+        "title": "انواع منابع تأمین تسهیلات / تعهدات",
+        "fields": {
+            "row": "ردیف",
+            "code": "کد",
+            "title": "عنوان",
+            "status": "وضعیت",
+            "actions": "عملیات",
+            "sourceType": "نوع منبع تأمین تسهیلات / تعهدات"
         },
+        "actions": {
+            "view": "نمایش",
+            "edit": "ویرایش"
+        },
+        "messages": {
+            "noRecords": "رکوردی برای نمایش موجود نیست."
+        }
+    },
     "goals": {
         "title": "مدیریت اهداف از دریافت تسهیلات",
         "fields": {
@@ -2335,30 +2335,11 @@
             "noRecords": "رکوردی برای نمایش موجود نیست."
         }
     },
-    "goals": {
-        "title": "مدیریت انواع عقود اسلامی",
-        "fields": {
-            "row": "ردیف",
-            "contractCode": "کد عقد",
-            "contractTitle": "عنوان عقد",
-            "contractGroup": "گروه عقد",
-            "centralBankCode": "کد در بانک مرکزی",
-            "status": "وضعیت",
-            "actions": "عملیات",
-            "active": "فعال"
-        },
-        "actions": {
-            "view": "مشاهده",
-            "edit": "ویرایش"
-        },
-        "messages": {
-            "noRecords": "رکوردی برای نمایش موجود نیست."
-        },
-        "dialog": {
-            "header": "مدیریت انواع عقود اسلامی",
-            "createTitle": "ایجاد عقد جدید",
-            "editTitle": "ویرایش عقد",
-            "viewTitle": "مشاهده عقد"
-        }
+    "dialog": {
+        "header": "مدیریت انواع عقود اسلامی",
+        "createTitle": "ایجاد عقد جدید",
+        "editTitle": "ویرایش عقد",
+        "viewTitle": "مشاهده عقد"
     }
+
 }
