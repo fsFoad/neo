@@ -3,7 +3,7 @@
         <div class="flex flex-col w-full p-4">
             <div class="flex flex-col items-start text-right w-full">
                 <h2 class="text-2xl font-semibold mb-2">
-                    {{ 'goals.title' | transloco }}
+                    {{ 'types.title' | transloco }}
                 </h2>
             </div>
         </div>
@@ -13,11 +13,11 @@
 <div class="p-6 space-y-6 rounded-2xl" *ngIf="!showForm">
     <div class="flex flex-col">
         <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <div class="my-2">
+            <div class="my-2 mb-4">
                 <button
                     pButton
                     icon="pi pi-plus"
-                    class="p-button-outlined normal-button"
+                    class="p-button-primary normal-button"
                     type="button"
                     label="تعریف مشخصات انواع عقود اسلامی"
                     (click)="openCreateDialog()"
@@ -32,13 +32,13 @@
             >
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>{{ 'goals.fields.row' | transloco }}</th>
-                        <th>{{ 'goals.fields.contractCode' | transloco }}</th>
-                        <th>{{ 'goals.fields.contractTitle' | transloco }}</th>
-                        <th>{{ 'goals.fields.contractGroup' | transloco }}</th>
-                        <th>{{ 'goals.fields.centralBankCode' | transloco }}</th>
-                        <th>{{ 'goals.fields.status' | transloco }}</th>
-                        <th>{{ 'goals.fields.actions' | transloco }}</th>
+                        <th>{{ 'types.fields.row' | transloco }}</th>
+                        <th>{{ 'types.fields.contractCode' | transloco }}</th>
+                        <th>{{ 'types.fields.contractTitle' | transloco }}</th>
+                        <th>{{ 'types.fields.contractGroup' | transloco }}</th>
+                        <th>{{ 'types.fields.centralBankCode' | transloco }}</th>
+                        <th>{{ 'types.fields.status' | transloco }}</th>
+                        <th>{{ 'types.fields.actions' | transloco }}</th>
                     </tr>
                 </ng-template>
 
@@ -58,7 +58,7 @@
                                     pButton
                                     icon="pi pi-eye"
                                     class="p-button-sm p-button-rounded p-button-outlined"
-                                    pTooltip="{{ 'goals.actions.view' | transloco }}"
+                                    pTooltip="{{ 'types.actions.view' | transloco }}"
                                     (click)="viewSource(row)">
                                 </button>
 
@@ -66,7 +66,7 @@
                                     pButton
                                     icon="pi pi-pencil"
                                     class="p-button-sm p-button-rounded p-button-outlined p-button-success"
-                                    pTooltip="{{ 'goals.actions.edit' | transloco }}"
+                                    pTooltip="{{ 'types.actions.edit' | transloco }}"
                                     (click)="editSource(row)">
                                 </button>
                             </div>
@@ -77,7 +77,7 @@
                 <ng-template pTemplate="emptymessage">
                     <tr>
                         <td colspan="7" class="text-center py-4 text-gray-500">
-                            {{ 'goals.messages.noRecords' | transloco }}
+                            {{ 'types.messages.noRecords' | transloco }}
                         </td>
                     </tr>
                 </ng-template>

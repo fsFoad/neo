@@ -1,10 +1,9 @@
-<script src="loan-goal.component.ts"></script>
 <div class="w-full bg-white">
     <div class="p-8 rounded-xl shadow-sm  mx-auto">
         <div class="flex flex-col w-full p-4">
             <div class="flex flex-col items-start text-right w-full">
                 <h2 class="text-2xl font-semibold mb-2">
-                    {{ 'goals.title' | transloco }}
+                    {{ 'usage.title' | transloco }}
                 </h2>
             </div>
         </div>
@@ -14,7 +13,7 @@
     <div [formGroup]="fundingSourcesForm" class="bg-white p-6 rounded-xl border border-slate-200">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="flex flex-col">
-                <label class="mb-1 font-medium">هدف از دریافت تسهیلات</label>
+                <label class="mb-1 font-medium">چگونگی استفاده از تسهیلات</label>
 
                 <div class="flex flex-row items-center gap-2">
                     <p-dropdown
@@ -63,11 +62,11 @@
             >
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>{{'goals.fields.row' |transloco }}</th>
-                        <th>{{'goals.fields.code' |transloco }}</th>
-                        <th>{{'goals.fields.title' |transloco }}</th>
-                        <th>{{'goals.fields.status' |transloco }}</th>
-                        <th>{{'goals.fields.actions' |transloco }}</th>
+                        <th>{{'usage.fields.row' |transloco }}</th>
+                        <th>{{'usage.fields.code' |transloco }}</th>
+                        <th>{{'usage.fields.title' |transloco }}</th>
+                        <th>{{'usage.fields.status' |transloco }}</th>
+                        <th>{{'usage.fields.actions' |transloco }}</th>
 
                     </tr>
                 </ng-template>
@@ -111,7 +110,7 @@
         </div>
     </div>
     <p-dialog
-        header="مدیریت اهداف از دریافت تسهیلات"
+        header="چگونگی استفاده از تسهیلات"
         [(visible)]="createDialogVisible"
         [modal]="true"
         [closable]="true"
@@ -123,7 +122,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- 🔹 کد نوع منبع -->
                 <div class="flex flex-col">
-                    <label class="mb-1 font-medium">{{'goals.fields.purposeCode' |transloco }} <span class="text-red-500">*</span></label
+                    <label class="mb-1 font-medium">{{'usage.fields.titleDialog' |transloco }} <span class="text-red-500">*</span></label
                     >
                     <input
                         type="text"
@@ -135,7 +134,7 @@
 
                 <div class="flex flex-col">
                     <label class="mb-1 font-medium"
-                    >{{'goals.fields.purposeTitle' |transloco }} <span class="text-red-500">*</span></label>
+                    >{{'usage.fields.titleCode' |transloco }} <span class="text-red-500">*</span></label>
                     <input
                         type="text"
                         pInputText
@@ -145,7 +144,7 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <label class="text-gray-700 text-sm">{{'goals.fields.activate' |transloco }}</label>
+                    <label class="text-gray-700 text-sm">{{'usage.fields.active' |transloco }}</label>
                     <p-checkbox formControlName="active" binary="true"></p-checkbox>
                 </div>
 

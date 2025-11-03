@@ -1,5 +1,6 @@
 import {Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
+import { LoanUsageComponent } from './components/loan-usage/loan-usage.component';
 
 export default [
     {
@@ -26,6 +27,18 @@ export default [
     {
         path: 'loan-type',loadComponent: () => import('./components/loan-type/loan-type.component')
             .then(c => c.LoanTypeComponent)
+    },
+    {
+        path: 'loan-usage',loadComponent: () => import('./components/loan-usage/loan-usage.component')
+            .then(c => c.LoanUsageComponent)
+    },
+    {
+        path: 'loan-operation',loadComponent: () => import('./components/loan-operation/loan-operation.component')
+            .then(c => c.LoanOperationComponent)
+    },
+    {
+        path: 'loan-pattern-operation',loadComponent: () => import('./components/loan-pattern-operation/loan-pattern-operation.component')
+            .then(c => c.LoanPatternOperationComponent)
     },
 
     {

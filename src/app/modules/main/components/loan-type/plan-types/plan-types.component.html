@@ -1,1 +1,113 @@
-<p>plan-types works!</p>
+<div class="p-6 space-y-6 rounded-2xl bg-white border border-slate-200">
+
+        <div class="my-2">
+            <button
+                pButton
+                icon="pi pi-plus"
+                class="p-button-primary normal-button"
+                type="button"
+                label="تعریف انواع طرح"
+                (click)="openPlanDialog()"
+            ></button>
+        </div>
+
+        <p-table
+            [value]="planTypeList"
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>کد نوع طرح</th>
+                    <th>عنوان نوع طرح</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{ rowIndex + 1 }}</td>
+                    <td>{{ row.planCode }}</td>
+                    <td>{{ row.planTitle }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start " dir="ltr">
+
+            <button
+                icon="pi pi-arrow-left"
+                pButton
+                label="ادامه"
+                class=" p-button-success normal-button"
+            ></button>
+            <button
+                pButton
+                label="انصراف"
+                severity="danger"
+                type="button"
+                class="p-button-secondary col-span-6 md:col-span-1 h-[40px]"
+            ></button>
+        </div>
+
+
+
+
+
+</div>
+<p-dialog
+    header="انتخاب نوع طرح"
+    [(visible)]="showPlanDialog"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '700px' }"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <form [formGroup]="planSelectionForm">
+        <div formArrayName="plans">
+            <p-table
+                [value]="planDialogList"
+                styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>ردیف</th>
+                        <th>انتخاب</th>
+                        <th>کد نوع طرح</th>
+                        <th>عنوان نوع طرح</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row let-i="rowIndex">
+                    <tr [formGroupName]="i">
+                        <td>{{ i + 1 }}</td>
+                        <td>
+                            <p-checkbox formControlName="selected" binary="true"></p-checkbox>
+                        </td>
+                        <td>{{ row.planCode }}</td>
+                        <td>{{ row.planTitle }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </form>
+
+    <!-- دکمه‌ها -->
+    <div class="flex justify-end gap-4 mt-6">
+        <button
+            pButton
+            label="تأیید"
+            class="p-button p-button-success w-32 h-10"
+            (click)="confirmSelection()"
+        ></button>
+
+        <button
+            pButton
+            label="خروج"
+            class="p-button p-button-secondary w-32 h-10"
+            (click)="closePlanDialog()"
+        ></button>
+    </div>
+</p-dialog>

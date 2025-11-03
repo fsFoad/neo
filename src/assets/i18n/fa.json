@@ -2315,7 +2315,7 @@
         }
     },
     "goals": {
-        "title": "مدیریت اهداف از دریافت تسهیلات",
+        "title": "انواع اهداف از دریافت تسهیلات ",
         "fields": {
             "row": "ردیف",
             "code": "کد",
@@ -2340,6 +2340,56 @@
         "createTitle": "ایجاد عقد جدید",
         "editTitle": "ویرایش عقد",
         "viewTitle": "مشاهده عقد"
+    },
+    "types": {
+        "title": "مدیریت انواع عقود اسلامی",
+        "fields": {
+            "row": "ردیف",
+            "contractCode": "کد عقد ",
+            "contractTitle": "عنوان عقد",
+            "contractGroup": "گروه عقد",
+            "centralBankCode": "کد در بانک مرکزی",
+            "status": "وضعیت",
+            "actions": "عملیات",
+            "active": "فعال",
+            "purposeCode ": "کد هدف",
+            "purposeTitle ": "عنوان هدف"
+        },
+        "actions": {
+            "view": "مشاهده",
+            "edit": "ویرایش"
+        },
+        "messages": {
+            "noRecords": "رکوردی برای نمایش موجود نیست."
+        },
+        "dialog": {
+            "header": "مدیریت انواع عقود اسلامی",
+            "createTitle": "ایجاد عقد جدید",
+            "editTitle": "ویرایش عقد",
+            "viewTitle": "مشاهده عقد"
+        }
+    },
+    "usage": {
+        "title": "مدیریت انواع چگونگی استفاده از تسهیلات",
+        "fields": {
+            "row": "ردیف",
+            "code": "کد  ",
+            "title": "عنوان ",
+            "status": "وضعیت",
+            "actions": "عملیات",
+            "active": "فعال",
+            "typeCode": "کد چگونگی استفاده",
+            "titleCode": "عنوان چگونگی استفاده",
+            "titleDialog": "چگونگی استفاده از تسهیلات"
+        },
+        "actions": {
+            "view": "مشاهده",
+            "edit": "ویرایش"
+        },
+        "messages": {
+            "noRecords": "رکوردی برای نمایش موجود نیست."
+        },
+        "dialog": {
+        }
     }
-
 }
