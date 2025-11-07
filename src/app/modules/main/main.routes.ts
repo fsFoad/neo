@@ -40,6 +40,18 @@ export default [
         path: 'loan-pattern-operation',loadComponent: () => import('./components/loan-pattern-operation/loan-pattern-operation.component')
             .then(c => c.LoanPatternOperationComponent)
     },
+    {
+        path: 'lon-plan-type',loadComponent: () => import('./components/lon-plan-type/lon-plan-type.component')
+            .then(c => c.LonPlanTypeComponent)
+    },
+    {
+        path: 'lon-request',loadComponent: () => import('./components/lon-request/lon-request.component')
+            .then(c => c.LonRequestComponent)
+    },
+    {
+        path: 'lon-sub-operation',loadComponent: () => import('./components/lon-sub-operation/lon-sub-operation.component')
+            .then(c => c.LonSubOperationComponent)
+    },
 
     {
         path: 'about',
