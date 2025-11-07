@@ -9,7 +9,7 @@ import {
 } from './modules/mat-wrapper-components/projects/components/src/lib/_01-components/_22-saffron-message/services/saffron-message.service';
 import { AppComponentService } from './app.component.service';
 import { MessageService } from 'primeng/api';
-import { ToastService } from './modules/shared/services/ToastService';
+import { ToastService } from './modules/main/services/ToastService';
 import {MainComponent} from "./modules/main/main.component";
 import { environment } from '../environments/environment';
 import { APP_BASE_HREF } from '@angular/common';

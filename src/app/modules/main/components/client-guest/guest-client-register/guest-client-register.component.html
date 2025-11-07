@@ -1,0 +1,176 @@
+<div class="w-full bg-white">
+    <div class="py-2 px-6 rounded-xl shadow-sm mx-auto">
+        <div class="flex flex-col w-full p-3">
+            <div class="flex flex-col items-start text-right w-full">
+                <h1 class="text-4xl font-bold text-gray-800">تعریف مشتریان مهمان</h1>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="p-4 m-4 flex flex-col space-y-5 w-full" [formGroup]="guestForm">
+    <div class="bg-white p-4 my-5 rounded-xl border border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+            <div class="col-span-12 md:col-span-12 flex flex-col">
+                <h3 class="text-gray-700 font-semibold text-lg  pb-2">اطلاعات اولیه</h3><br>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    <span class="text-red-500">* </span>
+                    <span>{{ 'تابعیت' | transloco }}:</span>
+                </label>
+                <p-dropdown formControlName="citizenship" [options]="citizenshipOptions"
+                            optionLabel="label" optionValue="value" class="normal-dropdown"
+                ></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    <span class="text-red-500">* </span>
+                    <span>{{ 'شماره ملی' | transloco }}:</span>
+                </label>
+                <input pInputText formControlName="nationalId" class="normal-input    p-2"
+                       inputmode="numeric" maxlength="10" />
+
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mt-8">
+                    <span>{{ 'استعلام کد شهاب اخذ گردد' | transloco }}:</span>
+                    <p-checkbox formControlName="checkShahab" binary="true"></p-checkbox>
+
+
+                </label>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mt-8">
+                    <span  class="mr-2">{{ 'استعلام ثبت احوال اخذ گردد' | transloco }}:</span>
+                    <p-checkbox formControlName="checkShahab" binary="true"></p-checkbox>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white p-4 my-5 rounded-xl border border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+            <div class="col-span-12 md:col-span-12 flex flex-col">
+                <h3 class="text-gray-700 font-semibold text-lg  pb-2">مشخصات فردی</h3>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    <span class="text-red-500">* </span>نام:
+                </label>
+                <input pInputText formControlName="firstName" class="normal-input   p-2" />
+
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    <span class="text-red-500">* </span>نام خانوادگی:
+                </label>
+                <input pInputText formControlName="lastName" class="normal-input   p-2" />
+
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    <span class="text-red-500">* </span>نام پدر:
+                </label>
+                <input pInputText formControlName="fatherName" class="normal-input   p-2" />
+
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    <span class="text-red-500">* </span>کد شهاب:
+                </label>
+                <input pInputText formControlName="shahabCode" class="normal-input   p-2" />
+
+            </div>
+        </div>
+    </div>
+    <div class="bg-white p-4 my-5 rounded-xl border border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+            <div class="col-span-12 md:col-span-12 flex flex-col">
+                <h3 class="text-gray-700 font-semibold text-lg  pb-2">دلیل مراجعه</h3>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    محل ثبت:
+                </label>
+                <p-dropdown formControlName="registerType" [options]="registerOptions"
+                            optionLabel="label" optionValue="value"
+                            class="normal-dropdown"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">
+                    مبلغ:
+                </label>
+                <input pInputText formControlName="amount" class="normal-input border rounded-md p-2"
+                       inputmode="numeric" />
+            </div>
+        </div>
+
+    </div>
+    <div class="bg-white p-4 my-5 rounded-xl border border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+            <div class="col-span-12 md:col-span-12 flex flex-col">
+                <h3 class="text-gray-700 font-semibold text-lg pb-2">اطلاعات تماس</h3>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                    <label class=" mb-1">شماره تماس:</label>
+                    <input pInputText formControlName="phone" class="normal-input border rounded-md p-2"
+                           inputmode="numeric" maxlength="11" />
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">نوع نشانی:</label>
+                <p-dropdown formControlName="addressType" [options]="addressTypeOptions"
+                            optionLabel="label" optionValue="value"
+                            class="normal-dropdown"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">استان:</label>
+                <p-dropdown formControlName="province" [options]="provinceOptions"
+                            optionLabel="label" optionValue="value"
+                            class="normal-dropdown"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">شهر:</label>
+                <p-dropdown formControlName="city" [options]="cityOptions"
+                            optionLabel="label" optionValue="value"
+                            class="normal-dropdown"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class=" mb-1">منطقه:</label>
+                <input pInputText formControlName="region" class="normal-input border rounded-md p-2"
+                       inputmode="numeric" maxlength="11" />
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class=" mb-1">کدپستی:</label>
+                <input pInputText formControlName="postalCode" class="normal-input border rounded-md p-2"
+                       inputmode="numeric" maxlength="11" />
+            </div>
+            <div class="col-span-full">
+                <label class="block mb-1">شرح نشانی:</label>
+                <textarea pInputTextarea formControlName="addressDetail" rows="3"
+                          class="normal-textarea border rounded-md p-2"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white p-4 my-5 rounded-xl border border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start " dir="ltr">
+            <button
+                pButton
+                label="انصراف"
+                severity="danger"
+                [outlined]="true"
+                type="button"
+                class="p-button-secondary col-span-6 md:col-span-1 h-[40px]"
+            ></button>
+            <button
+                pButton
+                label="ذخیره"
+                severity="success"
+                type="submit"
+                class="p-button-primary col-span-6 md:col-span-1 h-[40px]"
+            ></button>
+        </div>
+    </div>
+</div>
+
+
+

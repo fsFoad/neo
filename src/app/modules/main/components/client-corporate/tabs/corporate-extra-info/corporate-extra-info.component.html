@@ -1,0 +1,101 @@
+<form [formGroup]="basicForm" (ngSubmit)="onSubmit()">
+<div class="bg-white p-4 rounded-xl border border-slate-200">
+    <div class="grid grid-cols-12 gap-3 md:gap-4">
+        <div class="col-span-12 md:col-span-12 flex flex-col">
+            <label class="mb-1">{{ 'نام اختصاری' | transloco }}:</label>
+            <input pInputText formControlName="shortName" class="xxx-ggg-12-input" />
+        </div>
+
+        <div class="col-span-12 md:col-span-12 flex flex-col">
+            <label class="mb-1">{{ 'نام اختصاری انگلیسی' | transloco }}:</label>
+            <input pInputText formControlName="shortNameEn" class="xxx-ggg-12-input" />
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">{{ 'شماره روزنامه رسمی' | transloco }}:</label>
+            <input pInputText formControlName="officialNewspaperNo" class="normal-input" />
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="form-label">{{ 'تاریخ روزنامه رسمی' | transloco }}:</label>
+            <p-persian-calendar
+                appendTo="body"
+                class="app-persian-calendar-style"
+                formControlName="officialNewspaperDate">
+            </p-persian-calendar>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">{{ 'شماره صفحه روزنامه رسمی' | transloco }}:</label>
+            <input pInputText formControlName="officialNewspaperPage" class="normal-input" />
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">{{ 'شماره مجوز تاسیس' | transloco }}:</label>
+            <input pInputText formControlName="establishmentLicenseNo" class="normal-input" />
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="form-label">{{ 'تاریخ مجوز تاسیس' | transloco }}:</label>
+            <p-persian-calendar
+                appendTo="body"
+                class="app-persian-calendar-style"
+                formControlName="establishmentLicenseDate">
+            </p-persian-calendar>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="form-label">{{ 'تاریخ تاسیس' | transloco }}:</label>
+            <p-persian-calendar
+                appendTo="body"
+                class="app-persian-calendar-style"
+                formControlName="foundationDate">
+            </p-persian-calendar>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">{{ 'شماره آگهی رسمی' | transloco }}:</label>
+            <input pInputText formControlName="officialAnnouncementNo" class="normal-input" />
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="form-label">{{ 'تاریخ آگهی رسمی' | transloco }}:</label>
+            <p-persian-calendar
+                appendTo="body"
+                class="app-persian-calendar-style"
+                formControlName="officialAnnouncementDate">
+            </p-persian-calendar>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="form-label">{{ 'تاریخ شروع کار' | transloco }}:</label>
+            <p-persian-calendar
+                appendTo="body"
+                class="app-persian-calendar-style"
+                formControlName="workStartDate">
+            </p-persian-calendar>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">{{ 'استفاده از بودجه عمومی' | transloco }}</label>
+            <p-dropdown
+                class="normal-dropdown"
+                [options]="publicBudgetOptions"
+                optionLabel="label"
+                optionValue="value"
+                formControlName="usePublicBudget">
+            </p-dropdown>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">{{ 'کد بودجه عمومی' | transloco }}:</label>
+            <input pInputText formControlName="publicBudgetCode" class="normal-input" />
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">{{ 'تعداد نمایندگی' | transloco }}:</label>
+            <input pInputText formControlName="branchCount" class="normal-input" />
+        </div>
+    </div>
+</div>
+</form>

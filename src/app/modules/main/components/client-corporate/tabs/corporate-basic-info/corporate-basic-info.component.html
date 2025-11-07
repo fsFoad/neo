@@ -1,0 +1,197 @@
+<div [formGroup]="basicForm">
+    <div class="bg-white p-4 rounded-xl border my-5  border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+            <!-- نوع تابعیت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1"><span class="text-red-500">* </span>{{ 'نوع تابعیت' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="typeOfCitizenshipList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="typeOfCitizenship">
+                </p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
+            <!-- نوع مالکیت مشتری حقوقی -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1"><span class="text-red-500">* </span>{{ 'نوع مالکیت مشتری حقوقی' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="typeOfOwnershipList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="typeOfOwnership">
+                </p-dropdown>
+            </div>
+
+            <!-- نوع مشتری -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'نوع مشتری' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="typeOfCustomerList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="typeOfCustomer">
+                </p-dropdown>
+            </div>
+
+            <!-- نوع شرکت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'نوع شرکت' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="typeOfCompanyList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="typeOfCompany">
+                </p-dropdown>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-xl border my-5 border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+            <!-- ستون اول: کد ملی -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">
+                    <span class="text-red-500">* </span>
+                    <span>{{ 'شناسه ملی' | transloco }}:</span>
+                </label>
+                <input pInputText class="normal-input" inputmode="numeric" maxlength="10" formControlName="nationalCode" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex items-end gap-2" dir="left">
+                <button
+                    pButton
+                    type="button"
+                    icon="pi pi-search"
+                    iconPos="right"
+                    label="{{ 'citizen.actions.search' | transloco }}"
+                    class="normal-button p-button  !px-2 !py-0"
+                    (click)="onSearch()"
+                ></button>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-xl border my-5  border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'شناسه ملی' | transloco }}:</label>
+                <input pInputText class="normal-input" inputmode="numeric" maxlength="10" formControlName="nationalCodeDisplay" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'کد شهاب' | transloco }}:</label>
+                <input pInputText class="normal-input" inputmode="numeric" maxlength="10" formControlName="shahabCode" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'وضعیت انحلال' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="dissolutionStatusList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="dissolutionStatus">
+                </p-dropdown>
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'نام' | transloco }}:</label>
+                <input pInputText class="normal-input" formControlName="firstName" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'شماره ثبت' | transloco }}:</label>
+                <input pInputText class="normal-input" formControlName="registrationNumber" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'تاریخ ثبت' | transloco }}:</label>
+                <input pInputText class="normal-input" formControlName="registrationDate" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'حوزه ثبت شرکت' | transloco }}:</label>
+                <input pInputText class="normal-input" formControlName="registrationArea" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'نوع شرکت' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="companyTypeList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="companyType">
+                </p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-2" dir="rtl">
+                <p-checkbox formControlName="documentConfirmed" [binary]="true" [disabled]="true"></p-checkbox>
+                <span>اطلاعات دریافت شده از ثبت اسناد مورد تایید می‌باشد</span>
+            </div>
+
+    </div>
+</div>
+
+    <div class="bg-white p-4 rounded-xl border my-5 border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+            <!-- محل ثبت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1"><span class="text-red-500">* </span>{{ 'محل ثبت' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="registrationAreaList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="registrationArea">
+                </p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
+            <!-- وضعیت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1">{{ 'وضعیت' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="ownershipStatusList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="ownershipStatus">
+                </p-dropdown>
+            </div>
+
+            <!-- تحت پوشش -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1"><span class="text-red-500">* </span>{{ 'تحت پوشش' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="customerCoverageList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="customerCoverage">
+                </p-dropdown>
+            </div>
+
+            <!-- ملیت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1"><span class="text-red-500">* </span>{{ 'ملیت' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="companyNationalityList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="companyNationality">
+                </p-dropdown>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- نام انگلیسی -->
+    <div class="bg-white p-4 rounded-xl border my-5 border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+            <div class="col-span-12 md:col-span-9 flex flex-col">
+                <label class="mb-1">{{ 'نام انگلیسی' | transloco }}:</label>
+                <input pInputText class="normal-input" formControlName="englishName" />
+            </div>
+        </div>
+    </div>
+
+
+</div>

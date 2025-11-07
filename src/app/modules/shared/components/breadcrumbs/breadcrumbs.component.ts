@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import {Subscription} from 'rxjs';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
+import {BreadcrumbService} from '../../../main/services/breadcrumb.service';
 import {ApiGatewayService} from '../../../main/services/api-gateway.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
