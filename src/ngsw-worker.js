@@ -1,7 +1,7 @@
 // ngsw-worker.js
 const CACHE_VERSION = 'v1';
 const APP_CACHE = `app-cache-${CACHE_VERSION}`;
-const BASE_HREF = '/gateway-ui/';
+const BASE_HREF = '/neo/';
 const OFFLINE_URL = `${BASE_HREF}offline.html`;
 
 // لیست منابعی که باید cache شوند

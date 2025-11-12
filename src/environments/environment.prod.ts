@@ -5,7 +5,7 @@ export const environment = {
     defaultLanguage: 'fa',
     supportedLanguages: ['fa-IR', 'en-US'],
     production: true,
-    apiBaseUrl: '/gateway-ui/',
+    apiBaseUrl: '/neo/',
     navigationBGColor: 'bg-gray-900',
     primeThemeColor: 'indigo',
     hmr: false

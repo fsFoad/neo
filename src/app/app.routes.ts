@@ -7,8 +7,8 @@ import { LayoutComponent } from 'app/layout/layout.component';
 
 
 // prettier-ignore
- 
- 
+
+
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/dashboards/project'
@@ -25,22 +25,11 @@ export const appRoutes: Route[] = [
             {path: '', loadChildren: () => import('app/modules/main/main.routes')},
         ]
     },
- /*   {
-        path: 'demo', component: DemoViewerComponent,
-    },*/
-
-    // Redirect signed-in user to the '/dashboards/project'
-    //
-    // After the user signs in, the sign-in page will redirect the user to the 'signed-in-redirect'
-    // path. Below is another redirection for that path to redirect the user to the desired
-    // location. This is a small convenience to keep all main routes together here on this file.
     {
         path: 'signed-in-redirect',
         pathMatch : 'full',
         redirectTo: 'dashboards/project'
     },
-
-    // Auth routes for guests
     {
         path: '',
         canActivate: [NoAuthGuard],
@@ -57,8 +46,6 @@ export const appRoutes: Route[] = [
             {path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.routes')}
         ]
     },
-
-    // Auth routes for authenticated users
     {
         path: '',
         canActivate: [AuthGuard],
@@ -71,5 +58,6 @@ export const appRoutes: Route[] = [
             {path: 'sign-out', loadChildren: () => import('app/modules/auth/sign-out/sign-out.routes')},
             {path: 'unlock-session', loadChildren: () => import('app/modules/auth/unlock-session/unlock-session.routes')}
         ]
-    }
+    },
+    { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

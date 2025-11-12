@@ -24,13 +24,13 @@ First, run the following command to install the project dependencies:
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build-UAT
-Run `ng build --configuration uat --aot --base-href /gateway-ui/` to buildUAT the project.The build artifacts will be stored in the `dist/` directory.
+Run `ng build --configuration uat --aot --base-href /neo/` to buildUAT the project.The build artifacts will be stored in the `dist/` directory.
 
 ## Build-QC
-Run `ng build --configuration qc --aot --base-href /gateway-ui/` to build QC the project.The build artifacts will be stored in the `dist/` directory.
+Run `ng build --configuration qc --aot --base-href /neo/` to build QC the project.The build artifacts will be stored in the `dist/` directory.
 
 ## Build-Production
-Run `ng build --configuration production --aot --base-href /gateway-ui/` to build Production the project.The build artifacts will be stored in the `dist/` directory.
+Run `ng build --configuration production --aot --base-href /neo/` to build Production the project.The build artifacts will be stored in the `dist/` directory.
 
 
 ## Running unit tests

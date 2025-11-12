@@ -6,20 +6,12 @@
   "license": "https://themeforest.net/licenses/standard",
   "private": true,
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve --hmr --open --configuration development --live-reload=true",
-    "start:host": "ng serve --host=0.0.0.0 --port=9092 --live-reload=false",
-    "start-http-server": "ng build --configuration production --aot && http-server -o -p 8081 -c-1 dist/gateway-ui",
-    "start-https-server": "http-server ./dist -S -C C:\\Users\\KianTejaratCo\\Desktop\\cert.pem -K C:\\Users\\KianTejaratCo\\Desktop\\key.pem",
-    "build:prod": "ng build --configuration production --aot --base-href /gateway-ui/",
-    "build:qc": "ng build --configuration qc --aot --base-href /gateway-ui/",
-    "build:uat": "ng build --configuration uat --aot --base-href /gateway-ui/",
-    "bundle-report": "webpack-bundle-analyzer dist/stats.json",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "postbuild": "./deploy-script.bat",
-    "test": "ng test",
-    "lint": "ng lint"
+      "ng": "ng",
+      "start": "ng serve --port 1241 -o",
+      "build": "ng build --base-href /neo",
+      "watch": "ng build --watch --configuration development",
+      "a": "ng build --configuration production --base-href /neo/ --deploy-url /neo/",
+      "test": "ng test"
   },
   "dependencies": {
     "@angular/animations": "^19.1.6",

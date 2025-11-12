@@ -1,6 +1,6 @@
 {
     "$schema": "./node_modules/@angular/service-worker/config/schema.json",
-    "index": "/gateway-ui/index.html",
+    "index": "/neo/index.html",
     "assetGroups": [
         {
             "name": "app-shell",
@@ -8,15 +8,15 @@
             "updateMode": "prefetch",
             "resources": {
                 "files": [
-                    "/gateway-ui/favicon.ico",
-                    "/gateway-ui/index.html",
-                    "/gateway-ui/manifest.webmanifest",
-                    "/gateway-ui/*.css",
-                    "/gateway-ui/*.js",
-                    "/gateway-ui/assets/icons/*.png"
+                    "/neo/favicon.ico",
+                    "/neo/index.html",
+                    "/neo/manifest.webmanifest",
+                    "/neo/*.css",
+                    "/neo/*.js",
+                    "/neo/assets/icons/*.png"
                 ],
                 "urls": [
-                    "/gateway-ui/"
+                    "/neo/"
                 ]
             }
         },
@@ -26,7 +26,7 @@
             "updateMode": "prefetch",
             "resources": {
                 "files": [
-                    "/gateway-ui/assets/**",
+                    "/neo/assets/**",
                     "!(*.map|*.json|*.txt)"
                 ],
                 "urls": [
@@ -40,7 +40,7 @@
         {
             "name": "api-requests",
             "urls": [
-                "/gateway-ui/api/**"
+                "/neo/api/**"
             ],
             "cacheConfig": {
                 "maxSize": 100,
@@ -50,10 +50,10 @@
         }
     ],
     "navigationUrls": [
-        "/gateway-ui/**",
-        "!/gateway-ui/**/*.*",
-        "!/gateway-ui/**/*__*",
-        "!/gateway-ui/**/*__*/**"
+        "/neo/**",
+        "!/neo/**/*.*",
+        "!/neo/**/*__*",
+        "!/neo/**/*__*/**"
     ],
     "navigationRequestStrategy": "freshness"
 }

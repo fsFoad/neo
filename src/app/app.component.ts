@@ -23,7 +23,7 @@ import { SwUpdate } from '@angular/service-worker';
     providers:[MessageService,ToastService,
         {
             provide: APP_BASE_HREF,
-            useValue: environment.production ? '/gateway-ui/' : '/'
+            useValue: environment.production ? '/neo/' : '/'
         }
     ],
     imports: [RouterOutlet],
