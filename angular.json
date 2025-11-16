@@ -66,8 +66,8 @@
                         ],
 
                         "styles": [
+                            "src/assets/styles/primeng-base.css",
                             "src/styles/tailwind.scss",
-                            "@angular/material/prebuilt-themes/azure-blue.css",
                             "src/@fuse/styles/tailwind.scss",
                             "src/@fuse/styles/themes.scss",
                             "src/@fuse/styles/main.scss",

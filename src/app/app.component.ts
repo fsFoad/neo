@@ -14,21 +14,24 @@ import {MainComponent} from "./modules/main/main.component";
 import { environment } from '../environments/environment';
 import { APP_BASE_HREF } from '@angular/common';
 import { SwUpdate } from '@angular/service-worker';
+import { LayoutComponent } from './layout/layout.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    providers:[MessageService,ToastService,
+    providers: [
+        MessageService,
+        ToastService,
         {
             provide: APP_BASE_HREF,
-            useValue: environment.production ? '/neo/' : '/'
-        }
+            useValue: environment.production ? '/neo/' : '/',
+        },
     ],
-    imports: [RouterOutlet],
+    imports: [RouterOutlet, LayoutComponent],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
     appSettings = AppSettings;
     /**
      * Constructor
@@ -36,33 +39,43 @@ export class AppComponent implements OnInit{
     /*constructor(private renderer: Renderer2) {
 
     }*/
-    constructor(private viewContainerRef: ViewContainerRef,
-                private renderer: Renderer2,
-                private service: AppComponentService,
-                private loaderService: SaffronLoaderService,
-                private saffronMessageService: SaffronMessageService,
-                private swUpdate: SwUpdate
-                ) {
+    constructor(
+        private viewContainerRef: ViewContainerRef,
+        private renderer: Renderer2,
+        private service: AppComponentService,
+        private loaderService: SaffronLoaderService,
+        private saffronMessageService: SaffronMessageService,
+        private swUpdate: SwUpdate
+    ) {
         this.service.registerViewContainerRef(viewContainerRef);
 
         this.loaderService.setRootViewContainerRef(viewContainerRef);
-        this.saffronMessageService.registerViewContainerRef(this.viewContainerRef);
+        this.saffronMessageService.registerViewContainerRef(
+            this.viewContainerRef
+        );
     }
 
     ngOnInit(): void {
-     /*   const str = "a:v";
+        /*   const str = "a:v";
         const base64 = Buffer.from(str, 'utf-8').toString('base64');
         console.log('base64',base64);*/
         // this.setBodyDirection(this.appSettings.AppDirection);
-            this.swUpdate.versionUpdates.subscribe(event => {
-                console.log('Version versionUpdates event:>>>>>>>>>>>>>>>>>', event);
-                if (event.type === 'VERSION_READY') {
-                    // به‌روزرسانی جدید آماده است
-                    if (confirm('نسخه جدید برنامه آماده است. می‌خواهید صفحه را رفرش کنید؟')) {
-                        window.location.reload();
-                    }
+        this.swUpdate.versionUpdates.subscribe((event) => {
+            console.log(
+                'Version versionUpdates event:>>>>>>>>>>>>>>>>>',
+                event
+            );
+            if (event.type === 'VERSION_READY') {
+                // به‌روزرسانی جدید آماده است
+                if (
+                    confirm(
+                        'نسخه جدید برنامه آماده است. می‌خواهید صفحه را رفرش کنید؟'
+                    )
+                ) {
+                    window.location.reload();
                 }
-            });
+            }
+        });
     }
 
     // Method to set the body direction

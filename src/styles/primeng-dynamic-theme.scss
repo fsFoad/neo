@@ -1,0 +1,153 @@
+/* =================================================================== */
+/* PRIME NG 19 - DYNAMIC THEME  (CSS VARIABLES / MINIMAL SYSTEM)       */
+/* =================================================================== */
+
+/* ------------------------------- */
+/* BUTTONS                        */
+/* ------------------------------- */
+
+.p-button {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--text-on-primary, #fff) !important;
+}
+
+.p-button:hover {
+    background: color-mix(in srgb, var(--primary) 90%, #000) !important;
+}
+
+.p-button:focus {
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--primary) 30%, transparent) !important;
+}
+
+.p-button.p-button-outlined {
+    background: transparent !important;
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+}
+
+/* ------------------------------- */
+/* INPUT TEXT / FORM FIELDS       */
+/* ------------------------------- */
+
+.p-inputtext:enabled:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--primary) !important;
+}
+
+.p-dropdown:not(.p-disabled).p-focus,
+.p-multiselect:not(.p-disabled).p-focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--primary) !important;
+}
+
+.p-dropdown-panel .p-highlight {
+    background: var(--primary) !important;
+    color: #fff !important;
+}
+
+/* ------------------------------- */
+/* CHECKBOX / RADIO               */
+/* ------------------------------- */
+
+.p-checkbox .p-checkbox-box.p-highlight {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.p-radio-button .p-radio-button-box.p-highlight {
+    border-color: var(--primary) !important;
+}
+
+.p-radio-button .p-radio-button-box.p-highlight::after {
+    background: var(--primary) !important;
+}
+
+/* ------------------------------- */
+/* TOGGLE SWITCH                  */
+/* ------------------------------- */
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--primary) !important;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+    background: #fff !important;
+}
+
+/* ------------------------------- */
+/* TABVIEW                        */
+/* ------------------------------- */
+
+.p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+}
+
+.p-tabview-nav-link:hover {
+    color: var(--primary) !important;
+}
+
+/* ------------------------------- */
+/* TABLE                          */
+/* ------------------------------- */
+
+.p-datatable .p-datatable-thead > tr > th.p-highlight {
+    background-color: var(--primary) !important;
+    color: var(--text-on-primary, #fff) !important;
+}
+
+.p-datatable .p-paginator .p-paginator-page.p-highlight {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+/* ------------------------------- */
+/* PAGINATOR                      */
+/* ------------------------------- */
+
+.p-paginator .p-paginator-page:hover {
+    border-color: var(--primary) !important;
+}
+
+.p-paginator .p-paginator-page.p-highlight {
+    background: var(--primary) !important;
+    color: #fff !important;
+}
+
+/* ------------------------------- */
+/* PANEL / CARD                   */
+/* ------------------------------- */
+
+.p-panel-header {
+    border-bottom-color: var(--primary) !important;
+}
+
+.p-card-header {
+    color: var(--primary) !important;
+}
+
+/* ------------------------------- */
+/* DIALOG                         */
+/* ------------------------------- */
+
+.p-dialog .p-dialog-header {
+    background: var(--primary) !important;
+    color: var(--text-on-primary, #fff) !important;
+}
+
+/* ------------------------------- */
+/* TOAST / MESSAGES               */
+/* ------------------------------- */
+
+.p-toast .p-toast-message-info {
+    border-left: 4px solid var(--primary) !important;
+}
+
+.p-toast .p-toast-message-success {
+    border-left: 4px solid var(--accent) !important;
+}
+
+.p-toast .p-toast-message-error {
+    border-left: 4px solid var(--warn) !important;
+}

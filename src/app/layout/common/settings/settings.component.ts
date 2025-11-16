@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +18,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { AppSettings } from '../../../AppSetting';
 import { AppConfiguratorComponent } from '../primeng/configurator/app.configurator.component';
 import { FormsModule } from '@angular/forms';
+import { MinimalPreset } from '../../../core/services/theme-presets';
 
 @Component({
     selector: 'settings',
@@ -48,6 +49,8 @@ import { FormsModule } from '@angular/forms';
         MatTooltipModule,
         AppConfiguratorComponent,
         FormsModule,
+        NgForOf,
+        NgIf,
     ],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
@@ -56,6 +59,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
     scheme: 'dark' | 'light';
     theme: string;
     themes: Themes;
+    presets: MinimalPreset[] = [];
+    primaryColor: string = '#3f51b5';
+    accentColor: string = '#ff4081';
+    warnColor: string = '#f44336';
+    selectedPreset: MinimalPreset | null = null; // بالای کلاس
+
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -81,14 +90,35 @@ export class SettingsComponent implements OnInit, OnDestroy {
             .subscribe((config: FuseConfig) => {
                 // Store the config
                 this.config = config;
-                if (config.scheme === 'dark') {
+                /*  if (config.scheme === 'dark') {
                     document.documentElement.classList.add('p-dark');
                 } else {
                     document.documentElement.classList.remove('p-dark');
-                }
+                }*/
+                this.scheme = config.scheme === 'dark' ? 'dark' : 'light';
             });
-    }
 
+        this.presets = this._themeService.getThemePresets();
+    }
+    applyPreset(preset: MinimalPreset): void {
+        console.log('Clicked preset:', preset);
+
+        // ذخیره برای استفاده بعدی (مثلاً وقتی دارک/لایت عوض شد)
+        this.selectedPreset = preset;
+
+        // تعیین حالت فعلی تم (light/dark)
+        const mode: 'light' | 'dark' =
+            this.scheme === 'dark' ? 'dark' : 'light';
+        console.log('preset clicked', preset);
+        console.log('scheme is:', this.scheme);
+        const palette = preset[mode];
+
+        this.primaryColor = palette.primary;
+        this.accentColor = palette.accent;
+        this.warnColor = palette.warn;
+
+        this.applyTheme();
+    }
     /**
      * On destroy
      */
@@ -100,7 +130,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
     selectedColor = '#3f51b5';
 
     applyTheme(): void {
-        this._themeService.setPrimaryColor(this.selectedColor);
+        this._themeService.setPalette({
+            primary: this.primaryColor,
+            accent: this.accentColor,
+            warn: this.warnColor,
+        });
     }
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
