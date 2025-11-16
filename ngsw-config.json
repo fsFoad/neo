@@ -1,0 +1,59 @@
+{
+    "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+    "index": "/neo/index.html",
+    "assetGroups": [
+        {
+            "name": "app-shell",
+            "installMode": "prefetch",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/neo/favicon.ico",
+                    "/neo/index.html",
+                    "/neo/manifest.webmanifest",
+                    "/neo/*.css",
+                    "/neo/*.js",
+                    "/neo/assets/icons/*.png"
+                ],
+                "urls": [
+                    "/neo/"
+                ]
+            }
+        },
+        {
+            "name": "assets",
+            "installMode": "lazy",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/neo/assets/**",
+                    "!(*.map|*.json|*.txt)"
+                ],
+                "urls": [
+                    "https://fonts.googleapis.com/**",
+                    "https://fonts.gstatic.com/**"
+                ]
+            }
+        }
+    ],
+    "dataGroups": [
+        {
+            "name": "api-requests",
+            "urls": [
+                "/neo/api/**"
+            ],
+            "cacheConfig": {
+                "maxSize": 100,
+                "maxAge": "3d",
+                "strategy": "freshness"
+            }
+        }
+    ],
+    "navigationUrls": [
+        "/neo/**",
+        "!/neo/**/*.*",
+        "!/neo/**/*__*",
+        "!/neo/**/*__*/**"
+    ],
+    "navigationRequestStrategy": "freshness"
+}

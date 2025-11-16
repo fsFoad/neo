@@ -1,0 +1,72 @@
+<!--
+<div [formGroup]="form" class="bg-white p-4 rounded-xl border border-slate-200">
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold">{{ 'citizen.documents.title' | transloco }}</h3>
+        <button pButton type="button" icon="pi pi-plus" label="{{ 'common.add' | transloco }}" (click)="addDocument()"></button>
+    </div>
+
+    <div formArrayName="documents" class="space-y-4">
+        <div
+            class="grid grid-cols-12 gap-3 md:gap-4 p-3 rounded-lg border border-slate-200"
+            *ngFor="let doc of documentsFa.controls; index as i"
+            [formGroupName]="i">
+
+            <div class="col-span-12 md:col-span-3">
+                <label class="mb-1">{{ 'citizen.documents.documentTypeId' | transloco }} <span class="text-red-500">*</span></label>
+                <p-dropdown class="w-full" formControlName="documentTypeId" [options]="documentTypeOptions" optionLabel="label" optionValue="value"></p-dropdown>
+            </div>
+
+            <div class="col-span-12 md:col-span-3">
+                <label class="mb-1">{{ 'citizen.documents.documentNumber' | transloco }}</label>
+                <input pInputText formControlName="documentNumber" class="normal-input" />
+            </div>
+
+            <div class="col-span-6 md:col-span-2">
+                <label class="mb-1">{{ 'citizen.documents.issueDate' | transloco }}</label>
+                <p-persian-calendar class="app-persian-calendar-style" formControlName="issueDate"></p-persian-calendar>
+            </div>
+
+            <div class="col-span-6 md:col-span-2">
+                <label class="mb-1">{{ 'citizen.documents.expirationDate' | transloco }}</label>
+                <p-persian-calendar class="app-persian-calendar-style" formControlName="expirationDate"></p-persian-calendar>
+            </div>
+
+            <div class="col-span-12 md:col-span-3">
+                <label class="mb-1">{{ 'citizen.documents.issuer' | transloco }}</label>
+                <input pInputText formControlName="issuer" class="normal-input" />
+            </div>
+
+            <div class="col-span-12 md:col-span-3">
+                <label class="mb-1">{{ 'citizen.documents.countryId' | transloco }}</label>
+                <p-dropdown class="w-full" formControlName="countryId" [options]="countryOptions" optionLabel="label" optionValue="value"></p-dropdown>
+            </div>
+
+            <div class="col-span-12 md:col-span-3">
+                <label class="mb-1">{{ 'citizen.documents.cityId' | transloco }}</label>
+                <p-dropdown class="w-full" formControlName="cityId" [options]="cityOptions" optionLabel="label" optionValue="value"></p-dropdown>
+            </div>
+
+            <div class="col-span-12 md:col-span-6">
+                <label class="mb-1">{{ 'citizen.documents.description' | transloco }}</label>
+                <input pInputText formControlName="description" class="normal-input" />
+            </div>
+
+            &lt;!&ndash; فایل &ndash;&gt;
+            <div class="col-span-12 md:col-span-6">
+                <label class="mb-1">{{ 'citizen.documents.file' | transloco }}</label>
+                <div class="flex items-center gap-3">
+                    <input type="file" (change)="onPickFile($event, i)" />
+                    <span class="text-slate-500 text-sm" *ngIf="doc.get('fileName')?.value">{{ doc.get('fileName')?.value }}</span>
+                </div>
+            </div>
+
+            <div class="col-span-12 md:col-span-2 flex items-end justify-end">
+                <button pButton type="button" class="p-button-danger p-button-text" icon="pi pi-trash"
+                        label="{{ 'common.remove' | transloco }}" (click)="removeDocument(i)">
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+-->

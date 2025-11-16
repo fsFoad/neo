@@ -1,0 +1,185 @@
+<div class="w-full bg-white" *ngIf="!showForm">
+    <div class="p-8 rounded-xl shadow-sm  mx-auto">
+        <div class="flex flex-col w-full p-4">
+            <div class="flex flex-col items-start text-right w-full">
+                <h2 class="text-2xl font-semibold mb-2">
+                    محصول
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="p-6 space-y-6 rounded-2xl" *ngIf="!showForm">
+    <div [formGroup]="productForm" class="bg-white p-6 rounded-xl border border-slate-200">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex flex-col ">
+                <label class="mb-1 font-medium">{{ 'product.fields.contractType' | transloco }}:</label>
+                <p-dropdown
+                    class="normal-dropdown"
+                    [options]="contractTypeList"
+                    optionLabel="label"
+                    optionValue="value"
+                    formControlName="contractTypeId"
+                    (onChange)="onContractTypeChange($event.value)">
+                </p-dropdown>
+            </div>
+
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">{{ 'product.fields.planType' | transloco }}:</label>
+                <p-dropdown
+                    class="normal-dropdown"
+                    [options]="planTypeList"
+                    optionLabel="label"
+                    optionValue="value"
+                    formControlName="planTypeId"
+                    (onChange)="onPlanTypeChange($event.value)">
+                </p-dropdown>
+            </div>
+
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">{{ 'product.fields.usageType' | transloco }}:</label>
+                <p-dropdown
+                    class="normal-dropdown"
+                    [options]="usageTypeList"
+                    optionLabel="label"
+                    optionValue="value"
+                    formControlName="usageTypeId"
+                    (onChange)="onUsageTypeChange($event.value)">
+                </p-dropdown>
+            </div>
+
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">{{ 'product.fields.productCode' | transloco }}:</label>
+                <input type="text" pInputText readonly
+                       class="normal-input"
+                       formControlName="productCode"
+                       placeholder="{{ 'product.fields.productCode' | transloco }}">
+            </div>
+
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">{{ 'product.fields.productTitle' | transloco }}:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="productTitle"
+                       placeholder="{{ 'product.fields.productTitle' | transloco }}">
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1">{{ 'product.fields.status' | transloco }}:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="statusList"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="statusId"
+                            (onChange)="onStatusChange($event.value)">
+                </p-dropdown>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="flex flex-col">
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <!-- 🔹 دکمه ایجاد محصول -->
+            <div class="my-2">
+                <button
+                    pButton
+                    iconPos="right"
+                    class="p-button-primary normal-button"
+                    type="button"
+                    icon="pi pi-plus"
+                    label="{{ 'product.actions.create' | transloco }}"
+                    (click)="productCreate()">
+                </button>
+            </div>
+
+            <!-- 🔹 جدول -->
+            <p-table
+                class="my-4"
+                [value]="productTable"
+                [paginator]="true"
+                [rows]="5"
+                [rowsPerPageOptions]="[5,10,20]"
+                styleClass="p-datatable-striped p-datatable-gridlines responsive-table">
+
+                <!-- هدر جدول -->
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>{{ 'product.fields.productCode' | transloco }}</th>
+                        <th>{{ 'product.fields.contractType' | transloco }}</th>
+                        <th>{{ 'product.fields.planType' | transloco }}</th>
+                        <th>{{ 'product.fields.usageType' | transloco }}</th>
+                        <th>{{ 'product.fields.productTitle' | transloco }}</th>
+                        <th>{{ 'product.fields.status' | transloco }}</th>
+                        <th>{{ 'product.actions.title' | transloco }}</th>
+                    </tr>
+                </ng-template>
+
+                <!-- بدنه جدول -->
+                <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{ row.productCode }}</td>
+                        <td>{{ row.contractType }}</td>
+                        <td>{{ row.planType }}</td>
+                        <td>{{ row.usageType }}</td>
+                        <td>{{ row.productTitle }}</td>
+
+                        <!-- وضعیت -->
+                        <td>
+                            <p-checkbox [binary]="true" [ngModel]="row.active"></p-checkbox>
+                        </td>
+
+                        <!-- عملیات -->
+                        <td class="text-center">
+                            <div class="flex flex-row gap-3 justify-center">
+
+                                <button
+                                    pButton
+                                    icon="pi pi-eye"
+                                    class="p-button-sm p-button-rounded p-button-outlined"
+                                    pTooltip="نمایش"
+                                    (click)="viewProduct(row)"
+                                ></button>
+
+                                <button
+                                    pButton
+                                    icon="pi pi-pencil"
+                                    class="p-button-sm p-button-rounded p-button-outlined p-button-success"
+                                    pTooltip="ویرایش"
+                                    (click)="editProduct(row)"
+                                ></button>
+
+                                <!-- کپی محصول -->
+                                <button
+                                    pButton
+                                    icon="pi pi-copy"
+                                    class="p-button-sm p-button-rounded p-button-outlined"
+                                    (click)="copyProduct(row)">
+                                </button>
+
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <!-- پیام خالی -->
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="7" class="text-center py-4 text-gray-500">
+                            {{ 'product.messages.noRecords' | transloco }}
+                        </td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+        </div>
+    </div>
+</div>
+<div *ngIf="showForm">
+    <app-product-create
+        (formSubmit)="onFormSubmit($event)"
+        (cancel)="onFormCancel()">
+    </app-product-create>
+</div>

@@ -1,0 +1,362 @@
+
+<div class="bg-white p-4 rounded-xl border border-slate-200" [formGroup]="relationForm">
+    <div class="flex flex-wrap gap-2 mb-4 justify-start">
+        <button pButton icon="pi pi-user-plus" type="button"
+                label="{{ 'citizen.contact.actions.relations' | transloco }}"
+                iconPos="right" class="p-button-outlined normal-button" (click)="openContact()">
+
+        </button>
+    </div>
+    <p-table
+        [value]="relationsTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+    >
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>شماره مشتری مرتبط</th>
+                <th>نام مشتری مرتبط</th>
+                <th>شماره ملی/کداتباع/شناسه ملی مشتری مرتبط</th>
+                <th>نوع ارتباط</th>
+                <th>نسبت</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">
+            <tr>
+                <!-- ردیف -->
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                <!-- شماره مشتری مرتبط -->
+                <td data-label="شماره مشتری مرتبط">
+                    {{ contact.relatedCustomerNumber }}
+                </td>
+
+                <!-- عنوان مشتری مرتبط -->
+                <td data-label="نام مشتری مرتبط">
+                    {{ contact.relatedCustomerName }}
+                </td>
+
+                <!-- کدملی/کداتباع/شناسه ملی مشتری مرتبط -->
+                <td data-label="شماره ملی/کداتباع/شناسه ملی مشتری مرتبط">
+                    {{ contact.nationalCode }}
+                </td>
+
+                <!-- نوع ارتباط -->
+                <td data-label="نوع ارتباط">
+                    {{ contact.relationTypeLabel }}
+                </td>
+
+                <!-- نسبت -->
+                <td data-label="نسبت">
+                    {{ contact.relationDegreeLabel }}
+                </td>
+
+                <!-- تاریخ شروع -->
+                <td data-label="تاریخ شروع">
+                    {{ contact.startDate | date:'yyyy/MM/dd' }}
+                    <!-- اگر تاریخ جلالی داری:
+                         {{ contact.startDate | jdate:'YYYY/MM/DD' }} -->
+                </td>
+
+                <!-- تاریخ پایان -->
+                <td data-label="تاریخ پایان">
+                    {{ contact.endDate | date:'yyyy/MM/dd' }}
+                </td>
+
+                <!-- عملیات -->
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+                            class="p-button-sm p-button-rounded p-button-text p-button-success"
+                            pTooltip="ویرایش اطلاعات"
+                        ></button>
+
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Empty -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-table
+        [value]="relationsTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+    >
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
+                    <h3 class="text-base font-semibold">سایر روابط مرتبط</h3>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>شماره مشتری</th>
+                <th>نام مشتری</th>
+                <th>شماره ملی/کد اتباع/شناسه ملی مشتری</th>
+                <th>نوع ارتباط</th>
+                <th>نسبت</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+                <!-- ردیف -->
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                <!-- شماره مشتری -->
+                <td data-label="شماره مشتری" class="ltr">
+                    {{ row.relatedCustomerNumber }}
+                </td>
+
+                <!-- عنوان مشتری -->
+                <td data-label="نام مشتری">
+                    {{ row.relatedCustomerTitle }}
+                </td>
+
+                <!-- کد ملی/اتباع/شناسه ملی -->
+                <td data-label="شماره ملی/کد اتباع/شناسه ملی مشتری" class="ltr">
+                    {{ row.nationalCode }}
+                </td>
+
+                <!-- نوع ارتباط -->
+                <td data-label="نوع ارتباط">
+                    {{ row.relationTypeLabel }}
+                </td>
+
+                <!-- نسبت -->
+                <td data-label="نسبت">
+                    {{ row.relationDegreeLabel }}
+                </td>
+
+                <!-- تاریخ شروع -->
+                <td data-label="تاریخ شروع">
+                    {{ row.startDate | date:'yyyy/MM/dd' }}
+                    <!-- اگر جلالی داری: {{ row.startDate | jdate:'YYYY/MM/DD' }} -->
+                </td>
+
+                <!-- تاریخ پایان -->
+                <td data-label="تاریخ پایان">
+                    {{ row.endDate | date:'yyyy/MM/dd' }}
+                </td>
+
+                <!-- عملیات -->
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Empty -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div>
+<p-dialog
+    appendTo="body"
+    [(visible)]="visibleRelation"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="جستجوی مشتری مرتبط"
+    contentStyleClass="dialog-body card-filter">
+
+    <form class="form-grid" [formGroup]="relationFormDialog" (ngSubmit)="submitContact()">
+        <!-- ستون راست -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3 border-">
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span> <span>نوع جستجو</span>:
+                </label>
+                <p-dropdown
+                    class="normal-dropdown"
+                    [options]="searchList"
+                    optionLabel="label"
+                    optionValue="value"
+                    formControlName="searchType"
+                ></p-dropdown>
+            </div>
+            <!--
+             <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span> <span>نوع نشانی</span>:
+                </label>
+                <p-dropdown formControlName="addressType"
+                            [options]="addressTypes" optionLabel="label"></p-dropdown>
+            </div>-->
+            <!-- ستون دوم: تاریخ تولد -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+
+                <label class="mb-1">
+                    <span>مقدار:</span>
+                </label>
+                <input pInputText class="normal-input" formControlName="count" />
+            </div>
+
+            <!-- ستون سوم: دکمه‌ها -->
+            <div class="col-span-12 md:col-span-4 flex items-end gap-2" dir="left">
+                <button
+                    pButton
+                    type="button"
+                    icon="pi pi-search"
+                    iconPos="right"
+                    label="{{ 'citizen.actions.search' | transloco }}"
+                    class="normal-button text-xs px-3 py-2 sm:text-base sm:px-4 sm:py-3 min-w-[100px] sm:min-w-[140px]"
+                    (click)="onSearch()"
+                ></button>
+            </div>
+        </div>
+    </form>
+    <form class="form-grid" [formGroup]="relationFormDialog" (ngSubmit)="submitContact()">
+
+        <!-- ردیف ۱ -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">کد ملی / کد/شناسه ملی:</label>
+                <input pInputText  class="normal-input ltr" formControlName="nationalCode" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">شماره مشتری مرتبط:</label>
+                <input pInputText class="normal-input ltr" formControlName="relatedCustomerNumber" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">عنوان مشتری مرتبط:</label>
+                <input pInputText class="normal-input" formControlName="relatedCustomerTitle" />
+            </div>
+        </div>
+
+        <!-- ردیف ۲ -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">نوع ارتباط:</label>
+                <p-dropdown [options]="relationTypeOptions" optionLabel="label" optionValue="value"  class="normal-dropdown"
+                            formControlName="relationType"></p-dropdown>
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">نسبت:</label>
+                <p-dropdown [options]="relationDegreeOptions" optionLabel="label" optionValue="value"  class="normal-dropdown"
+                            formControlName="relationDegree"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">حدود اختیارات:</label>
+                <input pInputText class="normal-input" formControlName="authoritiesLimit" />
+            </div>
+
+
+        </div>
+
+        <!-- ردیف ۳ -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">شماره نامه:</label>
+                <input pInputText class="normal-input ltr" formControlName="letterNumber" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ صدور نامه:</label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="letterIssueDate"></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">محل صدور نامه:</label>
+                <p-dropdown [options]="letterPlaceOptions" optionLabel="label" optionValue="value"
+                            class="normal-dropdown"    formControlName="letterIssuePlace"></p-dropdown>
+            </div>
+        </div>
+
+        <!-- ردیف ۴ -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">ارزش سهام:</label>
+                <input pInputText class="normal-input ltr" formControlName="shareValue" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">درصد سهام:</label>
+                <input pInputText class="normal-input ltr" formControlName="sharePercent" />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ آخرین خرید سهام:</label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="lastSharePurchaseDate"></p-persian-calendar>
+            </div>
+        </div>
+
+        <!-- ردیف ۵ -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ شروع:</label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="startDate"></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ پایان:</label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="endDate"></p-persian-calendar>
+            </div>
+
+            <div class="col-span-12 md:col-span-4"></div>
+        </div>
+
+        <!-- دکمه‌ها -->
+        <div class="my-4 flex items-center justify-end gap-5">
+            <button pButton label="تایید" severity="success" class="p-button-primary" type="submit"></button>
+            <button pButton label="انصراف" severity="danger" [outlined]="true" class="p-button-secondary" type="button"
+                    (click)="closeContact()"></button>
+        </div>
+    </form>
+
+</p-dialog>

@@ -1,0 +1,87 @@
+<div class="p-6 space-y-6 rounded-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">الگوی بازپرداخت</label>
+
+                <div class="flex flex-row items-center gap-2">
+                    <p-dropdown
+                        class="normal-dropdown"
+                        [options]="repaymentPatternList "
+                        optionLabel="label"
+                        optionValue="value"
+                        formControlName="sourceTypeId"
+                        placeholder="انتخاب کنید"
+                        [showClear]="true"
+                        (onChange)="onSourceTypeChange($event)"
+                    ></p-dropdown>
+                </div>
+            </div>
+        </div>
+
+<!-- 🔹 جدول اولویت‌ها -->
+<form [formGroup]="repaymentForm">
+    <div formArrayName="priorities">
+        <p-table
+            [value]="prioritiesArray.controls"
+            styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>نوع بدهی</th>
+                    <th>اولویت سطری</th>
+                    <th>اولویت ستونی</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-i="rowIndex">
+                <tr [formGroupName]="i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ row.value.debtType }}</td>
+                    <td>
+                        <input
+                            type="text"
+                            pInputText
+                            formControlName="rowPriority"
+                            class="w-20 text-center"
+                            [readonly]="!row.value.columnPriority"
+                        />
+                    </td>
+                    <td class="text-center">
+                        <p-checkbox formControlName="columnPriority" binary="true"></p-checkbox>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</form>
+
+<!-- 🔹 دکمه‌ها -->
+    <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start mt-5" dir="ltr">
+        <button
+            pButton
+            label="ثبت"
+            class="p-button-success normal-button"
+            type="submit"
+        ></button>
+
+
+
+        <button
+            icon="pi pi-arrow-right"
+            pButton
+            label="بازگشت"
+            type="button"
+            (click)="goBack()"
+            class="normal-button"
+        ></button>
+
+        <button
+            pButton
+            label="انصراف"
+            type="button"
+            class="p-button-danger normal-button"
+            (click)="onCancel()"
+        ></button>
+    </div>
+

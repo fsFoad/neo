@@ -1,0 +1,248 @@
+
+<div class="bg-white p-4 rounded-xl border border-slate-200" [formGroup]="signFg">
+    <div class="flex flex-wrap gap-2 mb-4 justify-start">
+        <button pButton icon="pi pi-file-edit" type="button"
+                label="{{ 'citizen.contact.actions.createSign' | transloco }}"
+                iconPos="right" class="p-button-outlined normal-button" (click)="openContact()">
+
+        </button>
+    </div>
+    <p-table
+        [value]="contactsTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+    >
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
+                    <h3 class="text-base font-semibold"></h3>
+
+                    <div class="flex flex-row gap-3">
+                        <button
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center"
+                            matTooltip="چاپ">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                            </svg>
+                            چاپ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>نوع امضا</th>
+                <th>دست</th>
+                <th>شماره انگشت</th>
+                <th>توضیحات</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">
+            <tr>
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+                <td data-label="نوع امضا">{{ contact.signatureType }}</td>
+                <td data-label="دست">{{ contact.hand }}</td>
+                <td data-label="شماره انگشت">{{ contact.fingerNumber }}</td>
+                <td data-label="توضیحات">{{ contact.description }}</td>
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+                            class="p-button-sm p-button-rounded p-button-text p-button-success"
+                            pTooltip="ویرایش اطلاعات"
+                        ></button>
+
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<p-dialog
+appendTo="body"
+    [(visible)]="visibleSignature"
+    [modal]="true"
+    [dismissableMask]="true"
+[style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="ایجاد امضا"
+    contentStyleClass="dialog-body card-filter">
+
+    <form class="form-grid" [formGroup]="createSignForm" (ngSubmit)="submitContact()">
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3" [formGroup]="createSignForm">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span> <span>نوع امضا</span>:
+                </label>
+                <p-dropdown
+
+                    class="normal-dropdown"
+                    formControlName="signatureType"
+                    [options]="signatureTypeOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    [showClear]="true"
+                    placeholder="انتخاب کنید">
+                </p-dropdown>
+
+            </div>
+
+            <!-- دست -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span>دست</span>:
+                </label>
+                <p-dropdown
+
+                    class="normal-dropdown"
+                    formControlName="hand"
+                    [options]="handOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    [showClear]="true"
+                    placeholder="انتخاب کنید">
+                </p-dropdown>
+
+            </div>
+
+            <!-- شماره انگشت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span>شماره انگشت</span>:
+                </label>
+                <input pInputText class="normal-input" formControlName="fingerNumber" />
+
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3" >
+            <!-- بارگذاری -->
+      <!--      <div class="col-span-12 md:col-span-8">
+                <div class="border rounded-xl p-4 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <label>
+                        <span class="text-red-500">*</span>
+                        <span class="font-medium"> بارگذاری :</span>
+                        </label>
+                        <small class="opacity-70">حداکثر سایز: 1024 KB</small>
+
+                    </div>
+
+                    &lt;!&ndash; انتخاب پوشه / فایل &ndash;&gt;
+                    <p-fileupload
+                        mode="basic"
+                        name="signatureFile"
+                        [auto]="false"
+                        chooseLabel="انتخاب پوشه"
+                        [maxFileSize]="1024 * 1024"
+                        [customUpload]="true"
+                        (uploadHandler)="onFileUpload($event)"
+                        [accept]="'.jpg,.jpeg,.png,.pdf'"
+                        [disabled]="createSignForm.get('isUploading')?.value">
+                    </p-fileupload>
+
+                    &lt;!&ndash; دکمه اسکن &ndash;&gt;
+                    <div class="flex justify-center">
+                        <button
+                            pButton
+                            type="button"
+                            label="اسکن"
+                            class="w-1/2 md:w-1/3"
+                            (click)="scanFingerprint()"
+                            [disabled]="createSignForm.get('isUploading')?.value">
+                        </button>
+                    </div>
+                    &lt;!&ndash; پیش‌نمایش/نام فایل انتخاب‌شده &ndash;&gt;
+                    <div *ngIf="uploadedFileName" class="text-sm opacity-80">
+                        فایل انتخاب‌شده: {{ uploadedFileName }}
+                    </div>
+
+                </div>
+            </div>-->
+            <div class="col-span-12 md:col-span-8">
+                <label class="flex items-center gap-1 text-gray-700">
+                    <span class="text-red-500">*</span>
+                    <span class="font-medium">بارگذاری :</span>
+                </label>
+                <div class="border rounded-xl p-5 flex flex-col gap-4 bg-white shadow-sm">
+
+                    <!-- عنوان و حداکثر سایز -->
+                    <div class="flex items-center justify-between">
+
+                        <small class="text-gray-500 text-sm">حداکثر سایز: 1024 KB</small>
+                    </div>
+
+                    <!-- انتخاب پوشه / فایل -->
+                    <p-fileupload
+                        mode="basic"
+                        name="signatureFile"
+                        [auto]="false"
+                        chooseLabel="انتخاب پوشه"
+                        [maxFileSize]="1024 * 1024"
+                        [customUpload]="true"
+                        (uploadHandler)="onFileUpload($event)"
+                        [accept]="'.jpg,.jpeg,.png,.pdf'"
+                        [disabled]="createSignForm.get('isUploading')?.value"
+                        class="w-full"
+                    >
+                    </p-fileupload>
+
+                    <!-- دکمه اسکن -->
+                    <div class="flex justify-center mt-2">
+                        <button
+                            pButton
+                            type="button"
+                            label="اسکن"
+                            class="w-1/2 md:w-1/3 p-button-outlined p-button-sm"
+                            (click)="scanFingerprint()"
+                            [disabled]="createSignForm.get('isUploading')?.value"
+                        >
+                        </button>
+                    </div>
+
+                    <!-- پیش‌نمایش/نام فایل انتخاب‌شده -->
+                    <div *ngIf="uploadedFileName" class="text-sm text-gray-600 mt-1">
+                        فایل انتخاب‌شده: {{ uploadedFileName }}
+                    </div>
+
+                </div>
+            </div>
+            <!-- توضیحات -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span>توضیحات</span>:</label>
+                <textarea pInputTextarea rows="7" class="normal-input " formControlName="description"
+
+                          placeholder="در صورت نیاز توضیحاتی بنویسید"></textarea>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="my-4 flex items-center justify-end gap-5">
+            <button pButton label="تایید" severity="success" class="p-button-primary" type="submit"></button>
+            <button pButton label="انصراف" severity="danger" [outlined]="true" class="p-button-secondary" type="button"
+                    (click)="closeContact()"></button>
+        </div>
+    </form>
+</p-dialog>

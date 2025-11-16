@@ -1,0 +1,96 @@
+<div class="w-full bg-white" *ngIf="!showForm">
+    <div class="p-8 rounded-xl shadow-sm mx-auto">
+        <div class="flex flex-col w-full p-4">
+            <div class="flex flex-col items-start text-right w-full">
+                <h2 class="text-2xl font-semibold mb-2">
+                    {{ 'types.title' | transloco }}
+                </h2>
+            </div>
+        </div>
+    </div>
+</div >
+
+<div class="p-6 space-y-6 rounded-2xl" *ngIf="!showForm">
+    <div class="flex flex-col">
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <div class="my-2 mb-4">
+                <button
+                    pButton
+                    icon="pi pi-plus"
+                    class="p-button-primary normal-button"
+                    type="button"
+                    label="تعریف مشخصات انواع عقود اسلامی"
+                    (click)="openCreateDialog()"
+                ></button>
+            </div>
+            <p-table
+                [value]="loanGoalTable"
+                [paginator]="true"
+                [rows]="5"
+                [rowsPerPageOptions]="[5,10,20]"
+                styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>{{ 'types.fields.row' | transloco }}</th>
+                        <th>{{ 'types.fields.contractCode' | transloco }}</th>
+                        <th>{{ 'types.fields.contractTitle' | transloco }}</th>
+                        <th>{{ 'types.fields.contractGroup' | transloco }}</th>
+                        <th>{{ 'types.fields.centralBankCode' | transloco }}</th>
+                        <th>{{ 'types.fields.status' | transloco }}</th>
+                        <th>{{ 'types.fields.actions' | transloco }}</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{ rowIndex + 1 }}</td>
+                        <td>{{ row.contractCode }}</td>
+                        <td>{{ row.contractTitle }}</td>
+                        <td>{{ row.contractGroup }}</td>
+                        <td>{{ row.centralBankCode }}</td>
+                        <td>
+                            {{ row.active}}
+                        </td>
+                        <td>
+                            <div class="flex flex-row gap-2">
+                                <button
+                                    pButton
+                                    icon="pi pi-eye"
+                                    class="p-button-sm p-button-rounded p-button-outlined"
+                                    pTooltip="{{ 'types.actions.view' | transloco }}"
+                                    (click)="viewSource(row)">
+                                </button>
+
+                                <button
+                                    pButton
+                                    icon="pi pi-pencil"
+                                    class="p-button-sm p-button-rounded p-button-outlined p-button-success"
+                                    pTooltip="{{ 'types.actions.edit' | transloco }}"
+                                    (click)="editSource(row)">
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="7" class="text-center py-4 text-gray-500">
+                            {{ 'types.messages.noRecords' | transloco }}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+
+
+</div>
+<div *ngIf="showForm">
+    <app-basic-information
+        (formSubmit)="onFormSubmit($event)"
+        (cancel)="onFormCancel()">
+    </app-basic-information>
+</div>
+
