@@ -9,10 +9,17 @@ export class ThemeService {
         document.documentElement.style.setProperty(name, value);
     }
 
-    setPalette(palette: any): void {
-        for (const key of Object.keys(palette)) {
-            const css = '--' + key.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
-            this.setCssVar(css, palette[key]);
+    setPalette(colors: { primary: string; accent: string; warn: string }) {
+        const isDark = this.isColorDark(colors.primary);
+
+        document.documentElement.style.setProperty('--primary', colors.primary);
+        document.documentElement.style.setProperty('--accent', colors.accent);
+        document.documentElement.style.setProperty('--warn', colors.warn);
+
+        if (isDark) {
+            document.documentElement.style.setProperty('--primary-text', '#ffffff');   // متن سفید
+        } else {
+            document.documentElement.style.setProperty('--primary-text', '#1f1f1f');   // متن تیره
         }
     }
 
@@ -23,6 +30,19 @@ export class ThemeService {
     getThemePresets(): MinimalPreset[] {
         return THEME_PRESETS;
     }
+    isColorDark(hex: string): boolean {
+        hex = hex.replace('#', '');
+
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+
+        // Relative luminance formula
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+        return brightness < 140;
+    }
+
     setPrimaryColor(color: string): void {
         // متغیر اصلی
         document.documentElement.style.setProperty('--primary', color);

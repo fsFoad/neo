@@ -9,6 +9,9 @@
 
 /* Light mode */
 :root {
+    --primary-text: #fff;
+    --text-color: var(--primary-text) !important;
+
     /* Core Palette */
     --primary: #3f51b5;
     --accent: #ff4081;
@@ -121,7 +124,34 @@ html.p-dark {
 .fuse-vertical-navigation-item:hover {
     color: var(--primary) !important;
 }
+.p-button.p-button-text,
+.p-button.p-button-text .p-button-icon {
+    color: var(--primary-text) !important;
+}
 
+.p-button.p-button-icon-only .p-button-icon {
+    color: var(--primary-text) !important;
+}
+
+
+
+/* full override */
+
+.p-button,
+.p-button .p-button-icon,
+.p-button .p-button-label {
+    color: var(--primary-text) !important;
+}
+
+.p-button.p-button-text,
+.p-button.p-button-text .p-button-icon,
+.p-button.p-button-text .p-button-label {
+    color: var(--primary-text) !important;
+}
+
+.p-button.p-button-icon-only .p-button-icon {
+    color: var(--primary-text) !important;
+}
 /* ===================================================================================================== */
 /*  Remaining project styles (original)                                                                   */
 /* ===================================================================================================== */
@@ -132,5 +162,58 @@ html.p-dark {
 @import url(./primeng-custom-styles.scss);
 @import "perfect-scrollbar/css/perfect-scrollbar.css";
 @import url(app/modules/mat-wrapper-components/projects/components/saffron-styels.scss);
+p-button,
+.p-button .p-button-label,
+.p-button .p-button-icon {
+    color: #ffffff !important;
+}
+
+/* Text buttons */
+.p-button.p-button-text,
+.p-button.p-button-text .p-button-label,
+.p-button.p-button-text .p-button-icon {
+    color: #ffffff !important;
+}
+
+/* Outlined buttons */
+.p-button.p-button-outlined,
+.p-button.p-button-outlined .p-button-label,
+.p-button.p-button-outlined .p-button-icon {
+    color: #ffffff !important;
+}
+
+/* Rounded buttons */
+.p-button.p-button-rounded,
+.p-button.p-button-rounded .p-button-icon,
+.p-button.p-button-rounded .p-button-label {
+    color: #ffffff !important;
+}
+
+/* Icon-only buttons */
+.p-button.p-button-icon-only,
+.p-button.p-button-icon-only .p-button-icon {
+    color: #ffffff !important;
+}
+
+/* Hover */
+.p-button:hover,
+.p-button:hover .p-button-label,
+.p-button:hover .p-button-icon {
+    color: #ffffff !important;
+}
+
+/* Focus */
+.p-button:focus,
+.p-button:focus .p-button-icon,
+.p-button:focus .p-button-label {
+    color: #ffffff !important;
+}
+
+/* Active */
+.p-button:active,
+.p-button:active .p-button-icon,
+.p-button:active .p-button-label {
+    color: #ffffff !important;
+}
 
 /* سایر استایل‌های قبلی شما بدون تغییر */
