@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { FuseDrawerComponent } from '@fuse/components/drawer';
+import { ThemeService } from '../../../core/services/theme.service';
 import {
     FuseConfig,
     FuseConfigService,
@@ -16,6 +17,7 @@ import {
 import { Subject, takeUntil } from 'rxjs';
 import { AppSettings } from '../../../AppSetting';
 import { AppConfiguratorComponent } from '../primeng/configurator/app.configurator.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'settings',
@@ -45,6 +47,7 @@ import { AppConfiguratorComponent } from '../primeng/configurator/app.configurat
         NgClass,
         MatTooltipModule,
         AppConfiguratorComponent,
+        FormsModule,
     ],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
@@ -60,6 +63,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
      */
     constructor(
         private _router: Router,
+        private _themeService: ThemeService,
         private _fuseConfigService: FuseConfigService
     ) {}
 
@@ -77,9 +81,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
             .subscribe((config: FuseConfig) => {
                 // Store the config
                 this.config = config;
-                if (config.scheme === 'dark'){
+                if (config.scheme === 'dark') {
                     document.documentElement.classList.add('p-dark');
-                }else {
+                } else {
                     document.documentElement.classList.remove('p-dark');
                 }
             });
@@ -93,7 +97,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }
+    selectedColor = '#3f51b5';
 
+    applyTheme(): void {
+        this._themeService.setPrimaryColor(this.selectedColor);
+    }
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -124,9 +132,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
      * @param scheme
      */
     setScheme(scheme: Scheme): void {
-        if (scheme === 'dark'){
+        if (scheme === 'dark') {
             document.documentElement.classList.add('p-dark');
-        }else {
+        } else {
             document.documentElement.classList.remove('p-dark');
         }
         this._fuseConfigService.config = { scheme };

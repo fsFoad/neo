@@ -1,4 +1,13 @@
 /* ----------------------------------------------------------------------------------------------------- */
+/*  Custom styles - Overrides Fuse base styles and vendor styles.                                        */
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* ===================================================================================================== */
+/*  1) MUST BE FIRST: SCSS @use                                                                          */
+/* ===================================================================================================== */
+@use 'assets/styles/index';
+
+/* ----------------------------------------------------------------------------------------------------- */
 /*  @ Import/write your custom styles here.
 /*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
 /* ----------------------------------------------------------------------------------------------------- */
@@ -199,4 +208,22 @@
     min-height: 18px;
     height: 18px;
     color:white;
+}
+
+:root {
+    --primary: #3f51b5;
+    --accent: #e91e63;
+    --warn: #f44336;
+
+    /* Material */
+    --mat-primary: var(--primary);
+    --mat-accent: var(--accent);
+
+    /* PrimeNG */
+    --p-primary-color: var(--primary);
+    --p-primary-500: var(--primary);
+
+    /* Fuse */
+    --fuse-primary: var(--primary);
+    --fuse-accent: var(--accent);
 }
