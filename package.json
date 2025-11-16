@@ -1,7 +1,7 @@
 {
-  "name": "api-gateway",
+  "name": "neo",
   "version": "20.0.0",
-  "description": "api-gateway - Angular Admin Template and Starter Project",
+  "description": "neo - Angular Admin Template and Starter Project",
   "author": "https://themeforest.net/user/srcn",
   "license": "https://themeforest.net/licenses/standard",
   "private": true,
