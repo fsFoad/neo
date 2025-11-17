@@ -1,0 +1,202 @@
+<div class="p-6 bg-white rounded-2xl border border-slate-200 space-y-6">
+    <h3 class="text-xl font-semibold mb-4">اطلاعات وثایق و تضامین</h3>
+
+    <!-- 🔹 اطلاعات اصلی محصول -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 bg-gray-50 p-4 rounded-xl border border-slate-200">
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">نوع عقد</label>
+            <span class="text-gray-800 font-semibold">قرض‌الحسنه</span>
+        </div>
+
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">نوع طرح</label>
+            <span class="text-gray-800 font-semibold">خدماتی</span>
+        </div>
+
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">چگونگی استفاده</label>
+            <span class="text-gray-800 font-semibold">استفاده در داخل کشور</span>
+        </div>
+
+        <div class="flex flex-col">
+            <label class="text-gray-600 text-sm font-medium">عنوان محصول</label>
+            <span class="text-gray-800 font-semibold">فرزندآوری</span>
+        </div>
+    </div>
+
+    <!-- 🔹 عملیات بالای جدول -->
+
+
+
+    <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-12 md:col-span-4">
+            <div class="flex flex-row items-center gap-2">
+                <input
+                    type="text"
+                    pInputText
+                    class="normal-input flex-1"
+                    placeholder="جستجو وثیقه" />
+
+                <button
+                    pButton
+                    type="button"
+                    icon="pi pi-search"
+                    iconPos="right"
+                    label="جستجو"
+                    class="normal-button p-button !px-3 !py-1">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="my-2">
+        <button
+            pButton
+            iconPos="right"
+            class="p-button-primary normal-button"
+            type="button"
+            icon="pi pi-plus"
+            (click)="showDialog()"
+            label="{{ 'افزودن وثیقه'  }}">
+        </button>
+    </div>
+    <!-- 🔹 جدول وثایق -->
+    <p-table
+        [value]="collateralList"
+        styleClass="p-datatable-striped p-datatable-gridlines rounded-xl"
+        [tableStyle]="{ 'min-width': '100%' }">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>کد نوع وثیقه</th>
+                <th>عنوان نوع وثیقه</th>
+                <th>گروه وثیقه بانک مرکزی</th>
+                <th>درصد ترهین</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-row>
+            <tr>
+                <td>{{ row.code }}</td>
+                <td>{{ row.title }}</td>
+                <td>{{ row.group }}</td>
+                <td>{{ row.percent }}%</td>
+                <td>
+
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-trash"
+                        class="p-button-sm p-button-rounded p-button-outlined p-button-danger">
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5" class="text-center py-4 text-gray-500">
+                    هیچ وثیقه‌ای ثبت نشده است.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+</div>
+
+<div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start mt-5" dir="ltr">
+
+    <button
+        icon="pi pi-arrow-left"
+        pButton
+        label="ادامه"
+        (click)="goNext()"
+        class=" p-button-success normal-button"
+    ></button>
+
+    <button
+        icon="pi pi-arrow-right"
+        pButton
+        label="بازگشت"
+        (click)="goBack()"
+    ></button>
+    <button
+        pButton
+        label="انصراف"
+        severity="danger"
+        type="button"
+        (click)="onCancel()"
+        class="p-button-secondary col-span-6 md:col-span-1 h-[40px]"
+    ></button>
+
+</div>
+
+<p-dialog
+    header="افزودن وثیقه"
+    [(visible)]="dialogVisible"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '1100px' }"
+    [draggable]="false"
+    [resizable]="false"
+    [baseZIndex]="10000">
+
+    <div [formGroup]="collateralForm" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- انتخاب وثیقه جدید -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">انتخاب وثیقه جدید</label>
+            <p-dropdown
+                class="normal-dropdown"
+                [options]="collateralTypeList"
+                optionLabel="label"
+                optionValue="value"
+                formControlName="collateralTypeId"
+                placeholder="انتخاب کنید">
+            </p-dropdown>
+        </div>
+
+        <!-- گروه وثیقه در بانک مرکزی -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">گروه وثیقه در بانک مرکزی</label>
+            <input
+                pInputText
+                type="text"
+                formControlName="centralBankGroup"
+                class="normal-input"
+                placeholder="غیرمنتقول ملکی" />
+        </div>
+
+        <!-- درصد ترهین -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">درصد ترهین</label>
+            <input
+                pInputText
+                type="number"
+                formControlName="collateralPercent"
+                class="normal-input"
+                placeholder="0" />
+        </div>
+    </div>
+
+    <!-- 🔹 دکمه‌ها -->
+    <div class="flex justify-end gap-4 mt-8">
+        <!-- دکمه ثبت -->
+        <button
+            pButton
+            label="ثبت"
+            class="p-button p-button-success w-32 h-10"
+            (click)="onSubmit()"
+            [disabled]="collateralForm.invalid">
+        </button>
+
+        <!-- دکمه انصراف -->
+        <button
+            pButton
+            label="انصراف"
+            class="p-button p-button-danger w-32 h-10"
+            (click)="onCancel()">
+        </button>
+    </div>
+
+</p-dialog>

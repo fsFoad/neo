@@ -1,0 +1,90 @@
+<div [formGroup]="form" class="p-4 rounded-2xl border border-slate-200">
+    <h3 class="text-xl font-semibold mb-10">اطلاعات تکمیلی</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+        <!-- حداکثر تعداد اقساط -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">حداکثر تعداد اقساط</label>
+            <input type="number" min="1" pInputText class="normal-input"
+                   formControlName="maxInstallments" placeholder="عدد">
+        </div>
+
+        <!-- حداکثر فاصله اقساط (ماه) -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">حداکثر فاصله اقساط (ماه)</label>
+
+            <input type="number" min="1" pInputText class="normal-input flex-1"
+                   formControlName="installmentIntervalMo" placeholder="ماه">
+
+        </div>
+
+
+        <!-- حداکثر مدت اقساط (روز) -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">حداکثر مدت اقساط (روز)</label>
+
+            <input type="number" min="1" pInputText class="normal-input flex-1"
+                   formControlName="installmentsDurationD" placeholder="روز">
+        </div>
+
+        <!-- روش وصول کارمزد -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">روش وصول کارمزد</label>
+            <p-dropdown class="normal-dropdown"
+                        [options]="feeCollectionMethods"
+                        optionLabel="label" optionValue="value"
+                        formControlName="feeCollectionMethod"
+                        placeholder="انتخاب کنید">
+            </p-dropdown>
+        </div>
+
+        <!-- حداکثر مهلت تنفس (روز) -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">حداکثر مهلت تنفس (روز)</label>
+            <input type="number" min="0" pInputText class="normal-input flex-1"
+                   formControlName="maxGraceDays" placeholder="روز">
+        </div>
+
+        <!-- روش نگهداری سود تنفس (اختیاری) -->
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">روش نگهداری سود تنفس (اختیاری)</label>
+            <p-dropdown class="normal-dropdown"
+                        [options]="graceProfitRetentionMethods"
+                        optionLabel="label" optionValue="value"
+                        formControlName="graceProfitMethod"
+                        placeholder="انتخاب کنید">
+            </p-dropdown>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start mt-5" dir="ltr">
+
+    <button
+        icon="pi pi-arrow-left"
+        pButton
+        label="ادامه"
+        (click)="goNext()"
+        class=" p-button-success normal-button"
+    ></button>
+
+    <button
+        icon="pi pi-arrow-right"
+        pButton
+        label="بازگشت"
+
+        (click)="goBack()"
+    ></button>
+    <button
+        pButton
+        label="انصراف"
+        severity="danger"
+        type="button"
+        (click)="onCancel()"
+        class="p-button-secondary col-span-6 md:col-span-1 h-[40px]"
+    ></button>
+
+</div>
+
+

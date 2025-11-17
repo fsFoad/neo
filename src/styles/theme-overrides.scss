@@ -1,0 +1,18 @@
+/* Raised Buttons */
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-container-color: var(--primary) !important;
+    --mdc-filled-button-label-text-color: var(--on-primary, #fff) !important;
+}
+
+/* Regular Buttons (.mat-primary) */
+.mat-mdc-button.mat-primary {
+    --mdc-text-button-label-text-color: var(--primary) !important;
+}
+
+/* FAB Buttons */
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary {
+    --mdc-fab-container-color: var(--primary) !important;
+    --mdc-fab-icon-color: var(--on-primary, #fff) !important;
+}

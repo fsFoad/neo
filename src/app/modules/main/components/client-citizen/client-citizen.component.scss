@@ -1,0 +1,328 @@
+.material-status-badge {
+    @apply px-2 py-1 rounded-full text-white text-xs font-medium;
+}
+.material-status-badge.active {
+    @apply bg-green-500;
+}
+.material-status-badge.inactive {
+    @apply bg-gray-400;
+}
+.toggle-advanced-search {
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-advanced-search:hover {
+    background-color: #f5f5f5; /* یا مثلاً:  */
+}
+:host ::ng-deep .custom-table .p-datatable-header {
+    background-color: #ffffff !important;  /* هدر جدول سفید */
+    border-top-left-radius: 0.75rem; /* معادل rounded-tl-xl */
+    border-top-right-radius: 0.75rem; /* معادل rounded-tr-xl */
+}
+:host ::ng-deep .custom-table .p-datatable-caption {
+    background-color: #ffffff !important;  /* بخش caption */
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+:host ::ng-deep .custom-table .p-datatable-wrapper {
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    overflow: hidden;
+}
+
+:host ::ng-deep .custom-table .p-datatable {
+    border: 1px solid #e5e7eb; /* مشابه Tailwind border-gray-300 */
+    border-radius: 0.75rem;
+}
+@media screen and (max-width: 768px) {
+    .mobile-friendly-table {
+        .p-datatable-thead {
+            display: none;
+        }
+
+        .p-datatable-tbody {
+            tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #e5e7eb;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                position: relative;
+                padding-left: 60px; /* فضای برای دکمه های عملیات */
+            }
+
+            td {
+                display: block;
+                width: 100% !important;
+                border: none;
+                padding: 0.25rem 0;
+                text-align: right;
+            }
+
+            td:before {
+                content: attr(data-label);
+                float: right;
+                font-weight: bold;
+                margin-left: 0.5rem;
+            }
+
+            .action-column {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 50px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0.5rem;
+                border-right: 1px solid #e5e7eb;
+            }
+        }
+    }
+}
+
+/*
+
+:host {
+    ::ng-deep {
+        .responsive-table {
+            width: 100%;
+
+            @media (max-width: 768px) {
+                thead {
+                    display: none;
+                }
+
+                tbody {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                tr {
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    gap: 0.5rem;
+                    align-items: stretch; // تغییر اینجا برای کشیده شدن ارتفاع کامل
+                    border: 1px solid #ddd;
+                    padding: 0.75rem;
+                    border-radius: 0.75rem;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    position: relative;
+                }
+
+                td {
+                    padding: 0.25rem 0.5rem;
+                    text-align: right;
+                }
+
+                // ستون دکمه‌ها (آخرین ستون سمت چپ، مرج‌شده)
+                td:last-child {
+                    grid-column: 2 / 3;
+                    grid-row: 1 / span 10; // مرج عمودی در ارتفاع همه سطرها
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding-left: 0.5rem;
+                }
+
+                // بقیه سلول‌ها
+                td:not(:last-child) {
+                    grid-column: 1 / 2;
+                }
+
+                td::before {
+                    content: attr(data-label);
+                    font-weight: 600;
+                    float: right;
+                    padding-left: 0.5rem;
+                    color: #555;
+                }
+
+                td:last-child::before {
+                    display: none;
+                }
+
+                .flex {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .responsive-table tr {
+                    border: none !important; !* برداشتن خط مرزی کلی ردیف‌ها *!
+                    box-shadow: none !important; !* در صورت تمایل حذف سایه *!
+                }
+
+                .responsive-table td {
+                    border-bottom: 1px solid #ddd; !* ایجاد خط زیر سلول‌ها به جز دکمه‌ها *!
+                }
+
+                .responsive-table td:last-child {
+                    border-bottom: none !important; !* حذف خط زیر ستون دکمه‌ها *!
+                }
+                .responsive-table td.action-column {
+                    border-width: 0 !important;
+                }
+            }
+        }
+    }
+}
+*/
+
+:host {
+    ::ng-deep {
+
+        .responsive-table {
+            width: 100%;
+
+            @media (max-width: 768px) {
+                thead {
+                    display: none;
+                }
+
+                tbody {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                tr {
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    gap: 0.5rem;
+                    align-items: stretch;
+                    border: 1px solid #ddd;
+                    padding: 0.75rem;
+                    border-radius: 0.75rem;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    position: relative;
+                }
+
+                td {
+                    padding: 0.25rem 0.5rem;
+                    text-align: right;
+                    border-bottom: 1px solid #ddd; /* خطوط زیر همه سلول‌ها */
+                }
+
+                /* ستون دکمه‌ها (آخرین ستون سمت چپ، مرج‌شده) */
+                td:last-child {
+                    grid-column: 2 / 3;
+                    grid-row: 1 / span 10;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding-left: 0.5rem;
+                    border-bottom: none !important; /* برداشتن خط زیر ستون دکمه‌ها */
+                    border-width: 0 !important; /* برداشتن border کلی برای ستون دکمه‌ها */
+                }
+
+                /* بقیه سلول‌ها */
+                td:not(:last-child) {
+                    grid-column: 1 / 2;
+                }
+
+                td::before {
+                    content: attr(data-label);
+                    font-weight: 600;
+                    float: right;
+                    padding-left: 0.5rem;
+                    color: #555;
+                }
+
+                td:last-child::before {
+                    display: none;
+                }
+
+                .flex {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+            }
+        }
+    }
+}
+.status-tag {
+    display: inline-flex; /* برای چینش مناسب متن داخل تگ */
+    justify-content: center; /* وسط‌چین کردن افقی متن */
+    align-items: center; /* وسط‌چین کردن عمودی متن */
+    min-width: 80px; /* حداقل عرض برای یکسان‌سازی */
+    padding: 4px 8px; /* فاصله داخلی مناسب */
+    text-align: center; /* وسط‌چین شدن متن */
+}
+
+.status-tag.active {
+    background-color: #d1fae5; /* سبز روشن */
+    color: #065f46; /* متن سبز تیره */
+}
+
+.status-tag.inactive {
+    background-color: #f3f4f6; /* خاکستری روشن */
+    color: #374151; /* خاکستری تیره */
+}
+.btn-icon-2xl .p-button {
+    border-radius: 1rem !important; /* معادل rounded-2xl */
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0 !important;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+:host ::ng-deep .btn-icon-2xl .p-button {
+    border-radius: 1rem !important;  // rounded-2xl
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+:host ::ng-deep .normal-button .p-button {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.75rem;   // ردیوس خودت
+}
+
+:host ::ng-deep .btn-icon-outlined .p-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+:host ::ng-deep .btn-icon-soft .p-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    padding: 0 !important;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: color-mix(in srgb, var(--primary) 20%, transparent);
+    color: var(--primary);
+    border: none !important;
+}
+
+:host ::ng-deep .btn-icon-soft .p-button:hover {
+    background: color-mix(in srgb, var(--primary) 30%, transparent);
+}

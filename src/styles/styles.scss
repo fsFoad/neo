@@ -1,0 +1,253 @@
+/* ===================================================================================================== */
+/*  1) MUST BE FIRST: SCSS @use                                                                          */
+/* ===================================================================================================== */
+@use 'assets/styles/index';
+
+/* ===================================================================================================== */
+/*  Dynamic Global Theme Variables (Minimal)                                                              */
+/* ===================================================================================================== */
+
+/* Light mode */
+:root {
+    --primary-text: #fff;
+    --text-color: var(--primary-text) !important;
+
+    /* Core Palette */
+    --primary: #3f51b5;
+    --accent: #ff4081;
+    --warn:   #f44336;
+
+    /* Neutrals */
+    --surface: #ffffff;
+    --background: #f5f5f5;
+    --on-surface: #212121;
+    --border: rgba(0,0,0,0.16);
+
+    /* PrimeNG */
+    --p-primary-color: var(--primary);
+    --p-primary-500: var(--primary);
+    --p-primary-color-text: #ffffff;
+
+    /* Material */
+    --mat-primary: var(--primary);
+    --mat-accent: var(--accent);
+    --mat-warn: var(--warn);
+
+    /* Fuse */
+    --fuse-primary: var(--primary);
+    --fuse-accent: var(--accent);
+}
+
+/* Dark mode */
+html.p-dark {
+    --primary: #90caf9;
+    --accent: #ff80ab;
+    --warn:   #ef9a9a;
+
+    --surface: #1e1e1e;
+    --background: #121212;
+    --on-surface: #e0e0e0;
+    --border: rgba(255,255,255,0.12);
+
+    --p-primary-color-text: #000;
+}
+
+/* ===================================================================================================== */
+/*  PrimeNG Full Dynamic Override (PrimeNG v19 compatible)                                               */
+/* ===================================================================================================== */
+
+/* Buttons *//*
+.p-button {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--p-primary-color-text) !important;
+}*/
+
+/*.p-button.p-button-text {
+    color: var(--primary) !important;
+}*/
+
+/*.p-button.p-button-outlined {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}*/
+
+/* Input focus */
+.p-inputtext:enabled:focus,
+.p-inputwrapper-focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--primary) !important;
+}
+
+/* Checkbox / Radio */
+.p-checkbox .p-checkbox-box.p-highlight,
+.p-radiobutton .p-radiobutton-box.p-highlight {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+/* Cards / Panels */
+.p-panel, .p-card {
+    background: var(--surface) !important;
+    color: var(--on-surface) !important;
+}
+
+/* Dropdown highlight */
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--primary) !important;
+    color: #fff !important;
+}
+
+/* ===================================================================================================== */
+/*  Material M3 Dynamic Override                                                                        */
+/* ===================================================================================================== */
+
+.mdc-button {
+    background-color: var(--primary) !important;
+    color: var(--p-primary-color-text) !important;
+}
+
+.mdc-card {
+    background: var(--surface) !important;
+    color: var(--on-surface) !important;
+}
+
+/* ===================================================================================================== */
+/*  Fuse Dynamic Override                                                                                */
+/* ===================================================================================================== */
+
+.fuse-vertical-navigation-item-active {
+    background-color: var(--primary) !important;
+    color: var(--p-primary-color-text) !important;
+}
+
+.fuse-vertical-navigation-item:hover {
+    color: var(--primary) !important;
+}
+.p-button.p-button-text,
+.p-button.p-button-text .p-button-icon {
+    color: var(--primary-text) !important;
+}
+
+.p-button.p-button-icon-only .p-button-icon {
+    color: var(--primary-text) !important;
+}
+
+
+
+
+/* full override */
+
+/*.p-button,
+.p-button .p-button-icon,
+.p-button .p-button-label {
+    color: var(--primary-text) !important;
+}*/
+
+/*.p-button.p-button-text,
+.p-button.p-button-text .p-button-icon,
+.p-button.p-button-text .p-button-label {
+    color: var(--primary-text) !important;
+}
+
+.p-button.p-button-icon-only .p-button-icon {
+    color: var(--primary-text) !important;
+}*/
+/* ===================================================================================================== */
+/*  Remaining project styles (original)                                                                   */
+/* ===================================================================================================== */
+
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+@import url(./_fonts.scss);
+@import url(./primeng-custom-styles.scss);
+@import "perfect-scrollbar/css/perfect-scrollbar.css";
+@import url(app/modules/mat-wrapper-components/projects/components/saffron-styels.scss);
+
+body {
+    background-color: var(--background) !important;
+    color: var(--on-surface) !important;
+}
+
+.bg-background {
+    background-color: var(--background) !important;
+}
+
+.bg-surface {
+    background-color: var(--surface) !important;
+}
+/* سایر استایل‌های قبلی شما بدون تغییر */
+
+
+:root {
+    /* Brand colors */
+    --color-primary: rgb(254,95,2);
+    --color-primary-contrast: #ffffff;
+
+    --color-accent: #0031e5;
+    --color-accent-contrast: #ffffff;
+
+    --color-warn: #d32f2f;
+    --color-warn-contrast: #ffffff;
+
+    /* Neutrals */
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-on-surface: #1e1e1e;
+
+    /* Radii, shadows, spacing */
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* حالت دارک */
+body.dark-mode {
+    --color-bg: #121212;
+    --color-surface: #1e1e1e;
+    --color-on-surface: #eeeeee;
+}
+
+/* ===========================
+   PRIME NG TOKEN BRIDGE
+   =========================== */
+
+:root {
+    /* Button */
+    --p-button-primary-background: var(--color-primary);
+    --p-button-primary-border-color: var(--color-primary);
+    --p-button-primary-color: var(--color-primary-contrast);
+    --p-button-primary-hover-background: color-mix(in srgb, var(--color-primary) 85%, black 15%);
+    --p-button-primary-hover-border-color: var(--color-primary);
+    --p-button-primary-hover-color: var(--color-primary-contrast);
+
+    /* InputText */
+    --p-inputtext-bg: var(--color-surface);
+    --p-inputtext-color: var(--color-on-surface);
+    --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
+    --p-inputtext-focus-border-color: var(--color-primary);
+    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+
+    /* Toast, Panel, Divider, … اگر لازم داری، اینجا */
+}
+
+/* حالت دارک PrimeNG */
+body.dark-mode {
+    --p-inputtext-bg: color-mix(in srgb, var(--color-surface) 85%, black 15%);
+    --p-inputtext-color: var(--color-on-surface);
+}
+
+
+/*.p-button.p-button-primary {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary-contrast) !important;
+}*/
+
+.p-button.p-button-primary:hover {
+    background: var(--p-button-primary-hover-background) !important;
+    border-color: var(--p-button-primary-hover-border-color) !important;
+}
+
+
+

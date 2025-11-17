@@ -1,0 +1,310 @@
+<div [formGroup]="extraFg">
+    <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'وضعیت سکونت' | transloco }}</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="religionOptions"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="religionId"
+                            (onChange)="onReligionChange($event.value)">
+                </p-dropdown>
+            </div>
+            <!-- دین -->
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'citizen.extra.religionId' | transloco }}</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="religionOptions"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="religionId"
+                            (onChange)="onReligionChange($event.value)">
+                </p-dropdown>
+            </div>
+
+            <!-- مذهب (براساس دین فیلتر می‌شود) -->
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'citizen.extra.religionDetailId' | transloco }}</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="denominationFiltered"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="religionDetailId">
+                </p-dropdown>
+            </div>
+            <!-- وضعیت تاهل -->
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'citizen.extra.maritalStatus' | transloco }}</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="maritalOptions"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="maritalStatus">
+                </p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'تاریخ اخرین وضعیت تاهل' | transloco }}</label>
+                <input pInputText formControlName="enFirstName" class="normal-input" />
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'تعداد افراد خانواده' | transloco }}</label>
+                <input pInputText formControlName="enFirstName" class="normal-input" />
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'تعداد افراد تحت تکلف' | transloco }}</label>
+                <input pInputText formControlName="enFirstName" class="normal-input" />
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'تعداد فرزندان' | transloco }}</label>
+                <input pInputText formControlName="enFirstName" class="normal-input" />
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col">
+                <label class="mb-1">{{ 'شهرت' | transloco }}</label>
+                <input pInputText formControlName="enFirstName" class="normal-input" />
+            </div>
+
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-xl border border-slate-200 my-5 grid grid-cols-12 gap-4 items-center">
+
+        <!-- نوع استخدام -->
+        <div class="col-span-12 md:col-span-3 flex flex-col my-3">
+            <label class="mb-1">{{ 'نوع استخدام' | transloco }}</label>
+            <p-dropdown class="normal-dropdown"
+                        [options]="religionOptions"
+                        optionLabel="label"
+                        optionValue="value"
+                        formControlName="religionId"
+                        (onChange)="onReligionChange($event.value)">
+            </p-dropdown>
+        </div>
+
+        <!-- شناسه سازمانی -->
+        <div class="col-span-12 md:col-span-3 flex flex-col">
+            <label class="mb-1">{{ 'شناسه سازمانی' | transloco }}</label>
+            <input pInputText formControlName="enFirstName" class="normal-input" />
+        </div>
+
+        <!-- تایید استعلام هویتی -->
+        <div class="col-span-12 md:col-span-3 flex items-center gap-2">
+            <p-checkbox
+                inputId="bankStaff"
+                [binary]="true"
+                formControlName="isInquiryApproved">
+            </p-checkbox>
+            <label for="bankStaff">پرسنل بانک</label>
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-xl border border-slate-200 my-5 ">
+        <h3 class="text-lg font-semibold">
+            {{ 'اطلاعات معلولیت' | transloco }}
+        </h3>
+        <div class=" grid grid-cols-12 gap-4 items-center">
+            <div class="col-span-12 md:col-span-2 flex items-center gap-2">
+                <p-checkbox
+                    inputId="bankStaff"
+                    [binary]="true"
+                    formControlName="isInquiryApproved">
+                </p-checkbox>
+                <label for="bankStaff">معلولیت شنیداری</label>
+            </div>
+            <div class="col-span-12 md:col-span-2 flex items-center gap-2">
+                <p-checkbox
+                    inputId="bankStaff"
+                    [binary]="true"
+                    formControlName="isInquiryApproved">
+                </p-checkbox>
+                <label for="bankStaff">معلولیت بینایی</label>
+            </div>
+
+            <div class="col-span-12 md:col-span-2 flex items-center gap-2">
+                <p-checkbox
+                    inputId="bankStaff"
+                    [binary]="true"
+                    formControlName="isInquiryApproved">
+                </p-checkbox>
+                <label for="bankStaff">معلولیت گفتاری</label>
+            </div>
+            <div class="col-span-12 md:col-span-2 flex items-center gap-2">
+                <p-checkbox
+                    inputId="bankStaff"
+                    [binary]="true"
+                    formControlName="isInquiryApproved">
+                </p-checkbox>
+                <label for="bankStaff">معلولیت ذهنی</label>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-xl border border-slate-200 my-5 ">
+        <h3 class="text-lg font-semibold">
+            {{ 'اطلاعات ایثارگری' | transloco }}
+        </h3>
+
+        <!-- دکمه زیر تیتر -->
+        <div class="my-2">
+            <button pButton
+                    iconPos="right"
+                    class="p-button-primary normal-button"
+                    type="button"
+                    icon="pi pi-plus"
+                    label="{{ 'ایجاد ایثارگر' | transloco }}"
+                    (click)="addSelfless()">
+            </button>
+        </div>
+        <p-table class="my-4"
+            [value]="selflessTable"
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5,10,20]"
+            styleClass="p-datatable-striped p-datatable-gridlines responsive-table">
+            <ng-template pTemplate="caption">
+                <div class="w-full overflow-x-auto">
+                    <!-- flex بین دکمه‌های چپ و راست -->
+                    <div class="mt-2 flex justify-between flex-row-reverse items-center">
+
+                        <!-- دکمه‌های سمت چپ (Excel و چاپ) -->
+                        <div class="flex flex-row gap-3">
+                            <button
+                                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center normal-button"
+                                matTooltip="Excel">
+                                <i class="pi pi-file-excel mr-2"></i> Excel
+                            </button>
+
+                            <button
+                                class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center"
+                                matTooltip="چاپ">
+                                <i class="pi pi-print mr-2"></i> چاپ
+                            </button>
+                        </div>
+
+                        <!-- اگه چیزی خواستی سمت راست اضافه بشه، اینجا -->
+                        <div></div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <!-- Header -->
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>نوع ایثارگری</th>
+                    <th>درصد</th>
+                    <th>تاریخ پایان</th>
+                    <th>عملیات</th>
+                </tr>
+            </ng-template>
+
+            <!-- Body -->
+            <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                <tr>
+                    <!-- ردیف -->
+                    <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                    <!-- شماره مشتری -->
+                    <td data-label="شماره مشتری" class="ltr">
+                        {{ row.relatedCustomerNumber }}
+                    </td>
+
+                    <!-- عنوان مشتری -->
+                    <td data-label="عنوان مشتری">
+                        {{ row.relatedCustomerTitle }}
+                    </td>
+
+                    <!-- کد ملی/اتباع/شناسه ملی -->
+                    <td data-label="کد ملی/کد اتباع/شناسه ملی" class="ltr">
+                        {{ row.nationalCode }}
+                    </td>
+
+                    <!-- نوع ارتباط -->
+                    <td data-label="نوع ارتباط">
+                        {{ row.relationTypeLabel }}
+                    </td>
+
+                    <!-- عملیات -->
+                    <td class="action-column">
+                        <div class="flex flex-column gap-2">
+                            <button
+                                pButton
+                                icon="pi pi-eye"
+                                class="p-button-sm p-button-rounded p-button-text"
+                                pTooltip="مشاهده جزئیات"
+                            ></button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <!-- Empty -->
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="9" class="text-center py-4 text-gray-500">
+                        رکوردی برای نمایش موجود نیست.
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+    </div>
+</div>
+<p-dialog
+
+    [(visible)]="visibleContact"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="ثبت اطلاعات"
+    contentStyleClass="dialog-body card-filter">
+
+    <form class="form-grid" [formGroup]="extraDialogForm" (ngSubmit)="submitContact()">
+
+        <!-- همه فیلدها در یک ردیف -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">نوع ایثارگری:</label>
+                <p-dropdown formControlName="initiativeType" class="normal-dropdown"
+                            [options]="initiativeTypes" optionLabel="label"></p-dropdown>
+            </div>
+
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ پایان:</label>
+                <p-persian-calendar
+
+                    class="app-persian-calendar-style"
+                    formControlName="endDate"></p-persian-calendar>
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">درصد:</label>
+                <input pInputText formControlName="percent"  class="normal-input">
+            </div>
+        </div>
+
+        <!-- دکمه‌ها -->
+        <div class="my-4 flex items-center justify-end gap-3">
+            <button
+                pButton
+                type="submit"
+                label="تایید"
+                icon="pi pi-check"
+                class="btn-standard p-button-success">
+            </button>
+            <button
+                pButton
+                type="button"
+                label="انصراف"
+                icon="pi pi-times"
+                severity="danger"
+                [outlined]="true"
+
+                (click)="closeContact()"
+                class="btn-standard p-button-danger">
+            </button>
+        </div>
+    </form>
+</p-dialog>
+

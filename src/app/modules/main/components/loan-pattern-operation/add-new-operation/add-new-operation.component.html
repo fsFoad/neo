@@ -1,0 +1,215 @@
+<div *ngIf="visible" class="bg-white p-6 rounded-2xl border border-slate-200">
+
+
+    <div class="w-full bg-white">
+        <div class="p-8 rounded-xl shadow-sm mx-auto">
+            <div class="flex flex-col w-full p-4">
+                <div class="flex flex-col items-start text-right w-full">
+                    <h2 class="text-2xl font-semibold mb-2">عملیات تسهیلات</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-6 space-y-6 rounded-2xl">
+        <div [formGroup]="operationForm">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">نوع عقد:</label>
+                    <input pInputText formControlName="contractType" class="normal-input flex-1" />
+                </div>
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">عملیات:</label>
+                    <p-dropdown
+                        [options]="operationList"
+                        optionLabel="label"
+                        optionValue="value"
+                        formControlName="operation"
+                        class="normal-dropdown"
+                    ></p-dropdown>
+                </div>
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">اولویت: <span class="text-red-500">*</span></label>
+                    <input pInputText formControlName="priority" class="normal-input flex-1" />
+                </div>
+            </div>
+
+
+        </div>
+        <div class="flex flex-col">
+            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                <!-- 🔹 دکمه ایجاد محصول -->
+                <div class="my-2">
+                    <button
+                        pButton
+                        iconPos="right"
+                        class="p-button-primary normal-button"
+                        type="button"
+                        icon="pi pi-plus"
+                        label="افزودن عملیات"
+                        (click)="operationCreate()">
+                    </button>
+                </div>
+                <p-table
+                    [value]="operationTable"
+                    styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+                >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>ردیف</th>
+                            <th>عنوان عملیات</th>
+                            <th>ریز عملیات</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                        <tr>
+                            <td>{{ rowIndex + 1 }}</td>
+                            <td>{{ row.title }}</td>
+                            <td>
+                                <button
+                                    pButton
+                                    label="..."
+                                    class="p-button-primary p-button-outlined"
+                                    (click)="showOperationDetails(row)"
+                                ></button>
+                            </td>
+                            <td>
+                                <button
+                                    pButton
+                                    label="..."
+                                    class="p-button-sm p-button-danger"
+                                    (click)="deleteOperation(rowIndex)"
+                                ></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="4" class="text-center text-gray-500 py-4">هیچ رکوردی یافت نشد.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-end gap-4 mt-8" dir="rtl">
+        <button
+            pButton
+            label="تأیید"
+            class="p-button p-button-success w-32 h-10"
+            (click)="onConfirm()"
+        ></button>
+        <button
+            pButton
+            label="انصراف"
+            class="p-button p-button-danger w-32 h-10"
+            (click)="onCancel()"
+        ></button>
+    </div>
+
+</div>
+<!-- 🔹 دیالوگ ریز عملیات -->
+<p-dialog
+    header="ریز عملیات تسهیلات"
+    [(visible)]="showDetailDialog"
+    [modal]="true"
+    [style]="{ width: '800px' }"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <form [formGroup]="detailOperationForm" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- عنوان عملیات -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">عنوان عملیات:</label>
+                <input
+                    pInputText
+                    formControlName="title"
+                    [value]="selectedOperationTitle"
+                    readonly
+                    class="bg-gray-100"
+                />
+            </div>
+
+            <!-- ریز عملیات -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">ریز عملیات: <span class="text-red-500">*</span></label>
+                <p-dropdown
+                    [options]="detailList"
+                    optionLabel="label"
+                    optionValue="value"
+                    formControlName="detail"
+                    placeholder="انتخاب کنید"
+                ></p-dropdown>
+            </div>
+        </div>
+
+        <!-- دکمه‌ها -->
+        <div class="flex gap-4 mt-4">
+            <button
+                pButton
+                label="افزودن ریز عملیات"
+                icon="pi pi-plus"
+                class="p-button-success"
+                type="button"
+                (click)="addDetailOperation()"
+            ></button>
+
+            <button
+                pButton
+                label="حذف ریز عملیات"
+                icon="pi pi-trash"
+                class="p-button-danger"
+                type="button"
+                (click)="deleteDetailOperation(detailOperationTable.length - 1)"
+            ></button>
+        </div>
+
+        <!-- جدول ریز عملیات -->
+        <p-table
+            [value]="detailOperationTable"
+            styleClass="p-datatable-striped p-datatable-gridlines responsive-table mt-4"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>عنوان ریز عملیات</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{ rowIndex + 1 }}</td>
+                    <td>{{ row.detail }}</td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="2" class="text-center text-gray-500 py-4">هیچ ریز عملیاتی ثبت نشده.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <!-- دکمه‌های پایین -->
+        <div class="flex justify-end gap-4 mt-6">
+            <button
+                pButton
+                label="تأیید"
+                class="p-button p-button-success w-32 h-10"
+                type="button"
+                (click)="showDetailDialog = false"
+            ></button>
+            <button
+                pButton
+                label="انصراف"
+                class="p-button p-button-danger w-32 h-10"
+                type="button"
+                (click)="showDetailDialog = false"
+            ></button>
+        </div>
+    </form>
+</p-dialog>
