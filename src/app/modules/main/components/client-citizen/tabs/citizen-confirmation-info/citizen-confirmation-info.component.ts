@@ -27,7 +27,9 @@ import { TranslocoPipe } from '@ngneat/transloco';
 export class CitizenConfirmationInfoComponent implements OnInit {
     /** اگر دادهٔ خام داری مستقیم بده */
     @Input() flags: ChangeFlagsDto | null = null;
-
+    @Input() disabled = false;
+    @Input() onValueChange: (v: any) => void;
+    @Input() onValidityChange: (v: boolean) => void;
     /** اگر بخوای از والد لودری بدی که خودش از سرویس می‌خونه */
     @Input() loader?: () => import('rxjs').Observable<ChangeFlagsDto>;
 

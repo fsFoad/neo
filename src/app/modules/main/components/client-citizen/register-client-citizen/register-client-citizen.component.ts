@@ -254,15 +254,11 @@ export class RegisterClientCitizenComponent {
             icon: 'fact_check',
             cmp: CitizenConfirmationInfoComponent,
             inputs: {
-                disabled: false,
-                // لودر از سرویس
                 loader: () =>
                     this.reviewSvc.getChangeFlags(this.currentClientId),
-                // کال‌بک ثبت
-                submitClick: () => this.onFinalSubmit(),
             },
-        },
-    ];
+        }
+        ];
 
     // ← امضای درست بدون تداخل نام
     collect(kind: string, payload: any) {

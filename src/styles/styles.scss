@@ -250,4 +250,52 @@ body.dark-mode {
 }
 
 
+/* فقط در حالت RTL اعمال شود */
+[dir='rtl'] {
+    /* تب‌ها از راست به چپ چیده شوند، ولی ایندکس‌ها درست بمانند */
+    .mat-mdc-tab-header .mat-mdc-tab-labels {
+        flex-direction: row-reverse;
+        justify-content: flex-start; // تب اول می‌چسبد به راست
+    }
 
+    /* کمی زیباسازی اختیاری */
+    .mat-mdc-tab {
+        border-radius: 12px 12px 0 0;
+        min-height: 40px;
+        padding: 0 1rem;
+        transition: background .2s, color .2s, transform .2s;
+    }
+
+    .mat-mdc-tab .mdc-tab__text-label {
+        transition: color .2s ease;
+    }
+
+    .mat-mdc-tab:hover .mdc-tab__text-label,
+    .mat-mdc-tab:hover mat-icon {
+        color: var(--primary) !important;
+    }
+
+    .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label,
+    .mat-mdc-tab.mdc-tab--active mat-icon {
+        color: var(--primary) !important;
+        font-weight: 700;
+    }
+
+    .mat-mdc-tab .mat-icon {
+        transition: color .2s ease;
+    }
+
+    .mat-mdc-tab-header .mdc-tab-indicator__content--underline {
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(
+                90deg,
+                var(--primary),
+                color-mix(in srgb, var(--primary) 70%, var(--accent) 30%)
+        );
+    }
+}
+
+html, body {
+    direction: rtl;
+}

@@ -32,7 +32,8 @@ import {PersianCalendarComponent} from "../../../../../shared/components/persian
 export class CitizenLicenseInfoComponent {
     // ورودی/خروجی استاندارد تب‌ها
     @Input() disabled = false;
-
+    @Input() onValueChange: (v: any) => void;
+    @Input() onValidityChange: (v: boolean) => void;
     @Input() set value(val: LicenseInfoDto[] | null | undefined) {
         if (!val?.length) return;
         this.licenses.clear({ emitEvent: false });

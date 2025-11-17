@@ -156,3 +156,22 @@
     color: var(--primary) !important;
     font-weight: 700;
 }
+.app-tabs {
+    background: var(--surface);
+    color: var(--on-surface);
+}
+
+:host ::ng-deep .app-tabs .mat-mdc-tab-header {
+    background: var(--surface);
+    border-bottom: 1px solid color-mix(in srgb, var(--on-surface) 15%, transparent);
+}
+
+/* اگر تب‌پنل را خاص می‌خواهی */
+.tab-pane {
+    background: color-mix(in srgb, var(--surface) 96%, var(--primary) 4%);
+    transition: background .2s, box-shadow .2s;
+
+    &:hover {
+        box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    }
+}
