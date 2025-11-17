@@ -111,6 +111,13 @@ export class ThemeService {
 
 
         /* ---------------------------
+           4) PrimeNG / p-dropdown
+        ---------------------------- */
+        this.setVar('--p-dropdown-border-radius', '0.75rem');
+        this.setVar('--p-dropdown-padding-x', '1rem');
+        this.setVar('--p-dropdown-padding-y', '0.65rem');
+        this.setVar('--p-dropdown-height', '42px');
+        /* ---------------------------
            4) Fuse / Material
         ---------------------------- */
         this.setVar('--mdc-theme-primary', palette.primary);

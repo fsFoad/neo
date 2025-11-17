@@ -1095,4 +1095,30 @@ anglerighticon {
     border-top-width: 4px !important;
     border-radius: 999px !important;
 }
+/* ریشه‌ی دراپ‌داون – هم p-dropdown است هم dropdown-normal */
+.p-dropdown.dropdown-normal {
+    width: 75% !important;                              /* مثل normal-input با w-3/4 */
+    min-height: var(--p-dropdown-height);
+    border-radius: var(--p-dropdown-border-radius) !important;
+    border: 1px solid var(--p-inputtext-border-color);
+    background: var(--p-inputtext-background);
+    display: inline-flex;
+    align-items: center;
+}
 
+/* لیبل داخل دراپ‌داون */
+.p-dropdown.dropdown-normal .p-select-label {
+    padding: var(--p-dropdown-padding-y) var(--p-dropdown-padding-x) !important;
+    font-size: 0.875rem !important;                    /* text-sm */
+}
+
+/* تریگر (آیکن فلش) */
+.p-dropdown.dropdown-normal .p-select-dropdown {
+    padding-inline: 0.75rem !important;
+}
+
+/* فوکوس – مثل اینپوت‌ */
+.p-dropdown.dropdown-normal.p-focus {
+    border-color: var(--p-inputtext-focus-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}
