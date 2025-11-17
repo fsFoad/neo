@@ -46,6 +46,7 @@ import { AppSettings } from '../AppSetting';
         FuturisticLayoutComponent,
         ThinLayoutComponent,
         SettingsComponent,
+        NgIf,
     ],
 })
 export class LayoutComponent implements OnInit, OnDestroy {

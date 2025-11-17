@@ -1,3 +1,18 @@
+export const PRESET_NAMES = [
+    "Orange Electric",
+    "Electric Blue",
+    "Sunset Fusion",
+    "Deep Royal",
+    "Orange Soft",
+    "Blue Neon",
+    "Orange Flame",
+    "Royal Orange Blue",
+    "Soft Blue Orange",
+    "Orange Galaxy"
+] as const;
+
+export type MinimalPresetName = typeof PRESET_NAMES[number];
+
 export interface MinimalPalette {
     primary: string;
     accent: string;
@@ -8,16 +23,13 @@ export interface MinimalPalette {
 }
 
 export interface MinimalPreset {
-    name: string;
+    name: MinimalPresetName;
     light: MinimalPalette;
     dark: MinimalPalette;
 }
-export const THEME_PRESETS: MinimalPreset[] = [
 
-    /* =====================================================
-       1) Orange Electric (براساس rgb(254 95 2))
-    ===================================================== */
-    {
+export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
+    "Orange Electric": {
         name: "Orange Electric",
         light: {
             primary: "rgb(254,95,2)",
@@ -37,10 +49,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       2) Electric Blue (براساس rgb(0 49 229))
-    ===================================================== */
-    {
+    "Electric Blue": {
         name: "Electric Blue",
         light: {
             primary: "rgb(0,49,229)",
@@ -60,10 +69,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       3) Sunset Fusion
-    ===================================================== */
-    {
+    "Sunset Fusion": {
         name: "Sunset Fusion",
         light: {
             primary: "#ff6a00",
@@ -83,10 +89,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       4) Deep Royal Mix
-    ===================================================== */
-    {
+    "Deep Royal": {
         name: "Deep Royal",
         light: {
             primary: "rgb(0,49,229)",
@@ -106,10 +109,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       5) Orange Soft Mix
-    ===================================================== */
-    {
+    "Orange Soft": {
         name: "Orange Soft",
         light: {
             primary: "rgb(254,95,2)",
@@ -129,10 +129,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       6) Blue Neon
-    ===================================================== */
-    {
+    "Blue Neon": {
         name: "Blue Neon",
         light: {
             primary: "rgb(0,49,229)",
@@ -152,10 +149,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       7) Orange Flame
-    ===================================================== */
-    {
+    "Orange Flame": {
         name: "Orange Flame",
         light: {
             primary: "rgb(254,95,2)",
@@ -175,10 +169,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       8) Royal Orange Blue
-    ===================================================== */
-    {
+    "Royal Orange Blue": {
         name: "Royal Orange Blue",
         light: {
             primary: "rgb(0,49,229)",
@@ -198,10 +189,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       9) Soft Blue-Orange
-    ===================================================== */
-    {
+    "Soft Blue Orange": {
         name: "Soft Blue Orange",
         light: {
             primary: "#3f51b5",
@@ -221,10 +209,7 @@ export const THEME_PRESETS: MinimalPreset[] = [
         }
     },
 
-    /* =====================================================
-       10) Orange Galaxy
-    ===================================================== */
-    {
+    "Orange Galaxy": {
         name: "Orange Galaxy",
         light: {
             primary: "rgb(254,95,2)",
@@ -243,4 +228,4 @@ export const THEME_PRESETS: MinimalPreset[] = [
             onSurface: "#e0e0e0"
         }
     }
-];
+};

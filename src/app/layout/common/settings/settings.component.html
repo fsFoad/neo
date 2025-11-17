@@ -42,10 +42,12 @@
         </div>
 
         <div class="flex flex-col p-6">
-
             <label>رنگ اصلی</label>
             <input type="color" [(ngModel)]="selectedColor" (change)="applyTheme()" />
-            <div class="mt-6 p-4 border rounded">
+            <app-theme-picker></app-theme-picker>
+            <hr class="my-8" />
+
+     <!--       <div class="mt-6 p-4 border rounded">
                 <h3 class="text-base font-semibold mb-2">Theme Presets</h3>
 
                 <div class="grid grid-cols-2 gap-3">
@@ -63,8 +65,9 @@
                         </div>
                     </button>
                 </div>
-            </div>
-            <hr class="my-8" />
+                  <hr class="my-8" />
+            </div>-->
+
             <!-- Theme -->
             <div class="text-secondary text-md font-semibold">PrimeNgTheme</div>
             <div>

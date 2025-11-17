@@ -19,17 +19,20 @@ import { AppSettings } from '../../../AppSetting';
 import { AppConfiguratorComponent } from '../primeng/configurator/app.configurator.component';
 import { FormsModule } from '@angular/forms';
 import { MinimalPreset } from '../../../core/services/theme-presets';
+import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 
 @Component({
     selector: 'settings',
     templateUrl: './settings.component.html',
     styles: [
         `
+
             settings {
-                position: static;
-                display: block;
-                flex: none;
-                width: auto;
+                position: fixed;
+                bottom: 20px;
+                left: 0;
+                z-index: 999999; /* همیشه روی تمام layoutها */
+                pointer-events: auto;
             }
 
             @media (screen and min-width: 1280px) {
@@ -51,6 +54,7 @@ import { MinimalPreset } from '../../../core/services/theme-presets';
         FormsModule,
         NgForOf,
         NgIf,
+        ThemePickerComponent,
     ],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
