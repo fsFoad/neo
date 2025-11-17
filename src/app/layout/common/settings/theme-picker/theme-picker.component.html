@@ -1,3 +1,4 @@
+
 <div class="p-4 space-y-4">
     <div class="flex justify-between items-center">
         <h3 class="text-lg font-bold">Theme Picker</h3>
@@ -21,6 +22,29 @@
                 <div class="w-5 h-5 rounded-full" [style.background]="preset.light.accent"></div>
                 <div class="w-5 h-5 rounded-full" [style.background]="preset.light.warn"></div>
             </div>
+        </div>
+    </div>
+</div>
+<hr class="my-6" />
+
+<hr class="my-6" />
+
+<h3 class="text-md font-bold mb-2">Card Theme (Bank UI)</h3>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div *ngFor="let cp of cardPresets"
+         class="cursor-pointer rounded-xl border p-3 transition-all"
+         [class.border-blue-600]="selectedCardPreset === cp"
+         [class.shadow-lg]="selectedCardPreset === cp"
+         (click)="selectCardPreset(cp)">
+
+        <div class="font-semibold text-center mb-2">{{ cp }}</div>
+
+        <!-- کارت پیش نمایش -->
+        <div class="w-full h-14 rounded-xl"
+             [style.background]="getCardPreview(cp)?.bg"
+             [style.border]="getCardPreview(cp)?.border"
+             [style.box-shadow]="getCardPreview(cp)?.shadow">
         </div>
     </div>
 </div>

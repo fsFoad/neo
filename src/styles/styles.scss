@@ -271,3 +271,108 @@ input.p-inputtext.normal-input:focus {
     right: auto;
     left: 0; /* آیکن را سمت چپ می‌آورد */
 }
+/*:root {
+    --app-background: none;
+    --card-bg: #fff;
+    --card-border: 1px solid #e5e7eb;
+    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-radius: 12px;
+}
+
+!* ====== Background Global ====== *!
+body,
+.app-container,
+.page-wrapper,
+.fuse-main,
+.layout,
+.bg-card,
+.bg-default {
+    background: var(--app-background) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+!* ====== Card Override ====== *!
+.app-card,
+.p-card,
+.p-card * ,
+.card,
+.mat-card,
+.mat-card * {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+}*/
+:root {
+    --app-background: none;
+}
+
+/* لایه اصلی صفحه */
+.fuse-main,
+.page-wrapper,
+.layout,
+body {
+    background: var(--app-background) !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+/*
+:root {
+    --card-bg: #fff;
+    --card-border: 1px solid #ddd;
+    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-radius: 12px;
+}
+
+.app-card,
+.card,
+.p-card,
+.p-card *,
+.mat-card,
+.mat-card *,
+.bg-card,
+.form-wrapper {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+}
+!* === CUSTOM APP THEME (Card + Background) === *!
+*/
+
+:root {
+    --app-background: none;
+
+    --card-bg: #fff;
+    --card-border: 1px solid #ddd;
+    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-radius: 12px;
+}
+
+/* Background */
+body,
+.app-container,
+.layout,
+.fuse-main,
+.page-wrapper {
+    background: var(--app-background) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+/* Card Theme */
+.p-card,
+.mat-card,
+.card,
+.app-card,
+.form-wrapper,
+form,
+form .bg-white {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+}

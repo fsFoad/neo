@@ -17,9 +17,20 @@ export class ThemePickerComponent implements OnInit {
     selectedTheme: MinimalPresetName | null = null;
 
     isDarkMode = false;
+    backgrounds = Object.keys((this.themeService as any).BACKGROUND_PRESETS);
+    selectedBackground: string | null = localStorage.getItem('app_background') ?? null;
 
-    constructor(private themeService: ThemeService) {}
+    constructor(public themeService: ThemeService) {}
 
+
+    selectBackground(name: string) {
+        this.selectedBackground = name;
+        this.themeService.setBackgroundPreset(name);
+        localStorage.setItem('app_background', name);
+    }
+    get backgroundsData() {
+        return (this.themeService as any).BACKGROUND_PRESETS;
+    }
     ngOnInit(): void {
         // تبدیل Record → Array
         this.presets = Object.values(THEME_PRESETS);
@@ -57,5 +68,19 @@ export class ThemePickerComponent implements OnInit {
         if (this.selectedTheme) {
             this.themeService.applyPreset(this.selectedTheme);
         }
+    }
+
+    cardPresets = Object.keys((this.themeService as any).CARD_PRESETS);
+    selectedCardPreset = localStorage.getItem('app_card_preset') ?? 'bankClassic';
+
+    getCardPreview(name: string) {
+        const isDark = this.isDarkMode;
+        return (this.themeService as any).CARD_PRESETS[name]?.[isDark ? 'dark' : 'light'];
+    }
+
+    selectCardPreset(name: string) {
+        this.selectedCardPreset = name;
+        this.themeService.setCardPreset(name);
+        localStorage.setItem('app_card_preset', name);
     }
 }
