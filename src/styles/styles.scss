@@ -56,21 +56,21 @@ html.p-dark {
 /*  PrimeNG Full Dynamic Override (PrimeNG v19 compatible)                                               */
 /* ===================================================================================================== */
 
-/* Buttons */
+/* Buttons *//*
 .p-button {
     background: var(--primary) !important;
     border-color: var(--primary) !important;
     color: var(--p-primary-color-text) !important;
-}
+}*/
 
-.p-button.p-button-text {
+/*.p-button.p-button-text {
     color: var(--primary) !important;
-}
+}*/
 
-.p-button.p-button-outlined {
+/*.p-button.p-button-outlined {
     color: var(--primary) !important;
     border-color: var(--primary) !important;
-}
+}*/
 
 /* Input focus */
 .p-inputtext:enabled:focus,
@@ -138,13 +138,13 @@ html.p-dark {
 
 /* full override */
 
-.p-button,
+/*.p-button,
 .p-button .p-button-icon,
 .p-button .p-button-label {
     color: var(--primary-text) !important;
-}
+}*/
 
-.p-button.p-button-text,
+/*.p-button.p-button-text,
 .p-button.p-button-text .p-button-icon,
 .p-button.p-button-text .p-button-label {
     color: var(--primary-text) !important;
@@ -152,7 +152,7 @@ html.p-dark {
 
 .p-button.p-button-icon-only .p-button-icon {
     color: var(--primary-text) !important;
-}
+}*/
 /* ===================================================================================================== */
 /*  Remaining project styles (original)                                                                   */
 /* ===================================================================================================== */
@@ -163,58 +163,91 @@ html.p-dark {
 @import url(./primeng-custom-styles.scss);
 @import "perfect-scrollbar/css/perfect-scrollbar.css";
 @import url(app/modules/mat-wrapper-components/projects/components/saffron-styels.scss);
-p-button,
-.p-button .p-button-label,
-.p-button .p-button-icon {
-    color: #ffffff !important;
+
+body {
+    background-color: var(--background) !important;
+    color: var(--on-surface) !important;
 }
 
-/* Text buttons */
-.p-button.p-button-text,
-.p-button.p-button-text .p-button-label,
-.p-button.p-button-text .p-button-icon {
-    color: #ffffff !important;
+.bg-background {
+    background-color: var(--background) !important;
 }
 
-/* Outlined buttons */
-.p-button.p-button-outlined,
-.p-button.p-button-outlined .p-button-label,
-.p-button.p-button-outlined .p-button-icon {
-    color: #ffffff !important;
+.bg-surface {
+    background-color: var(--surface) !important;
 }
-
-/* Rounded buttons */
-.p-button.p-button-rounded,
-.p-button.p-button-rounded .p-button-icon,
-.p-button.p-button-rounded .p-button-label {
-    color: #ffffff !important;
-}
-
-/* Icon-only buttons */
-.p-button.p-button-icon-only,
-.p-button.p-button-icon-only .p-button-icon {
-    color: #ffffff !important;
-}
-
-/* Hover */
-.p-button:hover,
-.p-button:hover .p-button-label,
-.p-button:hover .p-button-icon {
-    color: #ffffff !important;
-}
-
-/* Focus */
-.p-button:focus,
-.p-button:focus .p-button-icon,
-.p-button:focus .p-button-label {
-    color: #ffffff !important;
-}
-
-/* Active */
-.p-button:active,
-.p-button:active .p-button-icon,
-.p-button:active .p-button-label {
-    color: #ffffff !important;
-}
-
 /* سایر استایل‌های قبلی شما بدون تغییر */
+
+
+:root {
+    /* Brand colors */
+    --color-primary: rgb(254,95,2);
+    --color-primary-contrast: #ffffff;
+
+    --color-accent: #0031e5;
+    --color-accent-contrast: #ffffff;
+
+    --color-warn: #d32f2f;
+    --color-warn-contrast: #ffffff;
+
+    /* Neutrals */
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-on-surface: #1e1e1e;
+
+    /* Radii, shadows, spacing */
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* حالت دارک */
+body.dark-mode {
+    --color-bg: #121212;
+    --color-surface: #1e1e1e;
+    --color-on-surface: #eeeeee;
+}
+
+/* ===========================
+   PRIME NG TOKEN BRIDGE
+   =========================== */
+
+:root {
+    /* Button */
+    --p-button-primary-background: var(--color-primary);
+    --p-button-primary-border-color: var(--color-primary);
+    --p-button-primary-color: var(--color-primary-contrast);
+    --p-button-primary-hover-background: color-mix(in srgb, var(--color-primary) 85%, black 15%);
+    --p-button-primary-hover-border-color: var(--color-primary);
+    --p-button-primary-hover-color: var(--color-primary-contrast);
+
+    /* InputText */
+    --p-inputtext-bg: var(--color-surface);
+    --p-inputtext-color: var(--color-on-surface);
+    --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
+    --p-inputtext-focus-border-color: var(--color-primary);
+    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+
+    /* Toast, Panel, Divider, … اگر لازم داری، اینجا */
+}
+
+/* حالت دارک PrimeNG */
+body.dark-mode {
+    --p-inputtext-bg: color-mix(in srgb, var(--color-surface) 85%, black 15%);
+    --p-inputtext-color: var(--color-on-surface);
+}
+
+
+/*.p-button.p-button-primary {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary-contrast) !important;
+}*/
+
+.p-button.p-button-primary:hover {
+    background: var(--p-button-primary-hover-background) !important;
+    border-color: var(--p-button-primary-hover-border-color) !important;
+}
+
+
+

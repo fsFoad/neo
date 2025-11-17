@@ -274,3 +274,55 @@
     background-color: #f3f4f6; /* خاکستری روشن */
     color: #374151; /* خاکستری تیره */
 }
+.btn-icon-2xl .p-button {
+    border-radius: 1rem !important; /* معادل rounded-2xl */
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0 !important;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+:host ::ng-deep .btn-icon-2xl .p-button {
+    border-radius: 1rem !important;  // rounded-2xl
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+:host ::ng-deep .normal-button .p-button {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.75rem;   // ردیوس خودت
+}
+
+:host ::ng-deep .btn-icon-outlined .p-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+:host ::ng-deep .btn-icon-soft .p-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    padding: 0 !important;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: color-mix(in srgb, var(--primary) 20%, transparent);
+    color: var(--primary);
+    border: none !important;
+}
+
+:host ::ng-deep .btn-icon-soft .p-button:hover {
+    background: color-mix(in srgb, var(--primary) 30%, transparent);
+}

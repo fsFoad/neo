@@ -2,12 +2,12 @@
     <div class="flex flex-wrap gap-2 mb-4 justify-start">
         <button pButton icon="pi pi-user-plus" type="button"
                 label="{{ 'citizen.contact.actions.createContact' | transloco }}"
-                iconPos="right" class="p-button-outlined normal-button" (click)="openContact()">
+                iconPos="right"  [outlined]="true" (click)="openContact()">
 
         </button>
         <button icon="pi pi-home" pButton type="button"
                 label="  {{ 'citizen.contact.actions.createAddress' | transloco }}"
-                class="p-button-outlined normal-button"
+                 [outlined]="true"
                 (click)="openAddress()" iconPos="right">
         </button>
 

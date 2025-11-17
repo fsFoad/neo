@@ -3,11 +3,12 @@ import { THEME_PRESETS, MinimalPreset, MinimalPresetName } from '../../../../cor
 import { ThemeService } from '../../../../core/services/theme.service';
 import { MatIcon } from '@angular/material/icon';
 import { NgForOf } from '@angular/common';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-theme-picker',
     templateUrl: './theme-picker.component.html',
-    imports: [MatIcon, NgForOf],
+    imports: [MatIcon, NgForOf, MatIconButton],
     styleUrls: ['./theme-picker.component.scss'],
 })
 export class ThemePickerComponent implements OnInit {

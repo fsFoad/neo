@@ -557,3 +557,9 @@ fuse-vertical-navigation-group-item {
         }
     }
 }
+
+fuse-vertical-navigation .fuse-vertical-navigation-item-active:hover .fuse-vertical-navigation-item-title,
+fuse-vertical-navigation .fuse-vertical-navigation-item-active:hover .fuse-vertical-navigation-item-icon,
+fuse-vertical-navigation .fuse-vertical-navigation-item-active:hover .fuse-vertical-navigation-item-subtitle {
+    color: #fff !important;
+}

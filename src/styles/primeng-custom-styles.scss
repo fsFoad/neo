@@ -1,3 +1,18 @@
+
+
+.normal-input {
+    border-color: var(--p-inputtext-border-color);
+    background: var(--p-inputtext-bg);
+    color: var(--p-inputtext-color);
+}
+
+.normal-input:focus {
+    border-color: var(--p-inputtext-focus-border-color);
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color);
+}
+
+
+
 .layout-config {
     backdrop-filter: blur(20px);
     background-color: var(--mobile-menu-bg);
@@ -25,11 +40,6 @@
         }
     }
 
-    /* .grid {
-         > div {
-             padding: 1rem;
-         }
-     }*/
 
     .p-inputswitch {
         .p-inputswitch-slider {
@@ -225,8 +235,8 @@
 /*.p-fieldset-legend{
     background: none !important;
 }*/
-.p-panel{
-    background: none !important;
+.p-panel {
+    background: var(--surface-ground) !important;
 }
 
 
@@ -292,8 +302,11 @@
     @apply text-gray-700 block font-medium;
 }
 
-.normal-button {
-    @apply rounded-xl !important;
+.normal-button,
+.p-button {
+    font-size: 0.85rem ;
+    padding: 0.35rem 0.75rem ;
+    border-radius: 0.75rem;
 }
 
 .normal-password {
@@ -828,17 +841,9 @@ anglerighticon {
 }
 .p-button {
     min-width: 0 !important;
-    font-size: 0.85rem !important;
-    padding: 0.35rem 0.75rem !important;
-    border-radius: 0.75rem!important;
-    height: 2.8rem !important;  /* هم‌اندازه input */
+    height: 2.8rem !important;
 
-}
-/*.p-button .p-button-label:not(:empty) {
-    min-width: 20px !important;
-}*/
-.p-button:has(.p-button-label:not(:empty)) {
-    min-width: 30px !important;
+
 }
 
 .p-button:has(.p-button-icon):has(.p-button-label:empty) {
@@ -862,10 +867,8 @@ anglerighticon {
     margin: 0!important;
 }
 .p-inputgroup {
-    border: 1px solid var(--p-inputborder, #d1d5db);
-    border-radius: 0.75rem  !important;
-    background: var(--p-inputbg, #fff);
-    overflow: hidden; /* مهم: گوشه‌ها را کلیپ می‌کند */
+    border-radius: 0.75rem !important;
+    overflow: hidden;
     align-items: stretch;
 }
 .p-dialog {
@@ -925,3 +928,172 @@ anglerighticon {
     outline-color: transparent;
     box-shadow: var(--p-inputtext-shadow);
 }
+/* ---------------------------
+   TAB ROOT CONTAINER
+---------------------------- */
+.app-tabs {
+    background: var(--surface);
+    color: var(--on-surface);
+}
+
+/* ---------------------------
+   TAB HEADER (سربرگ تب‌ها)
+---------------------------- */
+:host ::ng-deep .app-tabs .mat-mdc-tab-header {
+    background: var(--surface);
+    border-bottom: 1px solid color-mix(in srgb, var(--on-surface) 15%, transparent);
+}
+
+/* ---------------------------
+   SINGLE TAB
+---------------------------- */
+:host ::ng-deep .app-tabs .mat-mdc-tab {
+    border-radius: 12px 12px 0 0;
+    min-height: 40px;
+    padding: 0 1rem;
+    color: var(--on-surface);
+    transition: background .2s, color .2s, transform .2s;
+
+    /* Ripple Sync */
+    --mdc-ripple-color: var(--primary);
+    --mdc-ripple-press-opacity: .12;
+}
+:host ::ng-deep .app-tabs .mat-mdc-tab .mat-icon {
+    color: var(--on-surface) !important;
+    transition: color .2s ease;
+}
+/* HOVER */
+:host ::ng-deep .app-tabs .mat-mdc-tab:hover .mdc-tab__text-label,
+:host ::ng-deep .app-tabs .mat-mdc-tab:hover .mat-icon {
+    color: var(--primary) !important;
+}
+/* ACTIVE */
+:host ::ng-deep .app-tabs .mdc-tab--active .mdc-tab__text-label,
+:host ::ng-deep .app-tabs .mdc-tab--active .mat-icon {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+
+/* INDICATOR */
+:host ::ng-deep .app-tabs .mdc-tab-indicator__content--underline {
+    background: var(--primary);
+}
+/* Hover */
+:host ::ng-deep .app-tabs .mat-mdc-tab:hover {
+    background: color-mix(in srgb, var(--primary) 20%, transparent);
+    color: var(--primary);
+}
+
+/* Active tab label */
+:host ::ng-deep .app-tabs .mat-mdc-tab .mdc-tab__text-label {
+    color: var(--on-surface) !important;
+    transition: color .2s ease;
+}
+
+/* ---------------------------
+   INDICATOR (خط زیر تب فعال)
+---------------------------- */
+:host ::ng-deep .app-tabs .mdc-tab-indicator__content--underline {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(
+            90deg,
+            var(--primary),
+            color-mix(in srgb, var(--primary) 70%, var(--accent) 30%)
+    );
+}
+
+/* ---------------------------
+   TAB CONTENT (پنل تب)
+---------------------------- */
+.tab-pane {
+    background: color-mix(in srgb, var(--surface) 96%, var(--primary) 4%);
+    transition: background .2s, box-shadow .2s;
+
+    &:hover {
+        box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    }
+}
+
+/* ---------------------------
+   DARK MODE
+---------------------------- */
+:root.dark-mode .app-tabs {
+    background: var(--surface);
+    color: var(--on-surface);
+}
+/* رنگ پیش‌فرض تَب‌ها بر اساس تم */
+.app-tabs .mat-mdc-tab .mdc-tab__text-label,
+.app-tabs .mat-mdc-tab .mat-icon {
+    color: var(--on-surface) !important;
+    transition: color .2s ease;
+}
+
+/* Hover روی تب */
+.app-tabs .mat-mdc-tab:hover .mdc-tab__text-label,
+.app-tabs .mat-mdc-tab:hover .mat-icon {
+    color: var(--primary) !important;
+}
+
+/* تب فعال */
+.app-tabs .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label,
+.app-tabs .mat-mdc-tab.mdc-tab--active .mat-icon {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+:root.dark-mode .tab-pane {
+    background: color-mix(in srgb, #0b0b0b 92%, var(--primary) 8%);
+}
+
+/* تنظیم رنگ متن تب‌ها بر اساس تم — override کلاس‌های Tailwind */
+.app-tabs .mat-mdc-tab .mdc-tab__text-label,
+.app-tabs .mat-mdc-tab .mdc-tab__text-label span,
+.app-tabs .mat-mdc-tab .mdc-tab__text-label .mat-icon {
+    color: var(--on-surface) !important;
+}
+
+/* hover */
+.app-tabs .mat-mdc-tab:hover .mdc-tab__text-label span,
+.app-tabs .mat-mdc-tab:hover .mdc-tab__text-label .mat-icon {
+    color: var(--primary) !important;
+}
+
+/* active */
+.app-tabs .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label span,
+.app-tabs .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label .mat-icon {
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+}
+/* رنگ متن تب‌ها */
+.app-tabs .mat-mdc-tab .mdc-tab__text-label > span > span {
+    color: var(--on-surface) !important;
+}
+
+/* رنگ آیکون */
+.app-tabs .mat-mdc-tab .mdc-tab__text-label mat-icon {
+    color: var(--on-surface) !important;
+}
+
+/* هاور */
+.app-tabs .mat-mdc-tab:hover .mdc-tab__text-label > span > span,
+.app-tabs .mat-mdc-tab:hover .mdc-tab__text-label mat-icon {
+    color: var(--primary) !important;
+}
+
+/* فعال */
+.app-tabs .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label > span > span,
+.app-tabs .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label mat-icon {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+.app-tabs .mat-mdc-tab {
+    --mdc-tab-indicator-active-indicator-color: var(--primary) !important;
+    --mdc-tab-indicator-active-indicator-height: 4px !important;
+    --mdc-tab-indicator-active-indicator-shape: 999px !important; /* گرد شدن */
+}
+.app-tabs .mdc-tab-indicator__content--underline {
+    border-top-color: var(--primary) !important;
+    border-top-width: 4px !important;
+    border-radius: 999px !important;
+}
+

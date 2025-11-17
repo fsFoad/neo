@@ -39,39 +39,96 @@ export class ThemeService {
         }
 
         const isDarkMode = document.body.classList.contains('dark-mode');
+        const palette = isDarkMode ? preset.dark : preset.light;
 
-        this.applyPalette(isDarkMode ? preset.dark : preset.light);
+        this.applyPalette(palette);
     }
 
-    private toggleDarkMode(isDark: boolean): void {
-        const body = document.body;
-        if (isDark) {
-            body.classList.add('dark-mode');
-        } else {
-            body.classList.remove('dark-mode');
-        }
-    }
     applyPalette(palette: MinimalPalette, store = true): void {
-        // Primary / Accent / Warn
+
+        /* ---------------------------
+           1) Core Colors
+        ---------------------------- */
         this.setVar('--primary', palette.primary);
         this.setVar('--accent', palette.accent);
         this.setVar('--warn', palette.warn);
 
-        // Fuse mapping
-        this.setVar('--fuse-primary', palette.primary);
-        this.setVar('--fuse-accent', palette.accent);
+        this.setVar('--surface', palette.surface);
+        this.setVar('--background', palette.background);
+        this.setVar('--on-surface', palette.onSurface);
 
-        // تشخیص حالت Dark / Light
-        const isDark = this.isColorDark(palette.primary);
+
+        /* ---------------------------
+           2) PrimeNG Button Mapping
+        ---------------------------- */
+
+        // primary
+        this.setVar('--p-button-primary-background', palette.primary);
+        this.setVar('--p-button-primary-border-color', palette.primary);
+        this.setVar('--p-button-primary-color', '#ffffff');
+        this.setVar('--p-button-primary-hover-background', palette.accent);
+        this.setVar('--p-button-primary-hover-border-color', palette.accent);
+        this.setVar('--p-button-primary-hover-color', '#ffffff');
+
+        // SUCCESS (دیفالت PrimeNG)
+        this.setVar('--p-button-success-background', 'var(--p-green-500)');
+        this.setVar('--p-button-success-border-color', 'var(--p-green-500)');
+        this.setVar('--p-button-success-color', '#ffffff');
+
+        // DANGER (دیفالت PrimeNG)
+        this.setVar('--p-button-danger-background', 'var(--p-red-500)');
+        this.setVar('--p-button-danger-border-color', 'var(--p-red-500)');
+        this.setVar('--p-button-danger-color', '#ffffff');
+
+        // hover
+        this.setVar('--p-button-success-hover-background', 'var(--p-green-600)');
+        this.setVar('--p-button-danger-hover-background', 'var(--p-red-600)');
+
+        /* Outlined Button Tokens */
+        this.setVar('--p-button-outlined-color', palette.primary);
+        this.setVar('--p-button-outlined-border-color', palette.primary);
+        this.setVar('--p-button-outlined-hover-background', palette.primary + '22');
+        this.setVar('--p-button-outlined-hover-color', palette.primary);
+        this.setVar('--p-button-outlined-active-background', palette.primary + '33');
+
+
+        this.setVar('--p-button-border-radius', '0.75rem');
+
+// مخصوص Outlined + Severity primary
+        this.setVar('--p-button-outlined-primary-color', palette.primary);
+        this.setVar('--p-button-outlined-primary-border-color', palette.primary);
+        this.setVar('--p-button-outlined-primary-hover-background', palette.primary + '22');
+        this.setVar('--p-button-outlined-primary-hover-color', palette.primary);
+        this.setVar('--p-button-outlined-primary-hover-border-color', palette.primary);
+        /* ---------------------------
+           3) PrimeNG Inputs
+        ---------------------------- */
+        this.setVar('--p-inputtext-bg', palette.surface);
+        this.setVar('--p-inputtext-color', palette.onSurface);
+        this.setVar('--p-inputtext-border-color', palette.onSurface + '33');
+        this.setVar('--p-inputtext-focus-border-color', palette.primary);
+        this.setVar('--p-inputtext-focus-ring-color', palette.primary + '55');
+
+
+        /* ---------------------------
+           4) Fuse / Material
+        ---------------------------- */
+        this.setVar('--mdc-theme-primary', palette.primary);
+        this.setVar('--mdc-theme-on-surface', palette.onSurface);
+
+
+        /* ---------------------------
+           5) Dark Mode Auto
+        ---------------------------- */
+        const isDark = this.isColorDark(palette.background);
         this.toggleDarkMode(isDark);
 
-        // انتشار به تمامی Subscriberها
-        this._theme$.next(palette);
 
-        // ذخیره
-        if (store) {
-            this.saveTheme(palette);
-        }
+        /* ---------------------------
+           6) Save
+        ---------------------------- */
+        this._theme$.next(palette);
+        if (store) this.saveTheme(palette);
     }
 
     setCssVar(name: string, value: string): void {
@@ -89,6 +146,17 @@ export class ThemeService {
             document.documentElement.style.setProperty('--primary-text', '#ffffff');   // متن سفید
         } else {
             document.documentElement.style.setProperty('--primary-text', '#1f1f1f');   // متن تیره
+        }
+    }
+    private toggleDarkMode(isDark: boolean): void {
+        const body = document.body;
+
+        if (isDark) {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+        } else {
+            body.classList.add('light-mode');
+            body.classList.remove('dark-mode');
         }
     }
 
@@ -119,10 +187,10 @@ export class ThemeService {
         document.documentElement.style.setProperty('--mat-primary', color);
         document.documentElement.style.setProperty('--mat-accent', color);
 
-        // وابسته‌های PrimeNG
+  /*      // وابسته‌های PrimeNG
         document.documentElement.style.setProperty('--p-primary-color', color);
         document.documentElement.style.setProperty('--p-primary-500', color);
-
+*/
         // وابسته‌های Fuse
         document.documentElement.style.setProperty('--fuse-primary', color);
         document.documentElement.style.setProperty('--fuse-accent', color);
