@@ -1,9 +1,7 @@
 
 
 .normal-input {
-    border-color: var(--p-inputtext-border-color);
-    background: var(--p-inputtext-bg);
-    color: var(--p-inputtext-color);
+    @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition w-3/4 focus:outline-none focus:ring-2 focus:ring-primary;
 }
 
 .normal-input:focus {
@@ -12,6 +10,9 @@
 }
 
 
+.dropdown-normal .p-dropdown {
+    @apply  border w-3/4 border-gray-300 rounded-xl px-3 py-2 text-sm;
+}
 
 .layout-config {
     backdrop-filter: blur(20px);
@@ -240,9 +241,7 @@
 }
 
 
-.normal-input {
-    @apply border  rounded-xl px-4 py-2.5   transition w-3/4  !important;
-}
+
 
 .full-input {
     @apply border  rounded-xl px-4 py-2.5   transition w-full !important;

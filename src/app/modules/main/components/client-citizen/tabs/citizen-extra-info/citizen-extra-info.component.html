@@ -3,7 +3,7 @@
         <div class="grid grid-cols-12 gap-3 md:gap-4">
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'وضعیت سکونت' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="religionOptions"
                             optionLabel="label"
                             optionValue="value"
@@ -14,7 +14,7 @@
             <!-- دین -->
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'citizen.extra.religionId' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="religionOptions"
                             optionLabel="label"
                             optionValue="value"
@@ -26,7 +26,7 @@
             <!-- مذهب (براساس دین فیلتر می‌شود) -->
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'citizen.extra.religionDetailId' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="denominationFiltered"
                             optionLabel="label"
                             optionValue="value"
@@ -36,7 +36,7 @@
             <!-- وضعیت تاهل -->
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'citizen.extra.maritalStatus' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="maritalOptions"
                             optionLabel="label"
                             optionValue="value"
@@ -71,7 +71,7 @@
         <!-- نوع استخدام -->
         <div class="col-span-12 md:col-span-3 flex flex-col my-3">
             <label class="mb-1">{{ 'نوع استخدام' | transloco }}</label>
-            <p-dropdown class="normal-dropdown"
+            <p-dropdown class="dropdown-normal"
                         [options]="religionOptions"
                         optionLabel="label"
                         optionValue="value"
@@ -265,7 +265,7 @@
 
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">نوع ایثارگری:</label>
-                <p-dropdown formControlName="initiativeType" class="normal-dropdown"
+                <p-dropdown formControlName="initiativeType" class="dropdown-normal"
                             [options]="initiativeTypes" optionLabel="label"></p-dropdown>
             </div>
 

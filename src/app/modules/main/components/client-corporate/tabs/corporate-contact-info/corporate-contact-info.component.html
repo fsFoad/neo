@@ -88,7 +88,7 @@
                         <label class="mb-1 block">{{ 'citizen.contact.provinceId' | transloco }} <span
                             class="text-red-500">*</span></label>
                         <p-dropdown
-                            class="normal-dropdown" class="w-full" [options]="provinceOptions" optionLabel="label"
+                            class="dropdown-normal" class="w-full" [options]="provinceOptions" optionLabel="label"
                             optionValue="value"
                             formControlName="provinceId"></p-dropdown>
                     </div>
@@ -96,7 +96,7 @@
                     <div class="col-span-12 md:col-span-3">
                         <label class="mb-1 block">{{ 'citizen.contact.cityId' | transloco }} <span class="text-red-500">*</span></label>
                         <p-dropdown
-                            class="normal-dropdown" class="w-full" [options]="cityOptions" optionLabel="label"
+                            class="dropdown-normal" class="w-full" [options]="cityOptions" optionLabel="label"
                             optionValue="value"
                             formControlName="cityId"></p-dropdown>
                     </div>
@@ -122,7 +122,7 @@
                         <label class="mb-1 block">{{ 'citizen.contact.inhabitancyType' | transloco }} <span
                             class="text-red-500">*</span></label>
                         <p-dropdown
-                            class="normal-dropdown" class="w-full" [options]="inhabitancyOptions" optionLabel="label"
+                            class="dropdown-normal" class="w-full" [options]="inhabitancyOptions" optionLabel="label"
                             optionValue="value" formControlName="inhabitancyType"></p-dropdown>
                     </div>
 
@@ -323,20 +323,20 @@
                     <span class="text-red-500">*</span> <span>نوع نشانی</span>:
                 </label>
                 <p-dropdown
-                    class="normal-dropdown" formControlName="addressType"
+                    class="dropdown-normal" formControlName="addressType"
                     [options]="addressTypes" optionLabel="label"></p-dropdown>
             </div>
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label"><span class="text-red-500">*</span><span>استان</span>:</label>
                 <p-dropdown
-                    class="normal-dropdown" formControlName="provinceId"
+                    class="dropdown-normal" formControlName="provinceId"
                     [options]="provinceOptions" optionLabel="label"></p-dropdown>
             </div>
 
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label"><span class="text-red-500">*</span><span>شهر</span>:</label>
                 <p-dropdown
-                    class="normal-dropdown" formControlName="cityId"
+                    class="dropdown-normal" formControlName="cityId"
                     [options]="cityOptions" optionLabel="label"></p-dropdown>
             </div>
         </div>
@@ -423,7 +423,7 @@
                         گروه نوع تماس:</span>
                 </label>
                 <p-dropdown
-                    class="normal-dropdown" formControlName="group" [options]="groups"
+                    class="dropdown-normal" formControlName="group" [options]="groups"
                     optionLabel="label"></p-dropdown>
             </div>
             <div class="col-span-9 md:col-span-4 flex flex-col mb-2">
@@ -432,7 +432,7 @@
                 :</span>
                 </label>
                 <p-dropdown
-                    class="normal-dropdown" formControlName="type" [options]="types"
+                    class="dropdown-normal" formControlName="type" [options]="types"
                     optionLabel="label"></p-dropdown>
             </div>
             <div class="col-span-9 md:col-span-1 flex items-center gap-2 mb-2">

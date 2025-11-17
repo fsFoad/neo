@@ -251,3 +251,23 @@ body.dark-mode {
 
 
 
+input.p-inputtext.normal-input {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #d1d5db !important;  /* معادل border-gray-300 */
+    border-radius: 0.75rem !important;   /* تقریباً rounded-xl */
+}
+
+/* فوکوس */
+input.p-inputtext.normal-input:focus {
+    border-color: var(--p-inputtext-focus-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}
+:root[dir="rtl"] .p-dropdown {
+    direction: rtl !important;
+}
+
+:root[dir="rtl"] .p-dropdown .p-select-dropdown {
+    right: auto;
+    left: 0; /* آیکن را سمت چپ می‌آورد */
+}

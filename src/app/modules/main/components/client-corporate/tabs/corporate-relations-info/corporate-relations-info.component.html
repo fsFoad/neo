@@ -217,7 +217,7 @@
                     <span class="text-red-500">*</span> <span>نوع جستجو</span>:
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="searchList"
                     optionLabel="label"
                     optionValue="value"
@@ -279,13 +279,13 @@
         <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">نوع ارتباط:</label>
-                <p-dropdown [options]="relationTypeOptions" optionLabel="label" optionValue="value"  class="normal-dropdown"
+                <p-dropdown [options]="relationTypeOptions" optionLabel="label" optionValue="value"  class="dropdown-normal"
                             formControlName="relationType"></p-dropdown>
             </div>
 
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">نسبت:</label>
-                <p-dropdown [options]="relationDegreeOptions" optionLabel="label" optionValue="value"  class="normal-dropdown"
+                <p-dropdown [options]="relationDegreeOptions" optionLabel="label" optionValue="value"  class="dropdown-normal"
                             formControlName="relationDegree"></p-dropdown>
             </div>
             <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -312,7 +312,7 @@
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">محل صدور نامه:</label>
                 <p-dropdown [options]="letterPlaceOptions" optionLabel="label" optionValue="value"
-                            class="normal-dropdown"    formControlName="letterIssuePlace"></p-dropdown>
+                            class="dropdown-normal"    formControlName="letterIssuePlace"></p-dropdown>
             </div>
         </div>
 
