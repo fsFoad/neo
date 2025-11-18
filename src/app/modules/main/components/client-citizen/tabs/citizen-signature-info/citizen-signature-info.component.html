@@ -1,5 +1,5 @@
 
-<div class="bg-white p-4 rounded-xl border border-slate-200" [formGroup]="signFg">
+<div class="app-card p-4 rounded-xl border border-slate-200" [formGroup]="signFg">
     <div class="flex flex-wrap gap-2 mb-4 justify-start">
         <button pButton icon="pi pi-file-edit" type="button"
                 label="{{ 'citizen.contact.actions.createSign' | transloco }}"
@@ -97,7 +97,7 @@ appendTo="body"
                 </label>
                 <p-dropdown
 
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     formControlName="signatureType"
                     [options]="signatureTypeOptions"
                     optionLabel="label"
@@ -114,7 +114,7 @@ appendTo="body"
                 </label>
                 <p-dropdown
 
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     formControlName="hand"
                     [options]="handOptions"
                     optionLabel="label"
@@ -182,7 +182,7 @@ appendTo="body"
                     <span class="text-red-500">*</span>
                     <span class="font-medium">بارگذاری :</span>
                 </label>
-                <div class="border rounded-xl p-5 flex flex-col gap-4 bg-white shadow-sm">
+                <div class="border rounded-xl p-5 flex flex-col gap-4 app-card">
 
                     <!-- عنوان و حداکثر سایز -->
                     <div class="flex items-center justify-between">

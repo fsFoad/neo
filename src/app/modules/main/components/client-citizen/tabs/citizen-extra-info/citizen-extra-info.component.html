@@ -1,9 +1,9 @@
 <div [formGroup]="extraFg">
-    <div class="bg-white p-4 rounded-xl border border-slate-200">
+    <div class="app-card p-4 rounded-xl border border-slate-200">
         <div class="grid grid-cols-12 gap-3 md:gap-4">
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'وضعیت سکونت' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="religionOptions"
                             optionLabel="label"
                             optionValue="value"
@@ -14,7 +14,7 @@
             <!-- دین -->
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'citizen.extra.religionId' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="religionOptions"
                             optionLabel="label"
                             optionValue="value"
@@ -26,7 +26,7 @@
             <!-- مذهب (براساس دین فیلتر می‌شود) -->
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'citizen.extra.religionDetailId' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="denominationFiltered"
                             optionLabel="label"
                             optionValue="value"
@@ -36,7 +36,7 @@
             <!-- وضعیت تاهل -->
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mb-1">{{ 'citizen.extra.maritalStatus' | transloco }}</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="maritalOptions"
                             optionLabel="label"
                             optionValue="value"
@@ -66,12 +66,12 @@
 
         </div>
     </div>
-    <div class="bg-white p-4 rounded-xl border border-slate-200 my-5 grid grid-cols-12 gap-4 items-center">
+    <div class="app-card p-4 rounded-xl border border-slate-200 my-5 grid grid-cols-12 gap-4 items-center">
 
         <!-- نوع استخدام -->
         <div class="col-span-12 md:col-span-3 flex flex-col my-3">
             <label class="mb-1">{{ 'نوع استخدام' | transloco }}</label>
-            <p-dropdown class="normal-dropdown"
+            <p-dropdown class="dropdown-normal"
                         [options]="religionOptions"
                         optionLabel="label"
                         optionValue="value"
@@ -96,7 +96,7 @@
             <label for="bankStaff">پرسنل بانک</label>
         </div>
     </div>
-    <div class="bg-white p-4 rounded-xl border border-slate-200 my-5 ">
+    <div class="app-card p-4 rounded-xl border border-slate-200 my-5 ">
         <h3 class="text-lg font-semibold">
             {{ 'اطلاعات معلولیت' | transloco }}
         </h3>
@@ -136,7 +136,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-white p-4 rounded-xl border border-slate-200 my-5 ">
+    <div class="app-card p-4 rounded-xl border border-slate-200 my-5 ">
         <h3 class="text-lg font-semibold">
             {{ 'اطلاعات ایثارگری' | transloco }}
         </h3>
@@ -265,7 +265,7 @@
 
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">نوع ایثارگری:</label>
-                <p-dropdown formControlName="initiativeType" class="normal-dropdown"
+                <p-dropdown formControlName="initiativeType" class="dropdown-normal"
                             [options]="initiativeTypes" optionLabel="label"></p-dropdown>
             </div>
 

@@ -1,4 +1,4 @@
-<div class="w-full bg-white">
+<div class="w-full app-card">
     <div class="p-8 rounded-xl shadow-sm  mx-auto">
         <div class="flex flex-col w-full p-4">
             <div class="flex flex-col items-start text-right w-full">
@@ -10,14 +10,14 @@
     </div>
 </div>
 <div class="p-6 space-y-6 rounded-2xl">
-    <div [formGroup]="filterForm" class="bg-white p-6 rounded-xl border border-slate-200">
+    <div [formGroup]="filterForm" class="app-card p-6 rounded-xl border border-slate-200">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">عنوان طرح :</label>
 
                 <div class="flex flex-row items-center gap-2">
                     <p-dropdown
-                        class="normal-dropdown"
+                        class="dropdown-normal"
                         [options]="loanPlanList"
                         optionLabel="label"
                         optionValue="value"
@@ -40,7 +40,7 @@
     </div>
 
     <div class="flex flex-col">
-        <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <div class="app-card p-4 rounded-xl border border-slate-200">
             <div class="my-2">
                 <button
                     pButton

@@ -1,10 +1,10 @@
 <div [formGroup]="basicForm">
-    <div class="bg-white p-4 rounded-xl border my-5  border-slate-200">
+    <div class="app-card p-4 rounded-xl border my-5  border-slate-200">
         <div class="grid grid-cols-12 gap-3 md:gap-4">
             <!-- نوع تابعیت -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1"><span class="text-red-500">* </span>{{ 'نوع تابعیت' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="typeOfCitizenshipList"
                             optionLabel="label"
                             optionValue="value"
@@ -15,7 +15,7 @@
             <!-- نوع مالکیت مشتری حقوقی -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1"><span class="text-red-500">* </span>{{ 'نوع مالکیت مشتری حقوقی' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="typeOfOwnershipList"
                             optionLabel="label"
                             optionValue="value"
@@ -26,7 +26,7 @@
             <!-- نوع مشتری -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1">{{ 'نوع مشتری' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="typeOfCustomerList"
                             optionLabel="label"
                             optionValue="value"
@@ -37,7 +37,7 @@
             <!-- نوع شرکت -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1">{{ 'نوع شرکت' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="typeOfCompanyList"
                             optionLabel="label"
                             optionValue="value"
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-white p-4 rounded-xl border my-5 border-slate-200">
+    <div class="app-card p-4 rounded-xl border my-5 border-slate-200">
         <div class="grid grid-cols-12 gap-3 md:gap-4">
 
             <!-- ستون اول: کد ملی -->
@@ -73,7 +73,7 @@
 
         </div>
     </div>
-    <div class="bg-white p-4 rounded-xl border my-5  border-slate-200">
+    <div class="app-card p-4 rounded-xl border my-5  border-slate-200">
         <div class="grid grid-cols-12 gap-3 md:gap-4">
 
             <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -88,7 +88,7 @@
 
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1">{{ 'وضعیت انحلال' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="dissolutionStatusList"
                             optionLabel="label"
                             optionValue="value"
@@ -118,7 +118,7 @@
 
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1">{{ 'نوع شرکت' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="companyTypeList"
                             optionLabel="label"
                             optionValue="value"
@@ -133,13 +133,13 @@
     </div>
 </div>
 
-    <div class="bg-white p-4 rounded-xl border my-5 border-slate-200">
+    <div class="app-card p-4 rounded-xl border my-5 border-slate-200">
         <div class="grid grid-cols-12 gap-3 md:gap-4">
 
             <!-- محل ثبت -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1"><span class="text-red-500">* </span>{{ 'محل ثبت' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="registrationAreaList"
                             optionLabel="label"
                             optionValue="value"
@@ -150,7 +150,7 @@
             <!-- وضعیت -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1">{{ 'وضعیت' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="ownershipStatusList"
                             optionLabel="label"
                             optionValue="value"
@@ -161,7 +161,7 @@
             <!-- تحت پوشش -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1"><span class="text-red-500">* </span>{{ 'تحت پوشش' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="customerCoverageList"
                             optionLabel="label"
                             optionValue="value"
@@ -172,7 +172,7 @@
             <!-- ملیت -->
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="mb-1"><span class="text-red-500">* </span>{{ 'ملیت' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="companyNationalityList"
                             optionLabel="label"
                             optionValue="value"
@@ -184,7 +184,7 @@
     </div>
 
     <!-- نام انگلیسی -->
-    <div class="bg-white p-4 rounded-xl border my-5 border-slate-200">
+    <div class="app-card p-4 rounded-xl border my-5 border-slate-200">
         <div class="grid grid-cols-12 gap-3 md:gap-4">
             <div class="col-span-12 md:col-span-9 flex flex-col">
                 <label class="mb-1">{{ 'نام انگلیسی' | transloco }}:</label>

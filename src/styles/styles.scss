@@ -250,52 +250,129 @@ body.dark-mode {
 }
 
 
-/* فقط در حالت RTL اعمال شود */
-[dir='rtl'] {
-    /* تب‌ها از راست به چپ چیده شوند، ولی ایندکس‌ها درست بمانند */
-    .mat-mdc-tab-header .mat-mdc-tab-labels {
-        flex-direction: row-reverse;
-        justify-content: flex-start; // تب اول می‌چسبد به راست
-    }
 
-    /* کمی زیباسازی اختیاری */
-    .mat-mdc-tab {
-        border-radius: 12px 12px 0 0;
-        min-height: 40px;
-        padding: 0 1rem;
-        transition: background .2s, color .2s, transform .2s;
-    }
-
-    .mat-mdc-tab .mdc-tab__text-label {
-        transition: color .2s ease;
-    }
-
-    .mat-mdc-tab:hover .mdc-tab__text-label,
-    .mat-mdc-tab:hover mat-icon {
-        color: var(--primary) !important;
-    }
-
-    .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label,
-    .mat-mdc-tab.mdc-tab--active mat-icon {
-        color: var(--primary) !important;
-        font-weight: 700;
-    }
-
-    .mat-mdc-tab .mat-icon {
-        transition: color .2s ease;
-    }
-
-    .mat-mdc-tab-header .mdc-tab-indicator__content--underline {
-        height: 4px;
-        border-radius: 999px;
-        background: linear-gradient(
-                90deg,
-                var(--primary),
-                color-mix(in srgb, var(--primary) 70%, var(--accent) 30%)
-        );
-    }
+input.p-inputtext.normal-input {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #d1d5db !important;  /* معادل border-gray-300 */
+    border-radius: 0.75rem !important;   /* تقریباً rounded-xl */
 }
 
-html, body {
-    direction: rtl;
+/* فوکوس */
+input.p-inputtext.normal-input:focus {
+    border-color: var(--p-inputtext-focus-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}
+:root[dir="rtl"] .p-dropdown {
+    direction: rtl !important;
+}
+
+:root[dir="rtl"] .p-dropdown .p-select-dropdown {
+    right: auto;
+    left: 0; /* آیکن را سمت چپ می‌آورد */
+}
+/*:root {
+    --app-background: none;
+    --card-bg: #fff;
+    --card-border: 1px solid #e5e7eb;
+    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-radius: 12px;
+}
+
+!* ====== Background Global ====== *!
+body,
+.app-container,
+.page-wrapper,
+.fuse-main,
+.layout,
+.bg-card,
+.bg-default {
+    background: var(--app-background) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+!* ====== Card Override ====== *!
+.app-card,
+.p-card,
+.p-card * ,
+.card,
+.mat-card,
+.mat-card * {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+}*/
+:root {
+    --app-background: none;
+}
+
+/* لایه اصلی صفحه */
+.fuse-main,
+.page-wrapper,
+.layout,
+body {
+    background: var(--app-background) !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+/*
+:root {
+    --card-bg: #fff;
+    --card-border: 1px solid #ddd;
+    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-radius: 12px;
+}
+
+.app-card,
+.card,
+.p-card,
+.p-card *,
+.mat-card,
+.mat-card *,
+.bg-card,
+.form-wrapper {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+}
+!* === CUSTOM APP THEME (Card + Background) === *!
+*/
+
+:root {
+    --app-background: none;
+
+    --card-bg: #fff;
+    --card-border: 1px solid #ddd;
+    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-radius: 12px;
+}
+
+/* Background */
+body,
+.app-container,
+.layout,
+.fuse-main,
+.page-wrapper {
+    background: var(--app-background) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+/* Card Theme */
+.p-card,
+.mat-card,
+.card,
+.app-card,
+.form-wrapper,
+form,
+form .bg-white {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
 }

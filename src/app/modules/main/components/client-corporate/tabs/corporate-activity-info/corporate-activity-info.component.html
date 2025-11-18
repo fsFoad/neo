@@ -1,5 +1,5 @@
 
-<div class="bg-white p-4 rounded-xl border border-slate-200" [formGroup]="activityInformationForm">
+<div class="app-card p-4 rounded-xl border border-slate-200" [formGroup]="activityInformationForm">
     <div class="flex flex-wrap gap-2 mb-4 justify-start">
         <button pButton icon="pi pi-user-plus" type="button"
                 label="{{ 'ایجاد فعالیت' | transloco }}"
@@ -237,7 +237,7 @@
                     <span>نوع بخش اقتصادی</span>:
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="economicSectorOptions"
                     optionLabel="label"
                     optionValue="value"
@@ -254,7 +254,7 @@
                 </label>
 
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="activityFieldOptions"
                     optionLabel="label"
                     optionValue="value"
@@ -267,7 +267,7 @@
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">جزئیات زمینه فعالیت:</label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="activitySubFieldOptions"
                     optionLabel="label"
                     optionValue="value"
@@ -333,7 +333,7 @@
                     <span>نوع محل فعالیت</span>:
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="placeTypeOptions"
                     optionLabel="label"
                     optionValue="value"
@@ -346,7 +346,7 @@
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">نحوه تصرف محل فعالیت:</label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="tenureTypeOptions"
                     optionLabel="label"
                     optionValue="value"
@@ -369,7 +369,7 @@
                     <span>سرقفلی</span>:
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="keyMoneyOptions"
                     optionLabel="label"
                     optionValue="value"

@@ -240,7 +240,7 @@
     </div>
 </form>
 -->
-<div class="bg-white p-4 rounded-xl border border-slate-200">
+<div class="app-card p-4 rounded-xl border border-slate-200">
     <div class="grid grid-cols-12 gap-3 md:gap-4">
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">
@@ -319,7 +319,7 @@
         </div>
     </div>
 </div>
-<form [formGroup]="identityFg" class="bg-white p-4 rounded-xl border border-slate-200 my-5">
+<form [formGroup]="identityFg" class="app-card p-4 rounded-xl border border-slate-200 my-5">
     <div class="grid grid-cols-12 gap-3 md:gap-4">
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">
@@ -365,7 +365,7 @@
                 <span class="text-red-500">* </span>
                 <span>{{ 'citizen.identity.gender' | transloco }}:</span>
             </label>
-            <p-dropdown class="normal-input" [options]="genderOptions" optionLabel="label" optionValue="value"
+            <p-dropdown class="dropdown-normal" [options]="genderOptions" optionLabel="label" optionValue="value"
                         formControlName="gender"></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -404,7 +404,7 @@
                 <span class="text-red-500">* </span>
                 <span>{{ 'citizen.identity.idTypeId' | transloco }}:</span>
             </label>
-            <p-dropdown class="normal-input" [options]="identityTypeOptions" optionLabel="label" optionValue="value"
+            <p-dropdown class="dropdown-normal" [options]="identityTypeOptions" optionLabel="label" optionValue="value"
                         formControlName="identityTypeId"></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -412,7 +412,7 @@
                 <span class="text-red-500">* </span>
                 <span>{{ 'citizen.identity.issueCityId' | transloco }}:</span>
             </label>
-            <p-dropdown class="normal-input" [options]="cityOptions" optionLabel="label" optionValue="value"
+            <p-dropdown class="dropdown-normal" [options]="cityOptions" optionLabel="label" optionValue="value"
                         formControlName="identityIssueCityId"></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -432,7 +432,7 @@
                 <span class="text-red-500">* </span>
                 <span>{{ 'citizen.identity.birthCountryId' | transloco }}:</span>
             </label>
-            <p-dropdown class="normal-input" [options]="countryOptions" optionLabel="label" optionValue="value"
+            <p-dropdown class="dropdown-normal" [options]="countryOptions" optionLabel="label" optionValue="value"
                         formControlName="birthCountryId"></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -440,7 +440,7 @@
                 <span *ngIf="countryIsIran" class="text-red-500">* </span>
                 <span>{{ 'citizen.identity.birthCityId' | transloco }}:</span>
             </label>
-            <p-dropdown class="normal-input" [options]="cityOptions" optionLabel="label" optionValue="value"
+            <p-dropdown class="dropdown-normal" [options]="cityOptions" optionLabel="label" optionValue="value"
                         formControlName="birthCityId"></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -448,7 +448,7 @@
                 <span class="text-red-500">* </span>
                 <span>{{ 'citizen.identity.residenceType' | transloco }}:</span>
             </label>
-            <p-dropdown class="normal-input" [options]="residenceTypeOptions" optionLabel="label" optionValue="value"
+            <p-dropdown class="dropdown-normal" [options]="residenceTypeOptions" optionLabel="label" optionValue="value"
                         formControlName="residenceType"></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -462,7 +462,7 @@
             <label class="mb-1">
                 <span>{{ 'citizen.identity.isAlive' | transloco }}:</span>
             </label>
-            <p-dropdown class="normal-input" [options]="aliveOptions" optionLabel="label" optionValue="value"
+            <p-dropdown class="dropdown-normal" [options]="aliveOptions" optionLabel="label" optionValue="value"
                         formControlName="isAlive"></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">

@@ -1,5 +1,5 @@
 <div class="w-full">
-    <div class="w-full bg-white">
+    <div class="w-full app-card">
         <div class="py-2 px-6 rounded-xl shadow-sm mx-auto">
             <div class="flex flex-col w-full p-3">
                 <div class="flex flex-col items-start text-right w-full">
@@ -11,7 +11,7 @@
     </div>
 </div>
 <div  class="p-4  flex items-center justify-center w-full" >
-    <form [formGroup]="inputGuestReason" class=" m-4 p-4  flex  bg-white  rounded-lg shadow-sm w-full">
+    <form [formGroup]="inputGuestReason" class=" m-4 p-4  flex  app-card  rounded-lg shadow-sm w-full">
         <div class="grid grid-cols-12 gap-3 w-full">
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="text-gray-700 text-sm font-medium mb-1">عنوان:</label>
@@ -30,7 +30,7 @@
                 optionValue="value"
                 formControlName="status"
                 placeholder="انتخاب کنید"
-                class="normal-dropdown"
+                class="dropdown-normal"
             ></p-dropdown>
         </div>
         <div class="col-span-12 md:col-span-2 flex items-end gap-2">

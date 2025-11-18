@@ -229,3 +229,200 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     }
 };
+export const BACKGROUND_PRESETS = {
+    none: {
+        light: 'none',
+        dark: 'none'
+    },
+    gradientBlue: {
+        light: 'linear-gradient(135deg, #E0F2FE, #BAE6FD, #7DD3FC)',
+        dark: 'linear-gradient(135deg, #1E3A8A, #1E40AF, #1D4ED8)'
+    },
+    softGray: {
+        light: '#F8FAFC',
+        dark: '#0F172A'
+    },
+    cardGlass: {
+        light: 'linear-gradient(135deg, rgba(255,255,255,0.60), rgba(255,255,255,0.25))',
+        dark: 'linear-gradient(135deg, rgba(30,30,30,0.60), rgba(0,0,0,0.35))'
+    },
+    ocean: {
+        light: 'linear-gradient(135deg, #E0F7FA, #B2EBF2, #80DEEA)',
+        dark: 'linear-gradient(135deg, #004D40, #00695C, #00796B)'
+    },
+    /* -------------------------------
+        1) Ultra Clean (فرم و بانکداری)
+     --------------------------------*/
+    "clean-white": {
+        light: "#F7F9FC",
+        dark: "#101010"
+    },
+
+    /* -------------------------------
+       2) Neobank Blue (گرادینت)
+    --------------------------------*/
+    "neobank-blue": {
+        light: "linear-gradient(135deg, #E9EEFF 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #0A1A33 0%, #0F2C55 100%)"
+    },
+
+    /* -------------------------------
+       3) Neobank Orange
+    --------------------------------*/
+    "neobank-orange": {
+        light: "linear-gradient(135deg, #FFF0E0 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #2B1200 0%, #4A2600 100%)"
+    },
+
+    /* -------------------------------
+       4) Soft Finance (بانکی خیلی تمیز)
+    --------------------------------*/
+    "finance-soft": {
+        light: "linear-gradient(145deg, #EEF1F5 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(145deg, #121212 0%, #1E1E1E 100%)"
+    },
+
+    /* -------------------------------
+       5) Executive Gray (سازمانی)
+    --------------------------------*/
+    "enterprise-gray": {
+        light: "#ECEFF1",
+        dark: "#0F0F0F"
+    },
+
+    /* -------------------------------
+       6) Glassmorphism
+    --------------------------------*/
+    "glass": {
+        light: "rgba(255,255,255,0.55)",
+        dark: "rgba(0,0,0,0.40)"
+    },
+
+    /* -------------------------------
+       7) Subtle Pattern Dot
+    --------------------------------*/
+    "pattern-dots": {
+        light: `
+            repeating-radial-gradient(circle at 0 0, #EDEDED 0, #EDEDED 3px, #FFFFFF 3px, #FFFFFF 12px)
+        `,
+        dark: `
+            repeating-radial-gradient(circle at 0 0, #1E1E1E 0, #1E1E1E 3px, #0E0E0E 3px, #0E0E0E 12px)
+        `
+    },
+
+    /* -------------------------------
+       8) Subtle Line Pattern
+    --------------------------------*/
+    "pattern-lines": {
+        light: `
+            repeating-linear-gradient(
+              90deg,
+              #fafafa 0px,
+              #fafafa 20px,
+              #f0f0f0 20px,
+              #f0f0f0 40px
+            )
+        `,
+        dark: `
+            repeating-linear-gradient(
+              90deg,
+              #1A1A1A 0px,
+              #1A1A1A 20px,
+              #141414 20px,
+              #141414 40px
+            )
+        `
+    },
+
+    /* -------------------------------
+       9) Card Layout Background
+    --------------------------------*/
+    "card-surface": {
+        light: "linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%)",
+        dark: "linear-gradient(145deg, #1A1A1A 0%, #111111 100%)"
+    },
+
+    /* -------------------------------
+       10) Banking Steel Blue
+    --------------------------------*/
+    "metal-blue": {
+        light: "linear-gradient(135deg, #E6ECF5 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #0D1521 0%, #111C2A 100%)"
+    },
+};
+export const CARD_PRESETS = {
+    bankClassic: {
+        light: {
+            bg: "#ffffff",
+            border: "1px solid #E2E8F0",
+            shadow: "0 1px 3px rgba(0,0,0,0.06)",
+            radius: "14px"
+        },
+        dark: {
+            bg: "#1c1c1c",
+            border: "1px solid rgba(255,255,255,0.08)",
+            shadow: "0 1px 4px rgba(0,0,0,0.4)",
+            radius: "14px"
+        }
+    },
+
+    bankSoft: {
+        light: {
+            bg: "#fdfdfd",
+            border: "1px solid #e5e7eb",
+            shadow: "0 2px 6px rgba(0,0,0,0.05)",
+            radius: "18px"
+        },
+        dark: {
+            bg: "#222",
+            border: "1px solid rgba(255,255,255,0.06)",
+            shadow: "0 2px 6px rgba(0,0,0,0.35)",
+            radius: "18px"
+        }
+    },
+
+    bankNeat: {
+        light: {
+            bg: "#ffffff",
+            border: "1px solid var(--primary)",
+            shadow: "0 0 0 2px rgba(0,49,229,0.1)",
+            radius: "12px"
+        },
+        dark: {
+            bg: "#1b1b1b",
+            border: "1px solid var(--primary)",
+            shadow: "0 0 0 2px rgba(255,255,255,0.1)",
+            radius: "12px"
+        }
+    },
+
+    bankPaper: {
+        light: {
+            bg: "#fafafa",
+            border: "1px solid #d1d5db",
+            shadow: "0 6px 16px rgba(0,0,0,0.04)",
+            radius: "16px"
+        },
+        dark: {
+            bg: "#252525",
+            border: "1px solid rgba(255,255,255,0.09)",
+            shadow: "0 6px 16px rgba(0,0,0,0.45)",
+            radius: "16px"
+        }
+    },
+
+    bankGlass: {
+        light: {
+            bg: "rgba(255,255,255,0.75)",
+            border: "1px solid rgba(255,255,255,0.45)",
+            shadow: "0 4px 18px rgba(0,0,0,0.08)",
+            radius: "20px"
+        },
+        dark: {
+            bg: "rgba(0,0,0,0.35)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            shadow: "0 4px 18px rgba(0,0,0,0.55)",
+            radius: "20px"
+        }
+    }
+};

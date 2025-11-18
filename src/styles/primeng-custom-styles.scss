@@ -1,8 +1,6 @@
 
 .normal-input {
-    border-color: var(--p-inputtext-border-color);
-    background: var(--p-inputtext-bg);
-    color: var(--p-inputtext-color);
+    @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition w-3/4 focus:outline-none focus:ring-2 focus:ring-primary;
 }
 
 .normal-input:focus {
@@ -11,6 +9,9 @@
 }
 
 
+.dropdown-normal .p-dropdown {
+    @apply  border w-3/4 border-gray-300 rounded-xl px-3 py-2 text-sm;
+}
 
 .layout-config {
     backdrop-filter: blur(20px);
@@ -239,9 +240,7 @@
 }
 
 
-.normal-input {
-    @apply border  rounded-xl px-4 py-2.5   transition w-3/4  !important;
-}
+
 
 .full-input {
     @apply border  rounded-xl px-4 py-2.5   transition w-full !important;
@@ -1095,4 +1094,30 @@ anglerighticon {
     border-top-width: 4px !important;
     border-radius: 999px !important;
 }
+/* ریشه‌ی دراپ‌داون – هم p-dropdown است هم dropdown-normal */
+.p-dropdown.dropdown-normal {
+    width: 75% !important;                              /* مثل normal-input با w-3/4 */
+    min-height: var(--p-dropdown-height);
+    border-radius: var(--p-dropdown-border-radius) !important;
+    border: 1px solid var(--p-inputtext-border-color);
+    background: var(--p-inputtext-background);
+    display: inline-flex;
+    align-items: center;
+}
 
+/* لیبل داخل دراپ‌داون */
+.p-dropdown.dropdown-normal .p-select-label {
+    padding: var(--p-dropdown-padding-y) var(--p-dropdown-padding-x) !important;
+    font-size: 0.875rem !important;                    /* text-sm */
+}
+
+/* تریگر (آیکن فلش) */
+.p-dropdown.dropdown-normal .p-select-dropdown {
+    padding-inline: 0.75rem !important;
+}
+
+/* فوکوس – مثل اینپوت‌ */
+.p-dropdown.dropdown-normal.p-focus {
+    border-color: var(--p-inputtext-focus-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}

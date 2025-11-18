@@ -1,5 +1,5 @@
 
-<div class="bg-white p-4 rounded-xl border border-slate-200" [formGroup]="relationForm">
+<div class="app-card p-4 rounded-xl border border-slate-200" [formGroup]="relationForm">
     <div class="flex flex-wrap gap-2 mb-4 justify-start">
         <button pButton icon="pi pi-user-plus" type="button"
                 label="{{ 'citizen.contact.actions.relations' | transloco }}"
@@ -227,7 +227,7 @@
     <label class="form-label">
         <span>جستجو مشتری مرتبط</span>:
     </label>
-    <div class="bg-white p-2 rounded-xl border border-slate-200 mb-8">
+    <div class="app-card p-2 rounded-xl border border-slate-200 mb-8">
         <form class="form-grid" [formGroup]="relationFormDialog" (ngSubmit)="submitContact()">
             <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3 border-">
                 <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -235,7 +235,7 @@
                         <span class="text-red-500">*</span> <span>نوع جستجو</span>:
                     </label>
                     <p-dropdown
-                        class="normal-dropdown"
+                        class="dropdown-normal"
                         [options]="searchList"
                         optionLabel="label"
                         optionValue="value"
@@ -286,12 +286,12 @@
         <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">نوع ارتباط:</label>
-                <p-dropdown [options]="relationTypeOptions" optionLabel="label" optionValue="value"  class="normal-dropdown"
+                <p-dropdown [options]="relationTypeOptions" optionLabel="label" optionValue="value"  class="dropdown-normal"
                             formControlName="relationType"></p-dropdown>
             </div>
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">نسبت:</label>
-                <p-dropdown [options]="relationDegreeOptions" optionLabel="label" optionValue="value"  class="normal-dropdown"
+                <p-dropdown [options]="relationDegreeOptions" optionLabel="label" optionValue="value"  class="dropdown-normal"
                             formControlName="relationDegree"></p-dropdown>
             </div>
             <div class="col-span-12 md:col-span-4 flex flex-col"></div>
@@ -317,7 +317,7 @@
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">محل صدور نامه:</label>
                 <p-dropdown [options]="letterPlaceOptions" optionLabel="label" optionValue="value"
-                            class="normal-dropdown"    formControlName="letterIssuePlace"></p-dropdown>
+                            class="dropdown-normal"    formControlName="letterIssuePlace"></p-dropdown>
             </div>
         </div>
 

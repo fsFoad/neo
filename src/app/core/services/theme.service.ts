@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { MinimalPalette, MinimalPreset, THEME_PRESETS } from './theme-presets';
 import { BehaviorSubject } from 'rxjs';
+import { BACKGROUND_PRESETS } from './theme-presets';
 const THEME_STORAGE_KEY = 'app_theme';
+import { CARD_PRESETS } from './theme-presets';
+
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
+    BACKGROUND_PRESETS = BACKGROUND_PRESETS;
     // ----------------------------------------------------
     // 1) Reactive Theme State (Observable)
     // ----------------------------------------------------
@@ -12,6 +16,8 @@ export class ThemeService {
     theme$ = this._theme$.asObservable();
     constructor() {
         this.loadStoredTheme();
+        this.applyStoredBackground();
+        this.applyStoredCardPreset();
     }
     // ----------------------------------------------------
     // 2) ذخیره و بارگذاری از LocalStorage
@@ -44,6 +50,18 @@ export class ThemeService {
         this.applyPalette(palette);
     }
 
+    setBackgroundPreset(name: string) {
+        const isDark = document.body.classList.contains('dark-mode');
+        const bg = BACKGROUND_PRESETS[name]?.[isDark ? 'dark' : 'light'] ?? '';
+
+        document.documentElement.style.setProperty('--app-background', bg);
+        localStorage.setItem('app_background', name);
+    }
+
+    applyStoredBackground() {
+        const name = localStorage.getItem('app_background') ?? 'none';
+        this.setBackgroundPreset(name);
+    }
     applyPalette(palette: MinimalPalette, store = true): void {
 
         /* ---------------------------
@@ -129,6 +147,11 @@ export class ThemeService {
         ---------------------------- */
         this._theme$.next(palette);
         if (store) this.saveTheme(palette);
+        // اگر بک‌گراند ذخیره‌شده قبلی وجود دارد → اعمال شود
+        const savedBg = localStorage.getItem('app_background');
+        if (savedBg) {
+            this.setBackgroundPreset(savedBg);
+        }
     }
 
     setCssVar(name: string, value: string): void {
@@ -178,6 +201,19 @@ export class ThemeService {
 
         return brightness < 140;
     }
+/*    setBackgroundPreset(name: string): void {
+        const preset = this.BACKGROUND_PRESETS[name];
+        if (!preset) {
+            console.warn(`Background preset '${name}' تعریف نشده است`);
+            return;
+        }
+
+        const isDark = document.body.classList.contains('dark-mode');
+        const background = isDark ? preset.dark : preset.light;
+
+        this.setVar('--app-background', background);
+        localStorage.setItem('app_background', name);
+    }*/
 
     setPrimaryColor(color: string): void {
         // متغیر اصلی
@@ -202,5 +238,25 @@ export class ThemeService {
    // ===========================
     // لیست همه presetها
     // ===========================
+    CARD_PRESETS = CARD_PRESETS;
+
+    setCardPreset(name: string) {
+        const isDark = document.body.classList.contains('dark-mode');
+        const preset = CARD_PRESETS[name]?.[isDark ? 'dark' : 'light'];
+
+        if (!preset) return;
+
+        this.setVar('--card-bg', preset.bg);
+        this.setVar('--card-border', preset.border);
+        this.setVar('--card-shadow', preset.shadow);
+        this.setVar('--card-radius', preset.radius);
+
+        localStorage.setItem('app_card_preset', name);
+    }
+
+    applyStoredCardPreset() {
+        const name = localStorage.getItem('app_card_preset') ?? 'bankClassic';
+        this.setCardPreset(name);
+    }
 
 }

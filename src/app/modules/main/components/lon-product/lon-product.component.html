@@ -1,4 +1,4 @@
-<div class="w-full bg-white" *ngIf="!showForm">
+<div class="w-full app-card" *ngIf="!showForm">
     <div class="p-8 rounded-xl shadow-sm  mx-auto">
         <div class="flex flex-col w-full p-4">
             <div class="flex flex-col items-start text-right w-full">
@@ -12,12 +12,12 @@
 
 
 <div class="p-6 space-y-6 rounded-2xl" *ngIf="!showForm">
-    <div [formGroup]="productForm" class="bg-white p-6 rounded-xl border border-slate-200">
+    <div [formGroup]="productForm" class="app-card p-6 rounded-xl border border-slate-200">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="flex flex-col ">
                 <label class="mb-1 font-medium">{{ 'product.fields.contractType' | transloco }}:</label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="contractTypeList"
                     optionLabel="label"
                     optionValue="value"
@@ -29,7 +29,7 @@
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">{{ 'product.fields.planType' | transloco }}:</label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="planTypeList"
                     optionLabel="label"
                     optionValue="value"
@@ -41,7 +41,7 @@
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">{{ 'product.fields.usageType' | transloco }}:</label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     [options]="usageTypeList"
                     optionLabel="label"
                     optionValue="value"
@@ -67,7 +67,7 @@
             </div>
             <div class="flex flex-col">
                 <label class="mb-1">{{ 'product.fields.status' | transloco }}:</label>
-                <p-dropdown class="normal-dropdown"
+                <p-dropdown class="dropdown-normal"
                             [options]="statusList"
                             optionLabel="label"
                             optionValue="value"
@@ -81,7 +81,7 @@
 
     </div>
     <div class="flex flex-col">
-        <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <div class="app-card p-4 rounded-xl border border-slate-200">
             <!-- 🔹 دکمه ایجاد محصول -->
             <div class="my-2">
                 <button

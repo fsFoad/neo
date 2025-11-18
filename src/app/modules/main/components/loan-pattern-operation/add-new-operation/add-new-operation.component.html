@@ -1,7 +1,7 @@
-<div *ngIf="visible" class="bg-white p-6 rounded-2xl border border-slate-200">
+<div *ngIf="visible" class="app-card p-6 rounded-2xl border border-slate-200">
 
 
-    <div class="w-full bg-white">
+    <div class="w-full app-card">
         <div class="p-8 rounded-xl shadow-sm mx-auto">
             <div class="flex flex-col w-full p-4">
                 <div class="flex flex-col items-start text-right w-full">
@@ -24,7 +24,7 @@
                         optionLabel="label"
                         optionValue="value"
                         formControlName="operation"
-                        class="normal-dropdown"
+                        class="dropdown-normal"
                     ></p-dropdown>
                 </div>
                 <div class="flex flex-col">
@@ -36,7 +36,7 @@
 
         </div>
         <div class="flex flex-col">
-            <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <div class="app-card p-4 rounded-xl border border-slate-200">
                 <!-- 🔹 دکمه ایجاد محصول -->
                 <div class="my-2">
                     <button
@@ -138,6 +138,7 @@
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">ریز عملیات: <span class="text-red-500">*</span></label>
                 <p-dropdown
+                    class="dropdown-normal"
                     [options]="detailList"
                     optionLabel="label"
                     optionValue="value"

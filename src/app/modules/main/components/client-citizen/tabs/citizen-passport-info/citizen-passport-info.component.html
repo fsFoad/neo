@@ -1,5 +1,5 @@
 
-<div class="bg-white my-4 p-4 rounded-xl border border-slate-200">
+<div class="app-card my-4 p-4 rounded-xl border border-slate-200">
     <div class="grid grid-cols-12 gap-3 md:gap-4">
 
         <!-- ستون اول: کد ملی -->
@@ -84,7 +84,7 @@
         </div>
     </div>
 </div>
-<div class="bg-white p-4 rounded-xl border border-slate-200">
+<div class="app-card p-4 rounded-xl border border-slate-200">
     <p-table
         [value]="passportTable"
         [paginator]="true"
@@ -331,7 +331,7 @@ appendTo="body"
                     <span>شماره گذرنامه:</span>
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     formControlName="passportNumber"
                     [options]="countries"
                     optionLabel="label"
@@ -349,7 +349,7 @@ appendTo="body"
                     <span>کشور گذرنامه:</span>
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     formControlName="passportCountry"
                     [options]="countries"
                     optionLabel="label"
@@ -441,7 +441,7 @@ appendTo="body"
                     <span>شماره گذرنامه:</span>
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     formControlName="passportNumber"
                     [options]="countries"
                     optionLabel="label"
@@ -457,7 +457,7 @@ appendTo="body"
                     <span>کشور گذرنامه:</span>
                 </label>
                 <p-dropdown
-                    class="normal-dropdown"
+                    class="dropdown-normal"
                     formControlName="passportCountry"
                     [options]="countries"
                     optionLabel="label"

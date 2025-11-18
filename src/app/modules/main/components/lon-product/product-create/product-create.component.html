@@ -1,11 +1,11 @@
 
-<div class="p-6 space-y-6 rounded-2xl bg-white border border-slate-200">
+<div class="p-6 space-y-6 rounded-2xl app-card border border-slate-200">
     <!-- 🔹 عنوان صفحه -->
     <h2 class="text-2xl font-semibold mb-4">ایجاد محصول جدید</h2>
 
     <!-- 🔹 تب‌ها -->
     <mat-tab-group
-        class="app-tabs rounded-xl shadow-sm bg-white"
+        class="app-tabs rounded-xl shadow-sm app-card"
         [(selectedIndex)]="selectedIndex"
         [dynamicHeight]="true"
         animationDuration="200ms">
@@ -34,7 +34,7 @@
                             <!-- نوع عقد -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">نوع عقد:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="contractTypeList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -46,7 +46,7 @@
                             <!-- نوع طرح -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">نوع طرح:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="planTypeList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -58,7 +58,7 @@
                             <!-- چگونگی استفاده -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">چگونگی استفاده:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="usageTypeList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -74,7 +74,7 @@
                             <!-- شخصیت مشتری -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">شخصیت مشتری:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="customerTypeList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -86,7 +86,7 @@
                             <!-- نوع ارز -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">نوع ارز:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="currencyList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -125,7 +125,7 @@
                             <!-- قابلیت پرداخت مجدد -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">قابلیت پرداخت مجدد:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="repaymentList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -137,7 +137,7 @@
                             <!-- مبنای محاسبه خسارت تاخیر -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">مبنای محاسبه خسارت تاخیر:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="delayBaseList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -147,7 +147,7 @@
                             </div>
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">فرانشیز:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="franchiseList"
                                             optionLabel="label"
                                             optionValue="value"
@@ -171,7 +171,7 @@
                             <!-- الگوی هشدار خودکار -->
                             <div class="flex flex-col">
                                 <label class="mb-1 font-medium">الگوی هشدار خودکار:</label>
-                                <p-dropdown class="normal-dropdown"
+                                <p-dropdown class="dropdown-normal"
                                             [options]="alertPatternList"
                                             optionLabel="label"
                                             optionValue="value"
