@@ -69,6 +69,10 @@ export default [
             .then(c => c.GuestReasonManagementComponent)
     },
     {
+        path: 'product-management', loadComponent: () => import('./components/product-client-management/product-client-management.component')
+            .then(c => c.ProductClientManagementComponent)
+    },
+    {
         path: 'about',
         loadComponent: () => import('./components/about/about.component')
             .then(c => c.AboutComponent)

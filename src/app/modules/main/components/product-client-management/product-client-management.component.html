@@ -1,0 +1,99 @@
+
+<div class="container mx-auto p-4" dir="rtl">
+    <div class="flex justify-between items-center mb-6 bg-gray-100 p-4 rounded-lg shadow-sm">
+        <h1 class="text-xl font-bold text-gray-800">مدیریت محصولات</h1>
+        <div class="flex gap-2">
+            <p-button label="جستجو" icon="pi pi-search" (click)="onSearch()" ></p-button>
+            <p-button label="بازنشانی" icon="pi pi-refresh" (click)="onReset()" severity="secondary"></p-button>
+            <p-button label="صدور" icon="pi pi-download" (click)="onExport()" severity="info"></p-button>
+            <p-button label="جدید" icon="pi pi-plus" (click)="onAddNew()" severity="success"></p-button>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- ورودی جستجوی کلی -->
+            <div class="p-field">
+                <label for="search" class="block text-gray-700 font-medium mb-2">جستجوی کلی</label>
+                <span class="p-input-icon-right w-full">
+          <i class="pi pi-search"></i>
+          <input pInputText id="search" type="text" [(ngModel)]="searchValue" placeholder="متن جستجو..." class="w-full" />
+        </span>
+            </div>
+
+            <!-- ورودی نام -->
+            <div class="p-field">
+                <label for="name" class="block text-gray-700 font-medium mb-2">نام</label>
+                <input pInputText id="name" type="text" [(ngModel)]="nameValue" placeholder="نام را وارد کنید..." class="w-full" />
+            </div>
+
+            <!-- ورودی شهرت -->
+            <div class="p-field">
+                <label for="fame" class="block text-gray-700 font-medium mb-2">شهرت</label>
+                <input pInputText id="fame" type="text" [(ngModel)]="fameValue" placeholder="شهرت را وارد کنید..." class="w-full" />
+            </div>
+
+            <!-- منوی کشویی دسته -->
+            <div class="p-field">
+                <label for="category" class="block text-gray-700 font-medium mb-2">دسته</label>
+                <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" optionLabel="name" optionValue="value"
+                            placeholder="انتخاب کنید..." class="w-full"></p-dropdown>
+            </div>
+
+            <!-- منوی کشویی وضعیت -->
+            <div class="p-field">
+                <label for="status" class="block text-gray-700 font-medium mb-2">وضعیت</label>
+                <p-dropdown [options]="statuses" [(ngModel)]="selectedStatus" optionLabel="name" optionValue="value"
+                            placeholder="انتخاب کنید..." class="w-full"></p-dropdown>
+            </div>
+
+            <!-- چک‌باکس‌ها -->
+            <div class="p-field flex items-end">
+                <div class="flex gap-4">
+                    <div class="flex items-center">
+                        <p-checkbox name="active" [(ngModel)]="isActive" inputId="active" binary="true"></p-checkbox>
+                        <label for="active" class="mr-2 text-gray-700">فعال</label>
+                    </div>
+                    <div class="flex items-center">
+                        <p-checkbox name="approved" [(ngModel)]="isApproved" inputId="approved" binary="true"></p-checkbox>
+                        <label for="approved" class="mr-2 text-gray-700">تایید شده</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- جدول داده‌ها -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <p-table [value]="products" [paginator]="true" [rows]="5" responsiveLayout="scroll" [rowsPerPageOptions]="[5, 10, 20]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="id">کد <p-sortIcon field="id"></p-sortIcon></th>
+                    <th pSortableColumn="name">نام <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="fame">شهرت <p-sortIcon field="fame"></p-sortIcon></th>
+                    <th pSortableColumn="category">دسته <p-sortIcon field="category"></p-sortIcon></th>
+                    <th pSortableColumn="status">وضعیت <p-sortIcon field="status"></p-sortIcon></th>
+                    <th pSortableColumn="date">تاریخ <p-sortIcon field="date"></p-sortIcon></th>
+                    <th>عملیات</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.fame}}</td>
+                    <td>{{product.category}}</td>
+                    <td>
+            <span [class]="'product-badge status-' + product.status">
+              {{product.status}}
+            </span>
+                    </td>
+                    <td>{{product.date}}</td>
+                    <td>
+                        <p-button icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-info mr-2" pRipple></p-button>
+                        <p-button icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" pRipple></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

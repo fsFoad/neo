@@ -1,0 +1,112 @@
+import { Component } from '@angular/core';
+import { Button } from 'primeng/button';
+import { InputText } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+import { Checkbox } from 'primeng/checkbox';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RippleModule } from 'primeng/ripple';
+
+@Component({
+    selector: 'app-product-client-management',
+    imports: [
+        Button,
+        InputText,
+        FormsModule,
+        DropdownModule,
+        Checkbox,
+        TableModule,
+        FormsModule,
+        TableModule,
+        ButtonModule,
+        InputTextModule,
+        DropdownModule,
+        CheckboxModule,
+        RippleModule
+    ],
+    templateUrl: './product-client-management.component.html',
+    styleUrl: './product-client-management.component.scss',
+})
+export class ProductClientManagementComponent {  searchValue: string = '';
+    nameValue: string = '';
+    fameValue: string = '';
+    selectedCategory: any = null;
+    selectedStatus: any = null;
+    isActive: boolean = false;
+    isApproved: boolean = false;
+
+    // گزینه‌های منوی کشویی دسته‌بندی
+    categories = [
+        { name: 'دسته اول', value: 'cat1' },
+        { name: 'دسته دوم', value: 'cat2' },
+        { name: 'دسته سوم', value: 'cat3' }
+    ];
+
+    // گزینه‌های منوی کشویی وضعیت
+    statuses = [
+        { name: 'فعال', value: 'active' },
+        { name: 'غیرفعال', value: 'inactive' },
+        { name: 'در انتظار', value: 'pending' }
+    ];
+
+    // آرایه‌ای از محصولات برای نمایش در جدول
+    products: Product[] = [
+        { id: 1, name: 'علی رضایی', fame: 'برنامه نویس', category: 'دسته اول', status: 'فعال', date: '۱۴۰۲/۰۳/۱۵' },
+        { id: 2, name: 'مریم احمدی', fame: 'طراح', category: 'دسته دوم', status: 'غیرفعال', date: '۱۴۰۲/۰۴/۲۰' },
+        { id: 3, name: 'محمد حسینی', fame: 'مدیر پروژه', category: 'دسته اول', status: 'فعال', date: '۱۴۰۲/۰۲/۱۰' },
+        { id: 4, name: 'فاطمه محمدی', fame: 'تحلیلگر', category: 'دسته سوم', status: 'در انتظار', date: '۱۴۰۲/۰۵/۰۵' },
+        { id: 5, name: 'رضا اکبری', fame: 'توسعه دهنده', category: 'دسته دوم', status: 'فعال', date: '۱۴۰۲/۰۱/۲۵' },
+        { id: 6, name: 'سارا کریمی', fame: 'تستر نرم‌افزار', category: 'دسته سوم', status: 'فعال', date: '۱۴۰۲/۰۶/۱۲' },
+    ];
+
+    constructor() { }
+
+    ngOnInit(): void {
+    }
+
+    // تابع برای جستجو
+    onSearch(): void {
+        console.log('جستجو با مقادیر:', {
+            search: this.searchValue,
+            name: this.nameValue,
+            fame: this.fameValue,
+            category: this.selectedCategory,
+            status: this.selectedStatus,
+            isActive: this.isActive,
+            isApproved: this.isApproved
+        });
+        // در اینجا می‌توانید منطق فیلتر کردن داده‌ها را پیاده‌سازی کنید
+    }
+
+    // تابع برای بازنشانی فرم
+    onReset(): void {
+        this.searchValue = '';
+        this.nameValue = '';
+        this.fameValue = '';
+        this.selectedCategory = null;
+        this.selectedStatus = null;
+        this.isActive = false;
+        this.isApproved = false;
+    }
+
+    // تابع برای خروجی گرفتن از داده‌ها
+    onExport(): void {
+        console.log('صدور داده‌ها');
+    }
+
+    // تابع برای افزودن رکورد جدید
+    onAddNew(): void {
+        console.log('افزودن رکورد جدید');
+    }
+}
+interface Product {
+    id: number;
+    name: string;
+    fame: string;
+    category: string;
+    status: string;
+    date: string;
+}

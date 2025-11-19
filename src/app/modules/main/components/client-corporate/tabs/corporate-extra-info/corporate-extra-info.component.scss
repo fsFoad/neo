@@ -135,7 +135,8 @@
 
     /* فاصله داخلی پنل‌ها */
     .mat-mdc-tab-body-content {
-        @apply p-0; /* چون خودمان در .tab-pane پدینگ داده‌ایم */
+
+        @apply p-0 bg-white; /* چون خودمان در .tab-pane پدینگ داده‌ایم */
     }
 }
 

@@ -1,4 +1,6 @@
-
+:root {
+    --p-dropdown-border-radius: 0.75rem;
+}
 .normal-input {
     @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition w-3/4 focus:outline-none focus:ring-2 focus:ring-primary;
 }
@@ -1094,7 +1096,6 @@ anglerighticon {
     border-top-width: 4px !important;
     border-radius: 999px !important;
 }
-/* ریشه‌ی دراپ‌داون – هم p-dropdown است هم dropdown-normal */
 .p-dropdown.dropdown-normal {
     width: 75% !important;                              /* مثل normal-input با w-3/4 */
     min-height: var(--p-dropdown-height);
@@ -1107,8 +1108,8 @@ anglerighticon {
 
 /* لیبل داخل دراپ‌داون */
 .p-dropdown.dropdown-normal .p-select-label {
-    padding: var(--p-dropdown-padding-y) var(--p-dropdown-padding-x) !important;
-    font-size: 0.875rem !important;                    /* text-sm */
+    //padding: var(--p-dropdown-padding-y) var(--p-dropdown-padding-x) !important;
+    font-size: 1rem;          /* text-sm */
 }
 
 /* تریگر (آیکن فلش) */
@@ -1120,4 +1121,437 @@ anglerighticon {
 .p-dropdown.dropdown-normal.p-focus {
     border-color: var(--p-inputtext-focus-border-color) !important;
     box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}
+.card {
+    background: var(--bg-card);
+}
+.p-inputtext,
+input,
+textarea {
+    background: var(--bg-input);
+    color: var(--text-body);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    height: var(--input-height);
+    padding: 0 12px;
+}
+
+.p-checkbox .p-checkbox-box {
+    border-color: var(--color-border);
+}
+
+.p-dropdown,
+.p-multiselect {
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+}
+.p-button {
+    background: var(--bg-button);
+    border-radius: var(--radius-md);
+    height: var(--button-height);
+}
+
+.p-button:hover {
+    background: var(--color-primary-hover);
+}
+.p-card,
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+}
+
+.p-panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-md);
+}
+.p-datatable {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+}
+
+.p-datatable th {
+    background: var(--bg-card);
+    color: var(--text-body);
+}
+
+.p-datatable td {
+    border-color: var(--color-border);
+}
+.p-dialog,
+.p-tooltip {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.p-menu,
+.p-menubar,
+.p-panelmenu {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+.p-toast {
+    border-radius: var(--radius-md);
+}
+
+.p-message {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+}
+.p-chip {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.p-tag {
+    background: var(--color-secondary);
+    color: #fff;
+}
+.p-inputtext,
+input,
+textarea,
+.p-inputmask,
+.p-inputnumber-input,
+.p-password input {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+}
+
+/* Select-like components */
+.p-dropdown,
+.p-cascadeselect,
+.p-multiselect,
+.p-listbox {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+}
+
+/* Checkbox & Radio */
+.p-checkbox .p-checkbox-box,
+.p-radiobutton .p-radiobutton-box {
+    border-color: var(--color-border);
+}
+
+/* Slider */
+.p-slider {
+    background: var(--color-border);
+}
+
+/* Knob */
+.p-knob {
+    color: var(--color-primary);
+}
+
+/* Rating */
+.p-rating .p-rating-icon {
+    color: var(--color-primary);
+}
+
+/* FloatLabel */
+.p-float-label label {
+    color: var(--color-text);
+}
+
+/* TreeSelect */
+.p-treeselect {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+
+.p-button,
+.p-splitbutton,
+.p-speeddial-button {
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: var(--radius-md);
+    border: none;
+}
+
+.p-button:hover,
+.p-splitbutton:hover,
+.p-speeddial-button:hover {
+    background: var(--color-primary-hover);
+}
+/* Containers */
+.p-dataview,
+.p-orderlist,
+.p-organizationchart,
+.p-paginator,
+.p-picklist,
+.p-timeline,
+.p-tree,
+.p-treetable,
+.p-virtualscroller {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+}
+
+/* Tables */
+.p-datatable th {
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.p-datatable td {
+    border-color: var(--color-border);
+}
+.p-card,
+.p-accordion,
+.p-fieldset,
+.p-panel,
+.p-scrollpanel,
+.p-splitter,
+.p-stepper,
+.p-tabs,
+.p-toolbar {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+.p-dialog,
+.p-drawer,
+.p-tooltip,
+.p-popover,
+.p-confirm-popup {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+.p-fileupload {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    border: 1px solid var(--color-border);
+}
+.p-breadcrumb,
+.p-contextmenu,
+.p-dock,
+.p-menubar,
+.p-megamenu,
+.p-panelmenu,
+.p-tieredmenu {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+.p-chart {
+    background: var(--color-surface);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+}
+.p-message,
+.p-toast {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+.p-carousel,
+.p-galleria,
+.p-image,
+.p-image-compare {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+}
+.p-avatar,
+.p-badge,
+.p-chip,
+.p-tag,
+.p-progressbar,
+.p-progressspinner,
+.p-skeleton,
+.p-ripple,
+.p-inplace,
+.p-blockui,
+.p-classnames,
+.p-bind,
+.p-metergroup {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+/* Container */
+.p-datatable {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+/* Header */
+.p-datatable thead th {
+    background: var(--color-bg);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    font-weight: 600;
+}
+
+/* Body cells */
+.p-datatable tbody td {
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+/* Hover Row */
+.p-datatable tbody tr:hover {
+    background: var(--color-surface-hover);
+}
+
+/* Striped */
+.p-datatable-striped tbody tr:nth-child(even) {
+    background: var(--color-bg);
+}
+
+/* Paginator */
+.p-paginator {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+}
+
+
+/*-----------------------------------------------------------------dark-----------------------------------------------------------------*/
+.dark-theme .p-inputtext,
+.dark-theme textarea,
+.dark-theme .p-inputmask,
+.dark-theme .p-inputnumber-input,
+.dark-theme .p-password input,
+.dark-theme .p-dropdown,
+.dark-theme .p-multiselect,
+.dark-theme .p-listbox,
+.dark-theme .p-treeselect,
+.dark-theme .p-cascadeselect {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.dark-theme .p-checkbox .p-checkbox-box,
+.dark-theme .p-radiobutton .p-radiobutton-box {
+    border-color: var(--color-border);
+}
+.dark-theme .p-button,
+.dark-theme .p-splitbutton,
+.dark-theme .p-speeddial-button {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.dark-theme .p-button:hover,
+.dark-theme .p-speeddial-button:hover {
+    background: var(--color-primary-hover);
+}
+.dark-theme .p-dataview,
+.dark-theme .p-orderlist,
+.dark-theme .p-organizationchart,
+.dark-theme .p-paginator,
+.dark-theme .p-picklist,
+.dark-theme .p-timeline,
+.dark-theme .p-tree,
+.dark-theme .p-treetable,
+.dark-theme .p-virtualscroller {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+}
+
+.dark-theme .p-datatable th {
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+.dark-theme .p-datatable td {
+    border-color: var(--color-border);
+}
+.dark-theme .p-dialog,
+.dark-theme .p-drawer,
+.dark-theme .p-tooltip,
+.dark-theme .p-popover,
+.dark-theme .p-confirm-popup {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    color: var(--color-text);
+}
+.dark-theme .p-fileupload {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+.dark-theme .p-breadcrumb,
+.dark-theme .p-contextmenu,
+.dark-theme .p-dock,
+.dark-theme .p-menubar,
+.dark-theme .p-megamenu,
+.dark-theme .p-panelmenu,
+.dark-theme .p-tieredmenu {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+
+.dark-theme .p-chart {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+.dark-theme .p-message,
+.dark-theme .p-toast {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+.dark-theme .p-carousel,
+.dark-theme .p-galleria,
+.dark-theme .p-image,
+.dark-theme .p-image-compare {
+    background: var(--color-surface);
+}
+.dark-theme .p-chip,
+.dark-theme .p-badge,
+.dark-theme .p-tag,
+.dark-theme .p-progressbar,
+.dark-theme .p-progressspinner,
+.dark-theme .p-skeleton,
+.dark-theme .p-inplace,
+.dark-theme .p-blockui,
+.dark-theme .p-metergroup {
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+.dark-theme .p-datatable {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+/* Header */
+.dark-theme .p-datatable thead th {
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Body cells */
+.dark-theme .p-datatable tbody td {
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+/* Row hover */
+.dark-theme .p-datatable tbody tr:hover {
+    background: #2c3a52;
+}
+
+/* Striped */
+.dark-theme .p-datatable-striped tbody tr:nth-child(even) {
+    background: #1c2535;
+}
+
+/* Paginator */
+.dark-theme .p-paginator {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
 }
