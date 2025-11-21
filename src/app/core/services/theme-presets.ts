@@ -8,7 +8,18 @@ export const PRESET_NAMES = [
     "Orange Flame",
     "Royal Orange Blue",
     "Soft Blue Orange",
-    "Orange Galaxy"
+    "Orange Galaxy",
+
+    "Calm Ocean",
+    "Lush Forest",
+    "Modern Gray-scale",
+    "Sunset",
+    "Dreamy Purple",
+    "Clear Sky",
+    "Warm Earth",
+    "Energetic Neon",
+    "Creamy Minimalist",
+    "Deep Dark"
 ] as const;
 
 export type MinimalPresetName = typeof PRESET_NAMES[number];
@@ -17,25 +28,32 @@ export interface MinimalPalette {
     primary: string;
     accent: string;
     warn: string;
-    background: string;
-    surface: string;
-    onSurface: string;
+    background?: string;
+    surface?: string;
+    onSurface?: string;
 }
 
 export interface MinimalPreset {
     name: MinimalPresetName;
     light: MinimalPalette;
     dark: MinimalPalette;
+    backgroundPreset?: string;     // ← این فیلد جدید
 }
 
 export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
+
+    /* -----------------------------
+     *  OLD THEMES (FIXED)
+     * ----------------------------- */
+
     "Orange Electric": {
         name: "Orange Electric",
+        backgroundPreset: "gradientBlue",
         light: {
             primary: "rgb(254,95,2)",
             accent: "#0031E5",
             warn: "#d32f2f",
-            background: "#ffffff",
+            background: "linear-gradient(135deg, #FFF2E6, #FFE5D1, #FFD1B5)",
             surface: "#ffffff",
             onSurface: "#1e1e1e"
         },
@@ -51,6 +69,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Electric Blue": {
         name: "Electric Blue",
+        backgroundPreset: "ocean",
         light: {
             primary: "rgb(0,49,229)",
             accent: "rgb(254,95,2)",
@@ -227,8 +246,215 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             surface: "#1d1d1d",
             onSurface: "#e0e0e0"
         }
+    },
+
+
+    /* -----------------------------
+     *  NEW THEMES (10 Modern UX)
+     * ----------------------------- */
+
+    "Calm Ocean": {
+        name: "Calm Ocean",
+        light: {
+            primary: "#2E86AB",
+            accent: "#F18F01",
+            warn: "#d32f2f",
+            background: "#F8F9FA",
+            surface: "#ffffff",
+            onSurface: "#212529"
+        },
+        dark: {
+            primary: "#4EA8C8",
+            accent: "#FFB347",
+            warn: "#ff8a80",
+            background: "#0F1B24",
+            surface: "#1A2A33",
+            onSurface: "#E0E0E0"
+        }
+    },
+
+    "Lush Forest": {
+        name: "Lush Forest",
+        light: {
+            primary: "#2D6A4F",
+            accent: "#D4A373",
+            warn: "#d32f2f",
+            background: "#FEFAE0",
+            surface: "#ffffff",
+            onSurface: "#343A40"
+        },
+        dark: {
+            primary: "#40916C",
+            accent: "#E6C8A8",
+            warn: "#ff8a80",
+            background: "#1B2C22",
+            surface: "#25382C",
+            onSurface: "#E8E6E3"
+        }
+    },
+
+    "Modern Gray-scale": {
+        name: "Modern Gray-scale",
+        light: {
+            primary: "#495057",
+            accent: "#20C997",
+            warn: "#d32f2f",
+            background: "#FFFFFF",
+            surface: "#F8F9FA",
+            onSurface: "#212529"
+        },
+        dark: {
+            primary: "#6C757D",
+            accent: "#38E8B8",
+            warn: "#ef9a9a",
+            background: "#121212",
+            surface: "#1E1E1E",
+            onSurface: "#E0E0E0"
+        }
+    },
+
+    "Sunset": {
+        name: "Sunset",
+        light: {
+            primary: "#E63946",
+            accent: "#F1C40F",
+            warn: "#d84315",
+            background: "#FFF3E0",
+            surface: "#ffffff",
+            onSurface: "#5D4037"
+        },
+        dark: {
+            primary: "#FF6B6B",
+            accent: "#FFD870",
+            warn: "#ff8a65",
+            background: "#2A1B1A",
+            surface: "#3A2A28",
+            onSurface: "#F5EDEB"
+        }
+    },
+
+    "Dreamy Purple": {
+        name: "Dreamy Purple",
+        light: {
+            primary: "#6A4C93",
+            accent: "#F7B2AD",
+            warn: "#c2185b",
+            background: "#F3E5F5",
+            surface: "#ffffff",
+            onSurface: "#4A148C"
+        },
+        dark: {
+            primary: "#9D7AD0",
+            accent: "#FFCDD5",
+            warn: "#ff80ab",
+            background: "#2A1A3A",
+            surface: "#3A294C",
+            onSurface: "#EEDDF7"
+        }
+    },
+
+    "Clear Sky": {
+        name: "Clear Sky",
+        light: {
+            primary: "#0077B6",
+            accent: "#90E0EF",
+            warn: "#e53935",
+            background: "#CAF0F8",
+            surface: "#ffffff",
+            onSurface: "#03045E"
+        },
+        dark: {
+            primary: "#00A5E4",
+            accent: "#B8F3FF",
+            warn: "#ef9a9a",
+            background: "#0A1A2A",
+            surface: "#0F2438",
+            onSurface: "#E0F4FF"
+        }
+    },
+
+    "Warm Earth": {
+        name: "Warm Earth",
+        light: {
+            primary: "#8B4513",
+            accent: "#BC6C25",
+            warn: "#d32f2f",
+            background: "#FAEBD7",
+            surface: "#ffffff",
+            onSurface: "#3E2723"
+        },
+        dark: {
+            primary: "#A06030",
+            accent: "#D98745",
+            warn: "#ff8a80",
+            background: "#2A1A12",
+            surface: "#3A2820",
+            onSurface: "#EDDACF"
+        }
+    },
+
+    "Energetic Neon": {
+        name: "Energetic Neon",
+        light: {
+            primary: "#FF006E",
+            accent: "#3A86FF",
+            warn: "#d32f2f",
+            background: "#FFFFFF",
+            surface: "#F8F8F8",
+            onSurface: "#1A1A1D"
+        },
+        dark: {
+            primary: "#FF3F9F",
+            accent: "#6BA6FF",
+            warn: "#ff8a80",
+            background: "#1A1A1D",
+            surface: "#242427",
+            onSurface: "#F5F5F5"
+        }
+    },
+
+    "Creamy Minimalist": {
+        name: "Creamy Minimalist",
+        light: {
+            primary: "#C9ADA7",
+            accent: "#9A8C98",
+            warn: "#d84315",
+            background: "#F2E9E4",
+            surface: "#ffffff",
+            onSurface: "#4A4E69"
+        },
+        dark: {
+            primary: "#D5C9C4",
+            accent: "#B5AABB",
+            warn: "#ff8a80",
+            background: "#2E2A32",
+            surface: "#3A363E",
+            onSurface: "#E8E6EA"
+        }
+    },
+
+    "Deep Dark": {
+        name: "Deep Dark",
+        light: {
+            primary: "#00BCD4",
+            accent: "#E91E63",
+            warn: "#d32f2f",
+            background: "#E3F2F4",
+            surface: "#ffffff",
+            onSurface: "#212121"
+        },
+        dark: {
+            primary: "#00E5FF",
+            accent: "#FF4F8B",
+            warn: "#ef9a9a",
+            background: "#121212",
+            surface: "#1D1D1D",
+            onSurface: "#E0E0E0"
+        }
     }
+
 };
+
 export const BACKGROUND_PRESETS = {
     none: {
         light: 'none',
@@ -351,9 +577,9 @@ export const BACKGROUND_PRESETS = {
     },
 };
 export const CARD_PRESETS = {
-    bankClassic: {
+    white: {
         light: {
-            bg: "#ffffff",
+            bg: "#FFFFFF",
             border: "1px solid #E2E8F0",
             shadow: "0 1px 3px rgba(0,0,0,0.06)",
             radius: "14px"
@@ -366,9 +592,9 @@ export const CARD_PRESETS = {
         }
     },
 
-    bankSoft: {
+    mirror: {
         light: {
-            bg: "#fdfdfd",
+            bg:  "var(--app-background)",
             border: "1px solid #e5e7eb",
             shadow: "0 2px 6px rgba(0,0,0,0.05)",
             radius: "18px"
@@ -383,7 +609,7 @@ export const CARD_PRESETS = {
 
     bankNeat: {
         light: {
-            bg: "#ffffff",
+            bg:  "var(--app-background)",
             border: "1px solid var(--primary)",
             shadow: "0 0 0 2px rgba(0,49,229,0.1)",
             radius: "12px"
@@ -398,7 +624,7 @@ export const CARD_PRESETS = {
 
     bankPaper: {
         light: {
-            bg: "#fafafa",
+            bg:  "var(--app-background)",
             border: "1px solid #d1d5db",
             shadow: "0 6px 16px rgba(0,0,0,0.04)",
             radius: "16px"
@@ -413,7 +639,7 @@ export const CARD_PRESETS = {
 
     bankGlass: {
         light: {
-            bg: "rgba(255,255,255,0.75)",
+            bg:  "var(--app-background)",
             border: "1px solid rgba(255,255,255,0.45)",
             shadow: "0 4px 18px rgba(0,0,0,0.08)",
             radius: "20px"

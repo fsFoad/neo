@@ -32,7 +32,6 @@ export class ThemePickerComponent implements OnInit {
         return (this.themeService as any).BACKGROUND_PRESETS;
     }
     ngOnInit(): void {
-        // تبدیل Record → Array
         this.presets = Object.values(THEME_PRESETS);
 
         // گرفتن تم انتخاب‌شده قبلی
@@ -71,7 +70,7 @@ export class ThemePickerComponent implements OnInit {
     }
 
     cardPresets = Object.keys((this.themeService as any).CARD_PRESETS);
-    selectedCardPreset = localStorage.getItem('app_card_preset') ?? 'bankClassic';
+    selectedCardPreset = localStorage.getItem('app_card_preset') ?? 'white';
 
     getCardPreview(name: string) {
         const isDark = this.isDarkMode;
