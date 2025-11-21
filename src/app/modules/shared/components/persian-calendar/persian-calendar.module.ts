@@ -140,24 +140,25 @@ interface LocaleSettings {
                         class="ui-datepicker-group ui-widget-content"
                         *ngFor="let month of months; let i = index"
                     >
-                        <div
-                            class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"
-                        >
-                            <a
-                                class="ui-datepicker-prev ui-corner-all"
-                                (click)="onPrevButtonClick($event)"
-                                (keydown.enter)="onPrevButtonClick($event)"
-                                *ngIf="i === 0"
-                                tabindex="0"
-                                (keydown)="onInputKeydown($event)"
-                            >
-                                <span class="ui-datepicker-prev-icon"> > </span>
+                         <div
+                             class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"
+                         >
+
+                               <a
+                                   class="ui-datepicker-prev ui-corner-all"
+                                   (click)="onPrevButtonClick($event)"
+                                   (keydown.enter)="onPrevButtonClick($event)"
+                                   *ngIf="i === 0"
+                                   tabindex="0"
+                                   (keydown)="onInputKeydown($event)"
+                               >
+                                <span class="ui-datepicker-prev-icon"> < </span>
                             </a>
                             <div class="ui-datepicker-title">
                                 <span
                                     class="ui-datepicker-month"
                                     *ngIf="!monthNavigator && view !== 'month'"
-                                    >{{ locale.monthNames[month.month] }}</span
+                                >{{ locale.monthNames[month.month] }}</span
                                 >
                                 <select
                                     tabindex="0"
@@ -207,26 +208,26 @@ interface LocaleSettings {
                                 <span
                                     class="ui-datepicker-year"
                                     *ngIf="!yearNavigator"
-                                    >{{
+                                >{{
                                         view === 'month'
                                             ? currentYear
                                             : month.year
                                     }}</span
                                 >
                             </div>
-                            <a
-                                class="ui-datepicker-next ui-corner-all"
-                                (click)="onNextButtonClick($event)"
-                                (keydown.enter)="onNextButtonClick($event)"
-                                *ngIf="
+                             <a
+                                 class="ui-datepicker-next ui-corner-all"
+                                 (click)="onNextButtonClick($event)"
+                                 (keydown.enter)="onNextButtonClick($event)"
+                                 *ngIf="
                                     numberOfMonths === 1
                                         ? true
                                         : i === numberOfMonths - 1
                                 "
-                                tabindex="0"
-                                (keydown)="onInputKeydown($event)"
-                            >
-                                <span class="ui-datepicker-next-icon"> < </span>
+                                 tabindex="0"
+                                 (keydown)="onInputKeydown($event)"
+                             >
+                                <span class="ui-datepicker-next-icon">>  </span>
                             </a>
                         </div>
                         <div
@@ -241,8 +242,8 @@ interface LocaleSettings {
                                             class="ui-datepicker-weekheader"
                                         >
                                             <span>{{
-                                                locale['weekHeader']
-                                            }}</span>
+                                                    locale['weekHeader']
+                                                }}</span>
                                         </th>
                                         <th
                                             scope="col"
@@ -256,7 +257,7 @@ interface LocaleSettings {
                                                 [class]="
                                                     end ? 'text-danger' : ''
                                                 "
-                                                >{{ weekDay }}</span
+                                            >{{ weekDay }}</span
                                             >
                                         </th>
                                     </tr>
@@ -355,7 +356,7 @@ interface LocaleSettings {
                                                         *ngIf="
                                                             !disabledDateTemplate
                                                         "
-                                                        >{{
+                                                    >{{
                                                             date.day
                                                         }}</ng-container
                                                     >
@@ -374,6 +375,8 @@ interface LocaleSettings {
                                 </tbody>
                             </table>
                         </div>
+
+
                     </div>
                     <div class="ui-monthpicker" *ngIf="view === 'month'">
                         <a
@@ -812,6 +815,7 @@ export class PersianCalendarComponent
         public cd: ChangeDetectorRef,
         private zone: NgZone
     ) {}
+    @Input() useSlashFormat: boolean = false;
 
     @Input() defaultDate: Moment;
 
@@ -1110,30 +1114,31 @@ export class PersianCalendarComponent
     updateModel(value: moment.Moment | moment.Moment[] | null) {
         this.value = value;
 
-        // مبدّل کمکی برای فرمت تاریخ با توجه به تقویم خروجی
         const outDate = (m: moment.Moment) => {
             if (!m) return null;
-            // توجه: moment-jalaali خودش تاریخ را نگه می‌دارد؛ ما فقط فرمت خروجی را تعیین می‌کنیم
             return m.clone();
         };
 
         if (this.showTime) {
-            // فقط زمان خروجی بده (بدون تاریخ) به‌صورت استرینگ HHmm یا HHmmss
             const t = this.showSeconds ? 'HHmmss' : 'HHmm';
             this.onModelChange(this.value ? (this.value as moment.Moment).format(t) : null);
             return;
         }
 
         if (this.dataType === 'normaled') {
-            // خروجی نرمالایز: بدون جداکننده
-            const fmt = this.isOutputJ() ? 'jYYYYjMMjDD' : 'YYYYMMDD';
+            // ✅ اگر useSlashFormat = true باشد، خروجی با / تولید می‌شود
+            const fmtBase = this.isOutputJ() ? 'jYYYY' : 'YYYY';
+            const fmt = this.useSlashFormat
+                ? `${fmtBase}/MM/DD`.replace(/jYYYY/, 'jYYYY').replace(/MM/, this.isOutputJ() ? 'jMM' : 'MM').replace(/DD/, this.isOutputJ() ? 'jDD' : 'DD')
+                : (this.isOutputJ() ? 'jYYYYjMMjDD' : 'YYYYMMDD');
+
             const out = Array.isArray(this.value)
                 ? this.value.map(v => v ? outDate(v).format(fmt) : null)
                 : this.value ? outDate(this.value as moment.Moment).format(fmt) : null;
+
             this.onModelChange(out);
         }
         else if (this.dataType === 'date') {
-            // خروجی Date میلادی (JS Date) – برای سازگاری عمومی
             const toJsDate = (m: moment.Moment) => m ? m.clone().toDate() : null;
             const out = Array.isArray(this.value)
                 ? this.value.map(v => v ? toJsDate(v) : null)
@@ -1141,14 +1146,12 @@ export class PersianCalendarComponent
             this.onModelChange(out);
         }
         else if (this.dataType === 'moment') {
-            // اگر دوست داری مستقیم moment بدهی
             const out = Array.isArray(this.value)
                 ? this.value.map(v => v ? v.clone() : null)
                 : this.value ? (this.value as moment.Moment).clone() : null;
             this.onModelChange(out);
         }
         else if (this.dataType === 'string') {
-            // خروجی رشته‌ای با فرمتِ تقویم خروجی (و زمان اگر فعال بود)
             const fmt = this.getOutputDateFormat();
             const toStr = (m: moment.Moment) => {
                 if (!m) return '';
@@ -1162,7 +1165,6 @@ export class PersianCalendarComponent
             this.onModelChange(out);
         }
         else {
-            // پیش‌فرض: همان moment (سازگار با قبل، اگر dataType تعریف نشده بود)
             this.onModelChange(this.value);
         }
     }

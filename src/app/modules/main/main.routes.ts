@@ -69,6 +69,14 @@ export default [
             .then(c => c.GuestReasonManagementComponent)
     },
     {
+        path: 'loan-contract', loadComponent: () => import('./components/loan-contract/loan-contract.component')
+            .then(c => c.LoanContractComponent)
+    },
+    {
+        path: 'loan-contract-grant', loadComponent: () => import('./components/loan-contract-grant/loan-contract-grant.component')
+            .then(c => c.LoanContractGrantComponent)
+    },
+    {
         path: 'about',
         loadComponent: () => import('./components/about/about.component')
             .then(c => c.AboutComponent)
