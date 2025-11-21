@@ -17,10 +17,9 @@
                         class="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all"
                     >
                         <p-button
-                            styleClass="!w-10 !h-10 !rounded-2xl !bg-primary !text-on-primary flex items-center justify-center"
-                            [rounded]="true"
-                            [outlined]="false"
-                            [text]="true"
+                            styleClass="btn-icon-2xl"
+                            severity="primary"
+                            [text]="false"
                             (onClick)="addGuestCitizen()"
                         >
                             <span class="material-icons text-base">add</span>
@@ -52,13 +51,13 @@
                             <label for="nationalId">
                                 دلیل مراجعه:
                             </label>
-                            <p-select
+                            <p-dropdown
                                 class="dropdown-normal"
 
                                 formControlName="nationality"
                                 optionLabel="label"
                                 optionValue="value"
-                            ></p-select>
+                            ></p-dropdown>
                         </div>
                         <div class="col-span-12 md:col-span-4 flex flex-col">
                         </div>
@@ -66,23 +65,23 @@
                             <label>
                                 تابعیت:
                             </label>
-                            <p-select
+                            <p-dropdown
                                 class="dropdown-normal"
                                 formControlName="nationality"
                                 optionLabel="label"
                                 optionValue="value"
-                            ></p-select>
+                            ></p-dropdown>
                         </div>
                         <div class="col-span-12 md:col-span-4 flex flex-col">
                             <label class="mb-1 text-sm font-medium text-gray-700">
                                 شعبه ایجاد کننده:
                             </label>
-                            <p-select
+                            <p-dropdown
                                 class="dropdown-normal"
                                 formControlName="nationality"
                                 optionLabel="label"
                                 optionValue="value"
-                            ></p-select>
+                            ></p-dropdown>
                         </div>
                         <div class="col-span-12  md:col-span-4  flex flex-wrap justify-end gap-2 mt-4">
                             <button
@@ -231,34 +230,34 @@
 
                     <div class="col-span-12 md:col-span-4 flex flex-col">
                         <label for="reason">دلیل مراجعه:</label>
-                        <p-select
+                        <p-dropdown
                             id="reason"
                             class="dropdown-normal"
                             formControlName="reason"
                             optionLabel="label"
                             optionValue="value"
-                        ></p-select>
+                        ></p-dropdown>
                     </div>
                     <div class="col-span-12 md:col-span-4 flex flex-col">
                     </div>
                     <div class="col-span-12 md:col-span-4 flex flex-col">
                         <label>تابعیت:</label>
-                        <p-select
+                        <p-dropdown
                             class="dropdown-normal"
                             formControlName="nationality"
                             optionLabel="label"
                             optionValue="value"
-                        ></p-select>
+                        ></p-dropdown>
                     </div>
 
                     <div class="col-span-12 md:col-span-4 flex flex-col">
                         <label>شعبه ایجاد کننده:</label>
-                        <p-select
+                        <p-dropdown
                             class="dropdown-normal"
                             formControlName="branch"
                             optionLabel="label"
                             optionValue="value"
-                        ></p-select>
+                        ></p-dropdown>
                     </div>
 
                     <div class="col-span-12 md:col-span-12 flex flex-wrap justify-end gap-2 mt-4">
@@ -382,33 +381,33 @@
 
                 <div class="col-span-12 md:col-span-4 flex flex-col">
                     <label for="reason">دلیل مراجعه:</label>
-                    <p-select
+                    <p-dropdown
                         id="reason"
                         class="dropdown-normal"
                         formControlName="reason"
                         optionLabel="label"
                         optionValue="value"
-                    ></p-select>
+                    ></p-dropdown>
                 </div>
 
                 <div class="col-span-12 md:col-span-4 flex flex-col">
                     <label>تابعیت:</label>
-                    <p-select
+                    <p-dropdown
                         class="dropdown-normal"
                         formControlName="nationality"
                         optionLabel="label"
                         optionValue="value"
-                    ></p-select>
+                    ></p-dropdown>
                 </div>
 
                 <div class="col-span-12 md:col-span-4 flex flex-col">
                     <label>شعبه ایجاد کننده:</label>
-                    <p-select
+                    <p-dropdown
                         class="dropdown-normal"
                         formControlName="branch"
                         optionLabel="label"
                         optionValue="value"
-                    ></p-select>
+                    ></p-dropdown>
                 </div>
 
                 <div class="col-span-12 md:col-span-4 flex flex-wrap justify-end gap-2 mt-4">

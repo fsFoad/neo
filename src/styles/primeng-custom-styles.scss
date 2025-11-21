@@ -848,7 +848,6 @@ anglerighticon {
 
 .p-button:has(.p-button-icon):has(.p-button-label:empty) {
     width: 1.25rem;
-    //height: 2.25rem;
     padding: 10.35rem;
 }
 .p-inputgroup .p-button {
@@ -1108,7 +1107,6 @@ anglerighticon {
 
 /* لیبل داخل دراپ‌داون */
 .p-dropdown.dropdown-normal .p-select-label {
-    //padding: var(--p-dropdown-padding-y) var(--p-dropdown-padding-x) !important;
     font-size: 1rem;          /* text-sm */
 }
 
@@ -1417,141 +1415,116 @@ textarea,
 
 
 /*-----------------------------------------------------------------dark-----------------------------------------------------------------*/
-.dark-theme .p-inputtext,
-.dark-theme textarea,
-.dark-theme .p-inputmask,
-.dark-theme .p-inputnumber-input,
-.dark-theme .p-password input,
-.dark-theme .p-dropdown,
-.dark-theme .p-multiselect,
-.dark-theme .p-listbox,
-.dark-theme .p-treeselect,
-.dark-theme .p-cascadeselect {
+.dark-mode .p-inputtext,
+.dark-mode textarea,
+.dark-mode .p-inputmask,
+.dark-mode .p-inputnumber-input,
+.dark-mode .p-password input,
+.dark-mode .p-dropdown,
+.dark-mode .p-multiselect,
+.dark-mode .p-listbox,
+.dark-mode .p-treeselect,
+.dark-mode .p-cascadeselect {
     background: var(--color-surface);
     color: var(--color-text);
     border: 1px solid var(--color-border);
 }
 
-.dark-theme .p-checkbox .p-checkbox-box,
-.dark-theme .p-radiobutton .p-radiobutton-box {
+.dark-mode .p-checkbox .p-checkbox-box,
+.dark-mode .p-radiobutton .p-radiobutton-box {
     border-color: var(--color-border);
 }
-.dark-theme .p-button,
-.dark-theme .p-splitbutton,
-.dark-theme .p-speeddial-button {
+.dark-mode .p-button,
+.dark-mode .p-splitbutton,
+.dark-mode .p-speeddial-button {
     background: var(--color-primary);
     color: #fff;
 }
 
-.dark-theme .p-button:hover,
-.dark-theme .p-speeddial-button:hover {
+.dark-mode .p-button:hover,
+.dark-mode .p-speeddial-button:hover {
     background: var(--color-primary-hover);
 }
-.dark-theme .p-dataview,
-.dark-theme .p-orderlist,
-.dark-theme .p-organizationchart,
-.dark-theme .p-paginator,
-.dark-theme .p-picklist,
-.dark-theme .p-timeline,
-.dark-theme .p-tree,
-.dark-theme .p-treetable,
-.dark-theme .p-virtualscroller {
+.dark-mode .p-dataview,
+.dark-mode .p-orderlist,
+.dark-mode .p-organizationchart,
+.dark-mode .p-paginator,
+.dark-mode .p-picklist,
+.dark-mode .p-timeline,
+.dark-mode .p-tree,
+.dark-mode .p-treetable,
+.dark-mode .p-virtualscroller {
     background: var(--color-surface);
     border-radius: var(--radius-lg);
 }
-
-.dark-theme .p-datatable th {
-    background: var(--color-surface-hover);
-    color: var(--color-text);
+.p-datatable .p-datatable-tbody > tr {
+    background: var(--p-datatable-row-bg) !important;
+    transition: background 0.2s ease;
 }
 
-.dark-theme .p-datatable td {
-    border-color: var(--color-border);
+.p-datatable .p-datatable-tbody > tr:hover {
+    background: var(--p-datatable-row-hover-bg) !important;
 }
-.dark-theme .p-dialog,
-.dark-theme .p-drawer,
-.dark-theme .p-tooltip,
-.dark-theme .p-popover,
-.dark-theme .p-confirm-popup {
+
+/* Selected Row */
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+    background: var(--primary) !important;
+    color: #fff !important;
+}
+
+.p-datatable .p-datatable-tbody > tr.p-highlight .p-checkbox-box {
+    border-color: #fff !important;
+}
+.dark-mode .p-dialog,
+.dark-mode .p-drawer,
+.dark-mode .p-tooltip,
+.dark-mode .p-popover,
+.dark-mode .p-confirm-popup {
     background: var(--color-surface);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     color: var(--color-text);
 }
-.dark-theme .p-fileupload {
+.dark-mode .p-fileupload {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
 }
-.dark-theme .p-breadcrumb,
-.dark-theme .p-contextmenu,
-.dark-theme .p-dock,
-.dark-theme .p-menubar,
-.dark-theme .p-megamenu,
-.dark-theme .p-panelmenu,
-.dark-theme .p-tieredmenu {
+.dark-mode .p-breadcrumb,
+.dark-mode .p-contextmenu,
+.dark-mode .p-dock,
+.dark-mode .p-menubar,
+.dark-mode .p-megamenu,
+.dark-mode .p-panelmenu,
+.dark-mode .p-tieredmenu {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
 }
 
-.dark-theme .p-chart {
+.dark-mode .p-chart {
     background: var(--color-surface);
     border-radius: var(--radius-md);
 }
-.dark-theme .p-message,
-.dark-theme .p-toast {
+.dark-mode .p-message,
+.dark-mode .p-toast {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     color: var(--color-text);
 }
-.dark-theme .p-carousel,
-.dark-theme .p-galleria,
-.dark-theme .p-image,
-.dark-theme .p-image-compare {
+.dark-mode .p-carousel,
+.dark-mode .p-galleria,
+.dark-mode .p-image,
+.dark-mode .p-image-compare {
     background: var(--color-surface);
 }
-.dark-theme .p-chip,
-.dark-theme .p-badge,
-.dark-theme .p-tag,
-.dark-theme .p-progressbar,
-.dark-theme .p-progressspinner,
-.dark-theme .p-skeleton,
-.dark-theme .p-inplace,
-.dark-theme .p-blockui,
-.dark-theme .p-metergroup {
+.dark-mode .p-chip,
+.dark-mode .p-badge,
+.dark-mode .p-tag,
+.dark-mode .p-progressbar,
+.dark-mode .p-progressspinner,
+.dark-mode .p-skeleton,
+.dark-mode .p-inplace,
+.dark-mode .p-blockui,
+.dark-mode .p-metergroup {
     background: var(--color-surface);
     color: var(--color-text);
-}
-.dark-theme .p-datatable {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-}
-
-/* Header */
-.dark-theme .p-datatable thead th {
-    background: var(--color-surface-hover);
-    color: var(--color-text);
-    border-bottom: 1px solid var(--color-border);
-}
-
-/* Body cells */
-.dark-theme .p-datatable tbody td {
-    border-color: var(--color-border);
-    color: var(--color-text);
-}
-
-/* Row hover */
-.dark-theme .p-datatable tbody tr:hover {
-    background: #2c3a52;
-}
-
-/* Striped */
-.dark-theme .p-datatable-striped tbody tr:nth-child(even) {
-    background: #1c2535;
-}
-
-/* Paginator */
-.dark-theme .p-paginator {
-    background: var(--color-surface);
-    border-top: 1px solid var(--color-border);
 }

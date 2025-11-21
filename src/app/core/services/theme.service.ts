@@ -96,6 +96,35 @@ export class ThemeService {
         this.setVar('--background', palette.background ?? '');
         this.setVar('--on-surface', palette.onSurface ?? '');
 
+
+        this.setVar('--color-surface', palette.surface ?? '');
+        this.setVar('--color-bg', palette.background ?? '');
+        this.setVar('--color-text', palette.onSurface ?? '');
+        this.setVar('--color-border', (palette.onSurface ?? '') + '33');
+
+// Primary colors
+        this.setVar('--color-primary', palette.primary);
+        this.setVar('--color-primary-hover', palette.accent);
+
+// Hover surface
+        this.setVar('--color-surface-hover', (palette.surface ?? '') + '22');
+
+
+        /* ---------------------------
+   PrimeNG DataTable
+---------------------------- */
+        this.setVar('--p-datatable-row-bg', 'transparent');
+        this.setVar('--p-datatable-row-color', palette.onSurface ?? '#333');
+
+        this.setVar('--p-datatable-row-hover-bg', palette.onSurface + '0D'); /* 05-10% */
+        this.setVar('--p-datatable-row-hover-color', palette.onSurface);
+
+        this.setVar('--p-datatable-header-bg', palette.surface);
+        this.setVar('--p-datatable-header-color', palette.onSurface);
+        this.setVar('--p-datatable-header-border-color', (palette.onSurface ?? '') + '22');
+
+        this.setVar('--p-datatable-border-color', (palette.onSurface ?? '') + '22');
+
         /* ---------------------------
            2) PrimeNG Button Mapping
         ---------------------------- */

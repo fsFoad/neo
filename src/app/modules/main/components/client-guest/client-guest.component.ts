@@ -13,6 +13,7 @@ import {
 } from '../client-citizen/register-client-citizen/register-client-citizen.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GuestClientRegisterComponent } from './guest-client-register/guest-client-register.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
     selector: 'app-client-guest',
@@ -30,16 +31,19 @@ import { GuestClientRegisterComponent } from './guest-client-register/guest-clie
         RegisterClientCitizenComponent,
         NgClass,
         GuestClientRegisterComponent,
+        DropdownModule,
     ],
     templateUrl: './client-guest.component.html',
     styleUrl: './client-guest.component.scss',
 })
 export class ClientGuestComponent {
     allCustomers: any[] = [];
+    reasons: any[] = [];
     guestDto: any = {};
     loading = false;
     addFlag = false;
     searchPerformed = false;
+    showForm = false;
 
     guestForm: FormGroup;
 

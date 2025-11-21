@@ -373,6 +373,11 @@ body,
 }*/
 :root {
     --app-background: none;
+    --p-datatable-header-bg: none;
+    --p-datatable-header-color: none;
+    --p-datatable-row-bg: none;
+    --p-datatable-row-hover-bg: none;
+    --p-datatable-border-color:none;
 }
 
 /* لایه اصلی صفحه */
@@ -442,7 +447,7 @@ form .bg-white {
     border-radius: var(--card-radius) !important;
     box-shadow: var(--card-shadow) !important;
 }
-.dark-theme {
+.dark-mode {
     --color-primary: #6366f1;
     --color-primary-hover: #818cf8;
 

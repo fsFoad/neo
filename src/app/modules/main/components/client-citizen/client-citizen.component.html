@@ -197,9 +197,11 @@
     [infiniteScrollThrottle]="300"
     [infiniteScrollDisabled]="loading"
     (scrolled)="onScrollDown()"
+
     *ngIf="isMobile"
 >
     <p-table
+        selectionMode="single"
         [value]="allCustomers"
         [paginator]="false"
         [loading]="loading"

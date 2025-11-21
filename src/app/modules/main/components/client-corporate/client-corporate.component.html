@@ -15,10 +15,9 @@
                         class="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all"
                     >
                         <p-button
-                            styleClass="!w-10 !h-10 !rounded-2xl !bg-primary !text-on-primary flex items-center justify-center"
-                            [rounded]="true"
-                            [outlined]="false"
-                            [text]="true"
+                            styleClass="btn-icon-2xl"
+                            severity="primary"
+                            [text]="false"
                             (onClick)="addCorporate()"
                         >
                             <span class="material-icons text-base">add</span>
@@ -38,7 +37,7 @@
 </div>
 <div class="p-6 space-y-6">
     <form [formGroup]="searchForm">
-        <div class="app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+        <div class="px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
             <div class="flex flex-col md:w-2/6">
                 <label class="mb-1 text-sm text-gray-700 font-medium">نوع جستجو:</label>
                 <p-dropdown
@@ -54,7 +53,7 @@
             </div>
             <div class="flex flex-col md:w-2/6">
                 <label class="mb-1 text-sm text-gray-700 font-medium">{{ searchInputLabel }}:</label>
-                <p-inputgroup>
+                <p-inputgroup  class="normal-input-group">
                     <input
                         type="text"
                         pInputText

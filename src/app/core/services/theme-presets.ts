@@ -2,37 +2,69 @@
  * 1) PRESET NAMES
  * --------------------------------------------------- */
 export const PRESET_NAMES = [
-    "Orange Electric",
-    "Electric Blue",
-    "Sunset Fusion",
-    "Deep Royal",
-    "Orange Soft",
-    "Blue Neon",
-    "Orange Flame",
-    "Royal Orange Blue",
-    "Soft Blue Orange",
-    "Orange Galaxy",
-    "Bank Executive",
-    "Graphite Minimal",
-    "Soft Lavender",
-    "Midnight Teal",
-    "Royal Gold",
-    "Cyber Lime",
-    "Tech Indigo",
+    "Amber Spark",
+    "Sapphire Ember",
+    "Coral Horizon",
+    "Royal Sapphire",
+    "Soft Amber",
+    "Neon Aquamarine",
+    "Flame Citrine",
+    "Imperial Ember",
+    "Azure Citrine",
+    "Galactic Amber",
+    "Steel Sapphire",
+    "Obsidian Frost",
+    "Amethyst Breeze",
+    "Jade Twilight",
+    "Golden Topaz",
+    "Peridot Pulse",
+    "Indigo Quartz",
+    "Ashen Opal",
 
-    "Calm Ocean",
-    "Lush Forest",
-    "Modern Gray-scale",
-    "Sunset",
-    "Dreamy Purple",
-    "Clear Sky",
-    "Warm Earth",
-    "Energetic Neon",
-    "Creamy Minimalist",
-    "Deep Dark"
+    "Ocean Lapis",
+    "Emerald Grove",
+    "Graphite Emerald",
+    "Ruby Sunset",
+    "Violet Amethyst",
+    "Sky Aquamarine",
+    "Earthy Jasper",
+    "Neon Ruby",
+    "Ivory Quartz",
+    "Onyx Surge"
 ] as const;
 
+export const PRESET_NAMES_FA = {
+    "Orange Electric": "نارنجی الکتریکی",
+    "Electric Blue": "آبی الکتریکی",
+    "Sunset Fusion": "غروب ترکیبی",
+    "Deep Royal": "آبی سلطنتی",
+    "Orange Soft": "نارنجی ملایم",
+    "Blue Neon": "آبی نئونی",
+    "Orange Flame": "شعلهٔ نارنجی",
+    "Royal Orange Blue": "نارنجی–آبی سلطنتی",
+    "Soft Blue Orange": "آبی–نارنجی ملایم",
+    "Orange Galaxy": "کهکشان نارنجی",
+    "Bank Executive": "بانکداری اجرایی",
+    "Graphite Minimal": "گرافیتی مینیمال",
+    "Soft Lavender": "اسطوخودوس ملایم",
+    "Midnight Teal": "سبز-آبی نیمه‌شب",
+    "Royal Gold": "طلایی سلطنتی",
+    "Cyber Lime": "لایم سایبری",
+    "Tech Indigo": "نیلی تکنولوژیک",
+    "Legacy Bank Gray": "خاکستری بانکی کلاسیک",
+    "Calm Ocean": "اقیانوس آرام",
+    "Lush Forest": "جنگل انبوه",
+    "Modern Gray-scale": "خاکستری مدرن",
+    "Sunset": "غروب",
+    "Dreamy Purple": "بنفش رویایی",
+    "Clear Sky": "آسمان صاف",
+    "Warm Earth": "زمین گرم",
+    "Energetic Neon": "نئونی پرانرژی",
+    "Creamy Minimalist": "مینیمال کرمی",
+    "Deep Dark": "تاریک عمیق"
+} as const;
 export type MinimalPresetName = typeof PRESET_NAMES[number];
+export type MinimalPresetNameFA = keyof typeof PRESET_NAMES_FA;
 
 /* ---------------------------------------------------
  * 2) BACKGROUND PRESET NAMES
@@ -76,6 +108,7 @@ export interface MinimalPalette {
 
 export interface MinimalPreset {
     name: MinimalPresetName;
+    displayName:string,
     light: MinimalPalette;
     dark: MinimalPalette;
     backgroundPreset?: BackgroundPresetName;
@@ -203,12 +236,9 @@ export const BACKGROUND_PRESETS: Record<BackgroundPresetName, BackgroundPreset> 
  * --------------------------------------------------- */
 export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
-    /* -----------------------------
-     *  OLD THEMES (FIXED)
-     * ----------------------------- */
-
-    "Electric Blue": {
-        name: "Electric Blue",
+    "Sapphire Ember": {
+        name: "Sapphire Ember",
+        displayName: "یاقوت کبودِ گداخته",
         backgroundPreset: "ocean",
         light: {
             primary: "rgb(0,49,229)",
@@ -228,8 +258,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Graphite Minimal": {
-        name: "Graphite Minimal",
+    "Obsidian Frost": {
+        name: "Obsidian Frost",
+        displayName:"یخ‌مهٔ ابسیدین",
         backgroundPreset: "softGray",
         light: {
             primary: "#444444",
@@ -249,8 +280,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Soft Lavender": {
-        name: "Soft Lavender",
+    "Amethyst Breeze": {
+        name: "Amethyst Breeze",
+        displayName:"نسیم آمتیست",
         backgroundPreset: "pattern-dots",
         light: {
             primary: "#B388EB",
@@ -270,8 +302,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Midnight Teal": {
-        name: "Midnight Teal",
+    "Jade Twilight": {
+        name: "Jade Twilight",
+        displayName:"غروب یشم",
         backgroundPreset: "clean-white",
         light: {
             primary: "#005F73",
@@ -291,8 +324,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Royal Gold": {
-        name: "Royal Gold",
+    "Golden Topaz": {
+        name: "Golden Topaz",
+        displayName:"توپاز زرین",
         backgroundPreset: "enterprise-gray",
         light: {
             primary: "#C59D5F",
@@ -312,8 +346,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Cyber Lime": {
-        name: "Cyber Lime",
+    "Peridot Pulse": {
+        name: "Peridot Pulse",
+        displayName:"پالس پریدوت",
         backgroundPreset: "metal-blue",
         light: {
             primary: "#A3FF00",
@@ -333,8 +368,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Tech Indigo": {
-        name: "Tech Indigo",
+    "Indigo Quartz": {
+        name: "Indigo Quartz",
+        displayName:"کوارتز نیلی",
         backgroundPreset: "finance-soft",
         light: {
             primary: "#3F3D56",
@@ -354,8 +390,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Orange Electric": {
-        name: "Orange Electric",
+    "Amber Spark": {
+        name: "Amber Spark",
+        displayName:"جرقهٔ کهربا",
         backgroundPreset: "gradientBlue",
         light: {
             primary: "rgb(254,95,2)",
@@ -375,8 +412,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Sunset Fusion": {
-        name: "Sunset Fusion",
+    "Coral Horizon": {
+        name: "Coral Horizon",
+        displayName:"افق مرجانی",
         light: {
             primary: "#ff6a00",
             accent: "rgb(0,49,229)",
@@ -395,8 +433,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Deep Royal": {
-        name: "Deep Royal",
+    "Royal Sapphire": {
+        name: "Royal Sapphire",
+        displayName:"یاقوت کبود شاهانه",
         light: {
             primary: "rgb(0,49,229)",
             accent: "#ff6f00",
@@ -415,8 +454,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Orange Soft": {
-        name: "Orange Soft",
+    "Soft Amber": {
+        name: "Soft Amber",
+        displayName:"کهربای نرم",
         light: {
             primary: "rgb(254,95,2)",
             accent: "#ff9800",
@@ -435,8 +475,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Blue Neon": {
-        name: "Blue Neon",
+    "Neon Aquamarine": {
+        name: "Neon Aquamarine",
+        displayName:"آکوآمارین نئونی",
         light: {
             primary: "rgb(0,49,229)",
             accent: "#448aff",
@@ -455,8 +496,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Orange Flame": {
-        name: "Orange Flame",
+    "Flame Citrine": {
+        name: "Flame Citrine",
+        displayName:"سیترین شعله‌ای",
         light: {
             primary: "rgb(254,95,2)",
             accent: "#ff7043",
@@ -475,8 +517,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Royal Orange Blue": {
-        name: "Royal Orange Blue",
+    "Imperial Ember": {
+        name: "Imperial Ember",
+        displayName:"اخگر امپراتوری",
         light: {
             primary: "rgb(0,49,229)",
             accent: "rgb(254,95,2)",
@@ -495,8 +538,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Soft Blue Orange": {
-        name: "Soft Blue Orange",
+    "Azure Citrine": {
+        name: "Azure Citrine",
+        displayName:"سیترین آبی",
         light: {
             primary: "#3f51b5",
             accent: "rgb(254,95,2)",
@@ -515,8 +559,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Orange Galaxy": {
-        name: "Orange Galaxy",
+    "Galactic Amber": {
+        name: "Galactic Amber",
+        displayName:"کهربای کهکشانی",
         light: {
             primary: "rgb(254,95,2)",
             accent: "#ff6e40",
@@ -535,8 +580,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Bank Executive": {
-        name: "Bank Executive",
+    "Steel Sapphire": {
+        name: "Steel Sapphire",
+        displayName:"یاقوت فولادی",
         backgroundPreset: "finance-soft",
         light: {
             primary: "#1B3A57",
@@ -555,12 +601,32 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             onSurface: "#E8EBEF"
         }
     },
-    /* -----------------------------
-     *  NEW THEMES (10 Modern UX)
-     * ----------------------------- */
 
-    "Calm Ocean": {
-        name: "Calm Ocean",
+    "Ashen Opal": {
+        name: "Ashen Opal",
+        displayName:"اوپال خاکستری",
+        backgroundPreset: "softGray",
+        light: {
+            primary: "#8AB4F8",
+            accent: "#5F6368",
+            warn: "#D32F2F",
+            background: "#E0E0E0",
+            surface: "#FAFAFA",
+            onSurface: "#424242"
+        },
+        dark: {
+            primary: "#90CAF9",
+            accent: "#B0BEC5",
+            warn: "#FF8A80",
+            background: "#1E1E1E",
+            surface: "#2A2A2A",
+            onSurface: "#E0E0E0"
+        }
+    },
+
+    "Ocean Lapis": {
+        name: "Ocean Lapis",
+        displayName:"لاجورد اقیانوس",
         light: {
             primary: "#2E86AB",
             accent: "#F18F01",
@@ -579,8 +645,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Lush Forest": {
-        name: "Lush Forest",
+    "Emerald Grove": {
+        name: "Emerald Grove",
+        displayName:"بیشهٔ زمردی",
         light: {
             primary: "#2D6A4F",
             accent: "#D4A373",
@@ -599,8 +666,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Modern Gray-scale": {
-        name: "Modern Gray-scale",
+    "Graphite Emerald": {
+        name: "Graphite Emerald",
+        displayName:"زمرد گرافیتی",
         light: {
             primary: "#495057",
             accent: "#20C997",
@@ -619,8 +687,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Sunset": {
-        name: "Sunset",
+    "Ruby Sunset": {
+        name: "Ruby Sunset",
+        displayName:"غروب یاقوتی",
         light: {
             primary: "#E63946",
             accent: "#F1C40F",
@@ -639,8 +708,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Dreamy Purple": {
-        name: "Dreamy Purple",
+    "Violet Amethyst": {
+        name: "Violet Amethyst",
+        displayName:"آمتیست بنفش",
         light: {
             primary: "#6A4C93",
             accent: "#F7B2AD",
@@ -659,8 +729,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Clear Sky": {
-        name: "Clear Sky",
+    "Sky Aquamarine": {
+        name: "Sky Aquamarine",
+        displayName:"آکوآمارین آسمانی",
         light: {
             primary: "#0077B6",
             accent: "#90E0EF",
@@ -679,8 +750,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Warm Earth": {
-        name: "Warm Earth",
+    "Earthy Jasper": {
+        name: "Earthy Jasper",
+        displayName:"جاسپر خاکی",
         light: {
             primary: "#8B4513",
             accent: "#BC6C25",
@@ -699,8 +771,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Energetic Neon": {
-        name: "Energetic Neon",
+    "Neon Ruby": {
+        name: "Neon Ruby",
+        displayName:"یاقوت نئونی",
         light: {
             primary: "#FF006E",
             accent: "#3A86FF",
@@ -719,8 +792,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Creamy Minimalist": {
-        name: "Creamy Minimalist",
+    "Ivory Quartz": {
+        name: "Ivory Quartz",
+        displayName:"کوارتز عاجی",
         light: {
             primary: "#C9ADA7",
             accent: "#9A8C98",
@@ -739,8 +813,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Deep Dark": {
-        name: "Deep Dark",
+    "Onyx Surge": {
+        name: "Onyx Surge",
+        displayName:"موج اونیکس",
         light: {
             primary: "#00BCD4",
             accent: "#E91E63",
