@@ -8,6 +8,7 @@ import { Dialog } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { PersianCalendarComponent } from '../../../../../shared/components/persian-calendar/persian-calendar.module';
 import { ButtonDirective } from 'primeng/button';
+import { Tooltip } from 'primeng/tooltip';
 
 @Component({
     selector: 'app-corporate-activity-info',
@@ -21,6 +22,7 @@ import { ButtonDirective } from 'primeng/button';
         DropdownModule,
         PersianCalendarComponent,
         ButtonDirective,
+        Tooltip,
     ],
     templateUrl: './corporate-activity-info.component.html',
     styleUrl: './corporate-activity-info.scss',

@@ -54,33 +54,6 @@
                 <td data-label="تاریخ شروع فعالیت">{{ row.startDate | date:'yyyy/MM/dd' }}</td>
                 <td data-label="تاریخ پایان فعالیت">{{ row.endDate | date:'yyyy/MM/dd' }}</td>
 
-                <!--   <td class="action-column">
-                       <div class="flex flex-column gap-2">
-                           <button
-                               pButton
-                               icon="pi pi-plus"
-                               class="p-button-sm p-button-rounded p-button-text"
-                               pTooltip="تعریف محل فعالیت"
-                               (click)="onDefineActivityPlace(row)"
-                           ></button>
-                           <button
-                               pButton
-                               icon="pi pi-pencil"
-                               class="p-button-sm p-button-rounded p-button-text p-button-success"
-                               pTooltip="ویرایش محل فعالیت"
-                               (click)="onEditActivity(row)"
-                           ></button>
-                           <button
-
-                               pButton
-                               icon="pi pi-info"
-                               class="p-button-sm p-button-rounded p-button-text p-button-help"
-                               pTooltip="جزئیات محل فعالیت"
-                               (click)="onViewActivityPlace(row)"
-                           ></button>
-
-                       </div>
-                   </td>-->
                 <td class="action-column">
                     <div class="flex flex-row gap-2">
                         <!-- تعریف محل فعالیت -->
@@ -96,6 +69,7 @@
                         <button
                             pButton
                             icon="pi pi-pencil"
+
                             class="p-button-sm p-button-rounded p-button-outlined p-button-success"
                             pTooltip="ویرایش محل فعالیت"
                             (click)="openEditPlaceDialog(row)"

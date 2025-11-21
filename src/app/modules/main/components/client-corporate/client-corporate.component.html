@@ -264,32 +264,53 @@ normal-button  "
 
                 <td class="action-column">
                     <div class="flex flex-column gap-2">
+
+                        <!-- مشاهده جزئیات -->
                         <button
                             pButton
                             icon="pi pi-eye"
-                            class="p-button-sm p-button-rounded p-button-text"
-                            pTooltip="مشاهده جزئیات"
-                        ></button>
+                            severity="secondary"
+                            size="small"
+                            pTooltip="مشاهده جزئیات">
+                        </button>
+
+                        <!-- ویرایش اطلاعات -->
                         <button
                             pButton
                             icon="pi pi-pencil"
-                            class="p-button-sm p-button-rounded p-button-text p-button-success"
-                            pTooltip="ویرایش اطلاعات"
-                        ></button>
+                            severity="success"
+                            size="small"
+                            pTooltip="ویرایش اطلاعات">
+                        </button>
+
+                        <!-- فعالسازی -->
                         <button
                             *ngIf="customer.status === 'inactive'"
                             pButton
                             icon="pi pi-check"
-                            class="p-button-sm p-button-rounded p-button-text p-button-help"
-                            pTooltip="فعالسازی"
-                        ></button>
+                            severity="help"
+                            size="small"
+                            pTooltip="فعالسازی">
+                        </button>
+
+                        <!-- غیرفعالسازی -->
                         <button
                             *ngIf="customer.status === 'active'"
                             pButton
                             icon="pi pi-times"
-                            class="p-button-sm p-button-rounded p-button-text p-button-danger"
-                            pTooltip="غیرفعالسازی"
-                        ></button>
+                            severity="danger"
+                            size="small"
+                            pTooltip="غیرفعالسازی">
+                        </button>
+
+                        <!-- دکمه افزودن -->
+                        <button
+                            pButton
+                            icon="pi pi-plus"
+                            severity="primary"
+                            pTooltip="s">
+                        </button>
+
                     </div>
                 </td>
             </tr>

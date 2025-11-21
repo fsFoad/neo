@@ -131,14 +131,35 @@ html.p-dark {
 }
 .p-button.p-button-text,
 .p-button.p-button-text .p-button-icon {
-    color: var(--primary-text) !important;
+    color: inherit;
 }
 
+/* آیکون به صورت پیش‌فرض از رنگ دکمه ارث‌بری کند */
+.p-button .p-button-icon {
+    color: inherit;
+}
+
+/* اگه جایی Outlined رنگ برند لازم داری: */
+.p-button.p-button-outlined .p-button-icon {
+    color: var(--color-primary);
+}
+/*
 .p-button.p-button-icon-only .p-button-icon {
     color: var(--primary-text) !important;
 }
+*/
 
+.p-button .p-button-icon {
+    color: inherit !important;
+}
 
+.p-button.p-button-icon-only .p-button-icon {
+    color: inherit !important;
+}
+
+.p-button.p-button-outlined .p-button-icon {
+    color: var(--color-primary) !important;
+}
 
 
 /* full override */
@@ -314,9 +335,7 @@ body.dark-mode {
     }
 }
 
-html, body {
-    direction: rtl;
-}
+
 input.p-inputtext.normal-input {
     border-width: 1px !important;
     border-style: solid !important;
@@ -371,6 +390,9 @@ body,
     border-radius: var(--card-radius) !important;
     box-shadow: var(--card-shadow) !important;
 }*/
+html, body {
+    direction: rtl !important;
+}
 :root {
     --app-background: none;
     --p-datatable-header-bg: none;
