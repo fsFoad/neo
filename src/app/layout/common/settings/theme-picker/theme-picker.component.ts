@@ -11,6 +11,7 @@ import { ThemeService } from '../../../../core/services/theme.service';
 import { MatIcon } from '@angular/material/icon';
 import { NgForOf } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
+import { FuseConfigService } from '../../../../../@fuse/services/config';
 
 @Component({
     selector: 'app-theme-picker',
@@ -31,8 +32,10 @@ export class ThemePickerComponent implements OnInit {
     selectedBackground: BackgroundPresetName | null =
         (localStorage.getItem('app_background') as BackgroundPresetName) ?? null;
 
-    constructor(public themeService: ThemeService) {}
-
+    constructor(
+        public themeService: ThemeService,
+        private fuseConfig: FuseConfigService
+    ) {}
     /* ------------------------------
        انتخاب پس‌زمینه
     ------------------------------- */
@@ -72,6 +75,7 @@ export class ThemePickerComponent implements OnInit {
     toggleDarkMode(): void {
         this.isDarkMode = !this.isDarkMode;
 
+        /* 1) تغییر کلاس‌های دارک روی body */
         if (this.isDarkMode) {
             document.body.classList.add('dark-mode');
             document.body.classList.remove('light-mode');
@@ -79,11 +83,26 @@ export class ThemePickerComponent implements OnInit {
             document.body.classList.add('light-mode');
             document.body.classList.remove('dark-mode');
         }
+
+        /* 2) تغییر scheme در Fuse */
+        this.fuseConfig.config = {
+            scheme: this.isDarkMode ? 'dark' : 'light'
+        };
+
+        /* 3) اعمال تم انتخاب‌شده → light/dark */
         if (this.selectedTheme) {
             this.themeService.applyPreset(this.selectedTheme);
         }
+
+        /* 4) هماهنگی کارت → نسخه دارک/لایت */
         if (this.selectedCardPreset) {
             this.themeService.setCardPreset(this.selectedCardPreset);
+        }
+
+        /* 5) هماهنگی Background Preset */
+        const savedBg = localStorage.getItem('app_background');
+        if (savedBg && BACKGROUND_PRESETS[savedBg as BackgroundPresetName]) {
+            this.themeService.setBackgroundPreset(savedBg as BackgroundPresetName);
         }
     }
     /* ------------------------------
