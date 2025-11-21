@@ -1,5 +1,5 @@
-
 <div class="p-4 space-y-4">
+
     <div class="flex justify-between items-center">
         <h3 class="text-lg font-bold">Theme Picker</h3>
 
@@ -7,6 +7,8 @@
             <mat-icon>{{ isDarkMode ? 'brightness_3' : 'light_mode' }}</mat-icon>
         </button>
     </div>
+
+    <!-- Theme Presets -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div *ngFor="let preset of presets"
              (click)="selectTheme(preset.name)"
@@ -14,26 +16,25 @@
              [class.border-blue-600]="selectedTheme === preset.name"
              [class.shadow-lg]="selectedTheme === preset.name"
              [class.bg-gray-100]="selectedTheme === preset.name">
+
             <div class="font-medium mb-2 text-sm text-center">
                 {{ preset.name }}
             </div>
+
             <div class="flex gap-1 justify-center">
                 <div class="w-5 h-5 rounded-full" [style.background]="preset.light.primary"></div>
                 <div class="w-5 h-5 rounded-full" [style.background]="preset.light.accent"></div>
                 <div class="w-5 h-5 rounded-full" [style.background]="preset.light.warn"></div>
-                <div
-                    class="cursor-pointer rounded-xl border transition-all p-3"
-                    [style.background]="preset.light.background"
-                >
-
+                <div class="w-5 h-5 rounded-full" [style.background]="preset.light.background"></div>
             </div>
+
         </div>
     </div>
 </div>
-<hr class="my-6" />
 
 <hr class="my-6" />
 
+<!-- Card Presets -->
 <h3 class="text-md font-bold mb-2">Card Theme (Bank UI)</h3>
 
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -45,7 +46,6 @@
 
         <div class="font-semibold text-center mb-2">{{ cp }}</div>
 
-        <!-- کارت پیش نمایش -->
         <div class="w-full h-14 rounded-xl"
              [style.background]="getCardPreview(cp)?.bg"
              [style.border]="getCardPreview(cp)?.border"

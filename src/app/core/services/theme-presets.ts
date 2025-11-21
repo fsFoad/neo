@@ -1,3 +1,6 @@
+/* ---------------------------------------------------
+ * 1) PRESET NAMES
+ * --------------------------------------------------- */
 export const PRESET_NAMES = [
     "Orange Electric",
     "Electric Blue",
@@ -9,6 +12,13 @@ export const PRESET_NAMES = [
     "Royal Orange Blue",
     "Soft Blue Orange",
     "Orange Galaxy",
+    "Bank Executive",
+    "Graphite Minimal",
+    "Soft Lavender",
+    "Midnight Teal",
+    "Royal Gold",
+    "Cyber Lime",
+    "Tech Indigo",
 
     "Calm Ocean",
     "Lush Forest",
@@ -24,6 +34,37 @@ export const PRESET_NAMES = [
 
 export type MinimalPresetName = typeof PRESET_NAMES[number];
 
+/* ---------------------------------------------------
+ * 2) BACKGROUND PRESET NAMES
+ * --------------------------------------------------- */
+export const BACKGROUND_PRESET_NAMES = [
+    "none",
+    "gradientBlue",
+    "softGray",
+    "cardGlass",
+    "ocean",
+    "clean-white",
+    "neobank-blue",
+    "neobank-orange",
+    "finance-soft",
+    "enterprise-gray",
+    "glass",
+    "pattern-dots",
+    "pattern-lines",
+    "card-surface",
+    "metal-blue"
+] as const;
+
+export type BackgroundPresetName = typeof BACKGROUND_PRESET_NAMES[number];
+
+/* ---------------------------------------------------
+ * 3) INTERFACES
+ * --------------------------------------------------- */
+export interface BackgroundPreset {
+    light: string;
+    dark: string;
+}
+
 export interface MinimalPalette {
     primary: string;
     accent: string;
@@ -37,35 +78,134 @@ export interface MinimalPreset {
     name: MinimalPresetName;
     light: MinimalPalette;
     dark: MinimalPalette;
-    backgroundPreset?: string;     // ← این فیلد جدید
+    backgroundPreset?: BackgroundPresetName;
 }
 
+/* ---------------------------------------------------
+ * 4) BACKGROUND PRESETS (فقط یک بار)
+ * --------------------------------------------------- */
+export const BACKGROUND_PRESETS: Record<BackgroundPresetName, BackgroundPreset> = {
+    none: {
+        light: "none",
+        dark: "none"
+    },
+    gradientBlue: {
+        light: "linear-gradient(135deg, #E0F2FE, #BAE6FD, #7DD3FC)",
+        dark: "linear-gradient(135deg, #1E3A8A, #1E40AF, #1D4ED8)"
+    },
+    softGray: {
+        light: "#F8FAFC",
+        dark: "#0F172A"
+    },
+    cardGlass: {
+        light: "linear-gradient(135deg, rgba(255,255,255,0.60), rgba(255,255,255,0.25))",
+        dark: "linear-gradient(135deg, rgba(30,30,30,0.60), rgba(0,0,0,0.35))"
+    },
+    ocean: {
+        light: "linear-gradient(135deg, #E0F7FA, #B2EBF2, #80DEEA)",
+        dark: "linear-gradient(135deg, #004D40, #00695C, #00796B)"
+    },
+    /* -------------------------------
+        1) Ultra Clean (فرم و بانکداری)
+     --------------------------------*/
+    "clean-white": {
+        light: "#F7F9FC",
+        dark: "#101010"
+    },
+
+    /* -------------------------------
+       2) Neobank Blue (گرادینت)
+    --------------------------------*/
+    "neobank-blue": {
+        light: "linear-gradient(135deg, #E9EEFF 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #0A1A33 0%, #0F2C55 100%)"
+    },
+
+    /* -------------------------------
+       3) Neobank Orange
+    --------------------------------*/
+    "neobank-orange": {
+        light: "linear-gradient(135deg, #FFF0E0 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #2B1200 0%, #4A2600 100%)"
+    },
+
+    /* -------------------------------
+       4) Soft Finance (بانکی خیلی تمیز)
+    --------------------------------*/
+    "finance-soft": {
+        light: "linear-gradient(145deg, #EEF1F5 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(145deg, #121212 0%, #1E1E1E 100%)"
+    },
+
+    /* -------------------------------
+       5) Executive Gray (سازمانی)
+    --------------------------------*/
+    "enterprise-gray": {
+        light: "#ECEFF1",
+        dark: "#0F0F0F"
+    },
+
+    /* -------------------------------
+       6) Glassmorphism
+    --------------------------------*/
+    glass: {
+        light: "rgba(255,255,255,0.55)",
+        dark: "rgba(0,0,0,0.40)"
+    },
+
+    /* -------------------------------
+       7) Subtle Pattern Dot
+    --------------------------------*/
+    "pattern-dots": {
+        light: `repeating-radial-gradient(circle at 0 0, #EDEDED 0, #EDEDED 3px, #FFFFFF 3px, #FFFFFF 12px)`,
+        dark: `repeating-radial-gradient(circle at 0 0, #1E1E1E 0, #1E1E1E 3px, #0E0E0E 3px, #0E0E0E 12px)`
+    },
+
+    /* -------------------------------
+       8) Subtle Line Pattern
+    --------------------------------*/
+    "pattern-lines": {
+        light: `repeating-linear-gradient(
+              90deg,
+              #fafafa 0px,
+              #fafafa 20px,
+              #f0f0f0 20px,
+              #f0f0f0 40px
+            )`,
+        dark: `repeating-linear-gradient(
+              90deg,
+              #1A1A1A 0px,
+              #1A1A1A 20px,
+              #141414 20px,
+              #141414 40px
+            )`
+    },
+
+    /* -------------------------------
+       9) Card Layout Background
+    --------------------------------*/
+    "card-surface": {
+        light: "linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%)",
+        dark: "linear-gradient(145deg, #1A1A1A 0%, #111111 100%)"
+    },
+
+    /* -------------------------------
+       10) Banking Steel Blue
+    --------------------------------*/
+    "metal-blue": {
+        light: "linear-gradient(135deg, #E6ECF5 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #0D1521 0%, #111C2A 100%)"
+    }
+};
+
+/* ---------------------------------------------------
+ * 5) THEME PRESETS (کامل، بدون حذف)
+ * --------------------------------------------------- */
 export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     /* -----------------------------
      *  OLD THEMES (FIXED)
      * ----------------------------- */
-
-    "Orange Electric": {
-        name: "Orange Electric",
-        backgroundPreset: "gradientBlue",
-        light: {
-            primary: "rgb(254,95,2)",
-            accent: "#0031E5",
-            warn: "#d32f2f",
-            background: "linear-gradient(135deg, #FFF2E6, #FFE5D1, #FFD1B5)",
-            surface: "#ffffff",
-            onSurface: "#1e1e1e"
-        },
-        dark: {
-            primary: "rgb(254,95,2)",
-            accent: "#5c6bff",
-            warn: "#ff8a80",
-            background: "#121212",
-            surface: "#1e1e1e",
-            onSurface: "#eeeeee"
-        }
-    },
 
     "Electric Blue": {
         name: "Electric Blue",
@@ -85,6 +225,153 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             background: "#141414",
             surface: "#1d1d1d",
             onSurface: "#e0e0e0"
+        }
+    },
+
+    "Graphite Minimal": {
+        name: "Graphite Minimal",
+        backgroundPreset: "softGray",
+        light: {
+            primary: "#444444",
+            accent: "#1E90FF",
+            warn: "#E63946",
+            background: "#F5F5F5",
+            surface: "#FFFFFF",
+            onSurface: "#1A1A1A"
+        },
+        dark: {
+            primary: "#B5B5B5",
+            accent: "#63B3FF",
+            warn: "#FF7B82",
+            background: "#121212",
+            surface: "#1D1D1D",
+            onSurface: "#EAEAEA"
+        }
+    },
+
+    "Soft Lavender": {
+        name: "Soft Lavender",
+        backgroundPreset: "pattern-dots",
+        light: {
+            primary: "#B388EB",
+            accent: "#8BC6EC",
+            warn: "#E57373",
+            background: "#F7F2FD",
+            surface: "#FFFFFF",
+            onSurface: "#3D2A5F"
+        },
+        dark: {
+            primary: "#D3B3FF",
+            accent: "#A5DFFF",
+            warn: "#FF9A9A",
+            background: "#221832",
+            surface: "#322545",
+            onSurface: "#F0E6FF"
+        }
+    },
+
+    "Midnight Teal": {
+        name: "Midnight Teal",
+        backgroundPreset: "clean-white",
+        light: {
+            primary: "#005F73",
+            accent: "#94D2BD",
+            warn: "#EE6055",
+            background: "#F1FAFA",
+            surface: "#FFFFFF",
+            onSurface: "#102A34"
+        },
+        dark: {
+            primary: "#6CC5BD",
+            accent: "#A8E8D7",
+            warn: "#FF8C7C",
+            background: "#0C1D1E",
+            surface: "#143235",
+            onSurface: "#DFF3F2"
+        }
+    },
+
+    "Royal Gold": {
+        name: "Royal Gold",
+        backgroundPreset: "enterprise-gray",
+        light: {
+            primary: "#C59D5F",
+            accent: "#1B3A57",
+            warn: "#C0392B",
+            background: "#FAF6EF",
+            surface: "#FFFFFF",
+            onSurface: "#2F2F2F"
+        },
+        dark: {
+            primary: "#E7C78A",
+            accent: "#4579A6",
+            warn: "#FF8273",
+            background: "#171310",
+            surface: "#241F1A",
+            onSurface: "#F0E8D8"
+        }
+    },
+
+    "Cyber Lime": {
+        name: "Cyber Lime",
+        backgroundPreset: "metal-blue",
+        light: {
+            primary: "#A3FF00",
+            accent: "#0AFFE2",
+            warn: "#F72585",
+            background: "#FFFFFF",
+            surface: "#F4F7F8",
+            onSurface: "#1A1A1A"
+        },
+        dark: {
+            primary: "#BAFF4A",
+            accent: "#37FFE9",
+            warn: "#FF79B0",
+            background: "#0B0F12",
+            surface: "#171C20",
+            onSurface: "#E1E1E1"
+        }
+    },
+
+    "Tech Indigo": {
+        name: "Tech Indigo",
+        backgroundPreset: "finance-soft",
+        light: {
+            primary: "#3F3D56",
+            accent: "#00A8E8",
+            warn: "#D7263D",
+            background: "#F7F9FC",
+            surface: "#FFFFFF",
+            onSurface: "#202020"
+        },
+        dark: {
+            primary: "#9EA0D9",
+            accent: "#4ECDFB",
+            warn: "#FF8991",
+            background: "#12141A",
+            surface: "#1C1D26",
+            onSurface: "#E6E6E6"
+        }
+    },
+
+    "Orange Electric": {
+        name: "Orange Electric",
+        backgroundPreset: "gradientBlue",
+        light: {
+            primary: "rgb(254,95,2)",
+            accent: "#0031E5",
+            warn: "#d32f2f",
+            background: "linear-gradient(135deg, #FFF2E6, #FFE5D1, #FFD1B5)",
+            surface: "#ffffff",
+            onSurface: "#1e1e1e"
+        },
+        dark: {
+            primary: "rgb(254,95,2)",
+            accent: "#5c6bff",
+            warn: "#ff8a80",
+            background: "#121212",
+            surface: "#1e1e1e",
+            onSurface: "#eeeeee"
         }
     },
 
@@ -248,7 +535,26 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-
+    "Bank Executive": {
+        name: "Bank Executive",
+        backgroundPreset: "finance-soft",
+        light: {
+            primary: "#1B3A57",
+            accent: "#C9A86B",
+            warn: "#D32F2F",
+            background: "#F5F7FA",
+            surface: "#FFFFFF",
+            onSurface: "#1A1A1A"
+        },
+        dark: {
+            primary: "#4D6A89",
+            accent: "#E6C48C",
+            warn: "#FF8A80",
+            background: "#0F131A",
+            surface: "#1A222C",
+            onSurface: "#E8EBEF"
+        }
+    },
     /* -----------------------------
      *  NEW THEMES (10 Modern UX)
      * ----------------------------- */
@@ -452,130 +758,11 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             onSurface: "#E0E0E0"
         }
     }
-
 };
 
-export const BACKGROUND_PRESETS = {
-    none: {
-        light: 'none',
-        dark: 'none'
-    },
-    gradientBlue: {
-        light: 'linear-gradient(135deg, #E0F2FE, #BAE6FD, #7DD3FC)',
-        dark: 'linear-gradient(135deg, #1E3A8A, #1E40AF, #1D4ED8)'
-    },
-    softGray: {
-        light: '#F8FAFC',
-        dark: '#0F172A'
-    },
-    cardGlass: {
-        light: 'linear-gradient(135deg, rgba(255,255,255,0.60), rgba(255,255,255,0.25))',
-        dark: 'linear-gradient(135deg, rgba(30,30,30,0.60), rgba(0,0,0,0.35))'
-    },
-    ocean: {
-        light: 'linear-gradient(135deg, #E0F7FA, #B2EBF2, #80DEEA)',
-        dark: 'linear-gradient(135deg, #004D40, #00695C, #00796B)'
-    },
-    /* -------------------------------
-        1) Ultra Clean (فرم و بانکداری)
-     --------------------------------*/
-    "clean-white": {
-        light: "#F7F9FC",
-        dark: "#101010"
-    },
-
-    /* -------------------------------
-       2) Neobank Blue (گرادینت)
-    --------------------------------*/
-    "neobank-blue": {
-        light: "linear-gradient(135deg, #E9EEFF 0%, #FFFFFF 100%)",
-        dark: "linear-gradient(135deg, #0A1A33 0%, #0F2C55 100%)"
-    },
-
-    /* -------------------------------
-       3) Neobank Orange
-    --------------------------------*/
-    "neobank-orange": {
-        light: "linear-gradient(135deg, #FFF0E0 0%, #FFFFFF 100%)",
-        dark: "linear-gradient(135deg, #2B1200 0%, #4A2600 100%)"
-    },
-
-    /* -------------------------------
-       4) Soft Finance (بانکی خیلی تمیز)
-    --------------------------------*/
-    "finance-soft": {
-        light: "linear-gradient(145deg, #EEF1F5 0%, #FFFFFF 100%)",
-        dark: "linear-gradient(145deg, #121212 0%, #1E1E1E 100%)"
-    },
-
-    /* -------------------------------
-       5) Executive Gray (سازمانی)
-    --------------------------------*/
-    "enterprise-gray": {
-        light: "#ECEFF1",
-        dark: "#0F0F0F"
-    },
-
-    /* -------------------------------
-       6) Glassmorphism
-    --------------------------------*/
-    "glass": {
-        light: "rgba(255,255,255,0.55)",
-        dark: "rgba(0,0,0,0.40)"
-    },
-
-    /* -------------------------------
-       7) Subtle Pattern Dot
-    --------------------------------*/
-    "pattern-dots": {
-        light: `
-            repeating-radial-gradient(circle at 0 0, #EDEDED 0, #EDEDED 3px, #FFFFFF 3px, #FFFFFF 12px)
-        `,
-        dark: `
-            repeating-radial-gradient(circle at 0 0, #1E1E1E 0, #1E1E1E 3px, #0E0E0E 3px, #0E0E0E 12px)
-        `
-    },
-
-    /* -------------------------------
-       8) Subtle Line Pattern
-    --------------------------------*/
-    "pattern-lines": {
-        light: `
-            repeating-linear-gradient(
-              90deg,
-              #fafafa 0px,
-              #fafafa 20px,
-              #f0f0f0 20px,
-              #f0f0f0 40px
-            )
-        `,
-        dark: `
-            repeating-linear-gradient(
-              90deg,
-              #1A1A1A 0px,
-              #1A1A1A 20px,
-              #141414 20px,
-              #141414 40px
-            )
-        `
-    },
-
-    /* -------------------------------
-       9) Card Layout Background
-    --------------------------------*/
-    "card-surface": {
-        light: "linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%)",
-        dark: "linear-gradient(145deg, #1A1A1A 0%, #111111 100%)"
-    },
-
-    /* -------------------------------
-       10) Banking Steel Blue
-    --------------------------------*/
-    "metal-blue": {
-        light: "linear-gradient(135deg, #E6ECF5 0%, #FFFFFF 100%)",
-        dark: "linear-gradient(135deg, #0D1521 0%, #111C2A 100%)"
-    },
-};
+/* ---------------------------------------------------
+ * 6) CARD PRESETS
+ * --------------------------------------------------- */
 export const CARD_PRESETS = {
     white: {
         light: {
@@ -594,7 +781,7 @@ export const CARD_PRESETS = {
 
     mirror: {
         light: {
-            bg:  "var(--app-background)",
+            bg: "var(--app-background)",
             border: "1px solid #e5e7eb",
             shadow: "0 2px 6px rgba(0,0,0,0.05)",
             radius: "18px"
@@ -609,7 +796,7 @@ export const CARD_PRESETS = {
 
     bankNeat: {
         light: {
-            bg:  "var(--app-background)",
+            bg: "var(--app-background)",
             border: "1px solid var(--primary)",
             shadow: "0 0 0 2px rgba(0,49,229,0.1)",
             radius: "12px"
@@ -624,7 +811,7 @@ export const CARD_PRESETS = {
 
     bankPaper: {
         light: {
-            bg:  "var(--app-background)",
+            bg: "var(--app-background)",
             border: "1px solid #d1d5db",
             shadow: "0 6px 16px rgba(0,0,0,0.04)",
             radius: "16px"
@@ -639,7 +826,7 @@ export const CARD_PRESETS = {
 
     bankGlass: {
         light: {
-            bg:  "var(--app-background)",
+            bg: "var(--app-background)",
             border: "1px solid rgba(255,255,255,0.45)",
             shadow: "0 4px 18px rgba(0,0,0,0.08)",
             radius: "20px"
@@ -650,5 +837,125 @@ export const CARD_PRESETS = {
             shadow: "0 4px 18px rgba(0,0,0,0.55)",
             radius: "20px"
         }
+    },
+    bankElegant: {
+        light: {
+            bg: "#FFFFFF",
+            border: "1px solid rgba(27,58,87,0.25)",
+            shadow: "0 4px 14px rgba(0,0,0,0.06)",
+            radius: "18px"
+        },
+        dark: {
+            bg: "#14202B",
+            border: "1px solid rgba(255,255,255,0.08)",
+            shadow: "0 4px 16px rgba(0,0,0,0.55)",
+            radius: "18px"
+        }
+    },
+
+    neoBankGlass: {
+        light: {
+            bg: "rgba(255,255,255,0.35)",
+            border: "1px solid rgba(255,255,255,0.5)",
+            shadow: "0 8px 22px rgba(0,0,0,0.04)",
+            radius: "22px"
+        },
+        dark: {
+            bg: "rgba(0,0,0,0.25)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            shadow: "0 8px 32px rgba(0,0,0,0.55)",
+            radius: "22px"
+        }
+    },
+
+    bankGreenTrust: {
+        light: {
+            bg: "#F2FFF8",
+            border: "1px solid #8ECDAA",
+            shadow: "0 6px 14px rgba(0,0,0,0.05)",
+            radius: "16px"
+        },
+        dark: {
+            bg: "#0F1F18",
+            border: "1px solid #5EA884",
+            shadow: "0 6px 16px rgba(0,0,0,0.55)",
+            radius: "16px"
+        }
+    },
+
+    financeMinimal: {
+        light: {
+            bg: "#FFFFFF",
+            border: "1px solid #ECECEC",
+            shadow: "0 2px 4px rgba(0,0,0,0.04)",
+            radius: "12px"
+        },
+        dark: {
+            bg: "#1B1B1B",
+            border: "1px solid rgba(255,255,255,0.05)",
+            shadow: "0 2px 8px rgba(0,0,0,0.45)",
+            radius: "12px"
+        }
+    },
+
+    bankFrost: {
+        light: {
+            bg: "linear-gradient(145deg, #FFFFFFAA, #F7F7F788)",
+            border: "1px solid rgba(255,255,255,0.4)",
+            shadow: "0 4px 16px rgba(0,0,0,0.06)",
+            radius: "20px"
+        },
+        dark: {
+            bg: "linear-gradient(145deg, rgba(30,30,30,0.6), rgba(10,10,10,0.45))",
+            border: "1px solid rgba(255,255,255,0.1)",
+            shadow: "0 4px 20px rgba(0,0,0,0.6)",
+            radius: "20px"
+        }
+    },
+
+    neoBlue: {
+        light: {
+            bg: "linear-gradient(135deg, #FFFFFF, #F5F9FF)",
+            border: "1px solid #DCE6FF",
+            shadow: "0 6px 18px rgba(0,49,229,0.06)",
+            radius: "18px"
+        },
+        dark: {
+            bg: "linear-gradient(135deg, #101B33, #0C1324)",
+            border: "1px solid rgba(80,110,235,0.3)",
+            shadow: "0 8px 26px rgba(0,0,0,0.6)",
+            radius: "18px"
+        }
+    },
+
+    bankPremiumBlack: {
+        light: {
+            bg: "linear-gradient(145deg, #FFFFFF, #F3F3F3)",
+            border: "1px solid #C4A878",
+            shadow: "0 10px 24px rgba(196,168,120,0.2)",
+            radius: "20px"
+        },
+        dark: {
+            bg: "#0C0C0C",
+            border: "1px solid #C4A878",
+            shadow: "0 10px 32px rgba(0,0,0,0.75)",
+            radius: "20px"
+        }
+    },
+
+    corporateSharp: {
+        light: {
+            bg: "#FFFFFF",
+            border: "2px solid #1B3A57",
+            shadow: "0 3px 12px rgba(0,0,0,0.05)",
+            radius: "10px"
+        },
+        dark: {
+            bg: "#141A23",
+            border: "2px solid #4D6A89",
+            shadow: "0 3px 12px rgba(0,0,0,0.55)",
+            radius: "10px"
+        }
     }
+
 };

@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { THEME_PRESETS, MinimalPreset, MinimalPresetName } from '../../../../core/services/theme-presets';
+import {
+    THEME_PRESETS,
+    MinimalPreset,
+    MinimalPresetName,
+    BACKGROUND_PRESETS,
+    BackgroundPresetName
+} from '../../../../core/services/theme-presets';
+
 import { ThemeService } from '../../../../core/services/theme.service';
 import { MatIcon } from '@angular/material/icon';
 import { NgForOf } from '@angular/common';
@@ -8,73 +15,86 @@ import { MatIconButton } from '@angular/material/button';
 @Component({
     selector: 'app-theme-picker',
     templateUrl: './theme-picker.component.html',
-    imports: [MatIcon, NgForOf, MatIconButton],
     styleUrls: ['./theme-picker.component.scss'],
+    imports: [MatIcon, NgForOf, MatIconButton]
 })
 export class ThemePickerComponent implements OnInit {
+
     presets: MinimalPreset[] = [];
 
     selectedTheme: MinimalPresetName | null = null;
 
     isDarkMode = false;
-    backgrounds = Object.keys((this.themeService as any).BACKGROUND_PRESETS);
-    selectedBackground: string | null = localStorage.getItem('app_background') ?? null;
+
+    backgrounds: BackgroundPresetName[] = Object.keys(BACKGROUND_PRESETS) as BackgroundPresetName[];
+
+    selectedBackground: BackgroundPresetName | null =
+        (localStorage.getItem('app_background') as BackgroundPresetName) ?? null;
 
     constructor(public themeService: ThemeService) {}
 
-
-    selectBackground(name: string) {
+    /* ------------------------------
+       انتخاب پس‌زمینه
+    ------------------------------- */
+    selectBackground(name: BackgroundPresetName) {
         this.selectedBackground = name;
         this.themeService.setBackgroundPreset(name);
         localStorage.setItem('app_background', name);
     }
+
     get backgroundsData() {
-        return (this.themeService as any).BACKGROUND_PRESETS;
+        return BACKGROUND_PRESETS;
     }
+
     ngOnInit(): void {
         this.presets = Object.values(THEME_PRESETS);
 
-        // گرفتن تم انتخاب‌شده قبلی
         const saved = localStorage.getItem('selected-theme');
         if (saved && THEME_PRESETS[saved as MinimalPresetName]) {
             this.selectedTheme = saved as MinimalPresetName;
         }
 
-        // sync mode dark/light
         this.isDarkMode = document.body.classList.contains('dark-mode');
     }
 
+    /* ------------------------------
+       انتخاب تم
+    ------------------------------- */
     selectTheme(name: MinimalPresetName): void {
         this.selectedTheme = name;
-
-        // ذخیره preset انتخاب‌شده
         localStorage.setItem('selected-theme', name);
-
-        // اعمال preset
         this.themeService.applyPreset(name);
     }
 
+    /* ------------------------------
+       تغییر دارک مود
+    ------------------------------- */
     toggleDarkMode(): void {
         this.isDarkMode = !this.isDarkMode;
 
         if (this.isDarkMode) {
             document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
         } else {
+            document.body.classList.add('light-mode');
             document.body.classList.remove('dark-mode');
         }
-
-        // اعمال preset فعلی با mode جدید
         if (this.selectedTheme) {
             this.themeService.applyPreset(this.selectedTheme);
         }
+        if (this.selectedCardPreset) {
+            this.themeService.setCardPreset(this.selectedCardPreset);
+        }
     }
-
-    cardPresets = Object.keys((this.themeService as any).CARD_PRESETS);
+    /* ------------------------------
+       Card Presets
+    ------------------------------- */
+    cardPresets = Object.keys(this.themeService.CARD_PRESETS);
     selectedCardPreset = localStorage.getItem('app_card_preset') ?? 'white';
 
     getCardPreview(name: string) {
         const isDark = this.isDarkMode;
-        return (this.themeService as any).CARD_PRESETS[name]?.[isDark ? 'dark' : 'light'];
+        return this.themeService.CARD_PRESETS[name]?.[isDark ? 'dark' : 'light'];
     }
 
     selectCardPreset(name: string) {
