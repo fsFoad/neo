@@ -42,6 +42,8 @@ export class CitizenEducationInfoComponent implements OnInit, OnDestroy {
         clientEucationtInfoLists: EducationItem[];
     }>();
     @Output() validityChange = new EventEmitter<boolean>();
+    @Input() onValueChange: (v: any) => void;
+    @Input() onValidityChange: (v: boolean) => void;
     form!: FormGroup;
     EducationTable: any[] = [];
     visibleEducate = false;

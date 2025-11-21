@@ -8,9 +8,7 @@
         class="app-tabs rounded-xl shadow-sm app-card"
         [(selectedIndex)]="selectedIndex"
         [dynamicHeight]="true"
-        animationDuration="200ms"
-        mat-stretch-tabs
-        mat-align-tabs="end">
+        animationDuration="200ms">
 
         <!-- 🔹 حلقه داینامیک برای تب‌ها -->
         <mat-tab *ngFor="let t of tabs; let i = index">

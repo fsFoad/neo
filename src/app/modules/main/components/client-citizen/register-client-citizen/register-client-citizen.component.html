@@ -39,9 +39,7 @@
 <mat-tab-group class="app-tabs rounded-xl shadow-sm app-card"
                [(selectedIndex)]="selectedIndex"
                [dynamicHeight]="true"
-               animationDuration="200ms"
-               mat-stretch-tabs
-               mat-align-tabs="end">
+               animationDuration="200ms">
     <mat-tab *ngFor="let t of tabs; let i = index; trackBy: trackById" [disabled]="t.disabled">
         <ng-template mat-tab-label>
       <span class="flex items-center gap-2 text-gray-700">

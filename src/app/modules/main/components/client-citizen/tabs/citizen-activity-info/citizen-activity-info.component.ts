@@ -42,6 +42,7 @@ export class CitizenActivityInfoComponent implements OnInit, OnDestroy {
     @Input() onValidityChange?: (valid: boolean) => void;
     @Output() valueChange = new EventEmitter<any>();
     @Output() validityChange = new EventEmitter<boolean>();
+
     actinityInformationDialog = this.fb.group<ActivityInfoForm>({
         economicSectorType: this.fb.control<any | null>(null, { validators: Validators.required }),
         activityField: this.fb.control<any | null>(null),
