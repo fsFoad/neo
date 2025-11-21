@@ -74,20 +74,11 @@ export class LoanContractComponent implements OnInit {
         },
     ];
 
-    citizenshipList = [
-        { label: 'ایرانی', value: 'ایرانی' },
-        { label: 'غیرایرانی', value: 'غیرایرانی' },
-    ];
-
-    typeList = [
-        { label: 'حقیقی', value: 'حقیقی' },
-        { label: 'حقوقی', value: 'حقوقی' },
-    ];
-
-    currencyList = [
-        { label: 'ریال', value: 'ریال' },
-        { label: 'دلار', value: 'دلار' },
-        { label: 'یورو', value: 'یورو' },
+    operationSteps = [
+        { label: 'مبادله ای', value: '1' },
+        { label: 'مشارکتی', value: '2' },
+        { label: 'قرض الحسنه', value: '3' },
+        { label: 'اقساط قرارداد', value: '4' },
     ];
     showProductDetails = false;
     showApprovalDetails = false;
@@ -113,6 +104,8 @@ export class LoanContractComponent implements OnInit {
             amount: ['', Validators.required],
             notes: ['', Validators.required],
             installmentsCount: ['', Validators.required],
+            date: ['', Validators.required],
+            step: ['', Validators.required],
         });
     }
 
