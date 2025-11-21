@@ -68,7 +68,8 @@
                     <td>
                         <button pButton
                                 icon="pi pi-eye"
-                                class="p-button-sm p-button-rounded p-button-outlined" (click)="openApprovalDetails(row)"></button>
+                                class="p-button-sm p-button-rounded p-button-outlined"
+                                (click)="openApprovalDetails(row)"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -104,7 +105,8 @@
                     <td>
                         <button pButton
                                 icon="pi pi-eye"
-                                class="p-button-sm p-button-rounded p-button-outlined" (click)="openProductDetails(row)"></button>
+                                class="p-button-sm p-button-rounded p-button-outlined"
+                                (click)="openProductDetails(row)"></button>
 
                     </td>
                 </tr>
@@ -196,111 +198,130 @@
 </div>-->
 <div class="p-6 space-y-6 rounded-2xl" *ngIf="!showForm">
     <div [formGroup]="productForm" class="bg-white p-6 rounded-xl border border-slate-200">
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">نوع جستجو:</label>
+                <p-dropdown class="normal-dropdown"
+                            optionLabel="label"
+                            optionValue="value"
+                            [options]="operationSteps"
+                            formControlName="step"
+                            placeholder="انتخاب کنید">
+                </p-dropdown>
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">تاریخ موثر:</label>
+                <input type="text" pInputText readonly
+                       class="normal-input"
+                       formControlName="date"
+                >
+            </div>
+            <div class="flex flex-col"></div>
+
+
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">مبلغ:</label>
                 <input type="text" pInputText readonly
                        class="normal-input"
                        formControlName="amount"
-                      >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">تعداد اقساط:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="installmentsCount"
-                       >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">فاصله اقساط:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="installmentsInterval"
-                       >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">روش نگهداری کارمزد دوران تنفس:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="graceFeeKeepMethod"
-                       >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">مبلغ کارمزد دوران تنفس:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="gracePeriodFee"
-                       >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">روش وصول کارمزد:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="feeReceiveMethod"
-                       >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">مهلت تنفس:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="graceDays"
-                       >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">تاریخ سررسید قرارداد:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="contractDueDate"
-                       >
+                >
             </div>
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">روش محاسبه سود/کارمزد:</label>
                 <input type="text" pInputText
                        class="normal-input"
                        formControlName="profitFeeCalculationMethod"
-                       >
+                >
             </div>
 
 
-            <!-- ردیف توضیحات + تمدید/جدول اقساط -->
-            <div class="grid grid-cols-12 gap-6 mt-4">
-
-                <!-- 🔹 توضیحات — 8 ستون -->
-                <div class="col-span-12 md:col-span-8 flex flex-col">
-                    <label class="mb-1 font-medium">توضیحات:</label>
-                    <textarea
-                        pInputTextarea
-                        rows="5"
-                        class="normal-input"
-                        formControlName="description"
-                        placeholder="توضیحات خود را وارد کنید"></textarea>
-                </div>
-
-                <!-- 🔹 تمدید مجدد + دکمه جدول اقساط — 4 ستون -->
-                <div class="col-span-12 md:col-span-4 flex flex-col justify-start gap-4">
-
-                    <div class="flex items-center gap-3">
-                        <label class="font-medium">تمدید مجدد</label>
-                        <p-inputSwitch formControlName="renewable"></p-inputSwitch>
-                    </div>
-
+                <div class="flex flex-col">
+                    <label class="font-medium mb-1">تمدید مجدد</label>
+                    <p-inputSwitch formControlName="renewable"></p-inputSwitch>
                     <button
                         pButton
                         label="جدول اقساط"
-                        class="p-button-primary normal-button w-full"
+                        class="p-button-primary normal-button mb-1 w-44"
                         type="button"
                         (click)="openInstallmentTable()">
                     </button>
-
                 </div>
 
+
+
+
+            <div class="flex flex-col md:col-span-2">
+                <label class="mb-1 font-medium">توضیحات:</label>
+                <textarea
+                    pInputTextarea
+                    rows="5"
+                    class="normal-input"
+                    formControlName="description"
+                    placeholder="توضیحات خود را وارد کنید"></textarea>
             </div>
+
+
+
+
+
+
 
 
         </div>
 
-
     </div>
+
 
 </div>
 

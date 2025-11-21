@@ -81,6 +81,26 @@ export default [
             .then(c => c.ProductClientManagementComponent)
     },
     {
+        path: 'loan-involved-customer', loadComponent: () => import('./components/loan-involved-customer/loan-involved-customer.component')
+            .then(c => c.LoanInvolvedCustomerComponent)
+    },
+    {
+        path: 'loan-proposed', loadComponent: () => import('./components/loan-proposed/loan-proposed.component')
+            .then(c => c.LoanProposedComponent)
+    },
+    {
+        path: 'loan-refound', loadComponent: () => import('./components/loan-refound/loan-refound.component')
+            .then(c => c.LoanRefoundComponent)
+    },
+    {
+        path: 'loan-request', loadComponent: () => import('./components/loan-request/loan-request.component')
+            .then(c => c.LoanRequestComponent)
+    },
+    {
+        path: 'loan-settlment', loadComponent: () => import('./components/loan-settlment/loan-settlment.component')
+            .then(c => c.LoanSettlmentComponent)
+    },
+    {
         path: 'about',
         loadComponent: () => import('./components/about/about.component')
             .then(c => c.AboutComponent)
