@@ -1,7 +1,89 @@
-/* ===================================================================================================== */
+
+
+
+
+
+
+
+
+
+
+
 /*  1) MUST BE FIRST: SCSS @use                                                                          */
 /* ===================================================================================================== */
 @use 'assets/styles/index';
+
+
+
+
+:root {
+    /* ======================
+   Brand & Core Colors
+   ====================== */
+    --color-primary: #fe5f02;
+    --color-primary-hover: color-mix(in srgb, var(--color-primary) 85%, black 15%);
+    --color-primary-contrast: #ffffff;
+
+    --color-accent: #0031e5;
+    --color-accent-contrast: #ffffff;
+
+    --color-warn: #d32f2f;
+    --color-warn-contrast: #ffffff;
+
+    /* Neutrals / سطوح */
+    --surface: #ffffff;
+    --background: #f5f5f5;
+    --on-surface: #212121;
+    --border: rgba(0,0,0,0.16);
+
+    --color-surface: #ffffff;
+    --color-on-surface: #1e1e1e;
+    --color-bg: #f8fafc;
+    --color-border: #e2e8f0;
+    --color-text: #1e293b;
+
+    /* کارت‌ها */
+    --card-bg: #fff;
+    --card-border: 1px solid #ddd;
+    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-radius: 12px;
+
+    /* PrimeNG bridge */
+    --primary: var(--color-primary);
+    --accent: var(--color-accent);
+    --warn: var(--color-warn);
+
+    --p-primary-color: var(--color-primary);
+    --p-primary-500: var(--color-primary);
+    --p-primary-color-text: var(--color-primary-contrast);
+
+    --p-inputtext-bg: var(--color-surface);
+    --p-inputtext-color: var(--color-on-surface);
+    --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
+    --p-inputtext-focus-border-color: var(--color-primary);
+    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+
+    /* حلقه فوکوس عمومی */
+    --p-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+    --p-focus-ring-shadow: 0 0 0 2px var(--p-focus-ring-color);
+
+    /* دیتاتیبل و بک‌گراند اپ */
+    --app-background: none;
+    --p-datatable-header-bg: none;
+    --p-datatable-header-color: none;
+    --p-datatable-row-bg: none;
+    --p-datatable-row-hover-bg: none;
+    --p-datatable-border-color: none;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 3px 8px rgb(0 0 0 / 0.15);
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 
 /* ===================================================================================================== */
 /*  Dynamic Global Theme Variables (Minimal)                                                              */
@@ -12,36 +94,7 @@ body, .app-content, .mat-drawer-content, .content, .wrapper {
 .fuse-main, .fuse-wrapper, .fuse-content {
     background: var(--app-background) !important;
 }
-/* Light mode */
-:root {
-    --primary-text: #fff;
-    --text-color: var(--primary-text) !important;
 
-    /* Core Palette */
-    --primary: #3f51b5;
-    --accent: #ff4081;
-    --warn:   #f44336;
-
-    /* Neutrals */
-    --surface: #ffffff;
-    --background: #f5f5f5;
-    --on-surface: #212121;
-    --border: rgba(0,0,0,0.16);
-
-    /* PrimeNG */
-    --p-primary-color: var(--primary);
-    --p-primary-500: var(--primary);
-    --p-primary-color-text: #ffffff;
-
-    /* Material */
-    --mat-primary: var(--primary);
-    --mat-accent: var(--accent);
-    --mat-warn: var(--warn);
-
-    /* Fuse */
-    --fuse-primary: var(--primary);
-    --fuse-accent: var(--accent);
-}
 
 /* Dark mode */
 html.p-dark {
@@ -61,27 +114,11 @@ html.p-dark {
 /*  PrimeNG Full Dynamic Override (PrimeNG v19 compatible)                                               */
 /* ===================================================================================================== */
 
-/* Buttons *//*
-.p-button {
-    background: var(--primary) !important;
-    border-color: var(--primary) !important;
-    color: var(--p-primary-color-text) !important;
-}*/
-
-/*.p-button.p-button-text {
-    color: var(--primary) !important;
-}*/
-
-/*.p-button.p-button-outlined {
-    color: var(--primary) !important;
-    border-color: var(--primary) !important;
-}*/
-
 /* Input focus */
 .p-inputtext:enabled:focus,
 .p-inputwrapper-focus {
-    border-color: var(--primary) !important;
-    box-shadow: 0 0 0 1px var(--primary) !important;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 2px var(--p-focus-ring-color) !important;
 }
 
 /* Checkbox / Radio */
@@ -189,6 +226,55 @@ html.p-dark {
 @import url(./primeng-custom-styles.scss);
 @import "perfect-scrollbar/css/perfect-scrollbar.css";
 @import url(app/modules/mat-wrapper-components/projects/components/saffron-styels.scss);
+/* ================================
+   PrimeNG: Radio / Checkbox / Switch
+   ================================ */
+
+body .p-radiobutton .p-radiobutton-box,
+body .p-checkbox .p-checkbox-box,
+body .p-inputswitch .p-inputswitch-slider {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
+/* خود inputهای مخفی هم هیچ outline نگیرن */
+body .p-radiobutton input,
+body .p-checkbox input,
+body .p-inputswitch input {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* حالت انتخاب‌شده (checked / highlight) */
+body .p-radiobutton .p-radiobutton-box.p-highlight,
+body .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: var(--color-primary) !important;
+    background: var(--color-primary) !important;
+}
+/* رنگ نقطه وسط رادیو و تیک چک‌باکس */
+body .p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+    background-color: #ffffff !important;
+}
+
+body .p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon {
+    color: #ffffff !important;
+}
+
+/* فوکوس (حلقه دور) بر اساس تم – به جای آبی */
+body .p-radiobutton.p-focus .p-radiobutton-box,
+body .p-radiobutton .p-radiobutton-box.p-focus,
+body .p-checkbox.p-focus .p-checkbox-box,
+body .p-checkbox .p-checkbox-box.p-focus {
+    box-shadow: var(--p-focus-ring-shadow) !important;
+    border-color: var(--color-primary) !important;
+}
+
+
+
+body .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--color-primary) !important; /* روشن */
+}
 
 body {
     background-color: var(--background) !important;
@@ -205,27 +291,6 @@ body {
 /* سایر استایل‌های قبلی شما بدون تغییر */
 
 
-:root {
-    /* Brand colors */
-    --color-primary: rgb(254,95,2);
-    --color-primary-contrast: #ffffff;
-
-    --color-accent: #0031e5;
-    --color-accent-contrast: #ffffff;
-
-    --color-warn: #d32f2f;
-    --color-warn-contrast: #ffffff;
-
-    /* Neutrals */
-    --color-bg: #ffffff;
-    --color-surface: #ffffff;
-    --color-on-surface: #1e1e1e;
-
-    /* Radii, shadows, spacing */
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
 
 /* حالت دارک */
 body.dark-mode {
@@ -238,37 +303,6 @@ body.dark-mode {
    PRIME NG TOKEN BRIDGE
    =========================== */
 
-:root {
-    /* Button */
-    --p-button-primary-background: var(--color-primary);
-    --p-button-primary-border-color: var(--color-primary);
-    --p-button-primary-color: var(--color-primary-contrast);
-    --p-button-primary-hover-background: color-mix(in srgb, var(--color-primary) 85%, black 15%);
-    --p-button-primary-hover-border-color: var(--color-primary);
-    --p-button-primary-hover-color: var(--color-primary-contrast);
-
-    /* InputText */
-    --p-inputtext-bg: var(--color-surface);
-    --p-inputtext-color: var(--color-on-surface);
-    --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
-    --p-inputtext-focus-border-color: var(--color-primary);
-    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
-
-    --color-primary: #4f46e5;
-    --color-primary-hover: #4338ca;
-    --color-bg: #f8fafc;
-    --color-surface: #ffffff;
-    --color-border: #e2e8f0;
-    --color-text: #1e293b;
-
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-
-    --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.1);
-    --shadow-md: 0 3px 8px rgb(0 0 0 / 0.15);
-    /* Toast, Panel, Divider, … اگر لازم داری، اینجا */
-}
 
 /* حالت دارک PrimeNG */
 body.dark-mode {
@@ -356,51 +390,10 @@ input.p-inputtext.normal-input:focus {
     right: auto;
     left: 0; /* آیکن را سمت چپ می‌آورد */
 }
-/*:root {
-    --app-background: none;
-    --card-bg: #fff;
-    --card-border: 1px solid #e5e7eb;
-    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    --card-radius: 12px;
-}
-
-!* ====== Background Global ====== *!
-body,
-.app-container,
-.page-wrapper,
-.fuse-main,
-.layout,
-.bg-card,
-.bg-default {
-    background: var(--app-background) !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-}
-
-!* ====== Card Override ====== *!
-.app-card,
-.p-card,
-.p-card * ,
-.card,
-.mat-card,
-.mat-card * {
-    background: var(--card-bg) !important;
-    border: var(--card-border) !important;
-    border-radius: var(--card-radius) !important;
-    box-shadow: var(--card-shadow) !important;
-}*/
 html, body {
     direction: rtl !important;
 }
-:root {
-    --app-background: none;
-    --p-datatable-header-bg: none;
-    --p-datatable-header-color: none;
-    --p-datatable-row-bg: none;
-    --p-datatable-row-hover-bg: none;
-    --p-datatable-border-color:none;
-}
+
 
 /* لایه اصلی صفحه */
 .fuse-main,
@@ -411,40 +404,7 @@ body {
     background-size: cover !important;
     background-attachment: fixed !important;
 }
-/*
-:root {
-    --card-bg: #fff;
-    --card-border: 1px solid #ddd;
-    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    --card-radius: 12px;
-}
 
-.app-card,
-.card,
-.p-card,
-.p-card *,
-.mat-card,
-.mat-card *,
-.bg-card,
-.form-wrapper {
-    background: var(--card-bg) !important;
-    border: var(--card-border) !important;
-    border-radius: var(--card-radius) !important;
-    box-shadow: var(--card-shadow) !important;
-}
-!* === CUSTOM APP THEME (Card + Background) === *!
-*/
-
-:root {
-    --app-background: none;
-
-    --card-bg: #fff;
-    --card-border: 1px solid #ddd;
-    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    --card-radius: 12px;
-}
-
-/* Background */
 body,
 .app-container,
 .layout,
@@ -487,4 +447,324 @@ form .bg-white {
 .mat-mdc-tab-body-content {
     background: #fff !important;
     color: #000 !important;
+}
+
+.p-radiobutton .p-radiobutton-box,
+.p-checkbox .p-checkbox-box,
+.p-inputswitch .p-inputswitch-slider {
+    box-shadow: none !important;
+}
+
+
+
+.p-radiobutton input,
+.p-checkbox input,
+.p-inputswitch input {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 3) فوکوس روی باکس رادیو/چک‌باکس (کلاس p-focus روی wrapper می‌آد) */
+.p-radiobutton.p-focus .p-radiobutton-box,
+.p-radiobutton.p-focus-visible .p-radiobutton-box,
+.p-checkbox.p-focus .p-checkbox-box,
+.p-checkbox.p-focus-visible .p-checkbox-box {
+    box-shadow: 0 0 0 2px var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+/* 4) حالت checked مطابق تم */
+.p-radiobutton .p-radiobutton-box.p-highlight,
+.p-checkbox .p-checkbox-box.p-highlight {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+/* 5) InputSwitch (Toggle) */
+.p-inputswitch .p-inputswitch-slider {
+    background: var(--color-border) !important;
+    border-radius: 999px !important;
+}
+
+/* وقتی روشن است */
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--primary) !important;
+}
+
+/* فوکوس روی سوییچ */
+.p-inputswitch.p-focus .p-inputswitch-slider,
+.p-inputswitch.p-inputswitch-checked.p-focus .p-inputswitch-slider {
+    box-shadow: 0 0 0 2px var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+/* ================== FIX PRIME RADIO/CHECK/TOGGLE FOCUS ================== */
+
+
+
+/* ۱) همه‌ی outline و box-shadowهای دیفالت PrimeNG و مرورگر رو برای این کنترل‌ها خاموش کن */
+.p-radiobutton .p-radiobutton-box,
+.p-checkbox .p-checkbox-box,
+.p-inputswitch .p-inputswitch-slider {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* خود input های مخفی هم هیچ outline و shadow نگیرن */
+.p-radiobutton input,
+.p-checkbox input,
+.p-inputswitch input {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ۲) حالت فوکوس/هایلایت طبق رنگ تم خودت (color-primary) */
+.p-radiobutton .p-radiobutton-box.p-highlight,
+.p-checkbox .p-checkbox-box.p-highlight {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* ۳) حلقه فوکوس هماهنگ با تم، به‌جای حلقه آبی */
+.p-radiobutton .p-radiobutton-box:focus-visible,
+.p-radiobutton input:focus-visible + .p-radiobutton-box,
+.p-radiobutton input:focus-visible ~ .p-radiobutton-box,
+.p-checkbox .p-checkbox-box:focus-visible,
+.p-checkbox input:focus-visible + .p-checkbox-box,
+.p-checkbox input:focus-visible ~ .p-checkbox-box,
+.p-inputswitch .p-inputswitch-slider:focus-visible,
+.p-inputswitch input:focus-visible + .p-inputswitch-slider,
+.p-inputswitch input:focus-visible ~ .p-inputswitch-slider {
+    outline: none !important;
+    box-shadow: 0 0 0 2px var(--p-focus-ring-color) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* ۴) برای سوییچ وقتی روشن است رنگ تمی بگیره */
+.p-inputswitch .p-inputswitch-slider {
+    background: var(--color-border) !important;
+    border-radius: 999px !important;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--color-primary) !important;
+}
+
+
+/* همهٔ کامپوننت‌های PrimeNG */
+.p-component:focus-visible,
+.p-component.p-focus-visible {
+    outline: 0 !important;
+    box-shadow: var(--p-focus-ring-shadow) !important;
+}
+
+/* رادیو / چک‌باکس / سوییچ – بدون شادو اضافه */
+.p-radiobutton .p-radiobutton-box,
+.p-checkbox .p-checkbox-box,
+.p-inputswitch .p-inputswitch-slider {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* فوکوس روی رادیو / چک‌باکس / سوییچ */
+.p-radiobutton.p-focus .p-radiobutton-box,
+.p-radiobutton.p-focus-visible .p-radiobutton-box,
+.p-checkbox.p-focus .p-checkbox-box,
+.p-checkbox.p-focus-visible .p-checkbox-box,
+.p-inputswitch.p-focus .p-inputswitch-slider,
+.p-inputswitch.p-focus-visible .p-inputswitch-slider {
+    box-shadow: var(--p-focus-ring-shadow) !important;
+    border-color: var(--primary) !important;
+}
+
+/* حالت checked طبق تم */
+.p-radiobutton .p-radiobutton-box.p-highlight,
+.p-checkbox .p-checkbox-box.p-highlight {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+    background-color: #ffffff !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon {
+    color: #ffffff !important;
+}
+
+/* سوییچ وقتی روشن است */
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--primary) !important;
+}
+
+
+/* همهٔ کامپوننت‌های PrimeNG */
+.p-component:focus-visible,
+.p-component.p-focus-visible {
+    outline: 0 !important;
+    box-shadow: var(--p-focus-ring-shadow) !important;
+}
+
+/* رادیو / چک‌باکس / سوییچ – بدون شادو اضافه */
+.p-radiobutton .p-radiobutton-box,
+.p-checkbox .p-checkbox-box,
+.p-inputswitch .p-inputswitch-slider {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* فوکوس روی رادیو / چک‌باکس / سوییچ */
+.p-radiobutton.p-focus .p-radiobutton-box,
+.p-radiobutton.p-focus-visible .p-radiobutton-box,
+.p-checkbox.p-focus .p-checkbox-box,
+.p-checkbox.p-focus-visible .p-checkbox-box,
+.p-inputswitch.p-focus .p-inputswitch-slider,
+.p-inputswitch.p-focus-visible .p-inputswitch-slider {
+    box-shadow: var(--p-focus-ring-shadow) !important;
+    border-color: var(--primary) !important;
+}
+
+/* حالت checked طبق تم */
+.p-radiobutton .p-radiobutton-box.p-highlight,
+.p-checkbox .p-checkbox-box.p-highlight {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+    background-color: #ffffff !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon {
+    color: #ffffff !important;
+}
+
+/* سوییچ وقتی روشن است */
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--primary) !important;
+}
+/* ================================
+   Override نهایی Radio / Checkbox / Switch PrimeNG
+   حتماً آخر styles.scss
+   ================================ */
+
+
+
+/* 1) رنگ حالت انتخاب‌شده (پُر شده) */
+body .p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: var(--color-primary) !important;
+    background: var(--color-primary) !important;
+}
+
+body .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: var(--color-primary) !important;
+    background: var(--color-primary) !important;
+}
+
+
+/* 3) Hover روی خود دایره/چک‌باکس */
+body .p-radiobutton .p-radiobutton-box:hover,
+body .p-checkbox .p-checkbox-box:hover {
+    border-color: var(--color-primary) !important;
+}
+
+
+
+body .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--color-primary) !important;
+}
+
+body .p-inputswitch.p-focus .p-inputswitch-slider,
+body .p-inputswitch.p-inputswitch-checked.p-focus .p-inputswitch-slider {
+    box-shadow: var(--p-focus-ring-shadow) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.p-inputswitch .p-inputswitch-slider {
+    background: #cbd5f5 !important; /* خاموش */
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--color-primary) !important; /* روشن */
+}
+input[type="radio"]:focus-visible,
+input[type="checkbox"]:focus-visible {
+    outline: none !important;
+    box-shadow: var(--p-focus-ring-shadow) !important;
+    border-color: var(--color-primary) !important;
+}
+.p-inputswitch {
+    /* رنگ پس‌زمینه وقتی خاموش است */
+    --p-toggleswitch-background: #cbd5f5; /* هر رنگ خنثی که می‌خوای */
+
+    /* وقتی روشن است */
+    --p-toggleswitch-checked-background: var(--color-primary);
+    --p-toggleswitch-checked-hover-background: var(--color-primary-hover);
+
+    /* رنگ خود دایره‌ی هندل در حالت روشن */
+    --p-toggleswitch-handle-checked-color: #ffffff;
+    --p-toggleswitch-handle-checked-hover-color: #ffffff;
+
+    /* حلقه فوکوس مخصوص همین کامپوننت */
+    --p-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
+/* برای رادیوباکس و چک‌باکس هم همین ترفند */
+.p-radiobutton,
+.p-checkbox {
+    --p-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+.p-radiobutton .p-radiobutton-input,
+.p-checkbox .p-checkbox-input,
+.p-inputswitch .p-inputswitch-input {
+    outline: none !important;
+    box-shadow: none !important;
+}
+/* ================================
+   PrimeNG Checkbox / Radiobutton
+   override نهایی – آخر styles.scss
+   ================================ */
+
+/* 0) هر فوکوس / حلقه پیش‌فرض رو خفه کن */
+body .p-checkbox .p-hidden-accessible input,
+body .p-radiobutton .p-hidden-accessible input {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 1) حالت checked با رنگ تم تو */
+body .p-checkbox .p-checkbox-box.p-highlight {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+body .p-radiobutton .p-radiobutton-box.p-highlight {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* 2) رنگ نقطه وسط رادیو و تیک چک‌باکس */
+body .p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+    background-color: #ffffff !important;
+}
+
+body .p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon {
+    color: #ffffff !important;
+}
+
+/* 3) فوکوس (حلقه دور) – به جای حلقه آبی */
+body .p-checkbox.p-focus .p-checkbox-box,
+body .p-checkbox .p-checkbox-box.p-focus,
+body .p-checkbox .p-checkbox-box:focus-visible,
+body .p-radiobutton.p-focus .p-radiobutton-box,
+body .p-radiobutton .p-radiobutton-box.p-focus,
+body .p-radiobutton .p-radiobutton-box:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 40%, transparent) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* 4) hover روی خود باکس‌ها */
+body .p-checkbox .p-checkbox-box:hover,
+body .p-radiobutton .p-radiobutton-box:hover {
+    border-color: var(--color-primary) !important;
 }

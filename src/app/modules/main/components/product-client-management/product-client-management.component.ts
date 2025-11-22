@@ -9,7 +9,14 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RippleModule } from 'primeng/ripple';
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
+import { Card } from 'primeng/card';
+import { RadioButton } from 'primeng/radiobutton';
+import { InputSwitch } from 'primeng/inputswitch';
+import { InputNumber } from 'primeng/inputnumber';
+import { PersianCalendarComponent } from '../../../shared/components/persian-calendar/persian-calendar.module';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { Fieldset } from 'primeng/fieldset';
 
 @Component({
     selector: 'app-product-client-management',
@@ -28,6 +35,14 @@ import { NgClass } from '@angular/common';
         CheckboxModule,
         RippleModule,
         NgClass,
+        Card,
+        RadioButton,
+        InputSwitch,
+        InputNumber,
+        PersianCalendarComponent,
+        ToggleSwitch,
+        Fieldset,
+        DatePipe,
     ],
     templateUrl: './product-client-management.component.html',
     styleUrl: './product-client-management.component.scss',
@@ -90,6 +105,8 @@ export class ProductClientManagementComponent {
             date: '۱۴۰۲/۰۶/۱۲',
         },
     ];
+    profiles: any[] = [];
+
     // گزینه‌های منوی کشویی دسته‌بندی
     categories = [
         { name: 'دسته اول', value: 'cat1' },
@@ -143,6 +160,45 @@ export class ProductClientManagementComponent {
     // تابع برای افزودن رکورد جدید
     onAddNew(): void {
         console.log('افزودن رکورد جدید');
+    }
+
+    profileCode = '';
+    profileTitle = '';
+    profileTitle2 = '';
+
+    startDate?: Date;
+    endDate?: Date;
+
+    currencyType: string | null = null;
+    currencyTypes = [
+        { label: 'ریال', value: 'IRR' },
+        { label: 'دلار', value: 'USD' },
+        { label: 'یورو', value: 'EUR' },
+    ];
+
+    customerType: 'REAL' | 'LEGAL' | 'BOTH' = 'BOTH';
+    gender: 'MALE' | 'FEMALE' | null = null;
+
+    minOpeningAmount?: number;
+    minBalance?: number;
+    status = true;
+
+    canPaymentOrder = false;
+    canOnlineOpen = false;
+    canSupportOthers = false;
+    requireDepositAmount = false;
+
+    minSourceAmount?: number;
+
+    dormantMinBalance?: number;
+    dormantToDormantMonths?: number;
+    dormantToUnclaimedMonths?: number;
+    dormantToUnpaidMonths?: number;
+
+    onCopyCode() {
+        if (navigator && navigator.clipboard) {
+            navigator.clipboard.writeText(this.profileCode || '');
+        }
     }
 }
 interface Product {
