@@ -1,0 +1,223 @@
+<!-- عنوان صفحه -->
+<div class="w-full bg-white" *ngIf="!showForm">
+    <div class="p-8 rounded-xl shadow-sm mx-auto">
+        <h2 class="text-2xl font-semibold mb-2">پرداخت تسهیلات</h2>
+    </div>
+</div>
+
+<!-- جداول اطلاعات -->
+<div class="p-6 space-y-6 rounded-2xl">
+    <div [formGroup]="form" class="bg-white p-6 rounded-xl border border-slate-200">
+
+        <!-- جدول اطلاعات مشتری -->
+        <p-table [value]="customerTable" styleClass="p-datatable-striped p-datatable-gridlines">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-between">
+                    <h3 class="text-base font-semibold">اطلاعات مشتری</h3>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>شماره مشتری</th>
+                    <th>نام مشتری</th>
+                    <th>کد/شناسه ملی</th>
+                    <th>تابعیت</th>
+                    <th>نوع</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-index="rowIndex">
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ row.customerNumber }}</td>
+                    <td>{{ row.customerName }}</td>
+                    <td>{{ row.nationalId }}</td>
+                    <td>{{ row.citizenship }}</td>
+                    <td>{{ row.type }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <!-- جدول اطلاعات فروشنده -->
+        <p-table [value]="sellerTable" styleClass="p-datatable-striped p-datatable-gridlines">
+            <ng-template pTemplate="caption">
+                <h3 class="text-base font-semibold">اطلاعات فروشنده</h3>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>شماره مشتری</th>
+                    <th>نام مشتری</th>
+                    <th>کد/شناسه ملی</th>
+                    <th>تابعیت</th>
+                    <th>نوع</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-index="rowIndex">
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ row.customerNumber }}</td>
+                    <td>{{ row.customerName }}</td>
+                    <td>{{ row.nationalId }}</td>
+                    <td>{{ row.citizenship }}</td>
+                    <td>{{ row.type }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <!-- جدول اطلاعات قرارداد -->
+        <p-table [value]="contractTable" styleClass="p-datatable-striped p-datatable-gridlines">
+            <ng-template pTemplate="caption">
+                <h3 class="text-base font-semibold">اطلاعات قرارداد</h3>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>شماره قرارداد</th>
+                    <th>وضعیت قرارداد</th>
+                    <th>تاریخ ثبت</th>
+                    <th>تاریخ سررسید</th>
+                    <th>مبلغ</th>
+                    <th>درصد پیش دریافت</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-index="rowIndex">
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ row.contractNumber }}</td>
+                    <td>{{ row.contractStatus }}</td>
+                    <td>{{ row.createdDate }}</td>
+                    <td>{{ row.dueDate }}</td>
+                    <td>{{ row.amount }}</td>
+                    <td>{{ row.preReceivePercent }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>
+
+<!-- فرم عملیات مالی -->
+<div class="p-6 space-y-6 rounded-2xl" *ngIf="!showForm">
+    <div [formGroup]="productForm" class="bg-white p-6 rounded-xl border border-slate-200">
+        <div class="flex flex-col">
+
+                <div class="my-4">
+                    <button
+                        pButton
+                        icon="pi pi-plus"
+                        class="p-button-outlined normal-button"
+                        type="button"
+                        label="مشاهده وثایق و تضمینات"
+                        (click)="showGuaranteeDialog = true"
+                    ></button>
+                </div>
+
+            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- تاریخ مؤثر -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">تاریخ مؤثر:</label>
+                <input pInputText readonly class="normal-input" formControlName="date">
+            </div>
+
+            <!-- مبلغ پرداختی -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">مبلغ پرداختی:</label>
+                <input pInputText class="normal-input" formControlName="paymentAmount">
+            </div>
+
+            <!-- مبلغ پرداختی این مرحله -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">مبالغ پرداختی این مرحله:</label>
+                <input pInputText class="normal-input" formControlName="thisStepAmount">
+            </div>
+
+            <!-- شماره حساب سپرده -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">شماره حساب سپرده:</label>
+                <input pInputText class="normal-input" formControlName="depositAccount">
+            </div>
+
+            <!-- عنوان سپرده -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">عنوان سپرده:</label>
+                <input pInputText class="normal-input" formControlName="depositTitle">
+            </div>
+
+            <!-- شبا -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">شبا:</label>
+                <input pInputText class="normal-input" formControlName="sheba">
+            </div>
+
+            <!-- شناسه واریز -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">شناسه واریز:</label>
+                <input pInputText class="normal-input" formControlName="trackingCode">
+            </div>
+
+            <!-- نحوه پرداخت -->
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">نحوه پرداخت:</label>
+                <p-dropdown class="normal-dropdown"
+                            [options]="paymentMethods"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="paymentMethod"
+                            placeholder="انتخاب کنید">
+                </p-dropdown>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<p-dialog
+    header="وثایق و تضمینات موردنیاز"
+    [(visible)]="showGuaranteeDialog"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '900px' }"
+    [draggable]="false"
+    [resizable]="false"
+>
+
+    <div class="p-4">
+        <p-table
+            [value]="guaranteeTable"
+            styleClass="p-datatable-striped p-datatable-gridlines">
+            <ng-template pTemplate="caption">
+                <h3 class="text-base font-semibold">وثایق و تضمینات موردنیاز</h3>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>نوع وثیقه / تضمین</th>
+                    <th>درصد تخصیص لازم</th>
+                    <th>مبلغ تخصیص لازم</th>
+                    <th>مبلغ تخصیص یافته</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-index="rowIndex">
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ row.type }}</td>
+                    <td>{{ row.percent }}</td>
+                    <td>{{ row.requiredAmount }}</td>
+                    <td>{{ row.allocatedAmount }}</td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+    </div>
+
+</p-dialog>

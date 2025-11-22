@@ -1,0 +1,499 @@
+<div class="w-full bg-white" *ngIf="!showForm">
+    <div class="p-8 rounded-xl shadow-sm mx-auto">
+        <h2 class="text-2xl font-semibold mb-2">ثبت قرارداد تسهیلات</h2>
+    </div>
+</div>
+
+
+<div class="p-6 space-y-6 rounded-2xl">
+    <div [formGroup]="form" class="bg-white p-6 rounded-xl border border-slate-200">
+        <p-table [value]="customerTable" [rows]="5" [paginator]="true"
+                 styleClass="p-datatable-striped p-datatable-gridlines">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-between">
+                    <h3 class="text-base font-semibold">اطلاعات مشتری</h3>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>شماره مشتری</th>
+                    <th>نام مشتری</th>
+                    <th>کد/شناسه ملی</th>
+                    <th>تابعیت</th>
+                    <th>نوع</th>
+
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-index="rowIndex">
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ row.customerNumber }}</td>
+                    <td>{{ row.customerName }}</td>
+                    <td>{{ row.nationalId }}</td>
+                    <td>{{ row.citizenship }}</td>
+                    <td>{{ row.type }}</td>
+
+                </tr>
+            </ng-template>
+        </p-table>
+        <p-table [value]="productTable" [rows]="5" [paginator]="true"
+                 styleClass="p-datatable-striped p-datatable-gridlines">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-between">
+                    <h3 class="text-base font-semibold">اطلاعات محصول</h3>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>عنوان محصول</th>
+                    <th>حداکثر مبلغ</th>
+                    <th>حداکثر مدت</th>
+                    <th>نوع ارز</th>
+                    <th>عملیات</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-index="rowIndex">
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ row.title }}</td>
+                    <td>{{ row.maxAmount }}</td>
+                    <td>{{ row.maxDuration }}</td>
+                    <td>{{ row.currency }}</td>
+                    <td>
+                        <button pButton
+                                icon="pi pi-eye"
+                                class="p-button-sm p-button-rounded p-button-outlined"
+                                (click)="openApprovalDetails(row)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <p-table [value]="approvalTable" [rows]="5" [paginator]="true"
+                 styleClass="p-datatable-striped p-datatable-gridlines">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-between">
+                    <h3 class="text-base font-semibold">اطلاعات مصوبه</h3>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ردیف</th>
+                    <th>مبلغ مصوب</th>
+                    <th>مدت اعتبار مصوبه</th>
+                    <th>مدت تسهیلات</th>
+                    <th>نرخ سود/کارمزد</th>
+                    <th>نرخ خسارت</th>
+                    <th>عملیات</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-index="rowIndex">
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ row.approvedAmount }}</td>
+                    <td>{{ row.approvalDuration }}</td>
+                    <td>{{ row.loanDuration }}</td>
+                    <td>{{ row.interestRate }}</td>
+                    <td>{{ row.penaltyRate }}</td>
+                    <td>
+                        <button pButton
+                                icon="pi pi-eye"
+                                class="p-button-sm p-button-rounded p-button-outlined"
+                                (click)="openProductDetails(row)"></button>
+
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>
+<!--<div class="bg-white p-6 rounded-xl border border-slate-200 mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        &lt;!&ndash; مبلغ &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">مبلغ</label>
+            <input type="text" pInputText disabled class="normal-input" formControlName="amount">
+        </div>
+
+        &lt;!&ndash; تعداد اقساط &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">تعداد اقساط</label>
+            <input type="number" pInputText disabled class="normal-input" formControlName="installmentsCount">
+        </div>
+
+        &lt;!&ndash; فاصله اقساط &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">فاصله اقساط</label>
+            <input type="number" pInputText disabled class="normal-input" formControlName="installmentsInterval">
+        </div>
+
+        &lt;!&ndash; مبلغ کارمزد دوران تنفس &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">مبلغ کارمزد دوران تنفس</label>
+            <input type="text" pInputText disabled class="normal-input" formControlName="gracePeriodFee">
+        </div>
+
+        &lt;!&ndash; روش نگهداری کارمزد دوران تنفس &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">روش نگهداری کارمزد دوران تنفس</label>
+            <input type="text" pInputText disabled class="normal-input" formControlName="graceFeeKeepMethod">
+        </div>
+
+        &lt;!&ndash; روش وصول کارمزد &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">روش وصول کارمزد</label>
+            <input type="text" pInputText disabled class="normal-input" formControlName="feeReceiveMethod">
+        </div>
+
+        &lt;!&ndash; روش محاسبه سود / کارمزد &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">روش محاسبه سود / کارمزد</label>
+            <input type="text" pInputText disabled class="normal-input" formControlName="profitFeeCalculationMethod">
+        </div>
+
+        &lt;!&ndash; تاریخ سررسید قرارداد &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">تاریخ سررسید قرارداد</label>
+            <input type="text" pInputText disabled class="normal-input" formControlName="contractDueDate">
+        </div>
+
+        &lt;!&ndash; مهلت تنفس &ndash;&gt;
+        <div class="flex flex-col">
+            <label class="mb-1 font-medium">مهلت تنفس (روز)</label>
+            <input type="number" pInputText disabled class="normal-input" formControlName="graceDays">
+        </div>
+
+        &lt;!&ndash; توضیحات &ndash;&gt;
+        <div class="flex flex-col col-span-1 md:col-span-3">
+            <label class="mb-1 font-medium">توضیحات (اختیاری)</label>
+            <input type="text" pInputText class="normal-input" formControlName="description">
+        </div>
+
+        &lt;!&ndash; تمدید + جدول اقساط &ndash;&gt;
+        <div class="flex items-center gap-6 col-span-1 md:col-span-3 mt-4">
+            <div class="flex items-center gap-2">
+                <label class="font-medium">تمدید مجدد</label>
+                <p-inputSwitch formControlName="renewable"></p-inputSwitch>
+            </div>
+
+            <button
+                pButton
+                label="جدول اقساط"
+                class="p-button-primary normal-button"
+                type="button"
+                (click)="openInstallmentTable()">
+            </button>
+        </div>
+
+    </div>
+</div>-->
+<div class="p-6 space-y-6 rounded-2xl" *ngIf="!showForm">
+    <div [formGroup]="productForm" class="bg-white p-6 rounded-xl border border-slate-200">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">نوع جستجو:</label>
+                <p-dropdown class="normal-dropdown"
+                            optionLabel="label"
+                            optionValue="value"
+                            [options]="operationSteps"
+                            formControlName="step"
+                            placeholder="انتخاب کنید">
+                </p-dropdown>
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">تاریخ موثر:</label>
+                <input type="text" pInputText readonly
+                       class="normal-input"
+                       formControlName="date"
+                >
+            </div>
+            <div class="flex flex-col"></div>
+
+
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">مبلغ:</label>
+                <input type="text" pInputText readonly
+                       class="normal-input"
+                       formControlName="amount"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">تعداد اقساط:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="installmentsCount"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">فاصله اقساط:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="installmentsInterval"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">روش نگهداری کارمزد دوران تنفس:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="graceFeeKeepMethod"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">مبلغ کارمزد دوران تنفس:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="gracePeriodFee"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">روش وصول کارمزد:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="feeReceiveMethod"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">مهلت تنفس:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="graceDays"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">تاریخ سررسید قرارداد:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="contractDueDate"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label class="mb-1 font-medium">روش محاسبه سود/کارمزد:</label>
+                <input type="text" pInputText
+                       class="normal-input"
+                       formControlName="profitFeeCalculationMethod"
+                >
+            </div>
+
+
+                <div class="flex flex-col">
+                    <label class="font-medium mb-1">تمدید مجدد</label>
+                    <p-inputSwitch formControlName="renewable"></p-inputSwitch>
+                    <button
+                        pButton
+                        label="جدول اقساط"
+                        class="p-button-primary normal-button mb-1 w-44"
+                        type="button"
+                        (click)="openInstallmentTable()">
+                    </button>
+                </div>
+
+
+
+
+            <div class="flex flex-col md:col-span-2">
+                <label class="mb-1 font-medium">توضیحات:</label>
+                <textarea
+                    pInputTextarea
+                    rows="5"
+                    class="normal-input"
+                    formControlName="description"
+                    placeholder="توضیحات خود را وارد کنید"></textarea>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<p-dialog
+    header="جزئیات محصول"
+    [(visible)]="showProductDetails"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '1100px' }"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <div class="p-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- ستون 1 -->
+            <div class="flex flex-col gap-4">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">عنوان محصول</label>
+                    <input pInputText class="normal-input" disabled
+                           [value]="selectedProduct?.title" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">حداکثر مبلغ</label>
+                    <input pInputText class="normal-input" disabled
+                           [value]="selectedProduct?.maxAmount" />
+                </div>
+
+            </div>
+
+            <!-- ستون 2 -->
+            <div class="flex flex-col gap-4">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">حداکثر مدت</label>
+                    <input pInputText class="normal-input" disabled
+                           [value]="selectedProduct?.maxDuration" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">نوع ارز</label>
+                    <input pInputText class="normal-input" disabled
+                           [value]="selectedProduct?.currency" />
+                </div>
+
+            </div>
+
+            <!-- ستون 3 -->
+            <div class="flex flex-col gap-4">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">هدف از دریافت</label>
+                    <input pInputText class="normal-input" disabled value="خرید" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">منبع تأمین</label>
+                    <input pInputText class="normal-input" disabled value="داخلی بانک" />
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="flex justify-end gap-4 mt-8">
+
+            <button
+                pButton
+                label="انصراف"
+                class="p-button p-button-danger w-32 h-10"
+                (click)="showProductDetails = false"
+
+            ></button>
+        </div>
+
+    </div>
+</p-dialog>
+<p-dialog
+    header="جزئیات مصوبه"
+    [(visible)]="showApprovalDetails"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '1100px' }"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- ستون 1 -->
+            <div class="flex flex-col gap-4">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">شماره مصوبه</label>
+                    <input pInputText class="normal-input" [disabled]="true"
+                           [value]="selectedApproval?.approvalNumber || '---'" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">مبلغ سود / کارمزد</label>
+                    <input pInputText class="normal-input" [disabled]="true"
+                           [value]="selectedApproval?.interestRate" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">هدف از دریافت</label>
+                    <input pInputText class="normal-input" [disabled]="true"
+                           value="ایجاد" />
+                </div>
+
+            </div>
+
+            <!-- ستون 2 -->
+            <div class="flex flex-col gap-4">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">از محل حد اعتباری</label>
+                    <input pInputText class="normal-input" disabled
+                           value="سقف مصوب" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">روش محاسبه سود / کارمزد</label>
+                    <input pInputText class="normal-input" disabled
+                           [value]="selectedApproval?.approvalDuration" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">مدت اعتبار مصوبه</label>
+                    <input pInputText class="normal-input" disabled
+                           [value]="selectedApproval?.loanDuration" />
+                </div>
+
+            </div>
+
+            <!-- ستون 3 -->
+            <div class="flex flex-col gap-4">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">نوع فراگیر</label>
+                    <input pInputText class="normal-input" disabled value="تسهیلاتی" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">حداکثر مبلغ تسهیلات</label>
+                    <input pInputText class="normal-input" disabled value="۱۵۰٬۰۰۰٬۰۰۰ ریال" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">حداکثر تعداد اقساط</label>
+                    <input pInputText class="normal-input" disabled value="۶۰" />
+                </div>
+
+            </div>
+
+        </div>
+        <div class="flex justify-end gap-4 mt-8">
+
+            <button
+                pButton
+                label="انصراف"
+                class="p-button p-button-danger w-32 h-10"
+                (click)="showApprovalDetails = false"
+            ></button>
+        </div>
+
+    </div>
+</p-dialog>
+
+
+
