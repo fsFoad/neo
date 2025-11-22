@@ -9,7 +9,7 @@ import {
 import { NgIf } from '@angular/common';
 import { InputText } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import {  ButtonDirective } from 'primeng/button';
+import { ButtonDirective, ButtonModule } from 'primeng/button';
 
 import { TableModule } from 'primeng/table';
 import { Checkbox } from 'primeng/checkbox';
@@ -21,18 +21,14 @@ import { TranslocoPipe } from '@ngneat/transloco';
     selector: 'app-loan-refound-information',
     imports: [
         ReactiveFormsModule,
+        FormsModule,
         NgIf,
         InputText,
         DropdownModule,
         ButtonDirective,
         TableModule,
+        ButtonModule,
 
-        DropdownModule,
-        ReactiveFormsModule,
-        FormsModule,
-        Checkbox,
-        Tooltip,
-        TranslocoPipe,
     ],
     templateUrl: './loan-refound-information.component.html',
     styleUrl: './loan-refound-information.component.scss',
@@ -123,5 +119,17 @@ export class LoanRefoundInformationComponent implements OnInit {
     ];
     constructor(private fb: FormBuilder) {}
 
+    onCancelClick() {
+        debugger
+        console.log('CANCEL FIRED');
+
+        this.cancel.emit();
+    }
+    onSubmitClick() {
+        this.formSubmit.emit(/* form data if needed */);
+    }
     ngOnDestroy(): void {}
+
+
+
 }
