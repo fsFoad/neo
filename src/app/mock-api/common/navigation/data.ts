@@ -66,6 +66,28 @@ let navigations: FuseNavigationItem[] = [
                 link: '/main/guest-reason',
                 children: [],
             },
+            {
+                icon: 'home',
+                menuId: 22,
+                id: 'product',
+                title: 'محصول',
+                type: 'collapsable',
+                parentId: 3,
+                translate: 'محصول',
+                children: [
+                    {
+                        icon: 'home',
+                        menuId: 23,
+                        id: 's',
+                        title: 'مدیریت محصول',
+                        type: 'basic',
+                        parentId: 22,
+                        translate: 'مدیریت محصول',
+                        link: '/main/product-management',
+                        children: [],
+                    },
+                ]
+            },
         ],
     },
     {
@@ -265,17 +287,6 @@ let navigations: FuseNavigationItem[] = [
                 children: [],
             },
         ],
-    },
-    {
-        icon: 'feedback',
-        menuId: 20,
-        id: 'about',
-        title: 'درباره...',
-        type: 'basic',
-        parentId: 1,
-        translate: 'درباره...',
-        link: '/main/about',
-        children: [],
     },
     {
         icon: 'exit_to_app',

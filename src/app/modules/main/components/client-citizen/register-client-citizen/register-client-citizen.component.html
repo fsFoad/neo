@@ -53,7 +53,7 @@
         </ng-template>
 
         <ng-template matTabContent>
-            <div class="p-6 bg-gray-50 rounded-xl">
+
                 <ng-container *ngIf="t.cmp as Cmp; else noCmp">
                     <ng-container *ngComponentOutlet="Cmp; inputs: t.inputs"></ng-container>
                 </ng-container>
@@ -62,7 +62,7 @@
                         (محتوای تب «{{ t.label }}» — در دست ساخت)
                     </div>
                 </ng-template>
-            </div>
+
         </ng-template>
     </mat-tab>
 </mat-tab-group>

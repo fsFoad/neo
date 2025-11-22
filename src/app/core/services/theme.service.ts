@@ -48,6 +48,11 @@ export class ThemeService {
         const palette = isDarkMode ? preset.dark : preset.light;
 
         this.applyPalette(palette);
+        if (preset.backgroundPreset) {
+            this.setBackgroundPreset(preset.backgroundPreset);
+        }
+        // اضافه شد: اعمال بک‌گراند خود preset
+        document.documentElement.style.setProperty('--app-background', palette.background);
     }
 
     setBackgroundPreset(name: string) {

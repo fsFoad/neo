@@ -1,0 +1,42 @@
+.container {
+    font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+}
+
+/* تنظیمات راست‌چین برای جدول PrimeNG */
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    text-align: right;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    text-align: right;
+}
+
+/* اطمینان از عرض کامل dropdown */
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+}
+
+/* استایل بج‌های وضعیت */
+.product-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+.product-badge.status-فعال {
+    background-color: #C8E6C9;
+    color: #1b5e20;
+}
+
+.product-badge.status-غیرفعال {
+    background-color: #FFCDD2;
+    color: #b71c1c;
+}
+
+.product-badge.status-در-انتظار {
+    background-color: #FFE0B2;
+    color: #e65100;
+}
