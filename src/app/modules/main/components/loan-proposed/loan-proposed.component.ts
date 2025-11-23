@@ -11,6 +11,7 @@ import { InputSwitch } from 'primeng/inputswitch';
 import { ButtonDirective } from 'primeng/button';
 import { CollateralSelectorComponent } from './collateral-selector/collateral-selector.component';
 import { TableModule } from 'primeng/table';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
     selector: 'app-loan-proposed',
@@ -29,6 +30,7 @@ import { TableModule } from 'primeng/table';
         MatTabLabel,
         NgForOf,
         TableModule,
+        TranslocoPipe,
     ],
     templateUrl: './loan-proposed.component.html',
     styleUrl: './loan-proposed.component.scss',
@@ -36,28 +38,8 @@ import { TableModule } from 'primeng/table';
 export class LoanProposedComponent implements OnInit {
     showForm = false;
 
-    paymentForm!: FormGroup;
+    proposedForm!: FormGroup;
     productForm!: FormGroup;
-    paymentBreakdownTable = [
-        { title: 'اصل', paid: '', remaining: '' },
-        { title: 'سود / کارمزد', paid: '', remaining: '' },
-        { title: 'خسارت تأخیر', paid: '', remaining: '' },
-        { title: 'سود / کارمزد دوره تنفس', paid: '', remaining: '' },
-        { title: 'سود عهده دولت', paid: '', remaining: '' },
-        { title: 'جمع کل', paid: '', remaining: '' },
-    ];
-    contractTable = [
-        {
-            contractNumber: '1255',
-            contractStatus: 'جاری',
-            createdDate: '1400/01/10',
-            dueDate: '1401/01/10',
-            totalPaid: '1,000,000,000',
-            branch: 'ظفر',
-            depositAccount: '556912533',
-        },
-    ];
-
     customerTable = [
         {
             customerNumber: '36911948',
@@ -67,43 +49,43 @@ export class LoanProposedComponent implements OnInit {
             type: 'حقیقی',
         },
     ];
-    installmentTable:[]=[]
-    installmentsTables:[]=[]
-    discountTable:[]=[]
+    productTable = [
+        {
+            productTitle: 'تسهیلات ازدواج',
+            maxLoanAmount: 500000000,
+            maxLoanDuration: 36,
+            currencyType: 'ریال',
+        },
+        {
+            productTitle: 'خرید مسکن',
+            maxLoanAmount: 8000000000,
+            maxLoanDuration: 120,
+            currencyType: 'ریال',
+        },
+    ];
+
 
     constructor(private fb: FormBuilder) {}
 
     ngOnInit(): void {
-        this.paymentForm = this.fb.group({
-            customerNumber: [''],
-            customerName: [''],
-            nationalId: [''],
-            citizenship: [''],
-            type: [''],
-        });
+        this.proposedForm = this.fb.group({
 
-        this.paymentForm = this.fb.group({
-            date: ['', Validators.required],
-            paymentAmount: ['', Validators.required],
-            thisStepAmount: ['', Validators.required],
-            depositAccount: ['', Validators.required],
-            depositTitle: ['', Validators.required],
-            sheba: ['', Validators.required],
-            trackingCode: ['', Validators.required],
-            paymentMethod: ['', Validators.required],
+            amount: [''],
+            profitCalcMethod: [''],
+            effectiveDate: [''],
+            delayPenaltyRate: [''],
+            loanSubject: [''],
+            creditRank: [''],
+            fundingSource: [''],
+            installmentCount: [''],
+            installmentInterval: [''],
+            repaymentDuration: [''],
+            feeCollectionMethod: [''],
+            gracePeriod: [''],
+            feeRate: ['']
         });
     }
 
-    openRefoundDialog() {
-        this.showForm = true;
-    }
-
-    onFormCancel() {
-        this.showForm = false;
-    }
-
-    onFormSubmit(product: any) {
-        this.showForm = false;
-    }
+    detail(data: any) {}
 }
 
