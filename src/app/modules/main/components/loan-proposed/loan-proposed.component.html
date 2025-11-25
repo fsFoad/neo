@@ -1,1 +1,318 @@
-<p>loan-proposed works!</p>
+<div class="p-6 space-y-6 rounded-2xl">
+    <div [formGroup]="proposedForm">
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
+            <p-table [value]="customerTable" styleClass="p-datatable-striped p-datatable-gridlines">
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-between">
+                        <h3 class="text-base font-semibold">اطلاعات مشتری</h3>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>ردیف</th>
+                        <th>شماره مشتری</th>
+                        <th>نام مشتری</th>
+                        <th>کد/شناسه ملی</th>
+                        <th>تابعیت</th>
+                        <th>نوع</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row let-index="rowIndex">
+                    <tr>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ row.customerNumber }}</td>
+                        <td>{{ row.customerName }}</td>
+                        <td>{{ row.nationalId }}</td>
+                        <td>{{ row.citizenship }}</td>
+                        <td>{{ row.type }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
+            <p-table [value]="productTable" styleClass="p-datatable-striped p-datatable-gridlines">
+
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-between">
+                        <h3 class="text-base font-semibold">اطلاعات محصول</h3>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>ردیف</th>
+                        <th>عنوان محصول</th>
+                        <th>حداکثر مبلغ تسهیلات</th>
+                        <th>حداکثر مدت تسهیلات</th>
+                        <th>نوع ارز</th>
+                        <th>عملیات</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row let-index="rowIndex">
+                    <tr>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ row.productTitle }}</td>
+                        <td>{{ row.maxLoanAmount }}</td>
+                        <td>{{ row.maxLoanDuration }}</td>
+                        <td>{{ row.currencyType }}</td>
+                        <td>
+                            <div class="flex flex-row gap-2">
+                                <button
+                                    pButton
+                                    icon="pi pi-eye"
+                                    class="p-button-sm p-button-rounded p-button-outlined"
+                                    pTooltip="جزئیات"
+                                    (click)="detail(row)"
+                                ></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+
+        </div>
+
+        <div class="app-card p-6 rounded-xl border border-slate-200 mt-4">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">مبلغ:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="amount">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">روش محاسبه سود و کارمزد:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="profitCalcMethod">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">تاریخ موثر:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="effectiveDate">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">درصد نرخ خسارت تاخیر:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="delayPenaltyRate">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">موضوع تسهیلات:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="loanSubject">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">رتبه اعتباری:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="creditRank">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">منبع تامین تسهیلات:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="fundingSource">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="app-card p-6 rounded-xl border border-slate-200 mt-4">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">تعداد اقساط:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="installmentCount">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">فاصله اقساط:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="installmentInterval">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">مدت بازپرداخت:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="repaymentDuration">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">روش وصول کارمزد:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="feeCollectionMethod">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">مهلت تنفس (اختیاری):</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="gracePeriod">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">نرخ کارمزد:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="feeRate">
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<p-dialog
+    header="جزئیات تسهیلات"
+    [(visible)]="createDialogVisible"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '1100px' }"
+    [draggable]="false"
+    [resizable]="false"
+>
+
+    <form [formGroup]="createSourceForm" class="px-6 py-4">
+
+        <!-- سه ستون -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm leading-8">
+
+            <!-- ستون ۱ (سمت راست عکس) -->
+            <div class="flex flex-col space-y-2">
+                <span>
+                    نوع فرآیند: {{ formValues.processType }}
+                </span>
+
+                <span>
+                    روش نگهداری سود تنفسی: {{ formValues.interestSavingMethod }}
+                </span>
+
+                <span>
+                    محدوده سنی/سابقه از: {{ formValues.ageMin }} سال
+                </span>
+
+                <span>
+                    حداکثر مدت تسهیلات (ماه): {{ formValues.maxLoanDuration }}
+                </span>
+
+                <span>
+                    قابلیت پرداخت مجدد: {{ formValues.repeatable ? 'استفاده همزمان' : 'ندارد' }}
+                </span>
+            </div>
+
+            <!-- ستون ۲ (وسط عکس) -->
+            <div class="flex flex-col space-y-2">
+
+                <span>
+                    مبنای محاسبه خسارت تأخیر:
+                    {{ formValues.penaltyBase }}
+                </span>
+
+                <span>
+                    مدت اعتبار مصوبه:
+                    {{ formValues.approvalValidity }} روز
+                </span>
+
+                <span>
+                    محدوده سنی / سابقه تا:
+                    {{ formValues.ageMax }} سال
+                </span>
+
+                <span>
+                    حداکثر مبلغ تسهیلات:
+                    {{ formValues.maxLoanAmount }} ریال
+                </span>
+
+            </div>
+
+            <!-- ستون ۳ (چپ عکس) -->
+            <div class="flex flex-col space-y-2">
+
+                <span>
+                    تعداد ضامن مورد نیاز:
+                    {{ formValues.guaranteeCount }} نفر
+                </span>
+
+                <span>
+                    حداکثر مهلت تنفس:
+                    {{ formValues.maxGracePeriod }} روز
+                </span>
+
+                <span>
+                    روش وصول کارمزد:
+                    {{ formValues.feeCollectionMethod }}
+                </span>
+
+                <span>
+                    حداکثر تعداد اقساط:
+                    {{ formValues.maxInstallments }}
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="flex justify-start mt-10">
+            <button
+                pButton
+                label="بستن"
+                class="p-button-success px-8"
+                (click)="createDialogVisible = false"
+            ></button>
+        </div>
+
+    </form>
+
+</p-dialog>

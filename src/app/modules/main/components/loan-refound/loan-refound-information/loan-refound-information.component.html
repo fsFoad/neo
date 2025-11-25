@@ -17,7 +17,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
 
-        <!-- نحوه بازپرداخت -->
+            <!-- نحوه بازپرداخت -->
             <div class="flex flex-col">
                 <label class="mb-1 font-medium">نحوه بازپرداخت: <span class="text-red-500">*</span></label>
                 <div class="flex items-center gap-4 mt-2">
@@ -86,7 +86,7 @@
             </div>
 
 
-            </div>
+        </div>
         <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
             <p-table
                 [value]="installmentTable"
@@ -145,7 +145,6 @@
                 styleClass="p-datatable-striped p-datatable-gridlines w-full">
 
 
-
                 <ng-template pTemplate="header">
                     <tr>
                         <th>اصل</th>
@@ -198,6 +197,28 @@
 
         </div>
     </div>
+</div>
+
+<div class="bg-white p-4 rounded-xl border border-slate-200 mt-3">
+    <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start " dir="ltr">
+
+        <button
+            pButton
+            label="انصراف"
+            severity="danger"
+            type="button"
+            class="p-button-secondary col-span-2 md:col-span-2 h-[38px]"
+            (click)="onCancelClick()"
+        ></button>
+
+        <button
+            pButton
+            label="ذخیره"
+            severity="success"
+            type="button"
+            class="p-button-primary col-span-2 md:col-span-2 h-[38px]"
+            (click)="onSubmitClick()"
+        ></button>
+
     </div>
-
-
+</div>
