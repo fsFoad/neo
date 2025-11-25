@@ -1528,3 +1528,166 @@ textarea,
     background: var(--color-surface);
     color: var(--color-text);
 }
+.p-checkbox .p-checkbox-box.p-highlight {
+    background: var(--p-checkbox-checked-bg) !important;
+    border-color: var(--p-checkbox-checked-border-color) !important;
+}
+
+.p-checkbox .p-checkbox-box:hover {
+    border-color: var(--p-checkbox-hover-border-color) !important;
+}
+
+/* Radio */
+.p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: var(--p-radiobutton-checked-border-color) !important;
+}
+
+.p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+    background: var(--p-radiobutton-checked-icon-color) !important;
+}
+
+/* InputSwitch (Toggle) */
+.p-inputswitch .p-inputswitch-slider {
+    background: var(--p-inputswitch-bg) !important;
+    border-color: var(--p-inputswitch-border-color) !important;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--p-inputswitch-checked-bg) !important;
+}
+
+/* ToggleButton */
+.p-togglebutton.p-highlight {
+    background: var(--p-togglebutton-checked-bg) !important;
+    border-color: var(--p-togglebutton-checked-border-color) !important;
+    color: var(--p-togglebutton-checked-color) !important;
+}
+.p-checkbox .p-checkbox-box.p-highlight,
+.p-radiobutton .p-radiobutton-box.p-highlight {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+.p-radiobutton .p-radiobutton-box.p-focus,
+.p-radiobutton .p-radiobutton-box.p-highlight.p-focus {
+    box-shadow: 0 0 0 1px var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+    background-color: #ffffff !important; /* یا var(--primary) اگر دوست داری توپر رنگی بشه */
+}
+.p-radiobutton .p-radiobutton-box.p-focus,
+.p-radiobutton .p-radiobutton-box.p-highlight.p-focus {
+    box-shadow: 0 0 0 2px var(--primary) !important;
+    border-color: var(--primary) !important;
+    outline: none !important;
+}
+
+/* اگه نقطه‌ی وسط هم هنوز رنگ عجیب داشت */
+.p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+    background-color: #ffffff !important; /* یا var(--primary) اگر بخوای توپر بشه */
+}
+.p-checkbox .p-checkbox-box.p-focus,
+.p-checkbox .p-checkbox-box.p-highlight.p-focus {
+    box-shadow: 0 0 0 2px var(--primary) !important;
+    border-color: var(--primary) !important;
+    outline: none !important;
+}
+.p-inputswitch.p-focus .p-inputswitch-slider,
+.p-inputswitch.p-inputswitch-checked.p-focus .p-inputswitch-slider {
+    box-shadow: 0 0 0 2px var(--primary) !important;
+    border-color: var(--primary) !important;
+    outline: none !important;
+}
+/* آخر styles.scss بزار */
+.p-component:focus,
+.p-component.p-focus {
+    outline: none !important;
+}
+/* رادیوباتن */
+.p-radiobutton .p-radiobutton-box.p-focus,
+.p-radiobutton .p-radiobutton-box.p-highlight.p-focus {
+    box-shadow: 0 0 0 2px var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    outline: none !important;
+}
+
+/* چک‌باکس */
+.p-checkbox .p-checkbox-box.p-focus,
+.p-checkbox .p-checkbox-box.p-highlight.p-focus {
+    box-shadow: 0 0 0 2px var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    outline: none !important;
+}
+
+/* تاگل‌سوئیچ (InputSwitch) */
+.p-inputswitch.p-focus .p-inputswitch-slider,
+.p-inputswitch.p-focus.p-inputswitch-checked .p-inputswitch-slider {
+    box-shadow: 0 0 0 2px var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    outline: none !important;
+}
+/* ================================
+   Radio / Checkbox PrimeNG
+   ================================ */
+
+.p-radiobutton .p-radiobutton-box,
+.p-checkbox .p-checkbox-box {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* حالت انتخاب‌شده */
+.p-radiobutton .p-radiobutton-box.p-highlight,
+.p-checkbox .p-checkbox-box.p-highlight {
+    border-color: var(--color-primary) !important;
+    background: var(--color-primary) !important;
+}
+
+/* نقطه وسط / تیک */
+.p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+    background-color: #ffffff !important;
+}
+.p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon {
+    color: #ffffff !important;
+}
+
+/* فوکوس تمی */
+.p-radiobutton.p-focus .p-radiobutton-box,
+.p-radiobutton .p-radiobutton-box.p-focus,
+.p-checkbox.p-focus .p-checkbox-box,
+.p-checkbox .p-checkbox-box.p-focus {
+    box-shadow: var(--p-focus-ring-shadow) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* Hover */
+.p-radiobutton .p-radiobutton-box:hover,
+.p-checkbox .p-checkbox-box:hover {
+    border-color: var(--color-primary) !important;
+}
+/* ================================
+   PrimeNG ToggleSwitch Override
+   ================================ */
+
+/* ۱) متغیرهای خود ToggleSwitch – با specificity بالاتر از :root تم */
+html:root {
+    --p-toggleswitch-checked-background: var(--color-primary);
+    --p-toggleswitch-checked-hover-background: var(--color-primary-hover);
+    --p-toggleswitch-handle-checked-color: #ffffff;
+    --p-toggleswitch-handle-checked-hover-color: #ffffff;
+}
+
+/* ۲) تمام outline / حلقه‌ی دیفالت رو خفه کن */
+.p-toggleswitch input,
+.p-toggleswitch .p-toggleswitch-slider {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ۳) فوکوس قشنگ با رنگ تم به‌جای آبی */
+.p-toggleswitch.p-focus .p-toggleswitch-slider,
+.p-toggleswitch.p-focus-visible .p-toggleswitch-slider {
+    box-shadow: var(--p-focus-ring-shadow) !important;
+    border-color: var(--color-primary) !important;
+}

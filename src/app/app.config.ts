@@ -40,12 +40,7 @@ export const appConfig: ApplicationConfig = {
         }),
         provideAnimations(),
         provideHttpClient(),
-        provideRouter(
-            appRoutes,
-            withPreloading(PreloadAllModules),
-            withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
-        ),
-
+        provideRouter(appRoutes, withPreloading(PreloadAllModules), withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })),
         // Material Date Adapter
         {
             provide: DateAdapter,

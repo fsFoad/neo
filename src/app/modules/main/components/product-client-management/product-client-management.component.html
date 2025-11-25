@@ -1,7 +1,5 @@
-<!--
-
 <div class="w-full app-card ">
-    <div class="p-8 rounded-xl shadow-sm  mx-auto">
+    <div class="p-8 rounded-b-xl shadow-sm  mx-auto">
         <div class="flex flex-col w-full p-4">
             <div class="flex flex-col items-start text-right w-full">
                 <h1 class="text-4xl font-bold text-gray-800">مدیریت محصولات</h1>
@@ -16,10 +14,9 @@
                 <div
                     class="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all">
                     <p-button
-                        styleClass="!w-10 !h-10 !rounded-2xl !bg-primary !text-on-primary flex items-center justify-center"
-                        [rounded]="true"
-                        [outlined]="false"
-                        [text]="true"
+                        styleClass="btn-icon-2xl"
+                        severity="primary"
+                        [text]="false"
                         (onClick)="addProduct()">
                         <span class="material-icons text-base">add</span>
                     </p-button>
@@ -34,169 +31,323 @@
         </div>
     </div>
 </div>
-<div class="p-6 bg-gray-50 rounded-xl  m-6" >
-    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-right"></h2>
-    <div class="mt-6">
-        <p-table
-            [value]="products"
-            [paginator]="true"
-            [rows]="5"
-            [rowsPerPageOptions]="[5,10,25]"
-            [responsiveLayout]="'scroll'"
-            styleClass="p-datatable-striped p-datatable-gridlines custom-table"
-        >
-            <ng-template pTemplate="caption">
-                <div class="flex justify-end gap-4 ">
-                    <button
-                        class="normal-button bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lx flex items-center">
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-                        </svg>
-                        چاپ
-                    </button>
-                    <button
-                        class="normal-button bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lx flex items-center">
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                        </svg>
-                        Excel
-                    </button>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>ردیف</th>
-                    <th>عنوان</th>
-                    <th>عنوان لاتین</th>
-                    <th>وضعیت</th>
-                    <th>پیش‌فرض</th>
-                    <th>عملیات</th>
-                </tr>
-            </ng-template>
+<p-card header="فرم نمایه" class="p-6  rounded-xl  m-6">
+    <div class="grid grid-cols-12 gap-4">
 
-            <ng-template pTemplate="body" let-row let-index="rowIndex">
-                <tr>
-                    <td>{{ index + 1 }}</td>
-                    <td>{{ row.title }}</td>
-                    <td>{{ row.titleEn }}</td>
-                    <td>
-            <span
-                class="status-tag"
-                [ngClass]="{ 'active': row.status === 'active', 'inactive': row.status === 'inactive' }"
-            >
-              {{ row.status === 'active' ? 'فعال' : 'غیرفعال' }}
-            </span>
-                    </td>
-                    <td>{{ row.isDefault ? 'پیش‌فرض' : '---' }}</td>
-                    <td class="flex gap-2 justify-center">
-                        <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-success"></button>
-                        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger"></button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-    </div>
-</div>
+        <!-- کد نمایه + دکمه‌ها -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="profileCode" class="mb-1">کد نمایه:</label>
+            <div class="flex gap-2 mt-2">
+                <input
+                    id="profileCode"
+                    pInputText class="normal-input"
+                    [(ngModel)]="profileCode"
+                />
 
+                <button
+                    pButton
+                    type="button"
+                    label="کپی"
+                    icon="pi pi-copy"
+                    (click)="onCopyCode()"
+                ></button>
 
-<div class="container mx-auto p-4" dir="rtl">
-    <div class="flex justify-between items-center mb-6 bg-gray-100 p-4 rounded-lg shadow-sm">
-        <h1 class="text-xl font-bold text-gray-800">مدیریت محصولات</h1>
-        <div class="flex gap-2">
-            <p-button label="جستجو" icon="pi pi-search" (click)="onSearch()" ></p-button>
-            <p-button label="بازنشانی" icon="pi pi-refresh" (click)="onReset()" severity="secondary"></p-button>
-            <p-button label="صدور" icon="pi pi-download" (click)="onExport()" severity="info"></p-button>
-            <p-button label="جدید" icon="pi pi-plus" (click)="onAddNew()" severity="success"></p-button>
+                <button
+                    pButton
+                    type="button"
+                    label="ویرایش"
+                    icon="pi pi-pencil"
+                ></button>
+
+                <button
+                    pButton
+                    type="button"
+                    label="حذف"
+                    icon="pi pi-trash"
+                    class="p-button-danger"
+                ></button>
+
+                <button
+                    pButton
+                    type="button"
+                    label="فعال/غیرفعال"
+                    icon="pi pi-power-off"
+                ></button>
+            </div>
         </div>
-    </div>
-    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            &lt;!&ndash; ورودی جستجوی کلی &ndash;&gt;
-            <div class="p-field">
-                <label for="search" class="block text-gray-700 font-medium mb-2">جستجوی کلی</label>
-                <span class="p-input-icon-right w-full">
-          <i class="pi pi-search"></i>
-          <input pInputText id="search" type="text" [(ngModel)]="searchValue" placeholder="متن جستجو..." class="w-full" />
-        </span>
-            </div>
+        <div class="col-span-12 md:col-span-6 flex flex-col"></div>
+        <!-- عنوان نمایه -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="profileTitle">عنوان نمایه:</label>
+            <input
+                id="profileTitle"
+                pInputText class="normal-input"
 
-            &lt;!&ndash; ورودی نام &ndash;&gt;
-            <div class="p-field">
-                <label for="name" class="block text-gray-700 font-medium mb-2">نام</label>
-                <input pInputText id="name" type="text" [(ngModel)]="nameValue" placeholder="نام را وارد کنید..." class="w-full" />
-            </div>
+                [(ngModel)]="profileTitle"
+            />
+        </div>
+        <div class="col-span-12 md:col-span-6 flex flex-col"></div>
+        <!-- تاریخ شروع -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="startDate">تاریخ شروع:</label>
+            <p-persian-calendar
+                id="startDate"
+                class="app-persian-calendar-style"
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="startDate"
+            ></p-persian-calendar>
+        </div>
+        <!-- تاریخ انقضا -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="endDate">تاریخ انقضا:</label>
+            <p-persian-calendar
+                id="endDate"
+                class="app-persian-calendar-style"
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="endDate"
+            ></p-persian-calendar>
+        </div>
 
-            &lt;!&ndash; ورودی شهرت &ndash;&gt;
-            <div class="p-field">
-                <label for="fame" class="block text-gray-700 font-medium mb-2">شهرت</label>
-                <input pInputText id="fame" type="text" [(ngModel)]="fameValue" placeholder="شهرت را وارد کنید..." class="w-full" />
-            </div>
+        <!-- نوع ارز -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="currencyType">نوع ارز:</label>
+            <p-dropdown
+                id="currencyType"
+                class="dropdown-normal"
+                [options]="currencyTypes"
+                optionLabel="label"
+                optionValue="value"
+                [(ngModel)]="currencyType"
+            ></p-dropdown>
+        </div>
+        <div class="col-span-12 md:col-span-6 flex flex-col"></div>
+        <!-- نوع مشتری (رادیو) -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label>نوع مشتری:</label>
+            <div class="flex flex-wrap gap-4 mt-2">
+                <div class="flex items-center">
+                    <p-radiobutton
+                        inputId="customerType1"
+                        name="customerType"
+                        value="REAL"
+                        [(ngModel)]="customerType"
+                    ></p-radiobutton>
+                    <label for="customerType1" class="ml-2">مشتری حقیقی</label>
+                </div>
 
-            &lt;!&ndash; منوی کشویی دسته &ndash;&gt;
-            <div class="p-field">
-                <label for="category" class="block text-gray-700 font-medium mb-2">دسته</label>
-                <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" optionLabel="name" optionValue="value"
-                            placeholder="انتخاب کنید..." class="w-full"></p-dropdown>
-            </div>
+                <div class="flex items-center">
+                    <p-radiobutton
+                        inputId="customerType2"
+                        name="customerType"
+                        value="LEGAL"
+                        [(ngModel)]="customerType"
+                    ></p-radiobutton>
+                    <label for="customerType2" class="ml-2">مشتری حقوقی</label>
+                </div>
 
-            &lt;!&ndash; منوی کشویی وضعیت &ndash;&gt;
-            <div class="p-field">
-                <label for="status" class="block text-gray-700 font-medium mb-2">وضعیت</label>
-                <p-dropdown [options]="statuses" [(ngModel)]="selectedStatus" optionLabel="name" optionValue="value"
-                            placeholder="انتخاب کنید..." class="w-full"></p-dropdown>
-            </div>
-
-            &lt;!&ndash; چک‌باکس‌ها &ndash;&gt;
-            <div class="p-field flex items-end">
-                <div class="flex gap-4">
-                    <div class="flex items-center">
-                        <p-checkbox name="active" [(ngModel)]="isActive" inputId="active" binary="true"></p-checkbox>
-                        <label for="active" class="mr-2 text-gray-700">فعال</label>
-                    </div>
-                    <div class="flex items-center">
-                        <p-checkbox name="approved" [(ngModel)]="isApproved" inputId="approved" binary="true"></p-checkbox>
-                        <label for="approved" class="mr-2 text-gray-700">تایید شده</label>
-                    </div>
+                <div class="flex items-center">
+                    <p-radiobutton
+                        inputId="customerType3"
+                        name="customerType"
+                        value="BOTH"
+                        [(ngModel)]="customerType"
+                    ></p-radiobutton>
+                    <label for="customerType3" class="ml-2">هردو</label>
                 </div>
             </div>
         </div>
-    </div>
 
-    &lt;!&ndash; جدول داده‌ها &ndash;&gt;
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <p-table [value]="products" [paginator]="true" [rows]="5" responsiveLayout="scroll" [rowsPerPageOptions]="[5, 10, 20]">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th pSortableColumn="id">کد <p-sortIcon field="id"></p-sortIcon></th>
-                    <th pSortableColumn="name">نام <p-sortIcon field="name"></p-sortIcon></th>
-                    <th pSortableColumn="fame">شهرت <p-sortIcon field="fame"></p-sortIcon></th>
-                    <th pSortableColumn="category">دسته <p-sortIcon field="category"></p-sortIcon></th>
-                    <th pSortableColumn="status">وضعیت <p-sortIcon field="status"></p-sortIcon></th>
-                    <th pSortableColumn="date">تاریخ <p-sortIcon field="date"></p-sortIcon></th>
-                    <th>عملیات</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-product>
-                <tr>
-                    <td>{{product.id}}</td>
-                    <td>{{product.name}}</td>
-                    <td>{{product.fame}}</td>
-                    <td>{{product.category}}</td>
-                    <td>
-            <span [class]="'product-badge status-' + product.status">
-              {{product.status}}
-            </span>
-                    </td>
-                    <td>{{product.date}}</td>
-                    <td>
-                        <p-button icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-info mr-2" pRipple></p-button>
-                        <p-button icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" pRipple></p-button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
+        <!-- جنسیت (رادیو) -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label>جنسیت:</label>
+            <div class="flex flex-wrap gap-4 mt-2">
+                <div class="flex items-center">
+                    <p-radiobutton
+                        inputId="gender1"
+                        name="gender"
+                        value="MALE"
+                        [(ngModel)]="gender"
+                    ></p-radiobutton>
+                    <label for="gender1" class="ml-2">مرد</label>
+                </div>
+
+                <div class="flex items-center">
+                    <p-radiobutton
+                        inputId="gender2"
+                        name="gender"
+                        value="FEMALE"
+                        [(ngModel)]="gender"
+                    ></p-radiobutton>
+                    <label for="gender2" class="ml-2">زن</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- حداقل مبلغ زمان افتتاح -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="minOpeningAmount">حداقل مبلغ زمان افتتاح:</label>
+            <p-inputNumber
+                id="minOpeningAmount"
+                [(ngModel)]="minOpeningAmount"
+                [useGrouping]="true"
+            ></p-inputNumber>
+        </div>
+
+        <!-- حداقل موجودی -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="minBalance">حداقل موجودی:</label>
+            <p-inputNumber
+                id="minBalance"
+                [(ngModel)]="minBalance"
+                [useGrouping]="true"
+            ></p-inputNumber>
+        </div>
+
+        <!-- وضعیت (ToggleSwitch) -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label class="mb-1">وضعیت:</label>
+            <p-toggleswitch [(ngModel)]="status"></p-toggleswitch>
+        </div>
+
+        <!-- چک‌باکس‌ها -->
+        <div class="col-span-12 flex flex-wrap gap-6">
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="canPaymentOrder"
+                    [binary]="true"
+                    [(ngModel)]="canPaymentOrder"
+                ></p-checkbox>
+                <label for="canPaymentOrder" class="text-sm">
+                    امکان تعریف دستور پرداخت
+                </label>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="canOnlineOpen"
+                    [binary]="true"
+                    [(ngModel)]="canOnlineOpen"
+                ></p-checkbox>
+                <label for="canOnlineOpen" class="text-sm">
+                    امکان افتتاح حساب اینترنتی
+                </label>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="canSupportOthers"
+                    [binary]="true"
+                    [(ngModel)]="canSupportOthers"
+                ></p-checkbox>
+                <label for="canSupportOthers" class="text-sm">
+                    امکان حساب پشتیبان حساب دیگران
+                </label>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="requireDepositAmount"
+                    [binary]="true"
+                    [(ngModel)]="requireDepositAmount"
+                ></p-checkbox>
+                <label for="requireDepositAmount" class="text-sm">
+                    الزام تعیین مبلغ سپرده
+                </label>
+            </div>
+        </div>
+
+        <!-- حداقل مبلغ جهت تعیین منبع -->
+        <div class="col-span-12 md:col-span-6 flex flex-col">
+            <label for="minSourceAmount">حداقل مبلغ جهت تعیین منبع:</label>
+            <p-inputNumber
+                id="minSourceAmount"
+                [(ngModel)]="minSourceAmount"
+                [useGrouping]="true"
+            ></p-inputNumber>
+        </div>
+
+        <!-- فیلدست راکدپذیر بودن -->
+        <div class="col-span-12">
+            <p-fieldset legend="راکدپذیر بودن">
+                <div class="grid grid-cols-12 gap-4">
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantMinBalance">حداقل موجودی برای راکد شدن:</label>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p-inputNumber
+                                id="dormantMinBalance"
+                                [(ngModel)]="dormantMinBalance"
+                                [useGrouping]="true"
+                            ></p-inputNumber>
+                            <span>ریال</span>
+                        </div>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantToDormantMonths">
+                            مدت رکود قبل از تبدیل به راکدی:
+                        </label>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p-inputNumber
+                                id="dormantToDormantMonths"
+                                [(ngModel)]="dormantToDormantMonths"
+                            ></p-inputNumber>
+                            <span>ماه</span>
+                        </div>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantToUnclaimedMonths">
+                            مدت رکود قبل از تبدیل به مطالبه نشده:
+                        </label>
+                        <p-inputNumber
+                            id="dormantToUnclaimedMonths"
+                            [(ngModel)]="dormantToUnclaimedMonths"
+                        ></p-inputNumber>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantToUnpaidMonths">
+                            مدت رکود جهت تبدیل به وجوه بلا تکلیف:
+                        </label>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p-inputNumber
+                                id="dormantToUnpaidMonths"
+                                [(ngModel)]="dormantToUnpaidMonths"
+                            ></p-inputNumber>
+                            <span>ماه</span>
+                        </div>
+                    </div>
+
+                </div>
+            </p-fieldset>
+        </div>
+
+
+        <!-- جدول نمایه‌ها -->
+        <div class="col-span-12">
+            <p-table [value]="profiles">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>کد نمایه</th>
+                        <th>عنوان نمایه</th>
+                        <th>تاریخ شروع</th>
+                        <th>تاریخ انقضا</th>
+                        <th>وضعیت</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td>{{ row.code }}</td>
+                        <td>{{ row.title }}</td>
+                        <td>{{ row.startDate }}</td>
+                        <td>{{ row.endDate }}</td>
+                        <td>{{ row.active ? 'فعال' : 'غیرفعال' }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
     </div>
-</div>
--->
+</p-card>

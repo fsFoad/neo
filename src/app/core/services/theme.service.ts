@@ -168,6 +168,45 @@ export class ThemeService {
         this.setVar('--p-inputtext-border-color', (palette.onSurface ?? '') + '33');
         this.setVar('--p-inputtext-focus-border-color', palette.primary);
         this.setVar('--p-inputtext-focus-ring-color', palette.primary + '55');
+        this.setVar('--p-focus-ring-color', palette.primary + '55');
+        /* ---------------------------
+           PrimeNG Checkbox
+        ---------------------------- */
+        this.setVar('--p-checkbox-border-color', (palette.onSurface ?? '') + '55');
+        this.setVar('--p-checkbox-bg', 'transparent');
+        this.setVar('--p-checkbox-hover-border-color', palette.primary);
+        this.setVar('--p-checkbox-checked-bg', palette.primary);
+        this.setVar('--p-checkbox-checked-border-color', palette.primary);
+        this.setVar('--p-checkbox-checked-icon-color', '#ffffff');
+
+        /* ---------------------------
+           PrimeNG Radio
+        ---------------------------- */
+        this.setVar('--p-radiobutton-border-color', (palette.onSurface ?? '') + '55');
+        this.setVar('--p-radiobutton-hover-border-color', palette.primary);
+        this.setVar('--p-radiobutton-checked-border-color', palette.primary);
+        this.setVar('--p-radiobutton-checked-icon-color', palette.primary);
+
+        /* ---------------------------
+           PrimeNG InputSwitch (Toggle)
+        ---------------------------- */
+        this.setVar('--p-inputswitch-handle-bg', '#ffffff');
+        this.setVar('--p-inputswitch-border-color', (palette.onSurface ?? '') + '44');
+        this.setVar('--p-inputswitch-bg', (palette.onSurface ?? '') + '22');
+
+        this.setVar('--p-inputswitch-checked-bg', palette.primary);
+        this.setVar('--p-inputswitch-checked-handle-bg', '#ffffff');
+
+        /* ---------------------------
+           PrimeNG ToggleButton
+        ---------------------------- */
+        this.setVar('--p-togglebutton-bg', palette.surface ?? '#fff');
+        this.setVar('--p-togglebutton-border-color', (palette.onSurface ?? '') + '33');
+        this.setVar('--p-togglebutton-color', palette.onSurface);
+
+        this.setVar('--p-togglebutton-checked-bg', palette.primary);
+        this.setVar('--p-togglebutton-checked-border-color', palette.primary);
+        this.setVar('--p-togglebutton-checked-color', '#ffffff');
 
         /* ---------------------------
            Material
