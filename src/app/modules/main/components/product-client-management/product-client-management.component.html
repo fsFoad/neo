@@ -82,7 +82,6 @@
             <input
                 id="profileTitle"
                 pInputText class="normal-input"
-
                 [(ngModel)]="profileTitle"
             />
         </div>
@@ -126,32 +125,32 @@
             <label>نوع مشتری:</label>
             <div class="flex flex-wrap gap-4 mt-2">
                 <div class="flex items-center">
-                    <p-radiobutton
+                    <p-radioButton
                         inputId="customerType1"
                         name="customerType"
                         value="REAL"
                         [(ngModel)]="customerType"
-                    ></p-radiobutton>
+                    ></p-radioButton>
                     <label for="customerType1" class="ml-2">مشتری حقیقی</label>
                 </div>
 
                 <div class="flex items-center">
-                    <p-radiobutton
+                    <p-radioButton
                         inputId="customerType2"
                         name="customerType"
                         value="LEGAL"
                         [(ngModel)]="customerType"
-                    ></p-radiobutton>
+                    ></p-radioButton>
                     <label for="customerType2" class="ml-2">مشتری حقوقی</label>
                 </div>
 
                 <div class="flex items-center">
-                    <p-radiobutton
+                    <p-radioButton
                         inputId="customerType3"
                         name="customerType"
                         value="BOTH"
                         [(ngModel)]="customerType"
-                    ></p-radiobutton>
+                    ></p-radioButton>
                     <label for="customerType3" class="ml-2">هردو</label>
                 </div>
             </div>
@@ -162,22 +161,22 @@
             <label>جنسیت:</label>
             <div class="flex flex-wrap gap-4 mt-2">
                 <div class="flex items-center">
-                    <p-radiobutton
+                    <p-radioButton
                         inputId="gender1"
                         name="gender"
                         value="MALE"
                         [(ngModel)]="gender"
-                    ></p-radiobutton>
+                    ></p-radioButton>
                     <label for="gender1" class="ml-2">مرد</label>
                 </div>
 
                 <div class="flex items-center">
-                    <p-radiobutton
+                    <p-radioButton
                         inputId="gender2"
                         name="gender"
                         value="FEMALE"
                         [(ngModel)]="gender"
-                    ></p-radiobutton>
+                    ></p-radioButton>
                     <label for="gender2" class="ml-2">زن</label>
                 </div>
             </div>
