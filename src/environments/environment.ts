@@ -16,7 +16,9 @@ export const environment = {
     // serviceBaseUrl: 'http://172.24.161.106:7086/',
     // pro نسخه اقای فلاح
     //serviceBaseUrl: 'https://service-api.rqbank.ir/',
-    version: '1.08.11',
+    version: 'شماره نسخه : '+'v1.3.09',
+    history:  'آخرین تغییرات : '+'1404/07/15',
+    typeVersion:'نوع نسخه : '+' Develop',
     defaultLanguage: 'fa',
     supportedLanguages: ['fa-IR', 'en-US'],
     production: false,

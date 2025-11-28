@@ -51,43 +51,75 @@
     /* PrimeNG bridge */
     --primary: var(--color-primary);
     --accent: var(--color-accent);
-    --warn: var(--color-warn);
+    --warn:   var(--color-warn);
 
     --p-primary-color: var(--color-primary);
     --p-primary-500: var(--color-primary);
     --p-primary-color-text: var(--color-primary-contrast);
 
+    /* InputText tokens */
     --p-inputtext-bg: var(--color-surface);
     --p-inputtext-color: var(--color-on-surface);
     --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
     --p-inputtext-focus-border-color: var(--color-primary);
     --p-inputtext-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
 
-    /* حلقه فوکوس عمومی */
+    /* فوکوس عمومی */
     --p-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
     --p-focus-ring-shadow: 0 0 0 2px var(--p-focus-ring-color);
 
-    /* دیتاتیبل و بک‌گراند اپ */
-    --app-background: none;
-    --p-datatable-header-bg: none;
-    --p-datatable-header-color: none;
-    --p-datatable-row-bg: none;
-    --p-datatable-row-hover-bg: none;
-    --p-datatable-border-color: none;
+    /* ====================== Checkbox Tokens (PrimeNG v19) ====================== */
+    /* ظاهر باکس */
+    --p-checkbox-background: #ffffff;
+    --p-checkbox-border-color: #cbd5e1;
+    --p-checkbox-hover-border-color: var(--color-primary);
+    --p-checkbox-focus-border-color: var(--color-primary);
 
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.1);
-    --shadow-md: 0 3px 8px rgb(0 0 0 / 0.15);
-    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* حالت چک‌شده */
+    --p-checkbox-checked-background: var(--color-primary);
+    --p-checkbox-checked-hover-background: var(--color-primary-hover);
+    --p-checkbox-checked-border-color: var(--color-primary);
+    --p-checkbox-checked-hover-border-color: var(--color-primary-hover);
 
-    --p-inputtext-hover-border-color: color-mix(in srgb, var(--color-primary) 70%, var(--color-border) 30%);
-    --p-inputtext-hover-ring-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+    /* فوکوس */
+    --p-checkbox-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+    --p-checkbox-focus-ring-width: 2px;
+    --p-checkbox-focus-ring-style: solid;
+    --p-checkbox-focus-ring-offset: 2px;
+    --p-checkbox-focus-ring-shadow:
+        0 0 0 var(--p-checkbox-focus-ring-width) var(--p-checkbox-focus-ring-color);
+
+    /* آیکن تیک */
+    --p-checkbox-icon-color: transparent;
+    --p-checkbox-icon-checked-color: #ffffff;
+    --p-checkbox-icon-checked-hover-color: #ffffff;
+
+    /* ====================== ToggleSwitch Tokens ====================== */
+    --p-toggleswitch-background: #cbd5f5;
+    --p-toggleswitch-checked-background: var(--color-primary);
+    --p-toggleswitch-checked-hover-background: var(--color-primary-hover);
+    --p-toggleswitch-handle-checked-color: #ffffff;
+    --p-toggleswitch-handle-checked-hover-color: #ffffff;
 
 }
 
+.p-checkbox-input {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.p-checkbox-input:focus,
+.p-checkbox-input:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* اگه خواستی حتی خود box هم فقط حلقه تمی خودت رو بگیره */
+.p-checkbox.p-focus .p-checkbox-box,
+.p-checkbox.p-focus-visible .p-checkbox-box {
+    box-shadow: var(--p-checkbox-focus-ring-shadow) !important;
+    border-color: var(--color-primary) !important;
+}
 
 /* ===================================================================================================== */
 /*  Dynamic Global Theme Variables (Minimal)                                                              */
@@ -768,162 +800,11 @@ body .p-radiobutton .p-radiobutton-box:focus-visible {
 }
 
 /* 4) hover روی خود باکس‌ها */
-
-body,
-.theme-default {
-    /* PrimeNG primary رو به سیستم تم خودت وصل کن */
-    --p-primary-color: var(--color-primary);
-    --p-primary-hover-color: var(--color-primary-hover);
-
-    /* چک‌باکس PrimeNG از همین primary استفاده کنه */
-    --p-checkbox-checked-background: var(--color-primary);
-    --p-checkbox-checked-hover-background: var(--color-primary-hover);
-
-    /* اگر خواستی disabled/filled هم با سیستم خودت باشه */
-    --p-checkbox-disabled-background: var(--p-form-field-disabled-background);
-    --p-checkbox-filled-background: var(--p-form-field-filled-background);
-}
-/* ============================
-   PrimeNG Checkbox / Radio – نهایی
-   ============================ */
-
-/* سایز و شکل پایه (اگه دوست داری) */
-body .p-checkbox .p-checkbox-box,
-body .p-radiobutton .p-radiobutton-box {
-    box-shadow: none !important;
-    color: var(--p-checkbox-checked-background);
-    outline: none !important;
-}
-
-/* حالت تیک خورده – از توکن‌هایی که خودت بریج کردی */
-body .p-checkbox .p-checkbox-box.p-highlight {
-    background: var(--p-checkbox-checked-background);
-    border-color: var(--p-checkbox-checked-background);
-}
-
-body .p-checkbox .p-checkbox-box.p-highlight:hover {
-    background: var(--p-checkbox-checked-hover-background);
-    border-color: var(--p-checkbox-checked-hover-background);
-}
-
-/* رادیوباتن هم با همون primary */
-body .p-radiobutton .p-radiobutton-box.p-highlight {
-    background: var(--p-primary-color);
-    border-color: var(--p-primary-color);
-}
-
-body .p-radiobutton .p-radiobutton-box.p-highlight:hover {
-    background: var(--p-primary-hover-color);
-    border-color: var(--p-primary-hover-color);
-}
-
-/* رنگ آیکن‌ها */
-body .p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon {
-    color: #ffffff !important;
-}
-
-body .p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
-    background-color: #ffffff !important;
-}
-
-/* فوکوس تمی */
-body .p-checkbox.p-focus .p-checkbox-box,
-body .p-checkbox .p-checkbox-box.p-focus,
-body .p-radiobutton.p-focus .p-radiobutton-box,
-body .p-radiobutton .p-radiobutton-box.p-focus {
-    outline: none !important;
-    box-shadow: var(--p-focus-ring-shadow) !important;
-    border-color: var(--p-primary-color) !important;
-}
-
-/* هاور وقتی هنوز تیک نخورده */
 body .p-checkbox .p-checkbox-box:hover,
 body .p-radiobutton .p-radiobutton-box:hover {
-    border-color: var(--p-primary-color) !important;
-}
-.p-inputtext:enabled:focus,
-.p-inputwrapper-focus {
     border-color: var(--color-primary) !important;
-    box-shadow: 0 0 0 2px var(--p-focus-ring-color) !important;
 }
-
-input.p-inputtext.normal-input {
-    border-width: 1px !important;
-    border-style: solid !important;
-    border-color: var(--p-inputtext-border-color) !important;  /* به جای #d1d5db */
-    border-radius: 0.75rem !important;
-}
-/* ============================
-   Fix border-radius for p-inputNumber
-   ============================ */
-
-/* خود اینپوت داخل p-inputNumber همیشه گرد باشد */
-.p-inputnumber .p-inputnumber-input {
-    border-radius: var(--radius-lg) !important; /* 0.75rem */
-}
-
-/* وقتی wrapper فوکوس می‌گیرد، باز هم radius حفظ شود */
-.p-inputnumber.p-inputwrapper-focus .p-inputnumber-input {
-    border-radius: var(--radius-lg) !important;
-}
-
-/* اگر کلاس خودت رو روی p-inputNumber گذاشتی (normal-input-number) */
-.p-inputnumber.normal-input-number .p-inputnumber-input {
-    border-radius: var(--radius-lg) !important;
-}
-.p-inputnumber.normal-input-number,
-.p-inputnumber.full-input-number,
-.p-inputnumber.xx-ggg-12-input,
-.p-inputnumber.xx-6-ggg-12-input,
-.p-inputnumber.xx-ggg-8-input,
-.p-inputnumber.xxx-ggg-12-input,
-.p-inputnumber.xxx-gggg-12-input,
-.p-inputnumber.xx-gggg-8-input {
-    border-radius: inherit; /* تا shadow فوکوس هم گرد باشه */
-}
-
-/* input داخلش، همون رِدیوس wrapper رو بگیره */
-.p-inputnumber.normal-input-number .p-inputnumber-input,
-.p-inputnumber.full-input-number .p-inputnumber-input,
-.p-inputnumber.xx-ggg-12-input .p-inputnumber-input,
-.p-inputnumber.xx-6-ggg-12-input .p-inputnumber-input,
-.p-inputnumber.xx-ggg-8-input .p-inputnumber-input,
-.p-inputnumber.xxx-ggg-12-input .p-inputnumber-input,
-.p-inputnumber.xxx-gggg-12-input .p-inputnumber-input,
-.p-inputnumber.xx-gggg-8-input .p-inputnumber-input {
-    border-radius: inherit !important;
-}
-
-/* وقتی فوکوس می‌گیرد، رِدیوس از بین نرود */
-.p-inputnumber.normal-input-number.p-inputwrapper-focus,
-.p-inputnumber.full-input-number.p-inputwrapper-focus,
-.p-inputnumber.xx-ggg-12-input.p-inputwrapper-focus,
-.p-inputnumber.xx-6-ggg-12-input.p-inputwrapper-focus,
-.p-inputnumber.xx-ggg-8-input.p-inputwrapper-focus,
-.p-inputnumber.xxx-ggg-12-input.p-inputwrapper-focus,
-.p-inputnumber.xxx-gggg-12-input.p-inputwrapper-focus,
-.p-inputnumber.xx-gggg-8-input.p-inputwrapper-focus {
-    border-radius: inherit !important;
-}
-.p-inputnumber {
-    border-radius: var(--radius-lg) !important;
-}
-
-/* خود input داخلی همان رِدیوس را بگیرد */
-.p-inputnumber .p-inputnumber-input {
-    border-radius: inherit !important;
-}
-
-/* وقتی فوکوس می‌گیرد (کلاس p-inputwrapper-focus روی روت) هم رِدیوس حفظ شود */
-.p-inputnumber.p-inputwrapper-focus {
-    border-radius: var(--radius-lg) !important;
-}
-.cdk-overlay-container,
-.p-dialog-mask,
-.p-sidebar-mask,
-.p-confirm-dialog {
-    z-index: 1000 !important;   /* مطمئن بالاتر از ۹۰ و ۲۰۰ و ... */
-}
-.neo-dialog .p-dialog-content {
-    padding: 2rem 2.5rem !important;
+.shortcut-header {
+    background: var(--primary) !important;
+    color: var(--p-primary-color-text) !important;
 }

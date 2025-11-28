@@ -7,27 +7,17 @@ export const PRESET_NAMES = [
     "Coral Horizon",
     "Royal Sapphire",
     "Soft Amber",
-    "Neon Aquamarine",
     "Flame Citrine",
-    "Imperial Ember",
-    "Azure Citrine",
-    "Galactic Amber",
-    "Steel Sapphire",
     "Obsidian Frost",
     "Amethyst Breeze",
     "Jade Twilight",
-    "Golden Topaz",
-    "Peridot Pulse",
     "Indigo Quartz",
     "Ashen Opal",
 
     "Ocean Lapis",
     "Emerald Grove",
-    "Graphite Emerald",
     "Ruby Sunset",
     "Violet Amethyst",
-    "Sky Aquamarine",
-    "Earthy Jasper",
     "Neon Ruby",
     "Ivory Quartz",
     "Onyx Surge"
@@ -324,49 +314,6 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Golden Topaz": {
-        name: "Golden Topaz",
-        displayName:"توپاز زرین",
-        backgroundPreset: "enterprise-gray",
-        light: {
-            primary: "#C59D5F",
-            accent: "#1B3A57",
-            warn: "#C0392B",
-            background: "#FAF6EF",
-            surface: "#FFFFFF",
-            onSurface: "#2F2F2F"
-        },
-        dark: {
-            primary: "#E7C78A",
-            accent: "#4579A6",
-            warn: "#FF8273",
-            background: "#171310",
-            surface: "#241F1A",
-            onSurface: "#F0E8D8"
-        }
-    },
-
-    "Peridot Pulse": {
-        name: "Peridot Pulse",
-        displayName:"پالس پریدوت",
-        backgroundPreset: "metal-blue",
-        light: {
-            primary: "#A3FF00",
-            accent: "#0AFFE2",
-            warn: "#F72585",
-            background: "#FFFFFF",
-            surface: "#F4F7F8",
-            onSurface: "#1A1A1A"
-        },
-        dark: {
-            primary: "#BAFF4A",
-            accent: "#37FFE9",
-            warn: "#FF79B0",
-            background: "#0B0F12",
-            surface: "#171C20",
-            onSurface: "#E1E1E1"
-        }
-    },
 
     "Indigo Quartz": {
         name: "Indigo Quartz",
@@ -474,28 +421,6 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             onSurface: "#efefef"
         }
     },
-
-    "Neon Aquamarine": {
-        name: "Neon Aquamarine",
-        displayName:"آکوآمارین نئونی",
-        light: {
-            primary: "rgb(0,49,229)",
-            accent: "#448aff",
-            warn: "#d32f2f",
-            background: "#ffffff",
-            surface: "#fbfbfb",
-            onSurface: "#1e1e1e"
-        },
-        dark: {
-            primary: "#6f7cff",
-            accent: "#82b1ff",
-            warn: "#ef9a9a",
-            background: "#121212",
-            surface: "#1c1c1c",
-            onSurface: "#ececec"
-        }
-    },
-
     "Flame Citrine": {
         name: "Flame Citrine",
         displayName:"سیترین شعله‌ای",
@@ -517,90 +442,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Imperial Ember": {
-        name: "Imperial Ember",
-        displayName:"اخگر امپراتوری",
-        light: {
-            primary: "rgb(0,49,229)",
-            accent: "rgb(254,95,2)",
-            warn: "#f44336",
-            background: "#ffffff",
-            surface: "#ffffff",
-            onSurface: "#111"
-        },
-        dark: {
-            primary: "#5c6bff",
-            accent: "#ff8a50",
-            warn: "#ef9a9a",
-            background: "#121212",
-            surface: "#1d1d1d",
-            onSurface: "#eee"
-        }
-    },
 
-    "Azure Citrine": {
-        name: "Azure Citrine",
-        displayName:"سیترین آبی",
-        light: {
-            primary: "#3f51b5",
-            accent: "rgb(254,95,2)",
-            warn: "#e53935",
-            background: "#fafafa",
-            surface: "#ffffff",
-            onSurface: "#1c1c1c"
-        },
-        dark: {
-            primary: "#9fa8ff",
-            accent: "#ff8a50",
-            warn: "#ff8a80",
-            background: "#181818",
-            surface: "#242424",
-            onSurface: "#e6e6e6"
-        }
-    },
-
-    "Galactic Amber": {
-        name: "Galactic Amber",
-        displayName:"کهربای کهکشانی",
-        light: {
-            primary: "rgb(254,95,2)",
-            accent: "#ff6e40",
-            warn: "#ef5350",
-            background: "#fdfdfd",
-            surface: "#ffffff",
-            onSurface: "#1e1e1e"
-        },
-        dark: {
-            primary: "#ffb199",
-            accent: "#ff8a65",
-            warn: "#ff8a80",
-            background: "#131313",
-            surface: "#1d1d1d",
-            onSurface: "#e0e0e0"
-        }
-    },
-
-    "Steel Sapphire": {
-        name: "Steel Sapphire",
-        displayName:"یاقوت فولادی",
-        backgroundPreset: "finance-soft",
-        light: {
-            primary: "#1B3A57",
-            accent: "#C9A86B",
-            warn: "#D32F2F",
-            background: "#F5F7FA",
-            surface: "#FFFFFF",
-            onSurface: "#1A1A1A"
-        },
-        dark: {
-            primary: "#4D6A89",
-            accent: "#E6C48C",
-            warn: "#FF8A80",
-            background: "#0F131A",
-            surface: "#1A222C",
-            onSurface: "#E8EBEF"
-        }
-    },
 
     "Ashen Opal": {
         name: "Ashen Opal",
@@ -652,7 +494,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#2D6A4F",
             accent: "#D4A373",
             warn: "#d32f2f",
-            background: "#FEFAE0",
+            background: "rgba(147,164,164,0.52)",
             surface: "#ffffff",
             onSurface: "#343A40"
         },
@@ -666,26 +508,6 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Graphite Emerald": {
-        name: "Graphite Emerald",
-        displayName:"زمرد گرافیتی",
-        light: {
-            primary: "#495057",
-            accent: "#20C997",
-            warn: "#d32f2f",
-            background: "#FFFFFF",
-            surface: "#F8F9FA",
-            onSurface: "#212529"
-        },
-        dark: {
-            primary: "#6C757D",
-            accent: "#38E8B8",
-            warn: "#ef9a9a",
-            background: "#121212",
-            surface: "#1E1E1E",
-            onSurface: "#E0E0E0"
-        }
-    },
 
     "Ruby Sunset": {
         name: "Ruby Sunset",
@@ -715,7 +537,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#6A4C93",
             accent: "#F7B2AD",
             warn: "#c2185b",
-            background: "#F3E5F5",
+            background: "rgba(220,215,220,0.78)",
             surface: "#ffffff",
             onSurface: "#4A148C"
         },
@@ -726,48 +548,6 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             background: "#2A1A3A",
             surface: "#3A294C",
             onSurface: "#EEDDF7"
-        }
-    },
-
-    "Sky Aquamarine": {
-        name: "Sky Aquamarine",
-        displayName:"آکوآمارین آسمانی",
-        light: {
-            primary: "#0077B6",
-            accent: "#90E0EF",
-            warn: "#e53935",
-            background: "#CAF0F8",
-            surface: "#ffffff",
-            onSurface: "#03045E"
-        },
-        dark: {
-            primary: "#00A5E4",
-            accent: "#B8F3FF",
-            warn: "#ef9a9a",
-            background: "#0A1A2A",
-            surface: "#0F2438",
-            onSurface: "#E0F4FF"
-        }
-    },
-
-    "Earthy Jasper": {
-        name: "Earthy Jasper",
-        displayName:"جاسپر خاکی",
-        light: {
-            primary: "#8B4513",
-            accent: "#BC6C25",
-            warn: "#d32f2f",
-            background: "#FAEBD7",
-            surface: "#ffffff",
-            onSurface: "#3E2723"
-        },
-        dark: {
-            primary: "#A06030",
-            accent: "#D98745",
-            warn: "#ff8a80",
-            background: "#2A1A12",
-            surface: "#3A2820",
-            onSurface: "#EDDACF"
         }
     },
 
