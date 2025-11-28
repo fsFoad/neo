@@ -2,7 +2,9 @@ export const environment = {
     // uat نسخه جامپ
     //serviceBaseUrl: 'http://172.24.27.106:8086/',
     serviceBaseUrl: 'http://192.168.160.40:8086/',
-    version: '1.08.26',
+    version: 'شماره نسخه : '+'v1.3.13',
+    history:  'آخرین تغییرات : '+'1404/08/12',
+    typeVersion:'نوع نسخه : '+'UAT',
     defaultLanguage: 'fa',
     supportedLanguages: ['fa-IR', 'en-US'],
     production: true,

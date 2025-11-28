@@ -24,6 +24,7 @@ import {NgClass, NgIf} from '@angular/common';
 import {ConnectionService} from "../../../../../shared/repositories/connection.service";
 import {MainComponent} from "../../../../modules/main/main.component";
 import {environment} from "../../../../../environments/environment";
+import { ThemeSwitcherComponent } from '../../../common/theme-switcher/theme-switcher.component';
 
 @Component({
     selector: 'classic-layout',
@@ -48,13 +49,16 @@ import {environment} from "../../../../../environments/environment";
         NgIf,
         MainComponent,
         NgClass,
+        ThemeSwitcherComponent,
     ],
 })
 export class ClassicLayoutComponent implements OnInit, OnDestroy {
     isScreenSmall: boolean;
     navigation: Navigation;
     defaultNavClass: string;
-
+    appVersion: string;
+    history: string;
+    typeVersion: string;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -89,6 +93,9 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
      */
     ngOnInit(): void {
         // Subscribe to navigation data
+        this.history = environment.history;
+        this.appVersion = environment.version;
+        this.typeVersion = environment.typeVersion;
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((navigation: Navigation) => {
@@ -102,13 +109,13 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                 // Check if the screen is small
                 this.isScreenSmall = !matchingAliases.includes('md');
             });
-       /* this.config().subscribe(response => {
+        /* this.config().subscribe(response => {
             this.companyName = response.companyName
         });*/
         // تغییر به تم پیش فرض تعیین شده در environment
-        if (environment.production){
+        if (environment.production) {
             this.defaultNavClass = environment.navigationBGColor;
-        }else {
+        } else {
             this.defaultNavClass = 'bg-gray-900';
         }
     }
@@ -147,7 +154,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
     protected readonly AppSettings = AppSettings;
     companyName: string;
 
-   /* config() {
+    /* config() {
         return this.connectionService.getConnection('config',
             '');
     }*/

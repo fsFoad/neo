@@ -32,6 +32,27 @@
                 <span class="text-secondary">{{companyName}}</span>
         </div>
     </ng-container>
+    <ng-container fuseVerticalNavigationFooter>
+        <!-- User -->
+            <div class=" border-t px-6 py-8" style="text-align: center;">
+                <div>
+                    <div>
+                        <div>
+                <span style="font-size: 10px; display: block; margin-top: 6px;">
+                    {{appVersion}}
+                </span>
+                            <span style="font-size: 10px; display: block; margin-top: 6px;">
+                    {{history}}
+                </span>
+                            <span style="font-size: 10px; display: block; margin-top: 6px;">
+                    {{typeVersion}}
+                </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </ng-container>
 </fuse-vertical-navigation>
 
 <!-- Wrapper -->
@@ -53,6 +74,7 @@
             <shortcuts></shortcuts>
             <messages></messages>
             <notifications></notifications>
+            <theme-switcher></theme-switcher>
             <button
                 class="lg:hidden"
                 mat-icon-button

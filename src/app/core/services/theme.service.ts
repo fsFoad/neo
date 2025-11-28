@@ -303,7 +303,8 @@ export class ThemeService {
     }
 
     applyStoredCardPreset() {
-        const name = localStorage.getItem('app_card_preset') ?? 'white';
+        //بخش بوردر و شادو تم
+        const name = localStorage.getItem('app_card_preset') ?? 'bankPaper';
         this.setCardPreset(name);
     }
 }

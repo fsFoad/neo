@@ -804,3 +804,7 @@ body .p-checkbox .p-checkbox-box:hover,
 body .p-radiobutton .p-radiobutton-box:hover {
     border-color: var(--color-primary) !important;
 }
+.shortcut-header {
+    background: var(--primary) !important;
+    color: var(--p-primary-color-text) !important;
+}

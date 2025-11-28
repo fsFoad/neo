@@ -4,7 +4,7 @@ import { DatePipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
-    Component,
+    Component, ElementRef,
     OnDestroy,
     OnInit,
     TemplateRef,
@@ -38,7 +38,8 @@ import { Subject, takeUntil } from 'rxjs';
     ],
 })
 export class NotificationsComponent implements OnInit, OnDestroy {
-    @ViewChild('notificationsOrigin') private _notificationsOrigin: MatButton;
+    @ViewChild('notificationsOrigin', { read: ElementRef })
+    private _notificationsOrigin: ElementRef;
     @ViewChild('notificationsPanel')
     private _notificationsPanel: TemplateRef<any>;
 
@@ -122,7 +123,9 @@ export class NotificationsComponent implements OnInit, OnDestroy {
      * Close the notifications panel
      */
     closePanel(): void {
-        this._overlayRef.detach();
+        if (this._overlayRef && this._overlayRef.hasAttached()) {
+            this._overlayRef.detach();
+        }
     }
 
     /**
@@ -171,7 +174,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
     /**
      * Create the overlay
      */
-    private _createOverlay(): void {
+/*    private _createOverlay(): void {
         // Create the overlay
         this._overlayRef = this._overlay.create({
             hasBackdrop: true,
@@ -215,6 +218,33 @@ export class NotificationsComponent implements OnInit, OnDestroy {
         // Detach the overlay from the portal on backdrop click
         this._overlayRef.backdropClick().subscribe(() => {
             this._overlayRef.detach();
+        });
+    }*/
+    private _createOverlay(): void {
+        const positionStrategy = this._overlay.position()
+            .flexibleConnectedTo(this._notificationsOrigin) // خود ElementRef اوکیه
+            .withFlexibleDimensions(false)
+            .withPush(false)
+            .withPositions([
+                {
+                    originX: 'end',
+                    originY: 'bottom',
+                    overlayX: 'end',
+                    overlayY: 'top'
+                }
+            ]);
+
+        this._overlayRef = this._overlay.create({
+            hasBackdrop: true,
+            backdropClass: 'fuse-backdrop',
+            panelClass: 'fuse-notifications-panel',
+            scrollStrategy: this._overlay.scrollStrategies.block(),
+            positionStrategy
+        });
+
+        // ⬇️ این قسمت رو اضافه کن تا با کلیک روی بک‌دراپ بسته بشه
+        this._overlayRef.backdropClick().subscribe(() => {
+            this.closePanel();
         });
     }
 

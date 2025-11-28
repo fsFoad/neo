@@ -1,0 +1,35 @@
+<!-- Theme toggle button -->
+<button mat-icon-button (click)="openPanel()" #themeOrigin>
+    <mat-icon class="icon-size-6" [svgIcon]="'heroicons_outline:swatch'"></mat-icon>
+</button>
+
+<!-- Panel -->
+<ng-template #themePanel>
+    <div class="fixed inset-0 flex flex-col overflow-hidden shadow-lg sm:static sm:w-90 sm:min-w-90 sm:rounded-2xl">
+
+        <!-- Header -->
+        <div class="flex items-center shortcut-header py-4 pl-6 pr-4">
+            <div class="text-lg font-medium leading-10">انتخاب تم</div>
+        </div>
+
+        <!-- Content -->
+        <div class="bg-card flex flex-col p-4 gap-4 overflow-y-auto">
+            <div class="grid grid-cols-2 gap-4">
+
+                <div
+                    class="p-4 rounded-xl border cursor-pointer hover:shadow-md transition"
+                    *ngFor="let p of presetList"
+                    (click)="selectTheme(p.name)"
+                >
+                    <div class="font-bold mb-1 text-primary">{{ p.displayName }}</div>
+                    <div class="flex gap-1 mt-1">
+                        <div class="w-4 h-4 rounded" [style.background]="p.light.primary"></div>
+                        <div class="w-4 h-4 rounded" [style.background]="p.light.accent"></div>
+                        <div class="w-4 h-4 rounded" [style.background]="p.light.warn"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
