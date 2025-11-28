@@ -9,8 +9,8 @@ import { PrimeTemplate } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { Tooltip } from 'primeng/tooltip';
 import {
-    RegisterClientCitizenComponent
-} from '../client-citizen/register-client-citizen/register-client-citizen.component';
+    RegisterIrClientCitizen
+} from '../client-citizen/register-ir-client-citizen/register-ir-client-citizen';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GuestClientRegisterComponent } from './guest-client-register/guest-client-register.component';
 import { DropdownModule } from 'primeng/dropdown';
@@ -28,7 +28,7 @@ import { DropdownModule } from 'primeng/dropdown';
         PrimeTemplate,
         TableModule,
         Tooltip,
-        RegisterClientCitizenComponent,
+        RegisterIrClientCitizen,
         NgClass,
         GuestClientRegisterComponent,
         DropdownModule,

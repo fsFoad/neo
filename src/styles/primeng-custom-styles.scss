@@ -845,8 +845,46 @@ anglerighticon {
 .p-button {
     min-width: 0 !important;
     height: 2.8rem !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 
+    font-size: 0.85rem;
+    line-height: 1;
 
+    padding: 0;
+    border-radius: 0.75rem;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: none;
+    transition:
+        background-color .15s ease,
+        color .15s ease,
+        border-color .15s ease,
+        box-shadow .15s ease,
+        transform .08s ease;
+}
+.normal-button.p-button:not(.p-button-icon-only) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    /* عرض بر اساس متن + padding */
+    width: auto;
+    min-width: 0;
+    flex: 0 0 auto;            /* توی flex-container کش نیاد */
+
+    font-size: 0.85rem;
+    line-height: 1;
+
+    padding: 0.35rem 0.85rem;  /* فقط همین تعیین‌کننده‌ی ارتفاع/عرض باشه */
+
+    border-radius: 0.75rem;    /* مثل بقیه تم‌ات */
+}
+.p-button:not(.p-button-icon-only) {
+    padding: 0.45rem 0.9rem;    /* این پدینگ فقط برای دکمه‌های متنی اعمال می‌شود */
 }
 
 .p-button:has(.p-button-icon):has(.p-button-label:empty) {
@@ -2574,15 +2612,13 @@ anglerighticon {
 .p-inputnumber {
     @apply w-3/4;
 }
+/*
 
 .p-inputnumber-input {
     @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition w-full focus:outline-none focus:ring-2 focus:ring-primary;
 }
+*/
 
-.p-inputnumber-input:focus {
-    border-color: var(--p-inputtext-focus-border-color);
-    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color);
-}
 /* ================================
    PrimeNG Checkbox – هماهنگ با تم
    ================================ */
@@ -2632,11 +2668,55 @@ anglerighticon {
     box-shadow: 0 0 0 2px var(--p-inputtext-hover-ring-color) !important;
 }
 
-/* p-inputNumber – هم روی wrapper هم روی خود input */
-.p-inputnumber:not(.p-disabled):hover {
-    box-shadow: 0 0 0 2px var(--p-inputtext-hover-ring-color) !important;
-}
-
 .p-inputnumber:not(.p-disabled):hover .p-inputnumber-input {
     border-color: var(--p-inputtext-hover-border-color) !important;
+}
+.p-inputnumber .p-inputtext:focus {
+    outline: none;
+}
+
+.p-inputnumber .p-inputtext:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6;
+    border-radius: 8px;
+}
+[dir="rtl"] {
+    .p-inputnumber {
+        direction: rtl !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .p-inputnumber > .p-component {
+        border-radius: 0.75rem 0.75rem 0.75rem 0.75rem !important;
+    }
+}
+.p-inputnumber {
+    border-radius: 0.75rem !important;
+}
+
+/* 2. حلقه‌ی hover روی wrapper اگر نمی‌خوای، خفه‌ش کن */
+.p-inputnumber:not(.p-disabled):hover {
+    box-shadow: none !important;
+}
+
+/* 3. فقط روی input فوکوس قشنگ داشته باش */
+.p-inputnumber-input {
+    @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition w-full focus:outline-none focus:ring-0;
+}
+
+.p-inputnumber-input:focus,
+.p-inputnumber-input:focus-visible {
+    border-color: var(--p-inputtext-focus-border-color);
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color);
+    border-radius: 0.75rem;
+}
+
+/* 4. دکمه‌های بالا/پایین حلقهٔ عجیب نداشته باشن */
+.p-inputnumber-button:focus {
+    box-shadow: none !important;
+}
+
+.p-button.p-button-danger.p-button-outlined .p-button-icon {
+    color: inherit !important; /* آیکون هم مثل متن */
 }

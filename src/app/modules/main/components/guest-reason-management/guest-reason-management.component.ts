@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Button, ButtonDirective } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import {
-    RegisterClientCitizenComponent
-} from '../client-citizen/register-client-citizen/register-client-citizen.component';
+    RegisterIrClientCitizen
+} from '../client-citizen/register-ir-client-citizen/register-ir-client-citizen';
 import { GuestReasonRegisterComponent } from './guest-reason-register/guest-reason-register.component';
 
 @Component({
@@ -23,7 +23,7 @@ import { GuestReasonRegisterComponent } from './guest-reason-register/guest-reas
         Button,
         InputText,
         NgIf,
-        RegisterClientCitizenComponent,
+        RegisterIrClientCitizen,
         GuestReasonRegisterComponent,
     ],
     templateUrl: './guest-reason-management.component.html',

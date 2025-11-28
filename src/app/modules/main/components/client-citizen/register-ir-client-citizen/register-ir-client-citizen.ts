@@ -34,7 +34,7 @@ import {
 
 
 @Component({
-    selector: 'app-register-client-citizen',
+    selector: 'app-register-ir-client-citizen',
     imports: [
         ReactiveFormsModule,
         NgIf,
@@ -58,8 +58,8 @@ import {
         ButtonDirective,
     ],
     standalone: true,
-    templateUrl: './register-client-citizen.component.html',
-    styleUrl: './register-client-citizen.component.scss',
+    templateUrl: './register-ir-client-citizen.html',
+    styleUrl: './register-ir-client-citizen.scss',
     animations: [
         trigger('tabContent', [
             // ورود: کم‌کم ظاهر + اسلاید خیلی ظریف
@@ -99,7 +99,7 @@ import {
         ]),
     ],*/
 })
-export class RegisterClientCitizenComponent {
+export class RegisterIrClientCitizen {
     @Input() InputCitizen;
     currentClientId = 1001;
     selectedIndex = 0; // مقدار اولیه

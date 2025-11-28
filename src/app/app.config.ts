@@ -20,6 +20,13 @@ import { TranslocoHttpLoader } from './core/transloco/transloco.http-loader';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import {provideServiceWorker} from "@angular/service-worker";
+import { provideState } from '@ngrx/store';
+import {
+    irRegisterFeature
+} from './modules/main/components/client-citizen/application-NgRx/ir-register/ir-register.reducer';
+import {
+    frRegisterFeature
+} from './modules/main/components/client-citizen/application-NgRx/fr-register/fr-register.reducer';
 export const appConfig: ApplicationConfig = {
     providers: [
         provideServiceWorker('ngsw-worker.js', {
@@ -163,5 +170,7 @@ export const appConfig: ApplicationConfig = {
                 ],
             },
         }),
+        provideState(irRegisterFeature),
+        provideState(frRegisterFeature),
     ],
 };

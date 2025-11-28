@@ -13,8 +13,8 @@ import {InputGroupAddon} from "primeng/inputgroupaddon";
 import {MatTooltip} from "@angular/material/tooltip";
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import {
-    RegisterClientCitizenComponent
-} from '../client-citizen/register-client-citizen/register-client-citizen.component';
+    RegisterIrClientCitizen
+} from '../client-citizen/register-ir-client-citizen/register-ir-client-citizen';
 import { RegisterClientCorporateComponent } from './register-client-corporate/register-client-corporate.component';
 
 
@@ -37,7 +37,7 @@ import { RegisterClientCorporateComponent } from './register-client-corporate/re
         Button,
         MatTooltip,
         InfiniteScrollDirective,
-        RegisterClientCitizenComponent,
+        RegisterIrClientCitizen,
         RegisterClientCorporateComponent,
     ],
     standalone: true,

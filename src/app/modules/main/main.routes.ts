@@ -53,8 +53,10 @@ export default [
             .then(c => c.LonSubOperationComponent)
     },
     {
-        path: 'client-citizen',loadComponent: () => import('./components/client-citizen/client-citizen.component')
-            .then(c => c.ClientCitizenComponent)
+        path: 'client-citizen',
+        loadChildren: () =>
+            import('./components/client-citizen/client-citizen.routes')
+                .then(m => m.CLIENT_CITIZEN_ROUTES),
     },
     {
         path: 'client-corporate', loadComponent: () => import('./components/client-corporate/client-corporate.component')

@@ -29,7 +29,7 @@ import { CitizenSearch } from '../../../shared/models/citizen-search.model';
 import { AliveTypePipe } from '../../../shared/pipes/alive-type.pipe';
 import { CitizenshipTypePipe } from '../../../shared/pipes/citizenship-type.pipe';
 import { NeobankService } from '../../services/neobank.service';
-import { RegisterClientCitizenComponent } from './register-client-citizen/register-client-citizen.component';
+import { RegisterIrClientCitizen } from './register-ir-client-citizen/register-ir-client-citizen';
 
 @Component({
     selector: 'app-client-citizen',
@@ -62,7 +62,7 @@ import { RegisterClientCitizenComponent } from './register-client-citizen/regist
         NgSwitch,
         NgSwitchCase,
         NgSwitchDefault,
-        RegisterClientCitizenComponent,
+        RegisterIrClientCitizen,
     ],
     templateUrl: './client-citizen.component.html',
     styleUrl: './client-citizen.component.scss',

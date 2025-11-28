@@ -101,6 +101,13 @@
     --p-toggleswitch-handle-checked-color: #ffffff;
     --p-toggleswitch-handle-checked-hover-color: #ffffff;
 
+    --btn-radius: 0.75rem;
+    --btn-height: 2.5rem;
+    --btn-font-size: 0.875rem;
+    --btn-padding-x: 1rem;
+    --btn-gap: 0.5rem;
+    --btn-focus-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+
 }
 
 .p-checkbox-input {
@@ -216,11 +223,7 @@ html.p-dark {
 .p-button.p-button-outlined .p-button-icon {
     color: var(--color-primary);
 }
-/*
-.p-button.p-button-icon-only .p-button-icon {
-    color: var(--primary-text) !important;
-}
-*/
+
 
 .p-button .p-button-icon {
     color: inherit !important;
@@ -234,24 +237,6 @@ html.p-dark {
     color: var(--color-primary) !important;
 }
 
-
-/* full override */
-
-/*.p-button,
-.p-button .p-button-icon,
-.p-button .p-button-label {
-    color: var(--primary-text) !important;
-}*/
-
-/*.p-button.p-button-text,
-.p-button.p-button-text .p-button-icon,
-.p-button.p-button-text .p-button-label {
-    color: var(--primary-text) !important;
-}
-
-.p-button.p-button-icon-only .p-button-icon {
-    color: var(--primary-text) !important;
-}*/
 /* ===================================================================================================== */
 /*  Remaining project styles (original)                                                                   */
 /* ===================================================================================================== */
@@ -361,11 +346,11 @@ body.dark-mode {
 
 /* فقط در حالت RTL اعمال شود */
 [dir='rtl'] {
-    /* تب‌ها از راست به چپ چیده شوند، ولی ایندکس‌ها درست بمانند */
+   /* !* تب‌ها از راست به چپ چیده شوند، ولی ایندکس‌ها درست بمانند *!
     .mat-mdc-tab-header .mat-mdc-tab-labels {
         flex-direction: row-reverse;
         justify-content: flex-start; // تب اول می‌چسبد به راست
-    }
+    }*/
 
     /* کمی زیباسازی اختیاری */
     .mat-mdc-tab {
