@@ -16,7 +16,7 @@ import { TableModule } from 'primeng/table';
 import { Tooltip } from 'primeng/tooltip';
 
 @Component({
-    selector: 'app-corporate-activity-info',
+    selector: 'app-citizen-fr-activity-info',
     standalone: true,
     imports: [
         CommonModule,
@@ -33,10 +33,10 @@ import { Tooltip } from 'primeng/tooltip';
         Tooltip,
         // PersianCalendarComponent, // اگر لازم شد
     ],
-    templateUrl: './citizen-activity-info.component.html',
-    styleUrls: ['./citizen-activity-info.component.scss'],
+    templateUrl: './citizen-fr-activity-info-component.html',
+    styleUrls: ['./citizen-fr-activity-info.component.scss'],
 })
-export class CitizenActivityInfoComponent implements OnInit, OnDestroy {
+export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {
     @Input() disabled = false;
     @Input() onValueChange?: (val: any) => void;
     @Input() onValidityChange?: (valid: boolean) => void;

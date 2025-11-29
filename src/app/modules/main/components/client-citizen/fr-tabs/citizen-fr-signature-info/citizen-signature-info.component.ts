@@ -45,7 +45,7 @@ type Option<T extends string | number = string> = { label: string; value: T };
         FileUpload,
         InputTextarea,
     ],
-    templateUrl: './citizen-signature-info.component.html',
+    templateUrl: './citizen-fr-signature-info.component.html',
     styleUrls: ['./citizen-signature-info.component.scss'],
 })
 export class CitizenSignatureInfoComponent implements OnInit, OnDestroy {

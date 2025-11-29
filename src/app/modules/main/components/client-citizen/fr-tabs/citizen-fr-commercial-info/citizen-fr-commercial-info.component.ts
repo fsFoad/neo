@@ -19,7 +19,7 @@ import { TableModule } from 'primeng/table';
 import { Tooltip } from 'primeng/tooltip';
 import { Dialog } from 'primeng/dialog';
 @Component({
-    selector: 'app-corporate-commercial-info',
+    selector: 'app-citizen-fr-commercial-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,
@@ -37,10 +37,10 @@ import { Dialog } from 'primeng/dialog';
         Tooltip,
         Dialog,
     ],
-    templateUrl: './citizen-commercial-info.component.html',
-    styleUrls: ['./citizen-commercial-info.component.scss'],
+    templateUrl: './citizen-fr-commercial-info.component.html',
+    styleUrls: ['./citizen-fr-commercial-info.component.scss'],
 })
-export class CitizenCommercialInfoComponent implements OnInit {
+export class CitizenFrCommercialInfoComponent implements OnInit {
     // ورودی‌های تب داینامیک
     @Input() disabled = false;
     @Input() onValueChange: (val: CommercialCard[]) => void = () => {};

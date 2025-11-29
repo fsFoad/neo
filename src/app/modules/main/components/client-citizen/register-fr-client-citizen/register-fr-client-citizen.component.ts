@@ -13,18 +13,18 @@ import { FrRegisterFacade } from '../application-NgRx/fr-register/fr-register.fa
 import { FrRegisterTabId } from '../application-NgRx/fr-register/fr-register.actions';
 
 // تب‌ها
-import { CitizenIdentityInfoComponent } from '../tabs/citizen-identity-info/citizen-identity-info.component';
-import { CitizenContactInfoComponent } from '../tabs/citizen-contact-info/citizen-contact-info.component';
-import { CitizenSignatureInfoComponent } from '../tabs/citizen-signature-info/citizen-signature-info.component';
-import { CitizenRelationsInfoComponent } from '../tabs/citizen-relations-info/citizen-relations-info.component';
-import { CitizenActivityInfoComponent } from '../tabs/citizen-activity-info/citizen-activity-info.component';
-import { CitizenEducationInfoComponent } from '../tabs/citizen-education-info/citizen-education-info.component';
-import { CitizenDocumentsInfoComponent } from '../tabs/citizen-documents-info/citizen-documents-info.component';
-import { CitizenExtraInfoComponent } from '../tabs/citizen-extra-info/citizen-extra-info.component';
-import { CitizenCommercialInfoComponent } from '../tabs/citizen-commercial-info/citizen-commercial-info.component';
-import { CitizenPassportInfoComponent } from '../tabs/citizen-passport-info/citizen-passport-info.component';
-import { CitizenLicenseInfoComponent } from '../tabs/citizen-license-info/citizen-license-info.component';
-import { CitizenConfirmationInfoComponent } from '../tabs/citizen-confirmation-info/citizen-confirmation-info.component';
+import { CitizenIdentityInfoComponent } from '../ir-tabs/citizen-identity-info/citizen-identity-info.component';
+import { CitizenContactInfoComponent } from '../ir-tabs/citizen-contact-info/citizen-contact-info.component';
+import { CitizenSignatureInfoComponent } from '../ir-tabs/citizen-signature-info/citizen-signature-info.component';
+import { CitizenRelationsInfoComponent } from '../ir-tabs/citizen-relations-info/citizen-relations-info.component';
+import { CitizenActivityInfoComponent } from '../ir-tabs/citizen-activity-info/citizen-activity-info.component';
+import { CitizenEducationInfoComponent } from '../ir-tabs/citizen-education-info/citizen-education-info.component';
+import { CitizenDocumentsInfoComponent } from '../ir-tabs/citizen-documents-info/citizen-documents-info.component';
+import { CitizenExtraInfoComponent } from '../ir-tabs/citizen-extra-info/citizen-extra-info.component';
+import { CitizenCommercialInfoComponent } from '../ir-tabs/citizen-commercial-info/citizen-commercial-info.component';
+import { CitizenPassportInfoComponent } from '../ir-tabs/citizen-passport-info/citizen-passport-info.component';
+import { CitizenLicenseInfoComponent } from '../ir-tabs/citizen-license-info/citizen-license-info.component';
+import { CitizenConfirmationInfoComponent } from '../ir-tabs/citizen-confirmation-info/citizen-confirmation-info.component';
 
 interface RegisterTabDef<TTabId extends string> {
     id: TTabId;
@@ -78,7 +78,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
         this.tabs = [
             {
                 id: 'identity',
-                label: 'اطلاعات هویتی',
+                label: 'اطلاعات اصلی',
                 icon: 'badge',
                 cmp: CitizenIdentityInfoComponent,
                 inputs: {
@@ -219,19 +219,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                         this.handleTabValidityChange('license', valid),
                 },
             },
-            {
-                id: 'final',
-                label: 'تأیید نهایی',
-                icon: 'fact_check',
-                cmp: CitizenConfirmationInfoComponent,
-                inputs: {
-                    // نمونه: تب نهایی فقط از دیتا آماده شده استفاده می‌کند
-                    loader: () => {
-                        // اگر سرویس review داری، می‌تونی اینجا از facade استفاده کنی
-                        return null;
-                    },
-                },
-            },
+
         ];
     }
 

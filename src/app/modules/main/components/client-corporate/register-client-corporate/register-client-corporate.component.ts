@@ -5,17 +5,17 @@ import { NgClass, NgComponentOutlet, NgForOf, NgIf } from '@angular/common';
 
 import { FormBuilder } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { CitizenReviewService } from '../../../services/citizen-review.service';
-import { CorporateBasicInfoComponent } from '../tabs/corporate-basic-info/corporate-basic-info.component';
-import { CorporateContactInfoComponent } from '../tabs/corporate-contact-info/corporate-contact-info.component';
-import { CorporateSignatureInfoComponent } from '../tabs/corporate-signature-info/corporate-signature-info.component';
-import { CorporateRelationsInfoComponent } from '../tabs/corporate-relations-info/corporate-relations-info.component';
-import { CorporateActivityInfoComponent } from '../tabs/corporate-activity-info/corporate-activity-info.component';
-import { CitizenEducationInfoComponent } from '../../client-citizen/tabs/citizen-education-info/citizen-education-info.component';
-import { CorporateDocumentsInfoComponent } from '../tabs/corporate-documents-info/corporate-documents-info.component';
-import { CorporateExtraInfoComponent } from '../tabs/corporate-extra-info/corporate-extra-info.component';
-import { CorporateCommercialInfoComponent } from '../tabs/corporate-commercial-info/corporate-commercial-info.component';
-import { ButtonDirective } from 'primeng/button';
+import { CitizenReviewService } from '../../../services/citizen-review.service';/*
+import { CorporateBasicInfoComponent } from '../ir-tabs/corporate-basic-info/corporate-basic-info.component';
+import { CorporateContactInfoComponent } from '../ir-tabs/corporate-contact-info/corporate-contact-info.component';
+import { CorporateSignatureInfoComponent } from '../ir-tabs/corporate-signature-info/corporate-signature-info.component';
+import { CorporateRelationsInfoComponent } from '../ir-tabs/corporate-relations-info/corporate-relations-info.component';
+import { CorporateActivityInfoComponent } from '../ir-tabs/corporate-activity-info/corporate-activity-info.component';
+import { CitizenEducationInfoComponent } from '../../client-citizen/ir-tabs/citizen-education-info/citizen-education-info.component';
+import { CorporateDocumentsInfoComponent } from '../ir-tabs/corporate-documents-info/corporate-documents-info.component';
+import { CorporateExtraInfoComponent } from '../ir-tabs/corporate-extra-info/corporate-extra-info.component';
+import { CorporateCommercialInfoComponent } from '../ir-tabs/corporate-commercial-info/corporate-commercial-info.component';
+*/import { ButtonDirective } from 'primeng/button';
 
 @Component({
     selector: 'app-register-client-corporate',
@@ -42,7 +42,8 @@ export class RegisterClientCorporateComponent {
     nationalCode: any;
     customerNo: any;
     fullName: any;
-    tabs = [
+    tabs=[]
+ /*   tabs = [
         {
             id: 'identity',
             label: 'اطلاعات اصلی',
@@ -158,7 +159,7 @@ export class RegisterClientCorporateComponent {
                     this.setTabValidity('business', valid),
             },
         },
-    ];
+    ];*/
     constructor(
         private cdr: ChangeDetectorRef,
         private fb: FormBuilder,

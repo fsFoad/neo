@@ -16,21 +16,21 @@ import { MatIcon } from '@angular/material/icon';
 import { MatChip } from '@angular/material/chips';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIconButton } from '@angular/material/button';
-import { CitizenIdentityInfoComponent } from '../tabs/citizen-identity-info/citizen-identity-info.component';
-import { CitizenContactInfoComponent } from '../tabs/citizen-contact-info/citizen-contact-info.component';
-import { CitizenSignatureInfoComponent } from '../tabs/citizen-signature-info/citizen-signature-info.component';
-import { CitizenRelationsInfoComponent } from '../tabs/citizen-relations-info/citizen-relations-info.component';
-import { CitizenActivityInfoComponent } from '../tabs/citizen-activity-info/citizen-activity-info.component';
-import { CitizenEducationInfoComponent } from '../tabs/citizen-education-info/citizen-education-info.component';
-import { CitizenDocumentsInfoComponent } from '../tabs/citizen-documents-info/citizen-documents-info.component';
-import { CitizenExtraInfoComponent } from '../tabs/citizen-extra-info/citizen-extra-info.component';
-import { CitizenCommercialInfoComponent } from '../tabs/citizen-commercial-info/citizen-commercial-info.component';
-import { CitizenPassportInfoComponent } from '../tabs/citizen-passport-info/citizen-passport-info.component';
-import { CitizenLicenseInfoComponent } from '../tabs/citizen-license-info/citizen-license-info.component';
+import { CitizenIdentityInfoComponent } from '../ir-tabs/citizen-identity-info/citizen-identity-info.component';
+import { CitizenContactInfoComponent } from '../ir-tabs/citizen-contact-info/citizen-contact-info.component';
+import { CitizenSignatureInfoComponent } from '../ir-tabs/citizen-signature-info/citizen-signature-info.component';
+import { CitizenRelationsInfoComponent } from '../ir-tabs/citizen-relations-info/citizen-relations-info.component';
+import { CitizenActivityInfoComponent } from '../ir-tabs/citizen-activity-info/citizen-activity-info.component';
+import { CitizenEducationInfoComponent } from '../ir-tabs/citizen-education-info/citizen-education-info.component';
+import { CitizenDocumentsInfoComponent } from '../ir-tabs/citizen-documents-info/citizen-documents-info.component';
+import { CitizenExtraInfoComponent } from '../ir-tabs/citizen-extra-info/citizen-extra-info.component';
+import { CitizenCommercialInfoComponent } from '../ir-tabs/citizen-commercial-info/citizen-commercial-info.component';
+import { CitizenPassportInfoComponent } from '../ir-tabs/citizen-passport-info/citizen-passport-info.component';
+import { CitizenLicenseInfoComponent } from '../ir-tabs/citizen-license-info/citizen-license-info.component';
 import { CitizenReviewService } from '../../../services/citizen-review.service';
 import {
     CitizenConfirmationInfoComponent
-} from '../tabs/citizen-confirmation-info/citizen-confirmation-info.component';
+} from '../ir-tabs/citizen-confirmation-info/citizen-confirmation-info.component';
 
 
 @Component({

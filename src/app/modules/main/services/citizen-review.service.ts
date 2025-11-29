@@ -3,7 +3,7 @@ import { ConnectionService } from '../../../../shared/repositories/connection.se
 import { Observable } from 'rxjs';
 import {
     ChangeFlagsDto
-} from '../components/client-citizen/tabs/citizen-confirmation-info/citizen-confirmation-info.component';
+} from '../components/client-citizen/ir-tabs/citizen-confirmation-info/citizen-confirmation-info.component';
 
 @Injectable({
   providedIn: 'root'
