@@ -1,0 +1,4 @@
+.description-textarea {
+    min-height: calc(1.5rem * 3 + 1rem) !important; /* حدود 3 ردیف متن با padding */
+    resize: vertical !important; /* فقط تغییر ارتفاع دستی مجاز */
+}

@@ -1,0 +1,375 @@
+
+<div class="app-card p-4 rounded-xl border border-slate-200" [formGroup]="relationForm">
+    <div class="flex flex-wrap gap-2 mb-4 justify-start">
+        <button pButton icon="pi pi-user-plus" type="button"
+                label="{{ 'citizen.contact.actions.relations' | transloco }}"
+                iconPos="right" class="p-button-outlined normal-button" (click)="openContact()">
+
+        </button>
+    </div>
+    <p-table
+        [value]="relationsTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped p-datatable-gridlines responsive-table">
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
+                    <h3 class="text-base font-semibold"></h3>
+
+                    <div class="flex flex-row gap-3">
+                        <button
+                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center normal-button"
+                            matTooltip="Excel">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Excel
+                        </button>
+                        <button
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center"
+                            matTooltip="چاپ">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                            </svg>
+                            چاپ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>شماره مشتری مرتبط</th>
+                <th>نام مشتری مرتبط</th>
+                <th>کدملی/کداتباع/شناسه ملی مشتری مرتبط</th>
+                <th>نوع ارتباط</th>
+                <th>نسبت</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">
+            <tr>
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+                <td data-label="شماره مشتری مرتبط">
+                    {{ contact.relatedCustomerNumber }}
+                </td>
+                <td data-label="عنوان مشتری مرتبط">
+                    {{ contact.relatedCustomerTitle }}
+                </td>
+                <td data-label="کدملی/کداتباع/شناسه ملی مشتری مرتبط">
+                    {{ contact.nationalCode }}
+                </td>
+                <td data-label="نوع ارتباط">
+                    {{ contact.relationTypeLabel }}
+                </td>
+                <td data-label="نسبت">
+                    {{ contact.relationDegreeLabel }}
+                </td>
+                <td data-label="تاریخ شروع">
+                    {{ contact.startDate | date:'yyyy/MM/dd' }}
+                </td>
+                <td data-label="تاریخ پایان">
+                    {{ contact.endDate | date:'yyyy/MM/dd' }}
+                </td>
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+                            class="p-button-sm p-button-rounded p-button-text p-button-success"
+                            pTooltip="ویرایش اطلاعات"
+                        ></button>
+
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-table
+        [value]="relationsTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped p-datatable-gridlines responsive-table">
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
+                    <h3 class="text-base font-semibold">سایر روابط مرتبط</h3>
+                    <div class="flex flex-row gap-3">
+                        <button
+                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center normal-button"
+                            matTooltip="Excel">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Excel
+                        </button>
+                        <button
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center"
+                            matTooltip="چاپ">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                            </svg>
+                            چاپ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>شماره مشتری</th>
+                <th>نام مشتری</th>
+                <th>کد ملی/کد اتباع/شناسه ملی</th>
+                <th>نوع ارتباط</th>
+                <th>نسبت</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+                <!-- ردیف -->
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                <!-- شماره مشتری -->
+                <td data-label="شماره مشتری" class="ltr">
+                    {{ row.relatedCustomerNumber }}
+                </td>
+
+                <!-- عنوان مشتری -->
+                <td data-label="عنوان مشتری">
+                    {{ row.relatedCustomerTitle }}
+                </td>
+
+                <!-- کد ملی/اتباع/شناسه ملی -->
+                <td data-label="کد ملی/کد اتباع/شناسه ملی" class="ltr">
+                    {{ row.nationalCode }}
+                </td>
+
+                <!-- نوع ارتباط -->
+                <td data-label="نوع ارتباط">
+                    {{ row.relationTypeLabel }}
+                </td>
+
+                <!-- نسبت -->
+                <td data-label="نسبت">
+                    {{ row.relationDegreeLabel }}
+                </td>
+
+                <!-- تاریخ شروع -->
+                <td data-label="تاریخ شروع">
+                    {{ row.startDate | date:'yyyy/MM/dd' }}
+                    <!-- اگر جلالی داری: {{ row.startDate | jdate:'YYYY/MM/DD' }} -->
+                </td>
+
+                <!-- تاریخ پایان -->
+                <td data-label="تاریخ پایان">
+                    {{ row.endDate | date:'yyyy/MM/dd' }}
+                </td>
+
+                <!-- عملیات -->
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<p-dialog
+
+    [(visible)]="visibleRelation"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="جستجوی مشتری مرتبط"
+    contentStyleClass="dialog-body card-filter">
+    <label class="form-label">
+        <span>جستجو مشتری مرتبط</span>:
+    </label>
+    <div class="app-card p-2 rounded-xl border border-slate-200 mb-8">
+        <form class="form-grid" [formGroup]="relationFormDialog" (ngSubmit)="submitContact()">
+            <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3 border-">
+                <div class="col-span-12 md:col-span-4 flex flex-col">
+                    <label class="form-label">
+                        <span class="text-red-500">*</span> <span>نوع جستجو</span>:
+                    </label>
+                    <p-dropdown
+                        class="dropdown-normal"
+                        [options]="searchList"
+                        optionLabel="label"
+                        optionValue="value"
+                        formControlName="searchType"
+                        (onChange)="onSearchTypeChange($event)"
+                    ></p-dropdown>
+                </div>
+                <div class="col-span-12 md:col-span-4 flex flex-col">
+                    <label class="form-label">
+                        <span class="red-color-text">* </span>
+                        {{ searchInputLabel }}:</label>
+                    <p-inputgroup  class="normal-input-group" >
+                        <input
+                            type="text"
+                            pInputText
+                            formControlName="count"
+                            [placeholder]="searchInputPlaceholder"
+
+                        />
+                        <p-inputgroup-addon class="normal-button-attach">
+                            <button
+                                pButton
+                                icon="pi pi-search"
+                                (click)="searchCustomer()"
+                            ></button>
+                        </p-inputgroup-addon>
+                    </p-inputgroup>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <form class="form-grid" [formGroup]="relationFormDialog" (ngSubmit)="submitContact()">
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">عنوان مشتری مرتبط:</label>
+                <input pInputText class="normal-input" formControlName="relatedCustomerTitle"   />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">شماره مشتری مرتبط:</label>
+                <input pInputText class="normal-input ltr" formControlName="relatedCustomerNumber" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">کد ملی / کد/شناسه ملی:</label>
+                <input pInputText  class="normal-input ltr" formControlName="nationalCode"   />
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">نوع ارتباط:</label>
+                <p-dropdown [options]="relationTypeOptions" optionLabel="label" optionValue="value"  class="dropdown-normal"
+                            formControlName="relationType"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">نسبت:</label>
+                <p-dropdown [options]="relationDegreeOptions" optionLabel="label" optionValue="value"  class="dropdown-normal"
+                            formControlName="relationDegree"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+
+            <div class="col-span-12 md:col-span-8 flex flex-col">
+                <label class="form-label">حدود اختیارات:</label>
+                <input pInputText class="xx-ggg-8-input" formControlName="authoritiesLimit" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">شماره نامه:</label>
+                <input pInputText class="normal-input ltr" formControlName="letterNumber" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ صدور نامه:</label>
+                <p-persian-calendar  class="app-persian-calendar-style"
+                                    formControlName="letterIssueDate"></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">محل صدور نامه:</label>
+                <p-dropdown [options]="letterPlaceOptions" optionLabel="label" optionValue="value"
+                            class="dropdown-normal"    formControlName="letterIssuePlace"></p-dropdown>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">ارزش سهام:</label>
+                <input pInputText class="normal-input ltr" formControlName="shareValue" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">درصد سهام:</label>
+                <input pInputText class="normal-input ltr" formControlName="sharePercent" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ آخرین خرید سهام:</label>
+                <p-persian-calendar  class="app-persian-calendar-style"
+                                    formControlName="lastSharePurchaseDate"></p-persian-calendar>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ شروع:</label>
+                <p-persian-calendar  class="app-persian-calendar-style"
+                                    formControlName="startDate"></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ پایان:</label>
+                <p-persian-calendar   class="app-persian-calendar-style"
+                                    formControlName="endDate"></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4"></div>
+        </div>
+        <div class="my-4 flex items-center justify-end gap-3">
+            <button
+                pButton
+                type="submit"
+                label="تایید"
+                icon="pi pi-check"
+                class="btn-standard p-button-success">
+            </button>
+            <button
+                pButton
+                type="button"
+                label="انصراف"
+                icon="pi pi-times"
+                severity="danger"
+                [outlined]="true"
+
+                (click)="closeContact()"
+                class="btn-standard p-button-danger">
+            </button>
+        </div>
+
+    </form>
+
+</p-dialog>

@@ -1,0 +1,530 @@
+
+<div class="app-card my-4 p-4 rounded-xl border border-slate-200">
+    <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+        <!-- ستون اول: کد ملی -->
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'نام انگلیسی' | transloco }}:</span>
+            </label>
+            <input
+                pInputText
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="enName"
+                class="normal-input"
+                inputmode="string"
+                maxlength="10"
+            />
+
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'نام خانوادگی انگلیسی' | transloco }}:</span>
+            </label>
+            <input
+                pInputText
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="enFamily"
+                class="normal-input"
+                inputmode="string"
+                maxlength="10"
+            />
+
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'نام پدر انگلیسی' | transloco }}:</span>
+            </label>
+            <input
+                pInputText
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="enfather"
+                class="normal-input"
+                inputmode="string"
+                maxlength="10"
+            />
+
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'نام پدر انگلیسی' | transloco }}:</span>
+            </label>
+            <input
+                pInputText
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="enfather"
+                class="normal-input"
+                inputmode="string"
+                maxlength="10"
+            />
+
+        </div>
+        <!-- ستون دوم: تاریخ تولد -->
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span>{{ 'تاریخ تولد میلادی' | transloco }}:</span>
+            </label>
+<!--            <p-datepicker class="app-gregorian-calendar-style"
+                          [(ngModel)]="birthDateGregorian" [showIcon]="true"
+                          inputId="buttondisplay" [showOnFocus]="false"></p-datepicker>-->
+            <p-persian-calendar
+                class="app-persian-calendar-style"
+                [calendarType]="'gregorian'"
+                [dateFormat]="'YYYY/MM/DD'"
+                [(ngModel)]="birthDateGregorian" appendTo="body"></p-persian-calendar>
+         <!--   <p-persian-calendar
+                class="app-persian-calendar-style"
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="birthDateGregorian"
+            ></p-persian-calendar>-->
+        </div>
+    </div>
+</div>
+<div class="app-card p-4 rounded-xl border border-slate-200">
+    <p-table
+        [value]="passportTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+    >
+
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <!-- ردیف اول: عنوان -->
+                <div class="flex justify-start">
+                    <h3 class="text-base font-semibold">اطلاعات گذرنامه</h3>
+                </div>
+                <div class="mt-2 flex justify-between items-center">
+                <!-- ردیف دوم: دکمه افزودن سمت راست -->
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-plus"
+                    label="افزودن اطلاعات گذرنامه"
+                    iconPos="right"
+                    class="p-button-sm"
+                    (click)="openPassportDialog()">
+                    </button>
+                    <div class="flex flex-row gap-3">
+                        <button
+                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center normal-button"
+                            matTooltip="Excel">
+                            <i class="pi pi-file-excel mr-2"></i> Excel
+                        </button>
+
+                        <button
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center"
+                            matTooltip="چاپ">
+                            <i class="pi pi-print mr-2"></i> چاپ
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </ng-template>
+        <!-- Header -->
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>شماره گذرنامه</th>
+                <th>کشور اخذ گذرنامه</th>
+                <th>تاریخ اخذ گذرنامه</th>
+                <th>تاریخ انقضای گذرنامه</th>
+                <th>توضیحات</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">
+            <tr>
+                <!-- ردیف -->
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                <!-- شماره مشتری مرتبط -->
+                <td data-label="شماره مشتری مرتبط">
+                    {{ contact.relatedCustomerNumber }}
+                </td>
+
+                <!-- عنوان مشتری مرتبط -->
+                <td data-label="عنوان مشتری مرتبط">
+                    {{ contact.relatedCustomerTitle }}
+                </td>
+
+                <!-- کدملی/کداتباع/شناسه ملی مشتری مرتبط -->
+                <td data-label="کدملی/کداتباع/شناسه ملی مشتری مرتبط">
+                    {{ contact.nationalCode }}
+                </td>
+
+                <!-- نوع ارتباط -->
+                <td data-label="نوع ارتباط">
+                    {{ contact.relationTypeLabel }}
+                </td>
+
+                <!-- نسبت -->
+                <td data-label="نسبت">
+                    {{ contact.relationDegreeLabel }}
+                </td>
+
+
+                <!-- عملیات -->
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+                            class="p-button-sm p-button-rounded p-button-text p-button-success"
+                            pTooltip="ویرایش اطلاعات"
+                        ></button>
+
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Empty -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-table
+        [value]="citizenShipTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+    >
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <!-- ردیف اول: فقط عنوان -->
+                <div class="flex items-center justify-start gap-4 whitespace-nowrap min-w-max">
+                    <h3 class="text-base font-semibold">اطلاعات تابعیت</h3>
+                </div>
+
+                <!-- ردیف دوم: دکمه افزودن سمت راست و بقیه دکمه‌ها سمت چپ -->
+                <div class="mt-2 flex justify-between items-center">
+                    <!-- سمت راست -->
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-plus"
+                        label="افزودن تابعیت"
+                        iconPos="right"
+                        class="p-button-primary normal-button"
+                        (click)="openCitizenshipDialog()">
+                    </button>
+
+                    <!-- سمت چپ -->
+                    <div class="flex flex-row gap-3">
+                        <button
+                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center normal-button"
+                            matTooltip="Excel">
+                            <i class="pi pi-file-excel mr-2"></i> Excel
+                        </button>
+
+                        <button
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center"
+                            matTooltip="چاپ">
+                            <i class="pi pi-print mr-2"></i> چاپ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <!-- Header -->
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>تابعیت</th>
+                <th>تاریخ اخذ</th>
+                <th>تاریخ پایان</th>
+                <th>توضیحات</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+                <!-- ردیف -->
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                <!-- شماره مشتری -->
+                <td data-label="شماره مشتری" class="ltr">
+                    {{ row.relatedCustomerNumber }}
+                </td>
+
+                <!-- عنوان مشتری -->
+                <td data-label="عنوان مشتری">
+                    {{ row.relatedCustomerTitle }}
+                </td>
+
+                <!-- کد ملی/اتباع/شناسه ملی -->
+                <td data-label="کد ملی/کد اتباع/شناسه ملی" class="ltr">
+                    {{ row.nationalCode }}
+                </td>
+
+                <!-- نوع ارتباط -->
+                <td data-label="نوع ارتباط">
+                    {{ row.relationTypeLabel }}
+                </td>
+
+                <!-- عملیات -->
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Empty -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div>
+<p-dialog
+appendTo="body"
+    [(visible)]="visiblePassportDialog"
+    [modal]="true"
+    [dismissableMask]="true"
+[style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{ '960px': '95vw' }"
+    header="افزودن اطلاعات گذرنامه"
+    contentStyleClass="dialog-body card-filter"
+>
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="submitContact()">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+            <!-- شماره گذرنامه -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>شماره گذرنامه:</span>
+                </label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    formControlName="passportNumber"
+                    [options]="countries"
+                    optionLabel="label"
+                    optionValue="value"
+                    [filter]="true"
+                    [showClear]="true"
+                    appendTo="body"
+                ></p-dropdown>
+            </div>
+
+            <!-- کشور گذرنامه -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>کشور گذرنامه:</span>
+                </label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    formControlName="passportCountry"
+                    [options]="countries"
+                    optionLabel="label"
+                    optionValue="value"
+                    [filter]="true"
+                    [showClear]="true"
+                    placeholder="انتخاب کشور"
+                    appendTo="body"
+                ></p-dropdown>
+                <small class="text-red-500" *ngIf="f.passportCountry.touched && f.passportCountry.invalid">
+                    انتخاب کشور الزامی است.
+                </small>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+            <!-- تاریخ اخذ -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>تاریخ اخذ گذرنامه:</span>
+                </label>
+
+                <input pInputText formControlName="issueDate" class="normal-input">
+                <small class="text-red-500" *ngIf="f.issueDate.touched && f.issueDate.invalid">
+                    تاریخ اخذ الزامی است.
+                </small>
+            </div>
+
+            <!-- تاریخ انقضا -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>تاریخ انقضا گذرنامه:</span>
+                </label>
+                <input pInputText formControlName="expiryDate" class="normal-input" >
+
+                <small class="text-red-500" *ngIf="(f.expiryDate.touched && f.expiryDate.invalid) || form.errors?.expiryBeforeIssue">
+                    {{ getExpiryError() }}
+                </small>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+
+            <!-- توضیحات -->
+            <div class="col-span-12 md:col-span-8 flex flex-col">
+                <label class="form-label">توضیحات:</label>
+                <input pInputText formControlName="notes" maxlength="500" class="xx-ggg-8-input"/>
+            </div>
+        </div>
+        <div class="my-4 flex items-center justify-end gap-3">
+            <button
+                pButton
+                type="submit"
+                label="تایید"
+                icon="pi pi-check"
+                class="btn-standard p-button-success">
+            </button>
+            <button
+                pButton
+                type="button"
+                label="انصراف"
+                icon="pi pi-times"
+                severity="danger"
+                [outlined]="true"
+
+                (click)="closePassportDialog()"
+                class="btn-standard p-button-danger">
+            </button>
+        </div>
+
+    </form>
+</p-dialog>
+<p-dialog
+appendTo="body"
+    [(visible)]="visibleCitizenshipDialog"
+    [modal]="true"
+    [dismissableMask]="true"
+[style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{ '960px': '95vw' }"
+    header="افزودن تابعیت"
+    contentStyleClass="dialog-body card-filter"
+>
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="submitContact()">
+        <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+            <!-- شماره گذرنامه -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>شماره گذرنامه:</span>
+                </label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    formControlName="passportNumber"
+                    [options]="countries"
+                    optionLabel="label"
+                    optionValue="value"
+                    appendTo="body"
+                ></p-dropdown>
+            </div>
+
+            <!-- کشور گذرنامه -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>کشور گذرنامه:</span>
+                </label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    formControlName="passportCountry"
+                    [options]="countries"
+                    optionLabel="label"
+                    optionValue="value"
+                    [filter]="true"
+                    [showClear]="true"
+                    placeholder="انتخاب کشور"
+                    appendTo="body"
+                ></p-dropdown>
+                <small class="text-red-500" *ngIf="f.passportCountry.touched && f.passportCountry.invalid">
+                    انتخاب کشور الزامی است.
+                </small>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+            <!-- تاریخ اخذ -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>تاریخ اخذ گذرنامه:</span>
+                </label>
+
+                <input pInputText formControlName="issueDate" class="normal-input">
+                <small class="text-red-500" *ngIf="f.issueDate.touched && f.issueDate.invalid">
+                    تاریخ اخذ الزامی است.
+                </small>
+            </div>
+
+            <!-- تاریخ انقضا -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>تاریخ انقضا گذرنامه:</span>
+                </label>
+                <input pInputText formControlName="expiryDate" class="normal-input" >
+
+                <small class="text-red-500" *ngIf="(f.expiryDate.touched && f.expiryDate.invalid) || form.errors?.expiryBeforeIssue">
+                    {{ getExpiryError() }}
+                </small>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+
+            <!-- توضیحات -->
+            <div class="col-span-12 md:col-span-8 flex flex-col">
+                <label class="form-label">توضیحات:</label>
+                <input pInputText formControlName="notes" maxlength="500" class="xx-ggg-8-input"/>
+            </div>
+        </div>
+        <div class="my-4 flex items-center justify-end gap-3">
+            <button
+                pButton
+                type="submit"
+                label="تایید"
+                icon="pi pi-check"
+                class="btn-standard p-button-success">
+            </button>
+            <button
+                pButton
+                type="button"
+                label="انصراف"
+                icon="pi pi-times"
+                severity="danger"
+                [outlined]="true"
+
+                (click)="closeCitizenshipDialog()"
+                class="btn-standard p-button-danger">
+            </button>
+        </div>
+
+    </form>
+</p-dialog>

@@ -1,0 +1,68 @@
+<!--
+<div class="bg-white p-4 rounded-xl border border-slate-200">
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="font-semibold">{{ 'citizen.license.title' | transloco }}</h3>
+        <button pButton type="button" icon="pi pi-plus"
+                (click)="addRow()" class="p-button-text">
+            {{ 'citizen.license.add' | transloco }}
+        </button>
+    </div>
+
+    <div class="space-y-3">
+        <div *ngFor="let fg of rows; let i = index" [formGroup]="fg"
+             class="rounded-lg border border-slate-200 p-3">
+            <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+                <div class="col-span-12 md:col-span-3">
+                    <label class="mb-1">{{ 'citizen.license.licenseTypeId' | transloco }}</label>
+                    <p-dropdown class="w-full"
+                                [options]="licenseTypeOptions"
+                                optionLabel="label" optionValue="value"
+                                formControlName="licenseTypeId"></p-dropdown>
+                </div>
+
+                <div class="col-span-12 md:col-span-3">
+                    <label class="mb-1">{{ 'citizen.license.licenseNumber' | transloco }}</label>
+                    <input pInputText formControlName="licenseNumber" class="normal-input"/>
+                </div>
+
+                <div class="col-span-12 md:col-span-3">
+                    <label class="mb-1">{{ 'citizen.license.issuerOrgId' | transloco }}</label>
+                    <p-dropdown class="w-full"
+                                [options]="issuerOrgOptions"
+                                optionLabel="label" optionValue="value"
+                                formControlName="issuerOrgId"></p-dropdown>
+                </div>
+
+                <div class="col-span-12 md:col-span-3">
+                    <label class="mb-1">{{ 'citizen.license.issueDate' | transloco }}</label>
+                    <p-persian-calendar class="app-persian-calendar-style"
+                                        formControlName="issueDate"></p-persian-calendar>
+                </div>
+
+                <div class="col-span-12 md:col-span-3">
+                    <label class="mb-1">{{ 'citizen.license.expireDate' | transloco }}</label>
+                    &lt;!&ndash;
+                                        <input pInputText formControlName="expireDate" class="normal-input" placeholder="YYYYMMDD" inputmode="numeric"/>
+                    &ndash;&gt;
+                    <p-persian-calendar class="app-persian-calendar-style"
+                                        formControlName="expireDate"></p-persian-calendar>
+                </div>
+
+                <div class="col-span-12 md:col-span-6">
+                    <label class="mb-1">{{ 'citizen.license.description' | transloco }}</label>
+                    <input pInputText formControlName="description" class="normal-input"/>
+                </div>
+
+                <div class="col-span-12 md:col-span-12 flex justify-end">
+                    <button pButton type="button" icon="pi pi-trash"
+                            class="p-button-text p-button-danger"
+                            (click)="removeRow(i)">
+                        {{ 'citizen.license.remove' | transloco }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
