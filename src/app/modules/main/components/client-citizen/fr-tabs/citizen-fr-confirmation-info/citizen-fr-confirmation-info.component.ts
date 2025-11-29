@@ -8,7 +8,7 @@ import { PersianCalendarComponent } from '../../../../../shared/components/persi
 import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
-    selector: 'app-citizen-confirmation-info',
+    selector: 'app-citizen-fr-confirmation-info',
     standalone: true,
     imports: [
         NgIf,
@@ -21,10 +21,10 @@ import { TranslocoPipe } from '@ngneat/transloco';
         TranslocoPipe,
         NgClass,
     ],
-    templateUrl: './citizen-confirmation-info.component.html',
-    styleUrl: './citizen-confirmation-info.component.scss',
+    templateUrl: './citizen-fr-confirmation-info.component.html',
+    styleUrl: './citizen-fr-confirmation-info.component.scss',
 })
-export class CitizenConfirmationInfoComponent implements OnInit {
+export class CitizenFrConfirmationInfoComponent implements OnInit {
     /** اگر دادهٔ خام داری مستقیم بده */
     @Input() flags: ChangeFlagsDto | null = null;
     @Input() disabled = false;

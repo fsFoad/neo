@@ -9,7 +9,7 @@ import { Button, ButtonDirective } from 'primeng/button';
 import { PersianCalendarComponent } from '../../../../../shared/components/persian-calendar/persian-calendar.module';
 
 @Component({
-    selector: 'app-corporate-documents-info',
+    selector: 'app-citizen-fr-documents-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,
@@ -22,10 +22,10 @@ import { PersianCalendarComponent } from '../../../../../shared/components/persi
         ButtonDirective,
         PersianCalendarComponent,
     ],
-    templateUrl: './citizen-documents-info.component.html',
-    styleUrls: ['./citizen-documents-info.component.scss'],
+    templateUrl: './citizen-fr-documents-info.component.html',
+    styleUrls: ['./citizen-fr-documents-info.component.scss'],
 })
-export class CitizenDocumentsInfoComponent {
+export class CitizenFrDocumentsInfoComponent {
     @Input() disabled = false;
     @Input() onValueChange: (payload: {
         documentLists: DocumentItem[];

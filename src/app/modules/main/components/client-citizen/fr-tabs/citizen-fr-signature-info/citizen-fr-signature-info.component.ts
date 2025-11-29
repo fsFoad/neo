@@ -26,7 +26,7 @@ import { InputTextarea } from 'primeng/inputtextarea';
 type Option<T extends string | number = string> = { label: string; value: T };
 
 @Component({
-    selector: 'app-corporate-signature-info',
+    selector: 'app-citizen-fr-signature-info',
     standalone: true,
     imports: [
         CommonModule,
@@ -46,9 +46,9 @@ type Option<T extends string | number = string> = { label: string; value: T };
         InputTextarea,
     ],
     templateUrl: './citizen-fr-signature-info.component.html',
-    styleUrls: ['./citizen-signature-info.component.scss'],
+    styleUrls: ['./citizen-fr-signature-info.component.scss'],
 })
-export class CitizenSignatureInfoComponent implements OnInit, OnDestroy {
+export class CitizenFrSignatureInfoComponent implements OnInit, OnDestroy {
     /** اگر تب رو Readonly بخوای */
     @Input() disabled = false;
 

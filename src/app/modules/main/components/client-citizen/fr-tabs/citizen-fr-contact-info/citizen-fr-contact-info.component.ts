@@ -18,7 +18,7 @@ import {InputTextarea} from "primeng/inputtextarea";
 import { NeobankService } from '../../../../services/neobank.service';
 
 @Component({
-    selector: 'app-corporate-contact-info',
+    selector: 'app-citizen-fr-contact-info',
     standalone: true,
     imports: [
         CommonModule,
@@ -37,12 +37,12 @@ import { NeobankService } from '../../../../services/neobank.service';
         Dialog,
         InputTextarea,
     ],
-    templateUrl: './citizen-contact-info.component.html',
-    styleUrls: ['./citizen-contact-info.component.scss'],
+    templateUrl: './citizen-fr-contact-info.component.html',
+    styleUrls: ['./citizen-fr-contact-info.component.scss'],
 })
 
 
-export class CitizenContactInfoComponent implements OnInit, OnDestroy {
+export class CitizenFrContactInfoComponent implements OnInit, OnDestroy {
     /** اگر بخوای کل تب Readonly بشه */
     @Input() disabled = false;
 

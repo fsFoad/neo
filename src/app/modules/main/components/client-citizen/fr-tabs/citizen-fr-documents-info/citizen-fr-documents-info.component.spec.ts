@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CitizenDocumentsInfoComponent } from './citizen-documents-info.component';
+import { CitizenFrDocumentsInfoComponent } from './citizen-fr-documents-info.component';
 
 describe('CorporateDocumentsInfoComponent', () => {
-  let component: CitizenDocumentsInfoComponent;
-  let fixture: ComponentFixture<CitizenDocumentsInfoComponent>;
+  let component: CitizenFrDocumentsInfoComponent;
+  let fixture: ComponentFixture<CitizenFrDocumentsInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CitizenDocumentsInfoComponent]
+      imports: [CitizenFrDocumentsInfoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CitizenDocumentsInfoComponent);
+    fixture = TestBed.createComponent(CitizenFrDocumentsInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

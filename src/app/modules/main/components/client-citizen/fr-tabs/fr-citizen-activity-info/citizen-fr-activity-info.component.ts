@@ -33,7 +33,7 @@ import { Tooltip } from 'primeng/tooltip';
         Tooltip,
         // PersianCalendarComponent, // اگر لازم شد
     ],
-    templateUrl: './citizen-fr-activity-info-component.html',
+    templateUrl: './citizen-fr-activity-info.component.html',
     styleUrls: ['./citizen-fr-activity-info.component.scss'],
 })
 export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {

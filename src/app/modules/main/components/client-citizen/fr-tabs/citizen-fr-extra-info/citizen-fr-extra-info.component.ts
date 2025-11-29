@@ -15,7 +15,7 @@ import { Dialog } from 'primeng/dialog';
 
 
 @Component({
-    selector: 'app-corporate-extra-info',
+    selector: 'app-citizen-fr-extra-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,
@@ -30,10 +30,10 @@ import { Dialog } from 'primeng/dialog';
         Tooltip,
         Dialog,
     ],
-    templateUrl: './citizen-extra-info.component.html',
-    styleUrls: ['./citizen-extra-info.component.scss'],
+    templateUrl: './citizen-fr-extra-info.component.html',
+    styleUrls: ['./citizen-fr-extra-info.component.scss'],
 })
-export class CitizenExtraInfoComponent implements OnInit {
+export class CitizenFrExtraInfoComponent implements OnInit {
     // ورودی‌های هماهنگ با سیستم تب داینامیک شما
     @Input() disabled = false;
     @Input() onValueChange: (val: ExtraInfo) => void = () => {};

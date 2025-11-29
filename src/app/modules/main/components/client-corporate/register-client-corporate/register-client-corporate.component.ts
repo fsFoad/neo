@@ -11,7 +11,7 @@ import { CorporateContactInfoComponent } from '../ir-tabs/corporate-contact-info
 import { CorporateSignatureInfoComponent } from '../ir-tabs/corporate-signature-info/corporate-signature-info.component';
 import { CorporateRelationsInfoComponent } from '../ir-tabs/corporate-relations-info/corporate-relations-info.component';
 import { CorporateActivityInfoComponent } from '../ir-tabs/corporate-activity-info/corporate-activity-info.component';
-import { CitizenEducationInfoComponent } from '../../client-citizen/ir-tabs/citizen-education-info/citizen-education-info.component';
+import { CitizenFrEducationInfoComponent } from '../../client-citizen/ir-tabs/citizen-fr-education-info/citizen-fr-education-info.component';
 import { CorporateDocumentsInfoComponent } from '../ir-tabs/corporate-documents-info/corporate-documents-info.component';
 import { CorporateExtraInfoComponent } from '../ir-tabs/corporate-extra-info/corporate-extra-info.component';
 import { CorporateCommercialInfoComponent } from '../ir-tabs/corporate-commercial-info/corporate-commercial-info.component';
@@ -113,7 +113,7 @@ export class RegisterClientCorporateComponent {
             id: 'edu',
             label: 'اطلاعات تحصیلی',
             icon: 'school',
-            cmp: CitizenEducationInfoComponent,
+            cmp: CitizenFrEducationInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (payload: any) =>

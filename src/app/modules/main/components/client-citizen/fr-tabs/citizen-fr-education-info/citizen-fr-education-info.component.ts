@@ -15,7 +15,7 @@ import { Dialog } from 'primeng/dialog';
 
 
 @Component({
-    selector: 'app-citizen-education-info',
+    selector: 'app-citizen-fr-education-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,
@@ -33,10 +33,10 @@ import { Dialog } from 'primeng/dialog';
         Checkbox,
         Dialog,
     ],
-    templateUrl: './citizen-education-info.component.html',
-    styleUrls: ['./citizen-education-info.component.scss'],
+    templateUrl: './citizen-fr-education-info.component.html',
+    styleUrls: ['./citizen-fr-education-info.component.scss'],
 })
-export class CitizenEducationInfoComponent implements OnInit, OnDestroy {
+export class CitizenFrEducationInfoComponent implements OnInit, OnDestroy {
     @Input() disabled = false;
     @Output() valueChange = new EventEmitter<{
         clientEucationtInfoLists: EducationItem[];

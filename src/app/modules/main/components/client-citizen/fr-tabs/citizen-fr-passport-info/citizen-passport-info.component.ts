@@ -25,7 +25,7 @@ import { Dialog } from 'primeng/dialog';
 
 
 @Component({
-    selector: 'app-citizen-passport-info',
+    selector: 'app-citizen-fr-passport-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,

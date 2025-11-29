@@ -50,10 +50,10 @@ import { NeobankService } from '../../../../services/neobank.service';
         InputGroup,
         InputGroupAddon,
     ],
-    templateUrl: './citizen-relations-info.component.html',
-    styleUrl: './citizen-relations-info.component.scss',
+    templateUrl: './citizen-fr-relations-info.component.html',
+    styleUrl: './citizen-fr-relations-info.component.scss',
 })
-export class CitizenRelationsInfoComponent implements OnInit, OnDestroy {
+export class CitizenFrRelationsInfoComponent implements OnInit, OnDestroy {
     @Input() disabled = false;
 
     searchInputLabel = 'شماره مشتری';
