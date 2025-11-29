@@ -30,6 +30,7 @@ import { AliveTypePipe } from '../../../shared/pipes/alive-type.pipe';
 import { CitizenshipTypePipe } from '../../../shared/pipes/citizenship-type.pipe';
 import { NeobankService } from '../../services/neobank.service';
 import { RegisterIrClientCitizen } from './register-ir-client-citizen/register-ir-client-citizen';
+import { RegisterFrClientCitizenComponent } from './register-fr-client-citizen/register-fr-client-citizen.component';
 
 @Component({
     selector: 'app-client-citizen',
@@ -63,6 +64,7 @@ import { RegisterIrClientCitizen } from './register-ir-client-citizen/register-i
         NgSwitchCase,
         NgSwitchDefault,
         RegisterIrClientCitizen,
+        RegisterFrClientCitizenComponent,
     ],
     templateUrl: './client-citizen.component.html',
     styleUrl: './client-citizen.component.scss',
@@ -80,7 +82,8 @@ export class ClientCitizenComponent {
         { label: 'غیرفعال', value: 'INACTIVE' },
     ];
 
-    addFlag: boolean = false;
+    addIrFlag: boolean = false;
+    addFrFlag: boolean = false;
     searchPerformed: boolean = false;
     loading: boolean = false;
     selectedSearchType = '1';
@@ -180,7 +183,10 @@ export class ClientCitizenComponent {
     }
 
     addIRCitizen() {
-        this.addFlag = true;
+        this.addIrFlag = true;
+    }
+    addFRCitizen() {
+        this.addFrFlag = true;
     }
 
     searchInputPlaceholder = '';

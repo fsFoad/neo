@@ -1,6 +1,9 @@
 import {Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import { LoanUsageComponent } from './components/loan-usage/loan-usage.component';
+import { provideState } from '@ngrx/store';
+import { frRegisterFeature } from './components/client-citizen/application-NgRx/fr-register/fr-register.reducer';
+import { irRegisterFeature } from './components/client-citizen/application-NgRx/ir-register/ir-register.reducer';
 
 export default [
     {

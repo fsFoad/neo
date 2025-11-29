@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import {APP_INITIALIZER, ApplicationConfig, inject, isDevMode} from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, inject, isDevMode } from '@angular/core';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -19,20 +19,21 @@ import { catchError, defaultIfEmpty, lastValueFrom, of } from 'rxjs';
 import { TranslocoHttpLoader } from './core/transloco/transloco.http-loader';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
-import {provideServiceWorker} from "@angular/service-worker";
-import { provideState } from '@ngrx/store';
-import {
-    irRegisterFeature
-} from './modules/main/components/client-citizen/application-NgRx/ir-register/ir-register.reducer';
-import {
-    frRegisterFeature
-} from './modules/main/components/client-citizen/application-NgRx/fr-register/fr-register.reducer';
+import { provideServiceWorker } from '@angular/service-worker';
+import { provideStore } from '@ngrx/store';
+
+// ⚠️ این دوتا رو از این فایل حذف می‌کنیم، چون توی روتر فیچری رجیستر می‌شن
+// import { provideState } from '@ngrx/store';
+// import { irRegisterFeature } from './modules/main/components/client-citizen/application-NgRx/ir-register/ir-register.reducer';
+// import { frRegisterFeature } from './modules/main/components/client-citizen/application-NgRx/fr-register/fr-register.reducer';
+
 export const appConfig: ApplicationConfig = {
     providers: [
         provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
+            registrationStrategy: 'registerWhenStable:30000',
         }),
+
         providePrimeNG({
             theme: {
                 preset: Aura,
@@ -40,14 +41,26 @@ export const appConfig: ApplicationConfig = {
                     prefix: 'p',
                     darkModeSelector: '.p-dark',
                     inputStyle: 'outlined',
-                    cssLayer: false
-                }
-
-            }
+                    cssLayer: false,
+                },
+            },
         }),
+
         provideAnimations(),
         provideHttpClient(),
-        provideRouter(appRoutes, withPreloading(PreloadAllModules), withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })),
+
+        // 🟢 روت استور (بدون featureها)
+        provideStore({}),
+
+        // ❌ این خط کامل حذف بشه (یا اگر واقعاً effects داری از @ngrx/effects ایمپورت کن)
+        // provideEffects([]),
+
+        provideRouter(
+            appRoutes,
+            withPreloading(PreloadAllModules),
+            withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
+        ),
+
         // Material Date Adapter
         {
             provide: DateAdapter,
@@ -72,18 +85,9 @@ export const appConfig: ApplicationConfig = {
         provideTransloco({
             config: {
                 availableLangs: [
-                    {
-                        id: 'en',
-                        label: 'English',
-                    },
-                    {
-                        id: 'tr',
-                        label: 'Turkish',
-                    },
-                    {
-                        id: 'fa',
-                        label: 'فارسی',
-                    }
+                    { id: 'en', label: 'English' },
+                    { id: 'tr', label: 'Turkish' },
+                    { id: 'fa', label: 'فارسی' },
                 ],
                 defaultLang: 'fa',
                 fallbackLang: 'fa',
@@ -93,33 +97,22 @@ export const appConfig: ApplicationConfig = {
             loader: TranslocoHttpLoader,
         }),
         {
-            // Preload the default language before the app starts to prevent empty/jumping content
-         /*   provide: APP_INITIALIZER,
-            useFactory: () => {
-                const translocoService = inject(TranslocoService);
-                const defaultLang = translocoService.getDefaultLang();
-                translocoService.setActiveLang(defaultLang);
-
-                return () => firstValueFrom(translocoService.load(defaultLang));
-            },
-            multi: true,*/
-            //کد بالا در صورت بروز خطا در ترجمه خطا را هندل نمیکرد
             provide: APP_INITIALIZER,
             useFactory: () => {
                 const translocoService = inject(TranslocoService);
                 const defaultLang = translocoService.getDefaultLang();
                 translocoService.setActiveLang(defaultLang);
 
-                // استفاده از lastValueFrom به جای firstValueFrom
-                return () => lastValueFrom(
-                    translocoService.load(defaultLang).pipe(
-                        catchError((err) => {
-                            console.error('خطا در بارگیری ترجمه:', err);
-                            return of({}); // مقدار پیشفرض
-                        }),
-                        defaultIfEmpty({}) // جلوگیری از EmptyError
-                    )
-                );
+                return () =>
+                    lastValueFrom(
+                        translocoService.load(defaultLang).pipe(
+                            catchError((err) => {
+                                console.error('خطا در بارگیری ترجمه:', err);
+                                return of({});
+                            }),
+                            defaultIfEmpty({}),
+                        ),
+                    );
             },
             multi: true,
         },
@@ -143,34 +136,18 @@ export const appConfig: ApplicationConfig = {
                 },
                 theme: 'theme-default',
                 themes: [
-                    {
-                        id: 'theme-default',
-                        name: 'Default',
-                    },
-                    {
-                        id: 'theme-brand',
-                        name: 'Brand',
-                    },
-                    {
-                        id: 'theme-teal',
-                        name: 'Teal',
-                    },
-                    {
-                        id: 'theme-rose',
-                        name: 'Rose',
-                    },
-                    {
-                        id: 'theme-purple',
-                        name: 'Purple',
-                    },
-                    {
-                        id: 'theme-amber',
-                        name: 'Amber',
-                    },
+                    { id: 'theme-default', name: 'Default' },
+                    { id: 'theme-brand', name: 'Brand' },
+                    { id: 'theme-teal', name: 'Teal' },
+                    { id: 'theme-rose', name: 'Rose' },
+                    { id: 'theme-purple', name: 'Purple' },
+                    { id: 'theme-amber', name: 'Amber' },
                 ],
             },
         }),
-        provideState(irRegisterFeature),
-        provideState(frRegisterFeature),
+
+        // 🟥 این دوتا هم دیگه اینجا نباشن، چون توی route مخصوص خودشون تزریق می‌شن
+        // provideState(irRegisterFeature),
+        // provideState(frRegisterFeature),
     ],
 };

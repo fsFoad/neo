@@ -18,12 +18,10 @@ export const appRoutes: Route[] = [
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
         component: LayoutComponent,
-        resolve: {
-            initialData: initialDataResolver
-        },
+        resolve: { initialData: initialDataResolver },
         children: [
-            {path: '', loadChildren: () => import('app/modules/main/main.routes')},
-        ]
+            { path: '', loadChildren: () => import('app/modules/main/main.routes') },
+        ],
     },
     {
         path: 'signed-in-redirect',

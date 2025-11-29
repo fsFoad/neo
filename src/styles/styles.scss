@@ -223,7 +223,11 @@ html.p-dark {
 .p-button.p-button-outlined .p-button-icon {
     color: var(--color-primary);
 }
-
+/*
+.p-button.p-button-icon-only .p-button-icon {
+    color: var(--primary-text) !important;
+}
+*/
 
 .p-button .p-button-icon {
     color: inherit !important;

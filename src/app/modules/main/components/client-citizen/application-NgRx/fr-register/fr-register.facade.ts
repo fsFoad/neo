@@ -56,15 +56,9 @@ export class FrRegisterFacade {
         );
     }
 
-    setTabValidity(tabId: FrRegisterTabId, valid: boolean) {
-        this.store.dispatch(
-            FrRegisterActions.setTabValidity({ tabId, valid })
-        );
-    }
 
-    requestSave() {
-        this.store.dispatch(FrRegisterActions.saveRequested());
-    }
+
+
 
     saveSucceeded(clientId: number) {
         this.store.dispatch(FrRegisterActions.saveSucceeded({ clientId }));
@@ -72,6 +66,31 @@ export class FrRegisterFacade {
 
     saveFailed(error: string) {
         this.store.dispatch(FrRegisterActions.saveFailed({ error }));
+    }
+
+
+
+
+
+
+    // --------- اکشن‌ها / متدهای public ---------
+
+
+    // ⬅️ این همونی‌ه که ارورش رو داشتی
+    changeTab(tabId: FrRegisterTabId) {
+        this.store.dispatch(FrRegisterActions.changeTab({ tabId }));
+    }
+
+    setTabValue(tabId: FrRegisterTabId, value: Record<string, unknown>) {
+        this.store.dispatch(FrRegisterActions.setTabValue({ tabId, value }));
+    }
+
+    setTabValidity(tabId: FrRegisterTabId, valid: boolean) {
+        this.store.dispatch(FrRegisterActions.setTabValidity({ tabId, valid }));
+    }
+
+    requestSave() {
+        this.store.dispatch(FrRegisterActions.saveRequested());
     }
 
     reset() {

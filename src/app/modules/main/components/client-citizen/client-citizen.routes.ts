@@ -9,27 +9,27 @@ import { irRegisterFeature } from './application-NgRx/ir-register/ir-register.re
 import { frRegisterFeature } from './application-NgRx/fr-register/fr-register.reducer';
 
 export const CLIENT_CITIZEN_ROUTES: Routes = [
-    // صفحه اصلی مدیریت مشتری حقیقی
+    // صفحه اصلی مشتری حقیقی
     {
         path: '',
         component: ClientCitizenComponent,
     },
 
-    // ثبت‌نام مشتری ایرانی
+    // ثبت‌نام ایرانی
     {
         path: 'register-ir',
         component: RegisterIrClientCitizen,
         providers: [
-            provideState(irRegisterFeature), // ✅ NgRx فقط برای این صفحه
+            provideState(irRegisterFeature),
         ],
     },
 
-    // ثبت‌نام مشتری خارجی
+    // ثبت‌نام خارجی
     {
         path: 'register-fr',
         component: RegisterFrClientCitizenComponent,
         providers: [
-            provideState(frRegisterFeature), // ✅ NgRx فقط برای این صفحه
+            provideState(frRegisterFeature),
         ],
     },
 ];

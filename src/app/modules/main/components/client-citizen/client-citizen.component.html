@@ -1,4 +1,4 @@
-<div *ngIf="!addFlag">
+<div *ngIf="!addIrFlag&&!addFrFlag">
 <div class="w-full app-card">
     <div class="p-8 rounded-xl shadow-sm  mx-auto">
         <div class="flex flex-col w-full p-4">
@@ -14,15 +14,7 @@
                     <div
                         class="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all"
                     >
-                  <!--      <p-button
-                            styleClass="!w-10 !h-10 !rounded-2xl !bg-primary !text-on-primary flex items-center justify-center"
-                            [rounded]="true"
-                            [outlined]="false"
-                            [text]="true"
-                            (onClick)="addIRCitizen()"
-                        >
-                            <span class="material-icons text-base">add</span>
-                        </p-button>-->
+
                         <p-button
                             styleClass="btn-icon-2xl"
                             severity="primary"
@@ -44,6 +36,7 @@
                             styleClass="btn-icon-soft"
                             [text]="false"
                             [outlined]="false"
+                            (onClick)="addFRCitizen()"
                         >
                             <span class="material-icons text-base">add</span>
                         </p-button>
@@ -483,7 +476,11 @@ normal-button  "
     </p-table>
 </div>
 </div>
-<div class="col-span-12" *ngIf="addFlag">
+<div class="col-span-12" *ngIf="addIrFlag">
     <app-register-ir-client-citizen [InputCitizen]="citizenDto"
                      (close)="onClose($event)"></app-register-ir-client-citizen>
+</div>
+<div class="col-span-12" *ngIf="addFrFlag">
+    <app-register-fr-client-citizen [InputFrCitizen]="citizenDto"
+                                    (close)="onClose($event)"></app-register-fr-client-citizen>
 </div>
