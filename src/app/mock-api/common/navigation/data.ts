@@ -46,6 +46,17 @@ let navigations: FuseNavigationItem[] = [
             },
             {
                 icon: 'home',
+                menuId: 24,
+                id: 'not-established',
+                title: 'در شرف تاسیس',
+                type: 'basic',
+                parentId: 3,
+                translate: 'در شرف تاسیس',
+                link: '/main/not-established',
+                children: [],
+            },
+            {
+                icon: 'home',
                 menuId: 7,
                 id: 'client-guest',
                 title: 'مشتریان میهمان',

@@ -9,6 +9,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FileUpload } from 'primeng/fileupload';
 import { Tooltip } from 'primeng/tooltip';
 import { NgIf } from '@angular/common';
+import { RadioButton } from 'primeng/radiobutton';
+import { Textarea } from 'primeng/textarea';
 
 @Component({
     selector: 'app-corporate-ir-signature-info',
@@ -22,6 +24,8 @@ import { NgIf } from '@angular/common';
         FileUpload,
         Tooltip,
         NgIf,
+        RadioButton,
+        Textarea,
     ],
     templateUrl: './corporate-ir-signature-info.component.html',
     styleUrl: './corporate-ir-signature-info.component.scss',
@@ -57,6 +61,7 @@ export class CorporateIrSignatureInfoComponent implements OnInit {
         description: [''],
         file: [null, Validators.required],
         isUploading: [false],
+        uploadSource: ['file', Validators.required],
     });
     signatureTypeOptions = [
         { label: 'امضا (دستی)', value: 'manual' },

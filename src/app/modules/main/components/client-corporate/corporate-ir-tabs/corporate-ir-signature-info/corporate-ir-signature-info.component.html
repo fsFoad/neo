@@ -68,7 +68,7 @@
     header="ایجاد امضا"
     contentStyleClass="dialog-body card-filter">
 
-    <form class="form-grid" [formGroup]="createSignForm" (ngSubmit)="submitContact()">
+    <!--<form class="form-grid" [formGroup]="createSignForm" (ngSubmit)="submitContact()">
         <div class="grid grid-cols-12 gap-3 md:gap-4 p-5" [formGroup]="createSignForm">
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label">
@@ -96,13 +96,13 @@
                 </label>
                 <div class="border rounded-xl p-5 flex flex-col gap-4 app-card">
 
-                    <!-- عنوان و حداکثر سایز -->
+                    &lt;!&ndash; عنوان و حداکثر سایز &ndash;&gt;
                     <div class="flex items-center justify-between">
 
                         <small class="text-gray-500 text-sm">حداکثر سایز: 1024 KB</small>
                     </div>
 
-                    <!-- انتخاب پوشه / فایل -->
+                    &lt;!&ndash; انتخاب پوشه / فایل &ndash;&gt;
                     <p-fileupload
                         mode="basic"
                         name="signatureFile"
@@ -117,7 +117,7 @@
                     >
                     </p-fileupload>
 
-                    <!-- دکمه اسکن -->
+                    &lt;!&ndash; دکمه اسکن &ndash;&gt;
                     <div class="flex justify-center mt-2">
                         <button
                             pButton
@@ -130,14 +130,14 @@
                         </button>
                     </div>
 
-                    <!-- پیش‌نمایش/نام فایل انتخاب‌شده -->
+                    &lt;!&ndash; پیش‌نمایش/نام فایل انتخاب‌شده &ndash;&gt;
                     <div *ngIf="uploadedFileName" class="text-sm text-gray-600 mt-1">
                         فایل انتخاب‌شده: {{ uploadedFileName }}
                     </div>
 
                 </div>
             </div>
-            <!-- توضیحات -->
+            &lt;!&ndash; توضیحات &ndash;&gt;
             <div class="col-span-12 md:col-span-4 flex flex-col">
                 <label class="form-label"><span>توضیحات</span>:</label>
                 <textarea pInputTextarea rows="7" class="normal-input " formControlName="description"
@@ -155,6 +155,144 @@
             <button pButton label="تایید" severity="success" class="p-button-primary" type="submit"></button>
             <button pButton label="انصراف" severity="danger" [outlined]="true" class="p-button-secondary" type="button"
                     (click)="closeContact()"></button>
+        </div>
+    </form>-->
+    <form class="form-grid" [formGroup]="createSignForm" (ngSubmit)="submitContact()">
+        <div class="grid grid-cols-12 gap-3 md:gap-4 p-5">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span> <span>نوع امضا</span>:
+                </label>
+
+                <p-dropdown
+                    class="dropdown-normal"
+                    formControlName="signatureType"
+                    [options]="signatureTypeOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    [showClear]="true"
+                    placeholder="انتخاب کنید">
+                </p-dropdown>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-3 md:gap-4 p-5">
+
+            <!-- باکس انتخاب روش و آپلود / اسکن -->
+            <div class="col-span-12 md:col-span-8">
+                <label class="flex items-center gap-1 text-gray-700 mb-1">
+                    <span class="text-red-500">*</span>
+                    <span class="font-medium">امضا را چگونه ثبت می‌کنید؟</span>
+                </label>
+
+                <div class="border rounded-2xl p-5 flex flex-col gap-4 app-card shadow-sm bg-white">
+
+                    <!-- رادیو باتن‌ها -->
+                    <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                        <div class="flex flex-wrap items-center gap-4">
+
+                            <div class="flex items-center gap-2">
+                                <p-radioButton
+                                    name="uploadSource"
+                                    inputId="uploadSourceFile"
+                                    value="file"
+                                    formControlName="uploadSource">
+                                </p-radioButton>
+                                <label for="uploadSourceFile" class="cursor-pointer text-sm text-gray-700">
+                                    بارگذاری فایل
+                                </label>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <p-radioButton
+                                    name="uploadSource"
+                                    inputId="uploadSourceScan"
+                                    value="scan"
+                                    formControlName="uploadSource">
+                                </p-radioButton>
+                                <label for="uploadSourceScan" class="cursor-pointer text-sm text-gray-700">
+                                    اسکن مستقیم
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <small class="text-gray-500 text-xs">
+                            حداکثر سایز فایل: 1024 KB
+                        </small>
+                    </div>
+
+                    <div class="border-t pt-4 mt-2"></div>
+
+                    <!-- حالت بارگذاری فایل -->
+                    <ng-container *ngIf="createSignForm.get('uploadSource')?.value === 'file'">
+                        <div class="flex flex-col gap-3">
+                            <label class="text-sm text-gray-700">انتخاب فایل امضا:</label>
+                            <p-fileupload
+                                mode="basic"
+                                name="signatureFile"
+                                [auto]="false"
+                                chooseLabel="انتخاب فایل"
+                                [maxFileSize]="1024 * 1024"
+                                [customUpload]="true"
+                                (uploadHandler)="onFileUpload($event)"
+                                [accept]="'.jpg,.jpeg,.png,.pdf'"
+                                [disabled]="createSignForm.get('isUploading')?.value"
+                                class="w-full">
+                            </p-fileupload>
+
+                            <div *ngIf="uploadedFileName" class="text-xs text-gray-600 mt-1">
+                                فایل انتخاب‌شده: <span class="font-medium">{{ uploadedFileName }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!-- حالت اسکن -->
+                    <ng-container *ngIf="createSignForm.get('uploadSource')?.value === 'scan'">
+                        <div class="flex flex-col items-center gap-3">
+                            <p class="text-xs text-gray-500 text-center">
+                                دستگاه اسکنر اثر انگشت را متصل کرده و روی دکمه زیر کلیک کنید.
+                            </p>
+                            <button
+                                pButton
+                                type="button"
+                                label="شروع اسکن"
+                                class="w-full md:w-1/2 p-button-sm p-button-primary"
+                                (click)="scanFingerprint()"
+                                [disabled]="createSignForm.get('isUploading')?.value">
+                            </button>
+                        </div>
+                    </ng-container>
+
+                </div>
+            </div>
+
+            <!-- توضیحات -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span>توضیحات</span>:
+                </label>
+                <textarea
+                    pInputTextarea
+                    rows="8"
+                    class="normal-input"
+                    formControlName="description"
+                    placeholder="در صورت نیاز توضیحاتی بنویسید">
+      </textarea>
+            </div>
+        </div>
+
+        <div class="my-4 flex items-center justify-end gap-5 pl-5 ">
+            <button pButton label="تایید" severity="success" class="p-button-primary" type="submit"></button>
+            <button
+                pButton
+                label="انصراف"
+                severity="danger"
+                [outlined]="true"
+                class="p-button-secondary"
+                type="button"
+                (click)="closeContact()">
+            </button>
         </div>
     </form>
 </p-dialog>
