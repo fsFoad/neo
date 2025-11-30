@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CitizenActivityInfoComponent } from './citizen-activity-info.component';
 
-describe('CorporateActivityInfoComponent', () => {
+describe('CorporateIrActivityInfoComponent', () => {
   let component: CitizenActivityInfoComponent;
   let fixture: ComponentFixture<CitizenActivityInfoComponent>;
 

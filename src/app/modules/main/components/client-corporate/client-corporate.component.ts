@@ -15,7 +15,7 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import {
     RegisterIrClientCitizen
 } from '../client-citizen/register-ir-client-citizen/register-ir-client-citizen';
-import { RegisterClientCorporateComponent } from './register-client-corporate/register-client-corporate.component';
+import { RegisterIrClientCorporateComponent } from './register-ir-client-corporate/register-ir-client-corporate.component';
 
 
 
@@ -38,7 +38,7 @@ import { RegisterClientCorporateComponent } from './register-client-corporate/re
         MatTooltip,
         InfiniteScrollDirective,
         RegisterIrClientCitizen,
-        RegisterClientCorporateComponent,
+        RegisterIrClientCorporateComponent,
     ],
     standalone: true,
     templateUrl: './client-corporate.component.html',

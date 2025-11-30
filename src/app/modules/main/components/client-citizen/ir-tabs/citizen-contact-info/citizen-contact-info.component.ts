@@ -18,7 +18,7 @@ import {InputTextarea} from "primeng/inputtextarea";
 import { NeobankService } from '../../../../services/neobank.service';
 
 @Component({
-    selector: 'app-corporate-contact-info',
+    selector: 'app-corporate-ir-contact-info',
     standalone: true,
     imports: [
         CommonModule,

@@ -10,7 +10,8 @@
     <div [formGroup]="form" class="bg-white p-6 rounded-xl border border-slate-200">
 
         <!-- جدول اطلاعات مشتری -->
-        <p-table [value]="customerTable" styleClass="p-datatable-striped p-datatable-gridlines">
+        <p-table [value]="customerTable"  styleClass="normal-table"
+                 class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <div class="flex justify-between">
                     <h3 class="text-base font-semibold">اطلاعات مشتری</h3>
@@ -41,7 +42,8 @@
         </p-table>
 
         <!-- جدول اطلاعات فروشنده -->
-        <p-table [value]="sellerTable" styleClass="p-datatable-striped p-datatable-gridlines">
+        <p-table [value]="sellerTable" styleClass="normal-table"
+                 class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <h3 class="text-base font-semibold">اطلاعات فروشنده</h3>
             </ng-template>
@@ -70,7 +72,8 @@
         </p-table>
 
         <!-- جدول اطلاعات قرارداد -->
-        <p-table [value]="contractTable" styleClass="p-datatable-striped p-datatable-gridlines">
+        <p-table [value]="contractTable"  styleClass="normal-table"
+                 class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <h3 class="text-base font-semibold">اطلاعات قرارداد</h3>
             </ng-template>
@@ -193,7 +196,8 @@
     <div class="p-4">
         <p-table
             [value]="guaranteeTable"
-            styleClass="p-datatable-striped p-datatable-gridlines">
+            styleClass="normal-table"
+            class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <h3 class="text-base font-semibold">وثایق و تضمینات موردنیاز</h3>
             </ng-template>

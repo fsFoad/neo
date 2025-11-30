@@ -26,7 +26,7 @@ import { InputTextarea } from 'primeng/inputtextarea';
 type Option<T extends string | number = string> = { label: string; value: T };
 
 @Component({
-    selector: 'app-corporate-signature-info',
+    selector: 'app-corporate-ir-signature-info',
     standalone: true,
     imports: [
         CommonModule,

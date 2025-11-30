@@ -8,7 +8,8 @@
 <div class="p-6 space-y-6 rounded-2xl">
     <div [formGroup]="form" class="bg-white p-6 rounded-xl border border-slate-200">
         <p-table [value]="customerTable" [rows]="5" [paginator]="true"
-                 styleClass="p-datatable-striped p-datatable-gridlines">
+                 styleClass="normal-table"
+                 class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <div class="flex justify-between">
                     <h3 class="text-base font-semibold">اطلاعات مشتری</h3>
@@ -40,7 +41,8 @@
             </ng-template>
         </p-table>
         <p-table [value]="productTable" [rows]="5" [paginator]="true"
-                 styleClass="p-datatable-striped p-datatable-gridlines">
+                 styleClass="normal-table"
+                 class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <div class="flex justify-between">
                     <h3 class="text-base font-semibold">اطلاعات محصول</h3>
@@ -75,7 +77,8 @@
             </ng-template>
         </p-table>
         <p-table [value]="approvalTable" [rows]="5" [paginator]="true"
-                 styleClass="p-datatable-striped p-datatable-gridlines">
+                 styleClass="normal-table"
+                 class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <div class="flex justify-between">
                     <h3 class="text-base font-semibold">اطلاعات مصوبه</h3>

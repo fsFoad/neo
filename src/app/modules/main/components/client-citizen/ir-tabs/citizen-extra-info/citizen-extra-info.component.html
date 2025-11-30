@@ -152,12 +152,13 @@
                     (click)="addSelfless()">
             </button>
         </div>
-        <p-table class="my-4"
+        <p-table
             [value]="selflessTable"
             [paginator]="true"
             [rows]="5"
             [rowsPerPageOptions]="[5,10,20]"
-            styleClass="p-datatable-striped p-datatable-gridlines responsive-table">
+                 styleClass="normal-table"
+                 class="p-6 space-y-6">
             <ng-template pTemplate="caption">
                 <div class="w-full overflow-x-auto">
                     <!-- flex بین دکمه‌های چپ و راست -->

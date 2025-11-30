@@ -454,6 +454,13 @@ form .bg-white {
     border-radius: var(--card-radius) !important;
     box-shadow: var(--card-shadow) !important;
 }
+.header-card{
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-bottom-left-radius: var(--card-radius) !important;
+    border-bottom-right-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+}
 .dark-mode {
     --color-primary: #6366f1;
     --color-primary-hover: #818cf8;

@@ -2,7 +2,8 @@
     <div [formGroup]="proposedForm">
 
         <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
-            <p-table [value]="customerTable" styleClass="p-datatable-striped p-datatable-gridlines">
+            <p-table [value]="customerTable"  styleClass="normal-table"
+                     class="p-6 space-y-6">
                 <ng-template pTemplate="caption">
                     <div class="flex justify-between">
                         <h3 class="text-base font-semibold">اطلاعات مشتری</h3>
@@ -33,7 +34,8 @@
             </p-table>
         </div>
         <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
-            <p-table [value]="productTable" styleClass="p-datatable-striped p-datatable-gridlines">
+            <p-table [value]="productTable"  styleClass="normal-table"
+                     class="p-6 space-y-6">
 
                 <ng-template pTemplate="caption">
                     <div class="flex justify-between">

@@ -1,5 +1,5 @@
 <div *ngIf="!addIrFlag&&!addFrFlag">
-<div class="w-full app-card">
+<div class="w-full header-card">
     <div class="p-8 rounded-xl shadow-sm  mx-auto">
         <div class="flex flex-col w-full p-4">
             <div class="flex flex-col items-start text-right w-full">
@@ -198,7 +198,7 @@
         [value]="allCustomers"
         [paginator]="false"
         [loading]="loading"
-        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+        styleClass="normal-table"
     >
         <ng-template pTemplate="caption">
             <div class="w-full overflow-x-auto">

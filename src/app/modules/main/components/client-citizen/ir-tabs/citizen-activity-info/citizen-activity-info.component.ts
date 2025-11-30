@@ -16,7 +16,7 @@ import { TableModule } from 'primeng/table';
 import { Tooltip } from 'primeng/tooltip';
 
 @Component({
-    selector: 'app-corporate-activity-info',
+    selector: 'app-corporate-ir-activity-info',
     standalone: true,
     imports: [
         CommonModule,

@@ -13,8 +13,8 @@
         [paginator]="true"
         [rows]="5"
         [rowsPerPageOptions]="[5,10,20]"
-        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
-    >
+        styleClass="normal-table"
+        class="p-6 space-y-6"    >
         <ng-template pTemplate="caption">
             <div class="w-full overflow-x-auto">
                 <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
@@ -126,8 +126,8 @@
         [paginator]="true"
         [rows]="5"
         [rowsPerPageOptions]="[5,10,20]"
-        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
-    >
+        styleClass="normal-table"
+        class="p-6 space-y-6"    >
         <ng-template pTemplate="caption">
             <div class="w-full overflow-x-auto">
                 <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
@@ -418,7 +418,8 @@ appendTo="body"
         [dataKey]="'id'"
         [selection]="selectedContacts"
         (selectionChange)="selectedContacts = $event"
-        styleClass="p-datatable-striped p-datatable-gridlines responsive-table">
+        styleClass="normal-table"
+        class="p-6 space-y-6">
 
         <!-- Header -->
         <ng-template pTemplate="header">

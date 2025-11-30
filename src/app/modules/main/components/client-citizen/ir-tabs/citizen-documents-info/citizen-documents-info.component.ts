@@ -9,7 +9,7 @@ import { Button, ButtonDirective } from 'primeng/button';
 import { PersianCalendarComponent } from '../../../../../shared/components/persian-calendar/persian-calendar.module';
 
 @Component({
-    selector: 'app-corporate-documents-info',
+    selector: 'app-corporate-ir-documents-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,

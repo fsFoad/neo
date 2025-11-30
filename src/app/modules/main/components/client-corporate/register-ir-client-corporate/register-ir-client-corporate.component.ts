@@ -6,19 +6,19 @@ import { NgClass, NgComponentOutlet, NgForOf, NgIf } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { CitizenReviewService } from '../../../services/citizen-review.service';/*
-import { CorporateBasicInfoComponent } from '../ir-tabs/corporate-basic-info/corporate-basic-info.component';
-import { CorporateContactInfoComponent } from '../ir-tabs/corporate-contact-info/corporate-contact-info.component';
-import { CorporateSignatureInfoComponent } from '../ir-tabs/corporate-signature-info/corporate-signature-info.component';
-import { CorporateRelationsInfoComponent } from '../ir-tabs/corporate-relations-info/corporate-relations-info.component';
-import { CorporateActivityInfoComponent } from '../ir-tabs/corporate-activity-info/corporate-activity-info.component';
+import { CorporateIrBasicInfoComponent } from '../ir-tabs/corporate-ir-basic-info/corporate-ir-basic-info.component';
+import { CorporateIrContactInfoComponent } from '../ir-tabs/corporate-ir-contact-info/corporate-ir-contact-info.component';
+import { CorporateIrSignatureInfoComponent } from '../ir-tabs/corporate-ir-signature-info/corporate-ir-signature-info.component';
+import { CorporateIrRelationsInfoComponent } from '../ir-tabs/corporate-ir-relations-info/corporate-ir-relations-info.component';
+import { CorporateIrActivityInfoComponent } from '../ir-tabs/corporate-ir-activity-info/corporate-ir-activity-info.component';
 import { CitizenFrEducationInfoComponent } from '../../client-citizen/ir-tabs/citizen-fr-education-info/citizen-fr-education-info.component';
-import { CorporateDocumentsInfoComponent } from '../ir-tabs/corporate-documents-info/corporate-documents-info.component';
-import { CorporateExtraInfoComponent } from '../ir-tabs/corporate-extra-info/corporate-extra-info.component';
-import { CorporateCommercialInfoComponent } from '../ir-tabs/corporate-commercial-info/corporate-commercial-info.component';
+import { CorporateIrDocumentsInfoComponent } from '../ir-tabs/corporate-ir-documents-info/corporate-ir-documents-info.component';
+import { CorporateIrExtraInfoComponent } from '../ir-tabs/corporate-ir-extra-info/corporate-ir-extra-info.component';
+import { CorporateIrCommercialInfoComponent } from '../ir-tabs/corporate-ir-commercial-info/corporate-ir-commercial-info.component';
 */import { ButtonDirective } from 'primeng/button';
 
 @Component({
-    selector: 'app-register-client-corporate',
+    selector: 'app-register-ir-client-corporate',
     imports: [
         MatIcon,
         MatTab,
@@ -31,24 +31,36 @@ import { CorporateCommercialInfoComponent } from '../ir-tabs/corporate-commercia
         ButtonDirective,
         NgClass,
     ],
-    templateUrl: './register-client-corporate.component.html',
-    styleUrl: './register-client-corporate.component.scss',
+    templateUrl: './register-ir-client-corporate.component.html',
+    styleUrl: './register-ir-client-corporate.component.scss',
     standalone: true,
 })
-export class RegisterClientCorporateComponent {
+export class RegisterIrClientCorporateComponent {
     @Input() InputCorporate;
     selectedIndex = 0; // مقدار اولیه
     currentClientId = 1001;
     nationalCode: any;
     customerNo: any;
     fullName: any;
-    tabs=[]
+    tabs=[  {
+        id: 'identity',
+        label: 'اطلاعات اصلی',
+        icon: 'badge',
+        cmp: CorporateBasicInfoComponent,
+        inputs: {
+            disabled: false,
+            onValueChange: (payload: any) =>
+                this.collect('identity', payload), // ← امضای درست
+            onValidityChange: (valid: boolean) =>
+                this.setTabValidity('identity', valid),
+        },
+    },]
  /*   tabs = [
         {
             id: 'identity',
             label: 'اطلاعات اصلی',
             icon: 'badge',
-            cmp: CorporateBasicInfoComponent,
+            cmp: CorporateIrBasicInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (payload: any) =>
@@ -61,7 +73,7 @@ export class RegisterClientCorporateComponent {
             id: 'contact',
             label: 'اطلاعات تماس',
             icon: 'contacts',
-            cmp: CorporateContactInfoComponent,
+            cmp: CorporateIrContactInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (payload: any) =>
@@ -74,7 +86,7 @@ export class RegisterClientCorporateComponent {
             id: 'signature',
             label: 'امضاء',
             icon: 'draw',
-            cmp: CorporateSignatureInfoComponent,
+            cmp: CorporateIrSignatureInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (payload: any) =>
@@ -87,7 +99,7 @@ export class RegisterClientCorporateComponent {
             id: 'relations',
             label: 'روابط',
             icon: 'group',
-            cmp: CorporateRelationsInfoComponent,
+            cmp: CorporateIrRelationsInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (payload: any) =>
@@ -100,7 +112,7 @@ export class RegisterClientCorporateComponent {
             id: 'industry',
             label: 'زمینه فعالیت',
             icon: 'category',
-            cmp: CorporateActivityInfoComponent,
+            cmp: CorporateIrActivityInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (payload: any) =>
@@ -126,7 +138,7 @@ export class RegisterClientCorporateComponent {
             id: 'docs',
             label: 'مستندات',
             icon: 'folder_open',
-            cmp: CorporateDocumentsInfoComponent,
+            cmp: CorporateIrDocumentsInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (payload: any) =>
@@ -139,7 +151,7 @@ export class RegisterClientCorporateComponent {
             id: 'extra',
             label: 'اطلاعات تکمیلی',
             icon: 'info',
-            cmp: CorporateExtraInfoComponent,
+            cmp: CorporateIrExtraInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (val: any) => this.collect('extra', val),
@@ -151,7 +163,7 @@ export class RegisterClientCorporateComponent {
             id: 'business',
             label: 'اطلاعات تجاری',
             icon: 'storefront',
-            cmp: CorporateCommercialInfoComponent,
+            cmp: CorporateIrCommercialInfoComponent,
             inputs: {
                 disabled: false,
                 onValueChange: (val: any) => this.collect('business', val),

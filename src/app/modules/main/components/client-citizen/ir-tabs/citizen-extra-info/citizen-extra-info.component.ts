@@ -15,7 +15,7 @@ import { Dialog } from 'primeng/dialog';
 
 
 @Component({
-    selector: 'app-corporate-extra-info',
+    selector: 'app-corporate-ir-extra-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,

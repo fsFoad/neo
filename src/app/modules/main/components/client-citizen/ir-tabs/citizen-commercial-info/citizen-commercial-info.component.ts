@@ -19,7 +19,7 @@ import { TableModule } from 'primeng/table';
 import { Tooltip } from 'primeng/tooltip';
 import { Dialog } from 'primeng/dialog';
 @Component({
-    selector: 'app-corporate-commercial-info',
+    selector: 'app-corporate-ir-commercial-info',
     standalone: true,
     imports: [
         ReactiveFormsModule,

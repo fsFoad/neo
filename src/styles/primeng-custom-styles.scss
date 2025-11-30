@@ -1419,10 +1419,16 @@ textarea,
     border-radius: var(--radius-md);
 }
 /* Container */
-.p-datatable {
+/*.p-datatable {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
+}*/
+.p-datatable {
+    background: var(--card-bg) !important;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
 }
 
 /* Header */
@@ -1443,11 +1449,11 @@ textarea,
 .p-datatable tbody tr:hover {
     background: var(--color-surface-hover);
 }
-
-/* Striped */
+/*
+!* Striped *!
 .p-datatable-striped tbody tr:nth-child(even) {
     background: var(--color-bg);
-}
+}*/
 
 /* Paginator */
 .p-paginator {
@@ -2704,42 +2710,6 @@ anglerighticon {
     color: inherit !important; /* آیکون هم مثل متن */
 }
 
-
-/*
-.p-datatable .p-datatable-tbody > tr > td {
-    background: inherit !important;  !* یعنی همون background ردیف *!
-    color: inherit !important;
-}
-
-!* ردیف انتخاب‌شده *!
-.p-datatable .p-datatable-tbody > tr.p-datatable-row-selected {
-    background: var(--p-datatable-row-selected-background) !important;
-    color: var(--p-datatable-row-selected-color) !important;
-}
-
-!* hover ردیف *!
-.p-datatable .p-datatable-tbody > tr:hover {
-    background: var(--p-datatable-row-hover-background) !important;
-    color: var(--p-datatable-row-hover-color) !important;
-}
-.p-datatable .p-datatable-tbody > tr {
-    background: var(--p-datatable-row-background);
-    color: var(--p-datatable-row-color);
-}
-
-.p-datatable .p-datatable-tbody > tr > td {
-    background: var(--p-datatable-row-background);
-}
-.p-datatable-hoverable .p-datatable-tbody > tr:not(.p-datatable-row-selected):hover {
-    background: var(--p-datatable-row-hover-background);
-    color: var(--p-datatable-row-hover-color);
-}
-.p-datatable-tbody > tr:focus-visible, .p-datatable-tbody > tr.p-datatable-contextmenu-row-selected {
-    box-shadow: var(--p-datatable-row-focus-ring-shadow);
-    outline: var(--p-datatable-row-focus-ring-width) var(--p-datatable-row-focus-ring-style) var(--p-datatable-row-focus-ring-color);
-    outline-offset: var(--p-datatable-row-focus-ring-offset);
-}
-*/
 .p-datatable .p-datatable-tbody > tr {
     background: var(--p-datatable-row-background);
     color: var(--p-datatable-row-color);
@@ -2788,23 +2758,35 @@ anglerighticon {
     border-bottom-right-radius: 0.75rem;
 }
 .p-datatable.normal-table {
-    border-radius: 0.75rem; /* مثل inputهات: rounded-xl تقریباً */
-    overflow: hidden;       /* خیلی مهم، تا سِلول‌ها از گوشه نزنن بیرون */
+    border-radius: 0.75rem;
+    overflow: hidden;
     border: 1px solid var(--p-datatable-border-color);
     background: var(--p-datatable-header-background);
 }
 
 /* خود کانتینر جدول */
-.p-datatable.normal-table .p-datatable-table-container {
+/*.p-datatable.normal-table .p-datatable-table-container {
     border-radius: inherit;
     overflow: hidden;
-}
+}*/
 
 /* خود تِیبِل وسط */
 .p-datatable.normal-table .p-datatable-table {
     border-collapse: separate;
-    border-spacing: 0; /* که بین سلول‌ها فاصله نباشه و رَدیوس تمیز دیده بشه */
+    border-spacing: 0;
 }
+.p-datatable .p-datatable-header {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid var(--color-primary) !important;
+}
+.p-datatable thead > tr > th {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+    border-color: color-mix(in srgb, #ffffff 15%, var(--color-primary)) !important;
+    font-weight: 600;
+}
+
 .toggle-advanced-search {
     color: var(--color-primary); /* ✅ رنگ از تم */
     font-weight: 500;
@@ -2825,4 +2807,30 @@ anglerighticon {
 .text-primary {
     --tw-text-opacity: 1 !important;
     color: var(--color-primary) !important; /* یا مثلاً var(--p-button-primary-background) */
+}
+/*
+.p-datatable .p-datatable-wrapper table thead > tr > th:first-child {
+    border-top-right-radius: var(--card-radius);
+}
+
+.p-datatable .p-datatable-wrapper table thead > tr > th:last-child {
+    border-top-left-radius: var(--card-radius);
+}
+*/
+
+/* 2) اگر caption وجود داشته باشه:
+   PrimeNG این ساختار رو می‌سازه:
+   <div class="p-datatable-caption"></div>
+   <div class="p-datatable-wrapper">...</div>
+   → تو این حالت ردیوس هدر جدول رو صفر کن */
+.p-datatable .p-datatable-caption + .p-datatable-wrapper
+table thead > tr > th:first-child,
+.p-datatable .p-datatable-caption + .p-datatable-wrapper
+table thead > tr > th:last-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+.p-datatable .p-datatable-caption {
+    border-top-right-radius: var(--card-radius);
+    border-top-left-radius: var(--card-radius);
 }
