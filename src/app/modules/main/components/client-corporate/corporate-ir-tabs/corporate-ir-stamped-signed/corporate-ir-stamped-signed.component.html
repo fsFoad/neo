@@ -1,0 +1,148 @@
+<p-card class="extra-info-card">
+    <ng-template pTemplate="header">
+        اطلاعات تکمیلی
+    </ng-template>
+
+    <form
+        class="extra-info-form p-fluid"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        dir="rtl"
+    >
+        <div class="formgrid grid">
+
+            <!-- دو فیلد طولانی بالا -->
+            <div class="field col-12">
+                <label for="shortName">نام اختصاری :</label>
+                <input
+                    id="shortName"
+                    type="text"
+                    pInputText
+                    formControlName="shortName"
+                />
+            </div>
+
+            <div class="field col-12">
+                <label for="latinShortName">نام اختصاری لاتین :</label>
+                <input
+                    id="latinShortName"
+                    type="text"
+                    pInputText
+                    formControlName="latinShortName"
+                />
+            </div>
+
+            <!-- ردیف‌ها مثل تصویر، سه‌ستونه روی دسکتاپ -->
+
+            <div class="field col-12 md:col-4">
+                <label for="officialGazettePageNo">شماره صفحه روزنامه رسمی :</label>
+                <input
+                    id="officialGazettePageNo"
+                    type="text"
+                    pInputText
+                    formControlName="officialGazettePageNo"
+                />
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <label for="officialGazetteDate">تاریخ روزنامه رسمی :</label>
+                <p-calendar
+                    id="officialGazetteDate"
+                    formControlName="officialGazetteDate"
+                    dateFormat="yy/mm/dd"
+                    [showIcon]="true"
+                ></p-calendar>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <label for="establishmentDate">تاریخ تأسیس :</label>
+                <p-calendar
+                    id="establishmentDate"
+                    formControlName="establishmentDate"
+                    dateFormat="yy/mm/dd"
+                    [showIcon]="true"
+                ></p-calendar>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <label for="establishmentLicenseNo">شماره مجوز تأسیس :</label>
+                <input
+                    id="establishmentLicenseNo"
+                    type="text"
+                    pInputText
+                    formControlName="establishmentLicenseNo"
+                />
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <label for="officialAdDate">تاریخ آگهی رسمی :</label>
+                <p-calendar
+                    id="officialAdDate"
+                    formControlName="officialAdDate"
+                    dateFormat="yy/mm/dd"
+                    [showIcon]="true"
+                ></p-calendar>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <label for="publicBudgetUsage">استفاده از بودجه عمومی :</label>
+                <p-dropdown
+                    id="publicBudgetUsage"
+                    formControlName="publicBudgetUsage"
+                    [options]="publicBudgetOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="انتخاب کنید"
+                ></p-dropdown>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <label for="startWorkDate">تاریخ شروع کار :</label>
+                <p-calendar
+                    id="startWorkDate"
+                    formControlName="startWorkDate"
+                    dateFormat="yy/mm/dd"
+                    [showIcon]="true"
+                ></p-calendar>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <label for="representativeSignature">امضا نمایندگی :</label>
+                <input
+                    id="representativeSignature"
+                    type="text"
+                    pInputText
+                    formControlName="representativeSignature"
+                />
+            </div>
+        </div>
+
+        <!-- دکمه‌ها مثل تصویر پایین فرم -->
+        <div class="actions flex gap-2 mt-4">
+            <button
+                type="submit"
+                pButton
+                label="تأیید نهایی"
+                icon="pi pi-check"
+                class="p-button-success"
+            ></button>
+
+            <button
+                type="button"
+                pButton
+                label="ثبت اولیه"
+                icon="pi pi-save"
+                (click)="onSubmit()"
+            ></button>
+
+            <button
+                type="button"
+                pButton
+                label="انصراف"
+                icon="pi pi-times"
+                class="p-button-secondary"
+                (click)="onReset()"
+            ></button>
+        </div>
+    </form>
+</p-card>

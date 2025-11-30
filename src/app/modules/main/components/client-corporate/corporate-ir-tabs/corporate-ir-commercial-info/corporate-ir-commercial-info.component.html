@@ -304,10 +304,10 @@
     header="ثبت اظهارنامه مالیاتی"
     contentStyleClass="dialog-body card-filter">
 
-    <form class="form-grid" [formGroup]="commercialDialogForm" (ngSubmit)="submitCitizenshipContact()">
+    <form class="form-grid " [formGroup]="commercialDialogForm" (ngSubmit)="submitCitizenshipContact()">
 
         <!-- ردیف اول -->
-        <div class="grid grid-cols-12 gap-3 md:gap-4 mb-4">
+        <div class="grid grid-cols-12 gap-3 md:gap-4 mb-4 p-5">
             <div class="col-span-12 md:col-span-6 flex flex-col">
                 <label class="form-label">شماره اظهارنامه مالیاتی:</label>
                 <input class="normal-input" pInputText formControlName="taxNumber">
@@ -325,10 +325,6 @@
                 <label class="form-label">مبلغ دارایی:</label>
                 <input class="normal-input" pInputText formControlName="employeeCount">
             </div>
-        </div>
-
-        <!-- ردیف دوم -->
-        <div class="grid grid-cols-12 gap-3 md:gap-4">
             <div class="col-span-12 md:col-span-6 flex flex-col">
                 <label class="form-label">تاریخ شروع:</label>
                 <p-persian-calendar
@@ -350,8 +346,7 @@
                 <input class="normal-input" pInputText formControlName="employeeCount">
             </div>
         </div>
-
-        <div class="my-4 flex items-center justify-end gap-3">
+        <div class="my-4 flex items-center justify-end gap-3 pb-4 pl-4">
             <button
                 pButton
                 type="submit"
@@ -388,7 +383,7 @@
     <form class="form-grid" [formGroup]="businessDialogForm" (ngSubmit)="submitContact()">
 
         <!-- ردیف اول -->
-        <div class="grid grid-cols-12 gap-4 md:gap-4 mb-4">
+        <div class="grid grid-cols-12 gap-4 md:gap-4 mb-4 p-5">
             <div class="col-span-12 md:col-span-6 flex flex-col">
                 <label class="form-label">
                 <span class="text-red-500">* </span>
@@ -403,10 +398,6 @@
                 شماره کارت بازرگانی:</label>
                 <input class="normal-input" pInputText formControlName="businessCardNumber">
             </div>
-        </div>
-
-        <!-- ردیف دوم -->
-        <div class="grid grid-cols-12 gap-3 md:gap-4 mb-4">
             <div class="col-span-12 md:col-span-6 flex flex-col">
                 <label class="form-label">
                     <span class="text-red-500">* </span>
@@ -434,7 +425,9 @@
             </div>
         </div>
 
-        <div class="my-4 flex items-center justify-end gap-3">
+
+
+        <div class="my-4 flex items-center justify-end gap-3 pb-4 pl-4">
             <button
                 pButton
                 type="submit"

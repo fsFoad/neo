@@ -1,0 +1,33 @@
+:host {
+    display: block;
+}
+
+.extra-info-card {
+    background: #d6d6d6;
+
+    ::ng-deep .p-card-body {
+        padding: 1.5rem;
+    }
+}
+
+.extra-info-form {
+    direction: rtl;
+}
+
+.field {
+    text-align: right;
+
+    label {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+.actions {
+    direction: rtl;
+
+    button {
+        min-width: 8rem;
+    }
+}

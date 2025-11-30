@@ -16,6 +16,33 @@ import { CorporateIrDocumentsInfoComponent } from '../ir-tabs/corporate-ir-docum
 import { CorporateIrExtraInfoComponent } from '../ir-tabs/corporate-ir-extra-info/corporate-ir-extra-info.component';
 import { CorporateIrCommercialInfoComponent } from '../ir-tabs/corporate-ir-commercial-info/corporate-ir-commercial-info.component';
 */import { ButtonDirective } from 'primeng/button';
+import {
+    CorporateIrBasicInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-basic-info/corporate-ir-basic-info.component';
+import {
+    CorporateIrContactInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-contact-info/corporate-ir-contact-info.component';
+import {
+    CorporateIrActivityInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-activity-info/corporate-ir-activity-info.component';
+import {
+    CorporateIrSignatureInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-signature-info/corporate-ir-signature-info.component';
+import {
+    CorporateIrRelationsInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-relations-info/corporate-ir-relations-info.component';
+import {
+    CorporateIrDocumentsInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-documents-info/corporate-ir-documents-info.component';
+import {
+    CorporateIrExtraInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-extra-info/corporate-ir-extra-info.component';
+import {
+    CorporateIrCommercialInfoComponent
+} from '../corporate-ir-tabs/corporate-ir-commercial-info/corporate-ir-commercial-info.component';
+import {
+    CorporateIrStampedSignedComponent
+} from '../corporate-ir-tabs/corporate-ir-stamped-signed/corporate-ir-stamped-signed.component';
 
 @Component({
     selector: 'app-register-ir-client-corporate',
@@ -30,6 +57,15 @@ import { CorporateIrCommercialInfoComponent } from '../ir-tabs/corporate-ir-comm
         NgIf,
         ButtonDirective,
         NgClass,
+        CorporateIrBasicInfoComponent,
+        CorporateIrContactInfoComponent,
+        CorporateIrActivityInfoComponent,
+        CorporateIrSignatureInfoComponent,
+        CorporateIrRelationsInfoComponent,
+        CorporateIrDocumentsInfoComponent,
+        CorporateIrExtraInfoComponent,
+        CorporateIrCommercialInfoComponent,
+        CorporateIrStampedSignedComponent,
     ],
     templateUrl: './register-ir-client-corporate.component.html',
     styleUrl: './register-ir-client-corporate.component.scss',
@@ -46,7 +82,7 @@ export class RegisterIrClientCorporateComponent {
         id: 'identity',
         label: 'اطلاعات اصلی',
         icon: 'badge',
-        cmp: CorporateBasicInfoComponent,
+        cmp: CorporateIrBasicInfoComponent,
         inputs: {
             disabled: false,
             onValueChange: (payload: any) =>
@@ -54,7 +90,103 @@ export class RegisterIrClientCorporateComponent {
             onValidityChange: (valid: boolean) =>
                 this.setTabValidity('identity', valid),
         },
-    },]
+
+    },
+        {
+            id: 'contact',
+            label: 'اطلاعات تماس',
+            icon: 'contacts',
+            cmp: CorporateIrContactInfoComponent,
+            inputs: {
+                disabled: false,
+                onValueChange: (payload: any) =>
+                    this.collect('contact', payload), // ← امضای درست
+                onValidityChange: (valid: boolean) =>
+                    this.setTabValidity('contact', valid),
+            },
+        },
+        {
+            id: 'signature',
+            label: 'امضاء',
+            icon: 'draw',
+            cmp: CorporateIrSignatureInfoComponent,
+            inputs: {
+                disabled: false,
+                onValueChange: (payload: any) =>
+                    this.collect('signature', payload), // ← امضای درست
+                onValidityChange: (valid: boolean) =>
+                    this.setTabValidity('signature', valid),
+            },
+        },
+
+        {
+            id: 'industry',
+            label: 'زمینه فعالیت',
+            icon: 'category',
+            cmp: CorporateIrActivityInfoComponent,
+            inputs: {
+                disabled: false,
+                onValueChange: (payload: any) =>
+                    this.collect('activity', payload), // ← امضای درست
+                onValidityChange: (valid: boolean) =>
+                    this.setTabValidity('activity', valid),
+            },
+        },
+        {
+            id: 'docs',
+            label: 'مستندات',
+            icon: 'folder_open',
+            cmp: CorporateIrDocumentsInfoComponent,
+            inputs: {
+                disabled: false,
+                onValueChange: (payload: any) =>
+                    this.collect('documents', payload),
+                onValidityChange: (valid: boolean) =>
+                    this.setTabValidity('documents', valid),
+            },
+        },
+        {
+            id: 'corporate-ir-stamped-signed',
+            label: 'مهر و امضاء',
+            icon: 'school',
+            cmp: CorporateIrStampedSignedComponent,
+            inputs: {
+                disabled: false,
+                onValueChange: (payload: any) =>
+                    this.collect('stamped-signed', payload),
+                onValidityChange: (valid: boolean) =>
+                    this.setTabValidity('stamped-signed', valid),
+            },
+        },
+
+        {
+            id: 'extra',
+            label: 'اطلاعات تکمیلی',
+            icon: 'info',
+            cmp: CorporateIrExtraInfoComponent,
+            inputs: {
+                disabled: false,
+                onValueChange: (val: any) => this.collect('extra', val),
+                onValidityChange: (valid: boolean) =>
+                    this.setTabValidity('extra', valid),
+            },
+        },
+        {
+            id: 'business',
+            label: 'اطلاعات تجاری',
+            icon: 'storefront',
+            cmp: CorporateIrCommercialInfoComponent,
+            inputs: {
+                disabled: false,
+                onValueChange: (val: any) => this.collect('business', val),
+                onValidityChange: (valid: boolean) =>
+                    this.setTabValidity('business', valid),
+            },
+        },
+
+
+
+    ]
  /*   tabs = [
         {
             id: 'identity',
