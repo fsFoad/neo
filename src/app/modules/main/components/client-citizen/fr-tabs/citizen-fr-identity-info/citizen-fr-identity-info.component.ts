@@ -22,7 +22,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { NeobankService } from '../../../../services/neobank.service';
 
 @Component({
-    selector: 'app-citizen-identity-info',
+    selector: 'app-citizen-fr-identity-info',
     imports: [
         InputText,
         ReactiveFormsModule,
@@ -37,8 +37,8 @@ import { NeobankService } from '../../../../services/neobank.service';
         MatIcon,
 
     ],
-    templateUrl: './citizen-identity-info.component.html',
-    styleUrl: './citizen-identity-info.component.scss',
+    templateUrl: './citizen-fr-identity-info.component.html',
+    styleUrl: './citizen-fr-identity-info.component.scss',
 })
 export class CitizenIdentityInfoComponent implements OnInit, OnDestroy {
     @Input() disabled = false;

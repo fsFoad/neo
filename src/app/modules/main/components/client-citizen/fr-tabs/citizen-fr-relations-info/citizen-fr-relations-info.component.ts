@@ -31,7 +31,7 @@ import { PersianCalendarComponent } from '../../../../../shared/components/persi
 import { NeobankService } from '../../../../services/neobank.service';
 
 @Component({
-    selector: 'app-corporate-relations-info',
+    selector: 'app-citizen-fr-relations-info',
     imports: [
         TranslocoPipe,
         Checkbox,

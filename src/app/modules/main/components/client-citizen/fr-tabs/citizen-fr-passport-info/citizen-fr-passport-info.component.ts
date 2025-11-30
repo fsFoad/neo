@@ -47,10 +47,10 @@ import { Dialog } from 'primeng/dialog';
         Dialog,
         // PersianCalendarComponent
     ],
-    templateUrl: './citizen-passport-info.component.html',
-    styleUrls: ['./citizen-passport-info.component.scss'],
+    templateUrl: './citizen-fr-passport-info.component.html',
+    styleUrls: ['./citizen-fr-passport-info.component.scss'],
 })
-export class CitizenPassportInfoComponent implements OnInit, OnDestroy {
+export class CitizenFrPassportInfoComponent implements OnInit, OnDestroy {
     /** ورودی‌های استاندارد تب‌های داینامیک */
     @Input() disabled = false;
     @Input() onValueChange: (val: PassportInfoDto[]) => void = () => {};

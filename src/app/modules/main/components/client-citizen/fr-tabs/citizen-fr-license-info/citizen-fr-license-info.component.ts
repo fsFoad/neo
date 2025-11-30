@@ -13,10 +13,10 @@ import { TranslocoModule } from '@ngneat/transloco';
 import {PersianCalendarComponent} from "../../../../../shared/components/persian-calendar/persian-calendar.module";
 
 @Component({
-    selector: 'app-citizen-license-info',
+    selector: 'app-citizen-fr-license-info',
     standalone: true,
-    templateUrl: './citizen-license-info.component.html',
-    styleUrls: ['./citizen-license-info.component.scss'],
+    templateUrl: './citizen-fr-license-info.component.html',
+    styleUrls: ['./citizen-fr-license-info.component.scss'],
     imports: [
         ReactiveFormsModule,
         NgFor,

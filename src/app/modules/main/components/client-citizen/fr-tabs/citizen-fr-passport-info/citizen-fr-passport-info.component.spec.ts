@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CitizenPassportInfoComponent } from './citizen-passport-info.component';
+import { CitizenFrPassportInfoComponent } from './citizen-fr-passport-info.component';
 
 describe('CitizenPassportInfoComponent', () => {
-  let component: CitizenPassportInfoComponent;
-  let fixture: ComponentFixture<CitizenPassportInfoComponent>;
+  let component: CitizenFrPassportInfoComponent;
+  let fixture: ComponentFixture<CitizenFrPassportInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CitizenPassportInfoComponent]
+      imports: [CitizenFrPassportInfoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CitizenPassportInfoComponent);
+    fixture = TestBed.createComponent(CitizenFrPassportInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
