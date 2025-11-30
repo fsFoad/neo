@@ -1,0 +1,451 @@
+
+<div class="app-card p-4 rounded-xl border border-slate-200" [formGroup]="activityInformationForm">
+    <div class="flex flex-wrap gap-2 mb-4 justify-start">
+        <button pButton icon="pi pi-user-plus" type="button"
+                label="{{ 'ایجاد فعالیت' | transloco }}"
+                iconPos="right" class="p-button-outlined normal-button" (click)="openContact()">
+
+        </button>
+    </div>
+    <p-table
+        #act
+        [value]="activityTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="normal-table"
+        class="p-6 space-y-6"
+    >
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
+                    <h3 class="text-base font-semibold"></h3>
+                    <div class="flex flex-row gap-3">
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center normal-button" matTooltip="Excel">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            Excel
+                        </button>
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center" matTooltip="چاپ">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            چاپ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>نوع بخش اقتصادی</th>
+                <th>زمینه فعالیت</th>
+                <th>جزئیات فعالیت</th>
+                <th>تاریخ شروع فعالیت</th>
+                <th>تاریخ پایان فعالیت</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+                <td data-label="ردیف">{{ (rowIndex + 1) + (act.first || 0) }}</td>
+                <td data-label="نوع بخش اقتصادی">{{ row.economicSectorType }}</td>
+                <td data-label="زمینه فعالیت">{{ row.activityField }}</td>
+                <td data-label="جزئیات فعالیت">{{ row.activityDetail }}</td>
+                <td data-label="تاریخ شروع فعالیت">{{ row.startDate | date:'yyyy/MM/dd' }}</td>
+                <td data-label="تاریخ پایان فعالیت">{{ row.endDate | date:'yyyy/MM/dd' }}</td>
+
+                <td class="action-column">
+                    <div class="flex flex-row gap-2">
+                        <!-- تعریف محل فعالیت -->
+                        <button
+                            pButton
+                            icon="pi pi-plus"
+                            class="p-button-sm p-button-rounded p-button-outlined"
+                            pTooltip="تعریف محل فعالیت"
+                            (click)="openDefinePlaceDialog(row)"
+                        ></button>
+
+                        <!-- ویرایش محل فعالیت -->
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+
+                            class="p-button-sm p-button-rounded p-button-outlined p-button-success"
+                            pTooltip="ویرایش محل فعالیت"
+                            (click)="openEditPlaceDialog(row)"
+                        ></button>
+
+                        <!-- جزئیات محل فعالیت -->
+                        <button
+                            pButton
+                            icon="pi pi-info"
+                            class="p-button-sm p-button-rounded p-button-outlined p-button-help"
+                            pTooltip="جزئیات محل فعالیت"
+                            (click)="openPlaceDetailsDialog(row)"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr><td colspan="7" class="text-center py-4 text-gray-500">رکوردی برای نمایش موجود نیست.</td></tr>
+        </ng-template>
+    </p-table>
+
+    <!-- جدول ۲: جزئیات محل فعالیت -->
+    <p-table
+        #place
+        [value]="placeDetailsTable"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        styleClass="normal-table"
+        class="p-6 space-y-6"
+    >
+        <ng-template pTemplate="caption">
+            <div class="w-full overflow-x-auto">
+                <div class="flex items-center justify-between gap-4 whitespace-nowrap min-w-max">
+                    <h3 class="text-base font-semibold">جزئیات محل فعالیت</h3>
+                    <div class="flex flex-row gap-3">
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center normal-button" matTooltip="Excel">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            Excel
+                        </button>
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg normal-button flex items-center" matTooltip="چاپ">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            چاپ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>نوع محل فعالیت</th>
+                <th>نحوه تصرف محل فعالیت</th>
+                <th>سرقفلی</th>
+                <th>مساحت</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+                <td data-label="ردیف">{{ (rowIndex + 1) + (place.first || 0) }}</td>
+                <td data-label="نوع محل فعالیت">{{ row.placeType }}</td>
+                <td data-label="نحوه تصرف محل فعالیت">{{ row.tenureType }}</td>
+                <td data-label="سرقفلی">{{ row.keyMoney | number }}</td>
+                <td data-label="مساحت">{{ row.area }}<span *ngIf="row.area"> متر</span></td>
+
+                <!-- <td data-label="عملیات" >
+                     <div class="flex flex-row gap-2">
+                         <button pButton                             icon="pi pi-plus"
+                                 class="p-button-sm p-button-outlined"
+                                 (click)="onSetContactInfo(row)"></button>
+                         <button pButton                             icon="pi pi-pencil"
+                                 class="p-button-sm p-button-text p-button-success"
+                                 (click)="onEditPlace(row)"></button>
+                         <button pButton                             icon="pi pi-info"
+                                 class="p-button-sm p-button-text"
+                                 (click)="onShowContactInfo(row)"></button>
+                     </div>
+                 </td>-->
+                <td class="action-column">
+                    <div class="flex flex-row gap-2">
+                        <!-- تعیین اطلاعات تماس -->
+                        <button
+                            pButton
+                            icon="pi pi-plus"
+                            class="p-button-sm p-button-rounded p-button-outlined"
+                            pTooltip="تعیین اطلاعات تماس"
+                            (click)="openSetContactInfoDialog(row)"
+                        ></button>
+
+                        <!-- ویرایش اطلاعات تماس -->
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+                            class="p-button-sm p-button-rounded p-button-outlined p-button-success"
+                            pTooltip="ویرایش اطلاعات تماس"
+                            (click)="openEditContactInfoDialog(row)"
+                        ></button>
+
+                        <!-- نمایش اطلاعات تماس -->
+                        <button
+                            pButton
+                            icon="pi pi-info"
+                            class="p-button-sm p-button-rounded p-button-outlined p-button-help"
+                            pTooltip="نمایش اطلاعات تماس"
+                            (click)="openShowContactInfoDialog(row)"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr><td colspan="6" class="text-center py-4 text-gray-500">رکوردی برای نمایش موجود نیست.</td></tr>
+        </ng-template>
+    </p-table>
+</div>
+<p-dialog
+    appendTo="body"
+    [(visible)]="visibleActivityInformation"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="اطلاعات فعالیت"
+    contentStyleClass="dialog-body card-filter">
+
+    <form class="form-grid" [formGroup]="actinityInformationDialog" (ngSubmit)="submitActivityInfo()">
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+
+            <!-- * نوع بخش اقتصادی -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>نوع بخش اقتصادی</span>:
+                </label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    [options]="economicSectorOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="-"
+                    formControlName="economicSectorType">
+                </p-dropdown>
+            </div>
+
+            <!-- زمینه فعالیت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                <span class="text-red-500">*</span>
+                <span class="form-label">زمینه فعالیت:</span>
+                </label>
+
+                <p-dropdown
+                    class="dropdown-normal"
+                    [options]="activityFieldOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="-"
+                    formControlName="activityField">
+                </p-dropdown>
+            </div>
+
+            <!-- جزئیات زمینه فعالیت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">جزئیات زمینه فعالیت:</label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    [options]="activitySubFieldOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="-"
+                    formControlName="activitySubField">
+                </p-dropdown>
+            </div>
+
+            <!-- شرح فعالیت (تمام عرض وسط) -->
+
+
+            <!-- تاریخ شروع فعالیت * -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>تاریخ شروع فعالیت</span>:
+                </label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="startDate"></p-persian-calendar>
+            </div>
+
+            <!-- تاریخ پایان -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">تاریخ پایان:</label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="endDate"></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+            </div>
+            <div class="col-span-12 md:col-span-9 flex flex-col">
+                <label class="form-label">شرح فعالیت:</label>
+                <input pInputText class="normal-input" formControlName="activityDescription" />
+            </div>
+
+        </div>
+
+        <div class="my-4 flex items-center justify-end gap-5">
+            <button pButton label="تایید" severity="success" class="p-button-primary" type="submit"></button>
+            <button pButton label="انصراف" severity="danger" [outlined]="true" class="p-button-secondary" type="button"
+                    (click)="closeContact()"></button>
+        </div>
+    </form>
+</p-dialog>
+
+<p-dialog
+    appendTo="body"
+    [(visible)]="visiblePlaceOptionDialog"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'980px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="اطلاعات محل فعالیت"
+    contentStyleClass="dialog-body card-filter">
+
+    <form class="form-grid" [formGroup]="placeForm" (ngSubmit)="submitPlace()">
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+
+            <!-- * نوع محل فعالیت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>نوع محل فعالیت</span>:
+                </label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    [options]="placeTypeOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="-"
+                    formControlName="placeType">
+                </p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
+            <!-- نحوه تصرف محل فعالیت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">نحوه تصرف محل فعالیت:</label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    [options]="tenureTypeOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="-"
+                    formControlName="tenureType">
+                </p-dropdown>
+            </div>
+
+            <!-- مساحت -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">مساحت:</label>
+                <input pInputText class="normal-input ltr" inputmode="numeric"
+                       formControlName="area" placeholder="مثلاً 120" />
+            </div>
+
+            <!-- * سرقفلی -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span>
+                    <span>سرقفلی</span>:
+                </label>
+                <p-dropdown
+                    class="dropdown-normal"
+                    [options]="keyMoneyOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="-"
+                    formControlName="hasKeyMoney">
+                </p-dropdown>
+            </div>
+
+        </div>
+
+        <div class="my-4 flex items-center justify-end gap-5">
+            <button pButton label="تأیید" class="p-button-primary" type="submit"
+                    [disabled]="placeForm.invalid"></button>
+            <button pButton label="انصراف" class="p-button-secondary" [outlined]="true" type="button"
+                    (click)="closePlaceDialog()"></button>
+        </div>
+    </form>
+</p-dialog>
+
+<p-dialog
+    appendTo="body"
+    [(visible)]="visibleDefinePlaceDialog"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'1100px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="اطلاعات تماس محل فعالیت"
+    contentStyleClass="dialog-body card-filter">
+
+    <p-table
+        #contactTbl
+        [value]="placeContacts"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        [dataKey]="'id'"
+        [selection]="selectedContacts"
+        (selectionChange)="selectedContacts = $event"
+        styleClass="normal-table"
+      >
+
+        <!-- Header -->
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>نوع تماس</th>
+                <th>جزئیات تماس</th>
+                <th>شرح تماس</th>
+                <th>کدپستی</th>
+                <th>تلفن</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>انتخاب</th>
+            </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+                <td data-label="ردیف">{{ (rowIndex + 1) + (contactTbl.first || 0) }}</td>
+                <td data-label="نوع تماس">{{ row.contactType }}</td>
+                <td data-label="جزئیات تماس">{{ row.contactDetail }}</td>
+                <td data-label="شرح تماس">{{ row.description }}</td>
+                <td data-label="کدپستی" class="ltr">{{ row.postalCode }}</td>
+                <td data-label="تلفن" class="ltr">{{ row.phone }}</td>
+                <td data-label="تاریخ شروع">
+                    {{ row.startDate | date:'yyyy/MM/dd' }}
+                    <!-- اگر تاریخ جلالی داری: {{ row.startDate | jdate:'YYYY/MM/DD' }} -->
+                </td>
+                <td data-label="تاریخ پایان">
+                    {{ row.endDate ? (row.endDate | date:'yyyy/MM/dd') : '' }}
+                </td>
+                <td data-label="انتخاب" class="text-center">
+                    <p-tableCheckbox [value]="row"></p-tableCheckbox>
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Empty -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <!-- دکمه‌ها -->
+    <div class="my-4 flex items-center justify-end gap-5">
+        <button pButton label="تأیید" class="p-button-primary" type="button"
+                (click)="confirmSelectedContacts()"
+                [disabled]="!selectedContacts?.length"></button>
+        <button pButton label="انصراف" class="p-button-secondary" [outlined]="true" type="button"
+                (click)="closePlaceCancelDialog()"></button>
+    </div>
+</p-dialog>
+
+
+
+
+

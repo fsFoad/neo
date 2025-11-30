@@ -1,0 +1,496 @@
+<div class="app-card p-4 rounded-xl border border-slate-200" [formGroup]="contactFg">
+    <div class="flex flex-wrap gap-2 mb-4 justify-start">
+        <button pButton icon="pi pi-user-plus" type="button"
+                label="{{ 'citizen.contact.actions.createContact' | transloco }}"
+                iconPos="right" class="p-button-outlined normal-button" (click)="openContact()">
+
+        </button>
+        <button icon="pi pi-home" pButton type="button"
+                label="  {{ 'citizen.contact.actions.createAddress' | transloco }}"
+                class="p-button-outlined normal-button"
+                (click)="openAddress()" iconPos="right">
+        </button>
+
+    </div>
+
+    <form>
+        <div formArrayName="contacts" class="space-y-4">
+            <div
+                class="rounded-lg border border-slate-200 p-3"
+                *ngFor="let c of contacts.controls; index as i"
+                [formGroupName]="i"
+            >
+                <!-- خط عنوان و اکشن‌های هر آیتم -->
+                <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <p-dropdown
+                            class="normal-dropdown w-40"
+                            [options]="contactTypeOptions"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="contactType"
+                            [showClear]="false"
+                        ></p-dropdown>
+
+                        <p-dropdown
+                            class="normal-dropdown w-32"
+                            [options]="contactGroupOptions"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="contactGroupType"
+                            [showClear]="false"
+                        ></p-dropdown>
+
+                        <p-checkbox formControlName="isDefault" [binary]="true"
+                                    label="{{ 'citizen.contact.isDefault' | transloco }}"></p-checkbox>
+                    </div>
+
+                    <button pButton type="button" class="p-button-text p-button-danger" (click)="removeAt(i)">
+                        {{ 'citizen.contact.actions.remove' | transloco }}
+                    </button>
+                </div>
+
+                <!-- فیلدهای شماره/ایمیل -->
+                <div class="grid grid-cols-12 gap-3" *ngIf="!isTypeAddress(c)">
+                    <!-- مقدار تماس (شماره/ایمیل/فکس) -->
+                    <div class="col-span-12 md:col-span-4">
+                        <label class="mb-1 block">
+                            {{ isTypeEmail(c) ? ('citizen.contact.email' | transloco) : ('citizen.contact.number' | transloco) }}
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input pInputText class="w-full" formControlName="contactValue" />
+                        <small class="text-red-500"
+                               *ngIf="c.get('contactValue')?.invalid && c.get('contactValue')?.touched">
+                            {{ isTypeEmail(c) ? ('citizen.validation.emailInvalid' | transloco) : ('citizen.validation.numeric' | transloco) }}
+                        </small>
+                    </div>
+
+                    <!-- تاریخ شروع / پایان -->
+                    <div class="col-span-12 md:col-span-4">
+                        <label class="mb-1 block">{{ 'citizen.contact.startDate' | transloco }}</label>
+                        <p-persian-calendar formControlName="startDate"></p-persian-calendar>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-4">
+                        <label class="mb-1 block">{{ 'citizen.contact.endDate' | transloco }}</label>
+                        <p-persian-calendar formControlName="endDate"></p-persian-calendar>
+                    </div>
+                </div>
+
+                <!-- فیلدهای آدرس -->
+                <div class="grid grid-cols-12 gap-3" *ngIf="isTypeAddress(c)">
+                    <div class="col-span-12">
+                        <p-checkbox formControlName="usedForAddress" [binary]="true"
+                                    label="{{ 'citizen.contact.usedForAddress' | transloco }}"></p-checkbox>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-3">
+                        <label class="mb-1 block">{{ 'citizen.contact.provinceId' | transloco }} <span
+                            class="text-red-500">*</span></label>
+                        <p-dropdown
+                            class="dropdown-normal" class="w-full" [options]="provinceOptions" optionLabel="label"
+                            optionValue="value"
+                            formControlName="provinceId"></p-dropdown>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-3">
+                        <label class="mb-1 block">{{ 'citizen.contact.cityId' | transloco }} <span class="text-red-500">*</span></label>
+                        <p-dropdown
+                            class="dropdown-normal" class="w-full" [options]="cityOptions" optionLabel="label"
+                            optionValue="value"
+                            formControlName="cityId"></p-dropdown>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-6">
+                        <label class="mb-1 block">{{ 'citizen.contact.area' | transloco }} <span
+                            class="text-red-500">*</span></label>
+                        <input pInputText class="w-full" formControlName="area" />
+                    </div>
+
+                    <div class="col-span-12 md:col-span-3">
+                        <label class="mb-1 block">{{ 'citizen.contact.postalCode' | transloco }} <span
+                            class="text-red-500">*</span></label>
+                        <input pInputText class="w-full" formControlName="postalCode" inputmode="numeric"
+                               maxlength="10" />
+                        <small class="text-red-500"
+                               *ngIf="c.get('postalCode')?.invalid && c.get('postalCode')?.touched">
+                            {{ 'citizen.validation.postalCodeInvalid' | transloco }}
+                        </small>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-3">
+                        <label class="mb-1 block">{{ 'citizen.contact.inhabitancyType' | transloco }} <span
+                            class="text-red-500">*</span></label>
+                        <p-dropdown
+                            class="dropdown-normal" class="w-full" [options]="inhabitancyOptions" optionLabel="label"
+                            optionValue="value" formControlName="inhabitancyType"></p-dropdown>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-3">
+                        <label class="mb-1 block">{{ 'citizen.contact.startDate' | transloco }}</label>
+                        <p-persian-calendar formControlName="startDate"></p-persian-calendar>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-3">
+                        <label class="mb-1 block">{{ 'citizen.contact.endDate' | transloco }}</label>
+                        <p-persian-calendar formControlName="endDate"></p-persian-calendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p-table
+        [value]="contactsTable"
+        [paginator]="false"
+        styleClass="normal-table"
+        class="p-6 space-y-6"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>گروه نوع تماس</th>
+                <th>نوع تماس</th>
+                <th>شرح تماس</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">
+            <tr>
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                <td data-label="نوع تماس">
+                    {{ contact.contactTypeLabel }}
+                </td>
+
+                <td data-label="نوع تماس">
+                    {{ contact.groupContactTypeLabel }}
+                </td>
+
+                <td data-label="شرح تماس">
+                    {{ contact.description }}
+                </td>
+
+                <td data-label="تاریخ شروع">
+                    {{ contact.startDate | date: 'yyyy/MM/dd' }}
+                    <!-- اگر جلالی داری: | jdate:'YYYY/MM/DD' -->
+                </td>
+
+                <td data-label="تاریخ پایان">
+                    {{ contact.endDate | date: 'yyyy/MM/dd' }}
+                </td>
+
+
+                <td class="action-column">
+                    <div class="flex flex-column gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                        ></button>
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+                            class="p-button-sm p-button-rounded p-button-text p-button-success"
+                            pTooltip="ویرایش اطلاعات"
+                        ></button>
+
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Empty -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-table
+        [value]="addressTable"
+        [paginator]="false"
+        styleClass="normal-table"
+        class="p-6 space-y-6"
+    >
+
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ردیف</th>
+                <th>نوع نشانی</th>
+                <th>استان</th>
+                <th>شهر</th>
+                <th>منطقه</th>
+                <th>شرح نشانی</th>
+                <th>کدپستی</th>
+                <th>تلفن</th>
+                <th>تاریخ شروع</th>
+                <th>تاریخ پایان</th>
+                <th>عملیات</th>
+            </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-address let-rowIndex="rowIndex">
+            <tr>
+                <!-- ردیف -->
+                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+
+                <!-- نوع نشانی -->
+                <td data-label="نوع نشانی">{{ address.addressTypeLabel }}</td>
+
+                <!-- استان -->
+                <td data-label="استان">{{ address.provinceName }}</td>
+
+                <!-- شهر -->
+                <td data-label="شهر">{{ address.cityName }}</td>
+                <td data-label="منطقه">{{ address.region }}</td>
+
+                <!-- شرح نشانی -->
+                <td data-label="شرح نشانی">{{ address.addressDescription }}</td>
+
+                <!-- منطقه -->
+
+
+                <!-- کدپستی -->
+                <td data-label="کدپستی" class="ltr">{{ address.postalCode }}</td>
+
+                <!-- تلفن ۱ -->
+                <td data-label="تلفن" class="ltr">{{ address.phone1 }}</td>
+
+
+                <!-- تاریخ شروع -->
+                <td data-label="تاریخ شروع">{{ address.startDate | date:'yyyy/MM/dd' }}</td>
+
+                <!-- تاریخ پایان -->
+                <td data-label="تاریخ پایان">{{ address.endDate | date:'yyyy/MM/dd' }}</td>
+
+
+                <!-- عملیات -->
+                <td data-label="عملیات" class="action-column">
+                    <div class="flex flex-row gap-2">
+                        <button
+                            pButton
+                            icon="pi pi-eye"
+                            class="p-button-sm p-button-rounded p-button-text"
+                            pTooltip="مشاهده جزئیات"
+                            (click)="onView(address)"
+                        ></button>
+
+                        <button
+                            pButton
+                            icon="pi pi-pencil"
+                            class="p-button-sm p-button-rounded p-button-text p-button-success"
+                            pTooltip="ویرایش"
+                            (click)="onEdit(address)"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Empty -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="9" class="text-center py-4 text-gray-500">
+                    رکوردی برای نمایش موجود نیست.
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<p-dialog
+    appendTo="body"
+    [(visible)]="visibleAddress"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'1380px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="افزودن اطلاعات نشانی"
+    contentStyleClass="dialog-body card-filter">
+
+    <form class="form-grid" [formGroup]="formAddress" (ngSubmit)="submitAddress()">
+        <!-- ستون راست -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label">
+                    <span class="text-red-500">*</span> <span>نوع نشانی</span>:
+                </label>
+                <p-dropdown
+                    class="dropdown-normal" formControlName="addressType"
+                    [options]="addressTypes" optionLabel="label"></p-dropdown>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span class="text-red-500">*</span><span>استان</span>:</label>
+                <p-dropdown
+                    class="dropdown-normal" formControlName="provinceId"
+                    [options]="provinceOptions" optionLabel="label"></p-dropdown>
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span class="text-red-500">*</span><span>شهر</span>:</label>
+                <p-dropdown
+                    class="dropdown-normal" formControlName="cityId"
+                    [options]="cityOptions" optionLabel="label"></p-dropdown>
+            </div>
+        </div>
+
+        <!-- ستون میانی -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span>منطقه</span>:</label>
+                <input pInputText formControlName="postalCode" class="normal-input" maxlength="10">
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span class="text-red-500">*</span><span>شرح نشانی</span>:</label>
+                <input pInputText formControlName="zone" class="normal-input">
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span>کدپستی</span>:</label>
+                <input pInputText formControlName="postalCode" class="normal-input" maxlength="10">
+            </div>
+        </div>
+
+        <!-- ستون چپ -->
+        <div class="grid grid-cols-12 gap-3 md:gap-4 pb-3">
+
+
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span>تلفن</span>:</label>
+                <input pInputText formControlName="phoneNumber" class="normal-input">
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span class="text-red-500">*</span><span>تاریخ شروع</span>:</label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="startDate"></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="form-label"><span>تاریخ پایان</span>:</label>
+                <p-persian-calendar class="app-persian-calendar-style"
+                                    formControlName="endDate"></p-persian-calendar>
+            </div>
+        </div>
+
+        <div class="my-4 flex items-center justify-end gap-3">
+            <button
+                pButton
+                type="submit"
+                label="تایید"
+                icon="pi pi-check"
+                class="btn-standard p-button-success">
+            </button>
+            <button
+                pButton
+                type="button"
+                label="انصراف"
+                icon="pi pi-times"
+                severity="danger"
+                [outlined]="true"
+
+                (click)="closeAddress()"
+                class="btn-standard p-button-danger">
+            </button>
+        </div>
+    </form>
+</p-dialog>
+<p-dialog
+    appendTo="body"
+    [(visible)]="visibleContact"
+    [modal]="true"
+    [dismissableMask]="true"
+    [style]="{width:'1020px'}"
+    [draggable]="false"
+    [breakpoints]="{'960px':'95vw'}"
+    header="افزودن اطلاعات تماس"
+    contentStyleClass="dialog-body card-filter">
+
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="submitContact()">
+
+        <!-- ستون راست -->
+        <div class="grid grid-cols-9 gap-3 md:gap-4">
+            <div class="col-span-9 md:col-span-4 flex flex-col mb-2">
+                <label class="form-label">
+                    <span>
+                        گروه نوع تماس:</span>
+                </label>
+                <p-dropdown
+                    class="dropdown-normal" formControlName="group" [options]="groups"
+                    optionLabel="label"></p-dropdown>
+            </div>
+            <div class="col-span-9 md:col-span-4 flex flex-col mb-2">
+                <label class="form-label">
+                    <span>نوع تماس
+                :</span>
+                </label>
+                <p-dropdown
+                    class="dropdown-normal" formControlName="type" [options]="types"
+                    optionLabel="label"></p-dropdown>
+            </div>
+            <div class="col-span-9 md:col-span-1 flex items-center gap-2 mb-2">
+                <p-checkbox formControlName="isDefault" binary="true" inputId="isDefault"></p-checkbox>
+                <label for="isDefault" class="form-label">پیش‌فرض</label>
+            </div>
+        </div>
+
+        <!-- ستون میانی -->
+        <div class="grid grid-cols-9 gap-3 md:gap-4">
+            <div class="col-span-9 md:col-span-4 flex flex-col mb-2">
+                <label class="form-label">
+                    <span>تاریخ شروع
+                :</span>
+                </label>
+                <p-persian-calendar
+                    appendTo="body" class="app-persian-calendar-style" formControlName="startDate"></p-persian-calendar>
+            </div>
+
+            <div class="col-span-9 md:col-span-4 flex flex-col mb-2">
+                <label class="form-label">
+                    <span>تاریخ پایان
+                :</span>
+                </label>
+                <p-persian-calendar
+                    appendTo="body" class="app-persian-calendar-style" formControlName="endDate"></p-persian-calendar>
+            </div>
+        </div>
+
+        <!-- ستون چپ -->
+        <div class="grid grid-cols-9 gap-3 md:gap-4">
+            <div class="col-span-9 md:col-span-8 flex flex-col mb-2">
+                <label class="form-label"><span>اطلاعات تماس:</span></label>
+                <input pInputText formControlName="value" class="xx-ggg-8-input">
+            </div>
+        </div>
+        <div class="my-4 flex items-center justify-end gap-3">
+            <button
+                pButton
+                type="submit"
+                label="تایید"
+                icon="pi pi-check"
+                class="btn-standard p-button-success">
+            </button>
+            <button
+                pButton
+                type="button"
+                label="انصراف"
+                icon="pi pi-times"
+                severity="danger"
+                [outlined]="true"
+
+                (click)="closeContact()"
+                class="btn-standard p-button-danger">
+            </button>
+        </div>
+    </form>
+</p-dialog>
+
