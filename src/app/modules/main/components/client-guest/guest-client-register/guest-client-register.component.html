@@ -42,7 +42,7 @@
             </div>
             <div class="col-span-12 md:col-span-3 flex flex-col">
                 <label class="mt-8">
-                    <span  class="mr-2">{{ 'استعلام ثبت احوال اخذ گردد' | transloco }}:</span>
+                    <span class="mr-2">{{ 'استعلام ثبت احوال اخذ گردد' | transloco }}:</span>
                     <p-checkbox formControlName="checkShahab" binary="true"></p-checkbox>
                 </label>
             </div>
@@ -111,66 +111,76 @@
             <div class="col-span-12 md:col-span-12 flex flex-col">
                 <h3 class="text-gray-700 font-semibold text-lg pb-2">اطلاعات تماس</h3>
             </div>
-            <div class="col-span-12 md:col-span-3 flex flex-col">
-                    <label class=" mb-1">شماره تماس:</label>
-                    <input pInputText formControlName="phone" class="normal-input border rounded-md p-2"
-                           inputmode="numeric" maxlength="11" />
+            <div class="col-span-12 md:col-span-6 flex flex-col">
+                <div class="grid grid-cols-12 gap-3 md:gap-4">
+
+                    <div class="col-span-12 md:col-span-6 flex flex-col">
+                        <label class=" mb-1">شماره تماس:</label>
+                        <input pInputText formControlName="phone" class="normal-input border rounded-md p-2"
+                               inputmode="numeric" maxlength="11" />
+                    </div>
+                    <div class="col-span-12 md:col-span-6 flex flex-col">
+                        <label class="mb-1">نوع نشانی:</label>
+                        <p-dropdown formControlName="addressType" [options]="addressTypeOptions"
+                                    optionLabel="label" optionValue="value"
+                                    class="dropdown-normal"></p-dropdown>
+                    </div>
+                    <div class="col-span-12 md:col-span-6 flex flex-col">
+                        <label class="mb-1">استان:</label>
+                        <p-dropdown formControlName="province" [options]="provinceOptions"
+                                    optionLabel="label" optionValue="value"
+                                    class="dropdown-normal"></p-dropdown>
+                    </div>
+                    <div class="col-span-12 md:col-span-6 flex flex-col">
+                        <label class="mb-1">شهر:</label>
+                        <p-dropdown formControlName="city" [options]="cityOptions"
+                                    optionLabel="label" optionValue="value"
+                                    class="dropdown-normal"></p-dropdown>
+                    </div>
+                    <div class="col-span-12 md:col-span-6 flex flex-col">
+                        <label class=" mb-1">منطقه:</label>
+                        <input pInputText formControlName="region" class="normal-input border rounded-md p-2"
+                               inputmode="numeric" maxlength="11" />
+                    </div>
+                    <div class="col-span-12 md:col-span-6 flex flex-col">
+                        <label class=" mb-1">کدپستی:</label>
+                        <input pInputText formControlName="postalCode" class="normal-input border rounded-md p-2"
+                               inputmode="numeric" maxlength="11" />
+                    </div>
+                </div>
             </div>
-            <div class="col-span-12 md:col-span-3 flex flex-col">
-                <label class="mb-1">نوع نشانی:</label>
-                <p-dropdown formControlName="addressType" [options]="addressTypeOptions"
-                            optionLabel="label" optionValue="value"
-                            class="dropdown-normal"></p-dropdown>
+            <div class="col-span-12 md:col-span-6 flex flex-col">
+                <div class="grid grid-cols-12 gap-3 md:gap-4">
+                    <div class="col-span-12 md:col-span-12 flex flex-col">
+                        <div class="col-span-full">
+                            <label class="block mb-1">شرح نشانی:</label>
+                            <textarea pInputTextarea formControlName="addressDetail" rows="8"
+                                      class="normal-textarea border rounded-md p-2"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-span-12 md:col-span-3 flex flex-col">
-                <label class="mb-1">استان:</label>
-                <p-dropdown formControlName="province" [options]="provinceOptions"
-                            optionLabel="label" optionValue="value"
-                            class="dropdown-normal"></p-dropdown>
-            </div>
-            <div class="col-span-12 md:col-span-3 flex flex-col">
-                <label class="mb-1">شهر:</label>
-                <p-dropdown formControlName="city" [options]="cityOptions"
-                            optionLabel="label" optionValue="value"
-                            class="dropdown-normal"></p-dropdown>
-            </div>
-            <div class="col-span-12 md:col-span-3 flex flex-col">
-                <label class=" mb-1">منطقه:</label>
-                <input pInputText formControlName="region" class="normal-input border rounded-md p-2"
-                       inputmode="numeric" maxlength="11" />
-            </div>
-            <div class="col-span-12 md:col-span-3 flex flex-col">
-                <label class=" mb-1">کدپستی:</label>
-                <input pInputText formControlName="postalCode" class="normal-input border rounded-md p-2"
-                       inputmode="numeric" maxlength="11" />
-            </div>
-            <div class="col-span-full">
-                <label class="block mb-1">شرح نشانی:</label>
-                <textarea pInputTextarea formControlName="addressDetail" rows="3"
-                          class="normal-textarea border rounded-md p-2"></textarea>
+        </div>
+        <div class="app-card p-4 my-5 rounded-xl border border-slate-200">
+            <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start " dir="ltr">
+                <button
+                    pButton
+                    label="انصراف"
+                    severity="danger"
+                    [outlined]="true"
+                    type="button"
+                    class="p-button-secondary col-span-6 md:col-span-1 h-[40px]"
+                ></button>
+                <button
+                    pButton
+                    label="ذخیره"
+                    severity="success"
+                    type="submit"
+                    class="p-button-primary col-span-6 md:col-span-1 h-[40px]"
+                ></button>
             </div>
         </div>
     </div>
-    <div class="app-card p-4 my-5 rounded-xl border border-slate-200">
-        <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start " dir="ltr">
-            <button
-                pButton
-                label="انصراف"
-                severity="danger"
-                [outlined]="true"
-                type="button"
-                class="p-button-secondary col-span-6 md:col-span-1 h-[40px]"
-            ></button>
-            <button
-                pButton
-                label="ذخیره"
-                severity="success"
-                type="submit"
-                class="p-button-primary col-span-6 md:col-span-1 h-[40px]"
-            ></button>
-        </div>
-    </div>
-</div>
 
 
 

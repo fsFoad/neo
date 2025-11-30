@@ -31,7 +31,6 @@ import { Tooltip } from 'primeng/tooltip';
         PersianCalendarComponent,
         TableModule,
         Tooltip,
-        // PersianCalendarComponent, // اگر لازم شد
     ],
     templateUrl: './citizen-fr-activity-info.component.html',
     styleUrls: ['./citizen-fr-activity-info.component.scss'],
@@ -78,8 +77,6 @@ export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {
         { label: 'ندارد', value: false },
     ];
 
-
-// گزینه‌های نمونه (با بک‌اند خودت سینک کن)
     economicSectorOptions = [
         { label: 'کشاورزی', value: 'AGRI' },
         { label: 'صنعت', value: 'IND' },
@@ -126,21 +123,13 @@ export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {
         }
     ];
 
-// انتخاب‌ها
     selectedContacts: any[] = [];
-
- /*   actinityInformationDialog: FormGroup<RelationForm> = this.fb.group<RelationForm>({
-        searchType: this.fb.control<any | null>(null, { validators: Validators.required }),
-        searchValue: this.fb.control<string | null>(null, { validators: Validators.required }),
-        count: this.fb.control<any | null>(null, { validators: Validators.required }),
-    });*/
     activityInformationForm!: FormGroup;
     visibleActivityInformation = false;
     visiblePlaceDialog = false;
     visibleRelation = false;
     visibleDefinePlaceDialog = false;
     visiblePlaceOptionDialog = false;
-
     selectedRow :any;
     activityTable: Array<{
         economicSectorType: string;
@@ -158,7 +147,6 @@ export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {
         }
     ];
 
-// جدول جزئیات محل فعالیت: حداکثر یک ردیف نمونه
     placeDetailsTable: Array<{
         placeType: string;
         tenureType: string;
@@ -184,16 +172,6 @@ export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {
 
         this.sub.add(
             this.activityInformationForm.valueChanges.subscribe(() => {
-                // const val = this.getValue(); // خروجی به فرمت clientLinkLists
-                // const valid = this.relationForm.valid;
-                // this.valueChange.emit(val);
-                // this.validityChange.emit(valid);
-                // if (this.onValueChange) {
-                //     this.onValueChange(val);
-                // }
-                // if (this.onValidityChange) {
-                //     this.onValidityChange(valid);
-                // }
             })
         );
     }
@@ -213,83 +191,39 @@ export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {
     openContact() { this.visibleActivityInformation = true; }
     closeContact() { this.visibleActivityInformation = false; }
     submitActivityInfo() {
-        // TODO: ارسال فرم
         this.closeContact();
     }
 
     openDefinePlaceDialog(row: any) {
         this.selectedRow = row;
-        this.visiblePlaceOptionDialog = true; // دیالوگ تعریف باز شود
+        this.visiblePlaceOptionDialog = true;
     }
 
-// ویرایش محل فعالیت
     openEditPlaceDialog(row: any) {
         this.selectedRow = row;
-        this.visiblePlaceOptionDialog = true; // دیالوگ ویرایش باز شود
+        this.visiblePlaceOptionDialog = true;
     }
 
 // جزئیات محل فعالیت
     openPlaceDetailsDialog(row: any) {
         this.selectedRow = row;
-        this.visiblePlaceOptionDialog = true; // دیالوگ جزئیات باز شود
+        this.visiblePlaceOptionDialog = true;
     }
     openSetContactInfoDialog(row: any) {
         this.selectedRow = row;
         this.visibleDefinePlaceDialog = true;
     }
 
-    /** ویرایش اطلاعات تماس */
     openEditContactInfoDialog(row: any) {
         this.selectedRow = row;
         this.visibleDefinePlaceDialog = true;
     }
 
-    /** نمایش اطلاعات تماس */
     openShowContactInfoDialog(row: any) {
         this.selectedRow = row;
         this.visibleDefinePlaceDialog = true;
     }
-    onEditActivity(value:any) { this.visiblePlaceDialog = true; }
-    onEditActivityPlaceContact(value:any) { this.visiblePlaceDialog = false; }
-    onEditActivityPlacesubmitActivityInfo(value:any) {
-        // TODO: ارسال فرم
-        this.closeContact();
-    }
 
-    onViewActivityPlace(value:any) { this.visiblePlaceDialog = true; }
-    eonViewActivityPlaceContact(value:any) { this.visiblePlaceDialog = false; }
-    onViewActivityPlaceInfo(value:any) {
-        // TODO: ارسال فرم
-        this.closeContact();
-    }
-
-
-
-    onSetContactInfo(value:any) { this.visibleActivityInformation = true; }
-    onSetContactInfoContact(value:any) { this.visibleRelation = false; }
-    onSetContactInfoActivityInfo(value:any) {
-        // TODO: ارسال فرم
-        this.closeContact();
-    }
-    onEditPlace(value:any) { this.visibleActivityInformation = true; }
-    onEditPlaceContact(value:any) { this.visibleRelation = false; }
-    onEditPlacesubmitActivityInfo(value:any) {
-        // TODO: ارسال فرم
-        this.closeContact();
-    }
-
-    onShowContactInfo(value:any) { this.visibleActivityInformation = true; }
-    onShowContactInfoContact(value:any) { this.visibleRelation = false; }
-    onShowContactInfoInfo(value:any) {
-        // TODO: ارسال فرم
-        this.closeContact();
-    }
-
-
-
-    get contacts(): FormArray {
-        return this.activityInformationForm.get('contacts') as FormArray;
-    }
 
     submitPlace() {
         if (this.placeForm.invalid) return;
@@ -297,16 +231,13 @@ export class CitizenFrActivityInfoComponent implements OnInit, OnDestroy {
         // TODO: ارسال به سرور
     }
 
-// بستن دیالوگ
     closePlaceDialog() {
         this.visiblePlaceDialog = false;
         this.placeForm.reset();
 
     }
     confirmSelectedContacts() {
-        // TODO: هر کاری لازم داری با selection انجام بده
-        // console.log(this.selectedContacts);
-        this.closePlaceDialog();
+       this.closePlaceDialog();
     }
 
 // بستن دیالوگ

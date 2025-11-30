@@ -331,7 +331,8 @@ normal-button  "
         [rows]="5"
         [rowsPerPageOptions]="[5,10,25,50]"
         [loading]="loading"
-        styleClass="p-datatable-striped p-datatable-gridlines responsive-table"
+        selectionMode="single"
+        styleClass="normal-table"
     >
         <ng-template pTemplate="caption">
             <div class="flex justify-end gap-4 ">
@@ -374,7 +375,7 @@ normal-button  "
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
-            <tr>
+            <tr [pSelectableRow]="customer">
                 <!--
                    customerId: '1001',
             legalCustomerName: 'شرکت توسعه فناوری',

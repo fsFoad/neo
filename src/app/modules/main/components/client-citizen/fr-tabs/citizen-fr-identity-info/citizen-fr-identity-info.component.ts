@@ -20,6 +20,8 @@ import { MatIcon } from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { NeobankService } from '../../../../services/neobank.service';
+import { InputGroup } from 'primeng/inputgroup';
+import { InputGroupAddon } from 'primeng/inputgroupaddon';
 
 @Component({
     selector: 'app-citizen-fr-identity-info',
@@ -35,12 +37,13 @@ import { NeobankService } from '../../../../services/neobank.service';
         ButtonDirective,
         MatButton,
         MatIcon,
-
+        InputGroup,
+        InputGroupAddon,
     ],
     templateUrl: './citizen-fr-identity-info.component.html',
     styleUrl: './citizen-fr-identity-info.component.scss',
 })
-export class CitizenIdentityInfoComponent implements OnInit, OnDestroy {
+export class CitizenFrIdentityInfoComponent implements OnInit, OnDestroy {
     @Input() disabled = false;
     @Input() onValueChange?: (val: any) => void;
     @Input() onValidityChange?: (valid: boolean) => void;
@@ -56,49 +59,65 @@ export class CitizenIdentityInfoComponent implements OnInit, OnDestroy {
 
     genderOptions = [
         { label: 'مرد', value: 'male' },
-        { label: 'زن', value: 'female' }
+        { label: 'زن', value: 'female' },
     ];
 
     identityTypeOptions = [
         { label: 'شناسنامه', value: 1 },
-        { label: 'کارت ملی', value: 2 }
+        { label: 'کارت ملی', value: 2 },
     ];
 
     countryOptions = [
         { label: 'ایران', value: 1 },
-        { label: 'ترکیه', value: 2 }
+        { label: 'ترکیه', value: 2 },
     ];
 
     cityOptions = [
         { label: 'تهران', value: 101 },
-        { label: 'اصفهان', value: 102 }
+        { label: 'اصفهان', value: 102 },
     ];
 
     residenceTypeOptions = [
         { label: 'ایرانی', value: 'iranian' },
-        { label: 'اتباع', value: 'foreigner' }
+        { label: 'اتباع', value: 'foreigner' },
     ];
 
     aliveOptions = [
         { label: 'زنده', value: true },
-        { label: 'فوت‌شده', value: false }
+        { label: 'فوت‌شده', value: false },
     ];
 
     constructor(
         private fb: FormBuilder,
-        private neobankService:NeobankService
+        private neobankService: NeobankService
     ) {
         this.identityFg = this.fb.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             fatherName: ['', Validators.required],
-            nationalId: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+            nationalId: [
+                '',
+                [
+                    Validators.required,
+                    Validators.minLength(10),
+                    Validators.maxLength(10),
+                ],
+            ],
             birthDate: ['', Validators.required],
             gender: ['', Validators.required],
             identityNumber: ['', Validators.required],
-            identityAlphabeticPart: ['', [Validators.required, Validators.maxLength(2)]],
-            identityNumericPart: ['', [Validators.required, Validators.maxLength(3)]],
-            identitySerial: ['', [Validators.required, Validators.maxLength(6)]],
+            identityAlphabeticPart: [
+                '',
+                [Validators.required, Validators.maxLength(2)],
+            ],
+            identityNumericPart: [
+                '',
+                [Validators.required, Validators.maxLength(3)],
+            ],
+            identitySerial: [
+                '',
+                [Validators.required, Validators.maxLength(6)],
+            ],
             identityTypeId: ['', Validators.required],
             identityIssueCityId: ['', Validators.required],
             identityIssueRegion: [''],
@@ -108,7 +127,7 @@ export class CitizenIdentityInfoComponent implements OnInit, OnDestroy {
             residenceType: ['', Validators.required],
             nationalCardSerial: ['', Validators.required],
             isAlive: [true],
-            shahabCode: ['']
+            shahabCode: [''],
         });
     }
     onSearch() {
@@ -127,7 +146,8 @@ export class CitizenIdentityInfoComponent implements OnInit, OnDestroy {
         if (this.disabled) {
             this.identityFg.disable({ emitEvent: false });
         }
-        this.sub.add(this.identityFg.valueChanges.subscribe(() => {
+        this.sub.add(
+            this.identityFg.valueChanges.subscribe(() => {
                 const val = this.identityFg.getRawValue();
                 const valid = this.identityFg.valid;
                 this.valueChange.emit(val);
@@ -138,8 +158,10 @@ export class CitizenIdentityInfoComponent implements OnInit, OnDestroy {
                 if (this.onValidityChange) {
                     this.onValidityChange(valid);
                 }
-            }));
-        this.countryIsIran = this.identityFg.get('birthCountryId').value === 500;
+            })
+        );
+        this.countryIsIran =
+            this.identityFg.get('birthCountryId').value === 500;
         //this.neobankService.fetchRetriveclientinfo()
     }
 
@@ -152,13 +174,29 @@ export class CitizenIdentityInfoComponent implements OnInit, OnDestroy {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             fatherName: ['', Validators.required],
-            nationalId: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+            nationalId: [
+                '',
+                [
+                    Validators.required,
+                    Validators.minLength(10),
+                    Validators.maxLength(10),
+                ],
+            ],
             birthDate: ['', Validators.required],
             gender: ['', Validators.required],
             identityNumber: ['', Validators.required],
-            identityAlphabeticPart: ['', [Validators.required, Validators.maxLength(2)]],
-            identityNumericPart: ['', [Validators.required, Validators.maxLength(3)]],
-            identitySerial: ['', [Validators.required, Validators.maxLength(6)]],
+            identityAlphabeticPart: [
+                '',
+                [Validators.required, Validators.maxLength(2)],
+            ],
+            identityNumericPart: [
+                '',
+                [Validators.required, Validators.maxLength(3)],
+            ],
+            identitySerial: [
+                '',
+                [Validators.required, Validators.maxLength(6)],
+            ],
             identityTypeId: ['', Validators.required],
             identityIssueCityId: ['', Validators.required],
             identityIssueRegion: [''],

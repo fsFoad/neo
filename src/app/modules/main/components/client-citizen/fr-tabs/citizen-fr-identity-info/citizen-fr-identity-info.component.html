@@ -1,11 +1,13 @@
 
 <div class="app-card p-4 rounded-xl border border-slate-200 mt-4">
-    <div class="grid grid-cols-12 gap-3 md:gap-4 mt-4">
-        <div class="col-span-12 md:col-span-4 flex flex-col">
-            <label class="mb-1">
+    <div class="grid grid-cols-12 gap-3 md:gap-4 mt-5">
+        <div class="col-span-12 md:col-span-4 flex flex-col ">
+            <label class="mb-1 block">
                 <span class="text-red-500">* </span>
-                <span>{{ 'citizen.identity.nationalId' | transloco }}:</span>
+                <span>{{ 'کد اتباع' | transloco }}:</span>
             </label>
+            <div class="flex flex-row gap-4 items-stretch">
+            <p-inputgroup class="normal-input-group">
             <input
                 pInputText
                 [ngModelOptions]="{ standalone: true }"
@@ -14,38 +16,37 @@
                 inputmode="numeric"
                 maxlength="10"
             />
-        </div>
-        <div class="col-span-12 md:col-span-4 flex flex-col">
-            <label class="mb-1">
-                <span>{{ 'citizen.identity.birthDate' | transloco }}:</span>
-            </label>
-            <p-persian-calendar
-                class="app-persian-calendar-style"
-                [ngModelOptions]="{ standalone: true }"
-                [(ngModel)]="birthDateSearch"
-            ></p-persian-calendar>
-        </div>
-        <div class="col-span-12 md:col-span-4 flex items-end gap-2" dir="ltr">
-            <button
-                pButton
-                type="button"
-                icon="pi pi-search"
-                iconPos="right"
-                label="{{ 'citizen.actions.search' | transloco }}"
-                class="normal-button p-button !px-2 !py-0"
-                (click)="onSearch()"
-            ></button>
+
+
+                <p-inputgroup-addon class="form-control-addon">
+                    <button
+                        pButton
+                        icon="pi pi-search"
+                        (click)="onSearch()"
+                    ></button>
+                </p-inputgroup-addon>
+
+
+            </p-inputgroup>
             <button
                 pButton
                 type="button"
                 iconPos="right"
-                [label]="'استعلام'"
+                [label]="'استعلام پژواک'"
                 icon="pi pi-id-card"
                 [outlined]="true"
                 class="normal-button p-button h-[38px] !min-h-[38px] !px-2 !py-0"
                 [loading]="loadingInquiry"
                 (click)="onInquiry()"
             ></button>
+            </div>
+
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+
+        </div>
+      <!--  <div class="col-span-12 md:col-span-4 flex items-end gap-2" dir="ltr">
+
 
             <button
                 pButton
@@ -75,7 +76,7 @@
                     </button>
                 </div>
             </ng-template>
-        </div>
+        </div>-->
     </div>
 </div>
 <form [formGroup]="identityFg" class="app-card p-4 rounded-xl border border-slate-200 my-5">
@@ -104,12 +105,12 @@
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">
                 <span class="text-red-500">* </span>
-                <span>{{ 'citizen.identity.nationalId' | transloco }}:</span>
+                <span>{{ 'کد اتباع' | transloco }}:</span>
             </label>
             <input pInputText formControlName="nationalId" class="normal-input" inputmode="numeric" maxlength="10" />
             <small class="text-red-500"
                    *ngIf="identityFg.get('nationalId')?.invalid && identityFg.get('nationalId')?.touched">
-                شناسه ملی نامعتبر است.
+                کد اتباع نامعتبر است.
             </small>
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -122,10 +123,82 @@
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">
                 <span class="text-red-500">* </span>
+                <span>{{ 'citizen.identity.birthCountryId' | transloco }}:</span>
+            </label>
+            <p-dropdown class="dropdown-normal" [options]="countryOptions" optionLabel="label" optionValue="value"
+                        formControlName="birthCountryId"></p-dropdown>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span *ngIf="countryIsIran" class="text-red-500">* </span>
+                <span>{{ 'نوع مجوز اقامت' | transloco }}:</span>
+            </label>
+            <p-dropdown class="dropdown-normal" [options]="cityOptions" optionLabel="label" optionValue="value"
+                        formControlName="birthCityId"></p-dropdown>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span>{{ 'شماره مجوز اقامت' | transloco }}:</span>
+            </label>
+            <input pInputText formControlName="shahabCode" class="normal-input" />
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span>{{ 'سازمان معرف' | transloco }}:</span>
+            </label>
+            <input pInputText formControlName="shahabCode" class="normal-input" />
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'تاریخ صدور مجوز اقامت' | transloco }}:</span>
+            </label>
+            <p-persian-calendar class="app-persian-calendar-style" formControlName="birthDate"></p-persian-calendar>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'تاریخ انقضا مجوز اقامت' | transloco }}:</span>
+            </label>
+            <p-persian-calendar class="app-persian-calendar-style" formControlName="birthDate"></p-persian-calendar>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'ملیت' | transloco }}:</span>
+            </label>
+            <p-dropdown class="dropdown-normal" [options]="identityTypeOptions" optionLabel="label" optionValue="value"
+                        formControlName="identityTypeId"></p-dropdown>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
                 <span>{{ 'citizen.identity.gender' | transloco }}:</span>
             </label>
             <p-dropdown class="dropdown-normal" [options]="genderOptions" optionLabel="label" optionValue="value"
                         formControlName="gender"></p-dropdown>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'citizen.identity.residenceType' | transloco }}:</span>
+            </label>
+            <p-dropdown class="dropdown-normal" [options]="residenceTypeOptions" optionLabel="label" optionValue="value"
+                        formControlName="residenceType"></p-dropdown>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span>{{ 'citizen.identity.shahabCode' | transloco }}:</span>
+            </label>
+            <input pInputText formControlName="shahabCode" class="normal-input" />
+        </div>
+       <!-- <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">
+                <span class="text-red-500">* </span>
+                <span>{{ 'citizen.identity.nationalCardSerial' | transloco }}:</span>
+            </label>
+            <input pInputText formControlName="nationalCardSerial" class="normal-input" />
         </div>
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">
@@ -186,22 +259,8 @@
                 <span>{{ 'citizen.identity.issueDate' | transloco }}:</span></label>
             <p-persian-calendar class="app-persian-calendar-style" formControlName="identityDate"></p-persian-calendar>
         </div>
-        <div class="col-span-12 md:col-span-4 flex flex-col">
-            <label class="mb-1">
-                <span class="text-red-500">* </span>
-                <span>{{ 'citizen.identity.birthCountryId' | transloco }}:</span>
-            </label>
-            <p-dropdown class="dropdown-normal" [options]="countryOptions" optionLabel="label" optionValue="value"
-                        formControlName="birthCountryId"></p-dropdown>
-        </div>
-        <div class="col-span-12 md:col-span-4 flex flex-col">
-            <label class="mb-1">
-                <span *ngIf="countryIsIran" class="text-red-500">* </span>
-                <span>{{ 'citizen.identity.birthCityId' | transloco }}:</span>
-            </label>
-            <p-dropdown class="dropdown-normal" [options]="cityOptions" optionLabel="label" optionValue="value"
-                        formControlName="birthCityId"></p-dropdown>
-        </div>
+
+
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">
                 <span class="text-red-500">* </span>
@@ -210,25 +269,14 @@
             <p-dropdown class="dropdown-normal" [options]="residenceTypeOptions" optionLabel="label" optionValue="value"
                         formControlName="residenceType"></p-dropdown>
         </div>
-        <div class="col-span-12 md:col-span-4 flex flex-col">
-            <label class="mb-1">
-                <span class="text-red-500">* </span>
-                <span>{{ 'citizen.identity.nationalCardSerial' | transloco }}:</span>
-            </label>
-            <input pInputText formControlName="nationalCardSerial" class="normal-input" />
-        </div>
+
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">
                 <span>{{ 'citizen.identity.isAlive' | transloco }}:</span>
             </label>
             <p-dropdown class="dropdown-normal" [options]="aliveOptions" optionLabel="label" optionValue="value"
                         formControlName="isAlive"></p-dropdown>
-        </div>
-        <div class="col-span-12 md:col-span-4 flex flex-col">
-            <label class="mb-1">
-                <span>{{ 'citizen.identity.shahabCode' | transloco }}:</span>
-            </label>
-            <input pInputText formControlName="shahabCode" class="normal-input" />
-        </div>
+        </div>-->
+
     </div>
 </form>

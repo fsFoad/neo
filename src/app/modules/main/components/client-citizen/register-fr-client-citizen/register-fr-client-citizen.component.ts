@@ -25,6 +25,27 @@ import { CitizenCommercialInfoComponent } from '../ir-tabs/citizen-commercial-in
 import { CitizenPassportInfoComponent } from '../ir-tabs/citizen-passport-info/citizen-passport-info.component';
 import { CitizenLicenseInfoComponent } from '../ir-tabs/citizen-license-info/citizen-license-info.component';
 import { CitizenConfirmationInfoComponent } from '../ir-tabs/citizen-confirmation-info/citizen-confirmation-info.component';
+import { CitizenFrIdentityInfoComponent } from '../fr-tabs/citizen-fr-identity-info/citizen-fr-identity-info.component';
+import { CitizenFrActivityInfoComponent } from '../fr-tabs/citizen-fr-activity-info/citizen-fr-activity-info.component';
+import { CitizenFrContactInfoComponent } from '../fr-tabs/citizen-fr-contact-info/citizen-fr-contact-info.component';
+import {
+    CitizenFrSignatureInfoComponent
+} from '../fr-tabs/citizen-fr-signature-info/citizen-fr-signature-info.component';
+import {
+    CitizenFrRelationsInfoComponent
+} from '../fr-tabs/citizen-fr-relations-info/citizen-fr-relations-info.component';
+import {
+    CitizenFrDocumentsInfoComponent
+} from '../fr-tabs/citizen-fr-documents-info/citizen-fr-documents-info.component';
+import {
+    CitizenFrEducationInfoComponent
+} from '../fr-tabs/citizen-fr-education-info/citizen-fr-education-info.component';
+import { CitizenFrExtraInfoComponent } from '../fr-tabs/citizen-fr-extra-info/citizen-fr-extra-info.component';
+import {
+    CitizenFrCommercialInfoComponent
+} from '../fr-tabs/citizen-fr-commercial-info/citizen-fr-commercial-info.component';
+import { CitizenFrPassportInfoComponent } from '../fr-tabs/citizen-fr-passport-info/citizen-fr-passport-info.component';
+import { CitizenFrLicenseInfoComponent } from '../fr-tabs/citizen-fr-license-info/citizen-fr-license-info.component';
 
 interface RegisterTabDef<TTabId extends string> {
     id: TTabId;
@@ -49,12 +70,9 @@ interface RegisterTabDef<TTabId extends string> {
 })
 export class RegisterFrClientCitizenComponent implements OnInit {
     @Input() InputFrCitizen;
-    // تب‌های FR – بعداً اگه خواستی می‌تونی این لیست رو متفاوت از IR کنی
     tabs: RegisterTabDef<FrRegisterTabId>[] = [];
 
     selectedIndex = 0;
-
-    // برای هدر بالا
     fullName = '';
     nationalCode = '';
     customerNo = '';
@@ -80,7 +98,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'identity',
                 label: 'اطلاعات اصلی',
                 icon: 'badge',
-                cmp: CitizenIdentityInfoComponent,
+                cmp: CitizenFrIdentityInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -93,7 +111,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'contact',
                 label: 'اطلاعات تماس',
                 icon: 'contacts',
-                cmp: CitizenContactInfoComponent,
+                cmp: CitizenFrContactInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -106,7 +124,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'signature',
                 label: 'امضاء',
                 icon: 'draw',
-                cmp: CitizenSignatureInfoComponent,
+                cmp: CitizenFrSignatureInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -119,7 +137,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'relations',
                 label: 'روابط',
                 icon: 'group',
-                cmp: CitizenRelationsInfoComponent,
+                cmp: CitizenFrRelationsInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -132,7 +150,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'industry',
                 label: 'زمینه فعالیت',
                 icon: 'category',
-                cmp: CitizenActivityInfoComponent,
+                cmp: CitizenFrActivityInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -145,7 +163,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'education',
                 label: 'اطلاعات تحصیلی',
                 icon: 'school',
-                cmp: CitizenEducationInfoComponent,
+                cmp: CitizenFrEducationInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -158,7 +176,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'documents',
                 label: 'مستندات',
                 icon: 'folder_open',
-                cmp: CitizenDocumentsInfoComponent,
+                cmp: CitizenFrDocumentsInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -171,7 +189,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'extra',
                 label: 'اطلاعات تکمیلی',
                 icon: 'info',
-                cmp: CitizenExtraInfoComponent,
+                cmp: CitizenFrExtraInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -184,7 +202,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'business',
                 label: 'اطلاعات تجاری',
                 icon: 'storefront',
-                cmp: CitizenCommercialInfoComponent,
+                cmp: CitizenFrCommercialInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -197,7 +215,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'passport',
                 label: 'اطلاعات گذرنامه - تابعیت',
                 icon: 'public',
-                cmp: CitizenPassportInfoComponent,
+                cmp: CitizenFrPassportInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>
@@ -210,7 +228,7 @@ export class RegisterFrClientCitizenComponent implements OnInit {
                 id: 'license',
                 label: 'اطلاعات مجوز',
                 icon: 'verified',
-                cmp: CitizenLicenseInfoComponent,
+                cmp: CitizenFrLicenseInfoComponent,
                 inputs: {
                     disabled: false,
                     onValueChange: (payload: any) =>

@@ -78,7 +78,20 @@ export class ThemeService {
         document.documentElement.style.setProperty('--app-background', bg);
         localStorage.setItem('app_background', name);
     }
+    hexToRgbList(hex: string): string {
+        if (!hex) return '0, 0, 0';
 
+        hex = hex.replace('#', '');
+        if (hex.length === 3) {
+            hex = hex.split('').map(c => c + c).join('');
+        }
+
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+
+        return `${r}, ${g}, ${b}`; // دقیقا با کاما که تو rgba کار کنه
+    }
     applyStoredBackground() {
         const name = (localStorage.getItem('app_background') as BackgroundPresetName) ?? 'none';
         this.setBackgroundPreset(name);
@@ -88,6 +101,7 @@ export class ThemeService {
      * اعمال پالت رنگ
      * ---------------------------------------------------- */
     applyPalette(palette: MinimalPalette, store = true): void {
+        this.setVar('--fuse-primary-rgb', this.hexToRgbList(palette.primary));
         this.setVar('--primary', palette.primary);
         this.setVar('--accent', palette.accent);
         this.setVar('--warn', palette.warn);
@@ -168,6 +182,12 @@ export class ThemeService {
         this.setVar('--p-inputtext-border-color', (palette.onSurface ?? '') + '33');
         this.setVar('--p-inputtext-focus-border-color', palette.primary);
         this.setVar('--p-inputtext-focus-ring-color', palette.primary + '55');
+        this.setVar('--p-inputtext-background', palette.surface ?? '#ffffff');
+        this.setVar('--p-inputtext-color', palette.onSurface ?? '#111111');
+        this.setVar('--p-inputtext-border-color', (palette.onSurface ?? '#111111') + '33');
+        this.setVar('--p-inputtext-focus-border-color', palette.primary);
+        this.setVar('--p-inputtext-focus-ring-color', palette.primary + '55');
+        this.setVar('--p-focus-ring-color', palette.primary + '55');
         this.setVar('--p-focus-ring-color', palette.primary + '55');
         /* ---------------------------
            PrimeNG Checkbox
@@ -198,6 +218,39 @@ export class ThemeService {
         this.setVar('--p-inputswitch-checked-handle-bg', '#ffffff');
 
         /* ---------------------------
+           PrimeNG Table
+        ---------------------------- */
+        this.setVar('--p-datatable-row-bg', 'transparent');
+        this.setVar('--p-datatable-row-color', palette.onSurface ?? '#333');
+
+        this.setVar('--p-datatable-row-hover-bg', palette.onSurface + '0D');
+        this.setVar('--p-datatable-row-hover-color', palette.onSurface);
+
+        this.setVar('--p-datatable-header-bg', palette.surface);
+        this.setVar('--p-datatable-header-color', palette.onSurface);
+        this.setVar('--p-datatable-header-border-color', (palette.onSurface ?? '') + '22');
+        this.setVar('--p-datatable-row-background', 'transparent');
+        this.setVar('--p-datatable-row-color', palette.onSurface ?? '#333');
+
+        this.setVar('--p-datatable-row-hover-background', (palette.onSurface ?? '#333') + '0D');
+        this.setVar('--p-datatable-row-hover-color', palette.onSurface ?? '#333');
+
+        this.setVar('--p-datatable-row-selected-background', palette.primary + '22');
+        this.setVar('--p-datatable-row-selected-color', '#ffffff');
+
+        this.setVar('--p-datatable-header-background', palette.surface ?? '#ffffff');
+        this.setVar('--p-datatable-header-color', palette.onSurface ?? '#333');
+        this.setVar('--p-datatable-header-border-color', (palette.onSurface ?? '#333') + '22');
+        this.setVar('--p-datatable-row-background', 'transparent');
+        this.setVar('--p-datatable-row-color', palette.onSurface ?? '#333');
+
+        this.setVar('--p-datatable-row-hover-background', (palette.onSurface ?? '#000') + '0D');
+        this.setVar('--p-datatable-row-hover-color', palette.onSurface ?? '#000');
+
+        this.setVar('--p-datatable-row-selected-background', palette.primary + '1A');
+        this.setVar('--p-datatable-row-selected-color', palette.primary);
+        this.setVar('--p-datatable-border-color', (palette.onSurface ?? '#333') + '22');
+        /* ---------------------------
            PrimeNG ToggleButton
         ---------------------------- */
         this.setVar('--p-togglebutton-bg', palette.surface ?? '#fff');
@@ -207,7 +260,47 @@ export class ThemeService {
         this.setVar('--p-togglebutton-checked-bg', palette.primary);
         this.setVar('--p-togglebutton-checked-border-color', palette.primary);
         this.setVar('--p-togglebutton-checked-color', '#ffffff');
+        /* ---------------------------
+         * PrimeNG DataTable
+         * -------------------------- */
 
+        const onSurface = palette.onSurface ?? '#111827';
+        const primary = palette.primary ?? '#0ea5e9';
+        const isDark = this.isColorDark(palette.background ?? '#ffffff');
+
+// رنگ hover ردیف (خیلی نرم، از onSurface)
+        const rowHoverBg = this.withAlpha(onSurface, isDark ? 0.22 : 0.06);
+
+// رنگ پس‌زمینه ردیف انتخاب‌شده (بر اساس primary)
+        const rowSelectedBg = this.withAlpha(primary, isDark ? 0.35 : 0.16);
+
+// متن ردیف انتخاب‌شده بسته به روشن/تاریک بودن background
+        const rowSelectedText = this.isColorDark(rowSelectedBg) ? '#ffffff' : onSurface;
+
+// رنگ‌های ردیف عادی
+        this.setVar('--p-datatable-row-background', 'transparent');
+        this.setVar('--p-datatable-row-color', onSurface);
+
+// hover
+        this.setVar('--p-datatable-row-hover-background', rowHoverBg);
+        this.setVar('--p-datatable-row-hover-color', onSurface);
+
+// selected
+        this.setVar('--p-datatable-row-selected-background', rowSelectedBg);
+        this.setVar('--p-datatable-row-selected-color', rowSelectedText);
+
+// header و border
+        this.setVar('--p-datatable-header-background', palette.surface ?? '#ffffff');
+        this.setVar('--p-datatable-header-color', onSurface);
+        this.setVar('--p-datatable-header-border-color', (palette.onSurface ?? '#000000') + '22');
+        this.setVar('--p-datatable-border-color', (palette.onSurface ?? '#000000') + '22');
+        this.setVar('--p-datatable-transition-duration', '150ms');
+        this.setVar('--p-datatable-row-focus-ring-width', '1px');
+        this.setVar('--p-datatable-row-focus-ring-style', 'solid');
+        this.setVar('--p-datatable-row-focus-ring-color', palette.primary);
+        this.setVar('--p-datatable-row-focus-ring-offset', '0');
+        this.setVar('--p-datatable-row-focus-ring-shadow', `0 0 0 2px ${palette.primary}33`);
+        this.setVar('--p-datatable-body-cell-selected-border-color', palette.primary);
         /* ---------------------------
            Material
         ---------------------------- */
@@ -217,7 +310,6 @@ export class ThemeService {
         /* ---------------------------
            Dark mode Auto
         ---------------------------- */
-        const isDark = this.isColorDark(palette.background ?? '#ffffff');
         this.toggleDarkMode(isDark);
 
         /* ---------------------------
@@ -301,7 +393,20 @@ export class ThemeService {
 
         localStorage.setItem('app_card_preset', name);
     }
+     withAlpha(hex: string, alpha: number): string {
+        if (!hex) return 'transparent';
 
+        hex = hex.replace('#', '');
+        if (hex.length === 3) {
+            hex = hex.split('').map(c => c + c).join('');
+        }
+
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
     applyStoredCardPreset() {
         //بخش بوردر و شادو تم
         const name = localStorage.getItem('app_card_preset') ?? 'bankPaper';

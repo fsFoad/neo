@@ -29,7 +29,7 @@ import {PersianCalendarComponent} from "../../../../../shared/components/persian
         // برای | transloco
     ],
 })
-export class CitizenLicenseInfoComponent {
+export class CitizenFrLicenseInfoComponent {
     // ورودی/خروجی استاندارد تب‌ها
     @Input() disabled = false;
     @Input() onValueChange: (v: any) => void;

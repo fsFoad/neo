@@ -3,6 +3,7 @@
     --p-checkbox-checked-bg: var(--color-primary);
     --p-checkbox-checked-border-color: var(--color-primary);
     --p-checkbox-hover-border-color: var(--color-primary-hover, var(--color-primary));
+
 }
 .normal-input {
     @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition w-3/4 focus:outline-none focus:ring-2 focus:ring-primary;
@@ -1498,24 +1499,6 @@ textarea,
     background: var(--color-surface);
     border-radius: var(--radius-lg);
 }
-.p-datatable .p-datatable-tbody > tr {
-    background: var(--p-datatable-row-bg) !important;
-    transition: background 0.2s ease;
-}
-
-.p-datatable .p-datatable-tbody > tr:hover {
-    background: var(--p-datatable-row-hover-bg) !important;
-}
-
-/* Selected Row */
-.p-datatable .p-datatable-tbody > tr.p-highlight {
-    background: var(--primary) !important;
-    color: #fff !important;
-}
-
-.p-datatable .p-datatable-tbody > tr.p-highlight .p-checkbox-box {
-    border-color: #fff !important;
-}
 .dark-mode .p-dialog,
 .dark-mode .p-drawer,
 .dark-mode .p-tooltip,
@@ -2719,4 +2702,127 @@ anglerighticon {
 
 .p-button.p-button-danger.p-button-outlined .p-button-icon {
     color: inherit !important; /* آیکون هم مثل متن */
+}
+
+
+/*
+.p-datatable .p-datatable-tbody > tr > td {
+    background: inherit !important;  !* یعنی همون background ردیف *!
+    color: inherit !important;
+}
+
+!* ردیف انتخاب‌شده *!
+.p-datatable .p-datatable-tbody > tr.p-datatable-row-selected {
+    background: var(--p-datatable-row-selected-background) !important;
+    color: var(--p-datatable-row-selected-color) !important;
+}
+
+!* hover ردیف *!
+.p-datatable .p-datatable-tbody > tr:hover {
+    background: var(--p-datatable-row-hover-background) !important;
+    color: var(--p-datatable-row-hover-color) !important;
+}
+.p-datatable .p-datatable-tbody > tr {
+    background: var(--p-datatable-row-background);
+    color: var(--p-datatable-row-color);
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    background: var(--p-datatable-row-background);
+}
+.p-datatable-hoverable .p-datatable-tbody > tr:not(.p-datatable-row-selected):hover {
+    background: var(--p-datatable-row-hover-background);
+    color: var(--p-datatable-row-hover-color);
+}
+.p-datatable-tbody > tr:focus-visible, .p-datatable-tbody > tr.p-datatable-contextmenu-row-selected {
+    box-shadow: var(--p-datatable-row-focus-ring-shadow);
+    outline: var(--p-datatable-row-focus-ring-width) var(--p-datatable-row-focus-ring-style) var(--p-datatable-row-focus-ring-color);
+    outline-offset: var(--p-datatable-row-focus-ring-offset);
+}
+*/
+.p-datatable .p-datatable-tbody > tr {
+    background: var(--p-datatable-row-background);
+    color: var(--p-datatable-row-color);
+    transition:
+        background var(--p-datatable-transition-duration),
+        color var(--p-datatable-transition-duration),
+        border-color var(--p-datatable-transition-duration),
+        outline-color var(--p-datatable-transition-duration),
+        box-shadow var(--p-datatable-transition-duration);
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    background: inherit;
+    color: inherit;
+}
+
+.p-datatable .p-datatable-tbody > tr.p-datatable-row-selected,
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+    background: var(--p-datatable-row-selected-background);
+    color: var(--p-datatable-row-selected-color);
+}
+
+.p-datatable .p-selectable-row {
+    cursor: pointer;
+}
+/* خود کانتینر جدول */
+.p-datatable.rounded-table .p-datatable-wrapper {
+    border-radius: 0.75rem;        /* مثل rounded-xl */
+    overflow: hidden;
+    border: 1px solid var(--p-datatable-border-color);
+}
+
+/* اگر خواستی گوشه‌های header هم نرم‌تر بشن (اختیاری) */
+.p-datatable.rounded-table .p-datatable-thead > tr > th:first-child {
+    border-top-left-radius: 0.75rem;
+}
+.p-datatable.rounded-table .p-datatable-thead > tr > th:last-child {
+    border-top-right-radius: 0.75rem;
+}
+
+/* گوشه‌های پایین در صورت داشتن tfoot (اختیاری) */
+.p-datatable.rounded-table .p-datatable-tfoot > tr > td:first-child {
+    border-bottom-left-radius: 0.75rem;
+}
+.p-datatable.rounded-table .p-datatable-tfoot > tr > td:last-child {
+    border-bottom-right-radius: 0.75rem;
+}
+.p-datatable.normal-table {
+    border-radius: 0.75rem; /* مثل inputهات: rounded-xl تقریباً */
+    overflow: hidden;       /* خیلی مهم، تا سِلول‌ها از گوشه نزنن بیرون */
+    border: 1px solid var(--p-datatable-border-color);
+    background: var(--p-datatable-header-background);
+}
+
+/* خود کانتینر جدول */
+.p-datatable.normal-table .p-datatable-table-container {
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+/* خود تِیبِل وسط */
+.p-datatable.normal-table .p-datatable-table {
+    border-collapse: separate;
+    border-spacing: 0; /* که بین سلول‌ها فاصله نباشه و رَدیوس تمیز دیده بشه */
+}
+.toggle-advanced-search {
+    color: var(--color-primary); /* ✅ رنگ از تم */
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-advanced-search:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 8%, transparent); /* یه بک‌گراند خیلی لایت از primary */
+    color: var(--color-primary-hover, var(--color-primary));                     /* روی hover از accent/hover استفاده کن */
+}
+.text-primary {
+    --tw-text-opacity: 1 !important;
+    color: var(--color-primary) !important; /* یا مثلاً var(--p-button-primary-background) */
 }
