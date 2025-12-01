@@ -13,6 +13,7 @@ import { CollateralSelectorComponent } from './collateral-selector/collateral-se
 import { TableModule } from 'primeng/table';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { Dialog } from 'primeng/dialog';
+import { Tooltip } from 'primeng/tooltip';
 
 @Component({
     selector: 'app-loan-proposed',
@@ -33,6 +34,7 @@ import { Dialog } from 'primeng/dialog';
         TableModule,
         TranslocoPipe,
         Dialog,
+        Tooltip,
     ],
     templateUrl: './loan-proposed.component.html',
     styleUrl: './loan-proposed.component.scss',
@@ -65,8 +67,7 @@ export class LoanProposedComponent implements OnInit {
         },
     ];
 
-
-  /*  ngOnInit(): void {
+    /*  ngOnInit(): void {
         this.proposedForm = this.fb.group({
             amount: [''],
             profitCalcMethod: [''],
