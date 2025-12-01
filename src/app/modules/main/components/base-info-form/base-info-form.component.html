@@ -1,0 +1,201 @@
+<form class="page" dir="rtl" (ngSubmit)="onSubmit()">
+    <!-- هدر بالا -->
+    <div class="header">
+        سامانه بانکداری متمرکز
+    </div>
+
+    <!-- ساب هدر -->
+    <div class="sub-header">
+        مدیریت پارامترها - اطلاعات پایه
+    </div>
+
+    <!-- نوار دکمه‌ها -->
+    <p-toolbar styleClass="toolbar">
+        <div class="p-toolbar-group-left toolbar-buttons">
+            <button
+                pButton
+                type="button"
+                label="بازگشت"
+                class="p-button-secondary p-button-sm"
+                (click)="onBack()"
+            ></button>
+
+            <button
+                pButton
+                type="button"
+                label="غیرفعال"
+                class="p-button-secondary p-button-sm"
+                (click)="onDeactivate()"
+            ></button>
+
+            <button
+                pButton
+                type="button"
+                label="فعال"
+                class="p-button-secondary p-button-sm"
+                (click)="onActivate()"
+            ></button>
+
+            <button
+                pButton
+                type="button"
+                label="ایجاد"
+                class="p-button-sm"
+                (click)="onCreate()"
+            ></button>
+        </div>
+    </p-toolbar>
+
+    <!-- ردیف دراپ‌داون‌ها -->
+    <div class="form-row">
+        <div class="field">
+            <label for="baseInfoType">نوع اطلاعات پایه</label>
+            <p-dropdown
+                id="baseInfoType"
+                name="baseInfoType"
+                [options]="baseInfoTypes"
+                [(ngModel)]="form.baseInfoType"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="انتخاب کنید"
+            ></p-dropdown>
+        </div>
+
+        <div class="field">
+            <label for="comboCode">شناسه کدینگ جزئیات</label>
+            <p-dropdown
+                id="comboCode"
+                name="comboCode"
+                [options]="comboCodes"
+                [(ngModel)]="form.comboCode"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="انتخاب کنید"
+            ></p-dropdown>
+        </div>
+    </div>
+
+    <p-divider></p-divider>
+
+    <!-- ردیف عنوان فارسی + پیش‌فرض -->
+    <div class="form-row">
+        <div class="field">
+            <label for="faTitle">عنوان فارسی کمبو جزئیات</label>
+            <input
+                id="faTitle"
+                name="faTitle"
+                pInputText
+                [(ngModel)]="form.faTitle"
+                class="text-input"
+            />
+        </div>
+
+        <div class="field field-radio">
+            <label>پیش‌فرض</label>
+            <div class="radio-group">
+                <p-radioButton
+                    name="isDefault"
+                    inputId="defaultYes"
+                    [value]="'yes'"
+                    [(ngModel)]="form.isDefault"
+                ></p-radioButton>
+                <label for="defaultYes">بله</label>
+
+                <p-radioButton
+                    name="isDefault"
+                    inputId="defaultNo"
+                    [value]="'no'"
+                    [(ngModel)]="form.isDefault"
+                ></p-radioButton>
+                <label for="defaultNo">خیر</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- ردیف عنوان لاتین + وضعیت -->
+    <div class="form-row">
+        <div class="field">
+            <label for="enTitle">عنوان لاتین کمبو جزئیات</label>
+            <input
+                id="enTitle"
+                name="enTitle"
+                pInputText
+                [(ngModel)]="form.enTitle"
+                class="text-input"
+            />
+        </div>
+
+        <div class="field field-radio">
+            <label>وضعیت</label>
+            <div class="radio-group">
+                <p-radioButton
+                    name="status"
+                    inputId="statusActive"
+                    [value]="'active'"
+                    [(ngModel)]="form.status"
+                ></p-radioButton>
+                <label for="statusActive">فعال</label>
+
+                <p-radioButton
+                    name="status"
+                    inputId="statusInactive"
+                    [value]="'inactive'"
+                    [(ngModel)]="form.status"
+                ></p-radioButton>
+                <label for="statusInactive">غیرفعال</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- ردیف قابلیت مشاهده مشتری -->
+    <div class="form-row single-row">
+        <div class="field field-radio full-width">
+            <label>قابلیت مشاهده مشتری</label>
+            <div class="radio-group">
+                <p-radioButton
+                    name="visibility"
+                    inputId="visibilityBoth"
+                    [value]="'both'"
+                    [(ngModel)]="form.visibility"
+                ></p-radioButton>
+                <label for="visibilityBoth">هر دو</label>
+
+                <p-radioButton
+                    name="visibility"
+                    inputId="visibilityReal"
+                    [value]="'real'"
+                    [(ngModel)]="form.visibility"
+                ></p-radioButton>
+                <label for="visibilityReal">حقیقی</label>
+
+                <p-radioButton
+                    name="visibility"
+                    inputId="visibilityLegal"
+                    [value]="'legal'"
+                    [(ngModel)]="form.visibility"
+                ></p-radioButton>
+                <label for="visibilityLegal">حقوقی</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- دکمه‌های پایین -->
+    <div class="footer-buttons">
+        <button
+            pButton
+            type="button"
+            label="انصراف"
+            icon="pi pi-ban"
+            class="p-button-danger p-button-sm"
+            (click)="onCancel()"
+        ></button>
+
+        <button
+            pButton
+            type="submit"
+            label="تایید"
+            icon="pi pi-save"
+            class="p-button-sm"
+        ></button>
+    </div>
+</form>

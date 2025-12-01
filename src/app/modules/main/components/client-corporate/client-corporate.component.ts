@@ -56,7 +56,8 @@ export class ClientCorporateComponent implements OnInit {
     onClose(e){
         this.addFlag=false
     }
-    addCorporate(){
+    addFRCorporate(){}
+    addIrCorporate(){
         this.addFlag=true
     }
     ngOnInit(): void {

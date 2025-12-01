@@ -103,6 +103,28 @@ let navigations: FuseNavigationItem[] = [
     },
     {
         icon: 'home',
+        menuId: 25,
+        id: 'clients',
+        title: 'مدیریت پارامتر ها',
+        type: 'collapsable',
+        parentId: 1,
+        translate: 'مدیریت پارامتر ها',
+        children: [
+            {
+                icon: 'home',
+                menuId: 4,
+                id: 'client-citizen',
+                title: 'اطلاعات پایه',
+                type: 'basic',
+                parentId: 3,
+                translate: 'مشتریان حقیقی',
+                link: '/main/client-citizen',
+                children: [],
+            },
+        ]
+    },
+    {
+        icon: 'home',
         menuId: 8,
         id: 'loan-management',
         title: 'مدیریت تسهیلات',

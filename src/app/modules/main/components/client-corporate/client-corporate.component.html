@@ -18,20 +18,36 @@
                             styleClass="btn-icon-2xl"
                             severity="primary"
                             [text]="false"
-                            (onClick)="addCorporate()"
+                            (onClick)="addIrCorporate()"
                         >
                             <span class="material-icons text-base">add</span>
                         </p-button>
                         <div>
                             <div class="mb-1 font-semibold text-gray-800 text-sm">
-                                اضافه‌کردن مشتری
+                                 اضافه‌کردن مشتری حقوقی ایرانی
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all">
+                    <div
+                        class="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all"
+                    >
+                        <p-button
+                            styleClass="btn-icon-soft"
+                            [text]="false"
+                            [outlined]="false"
+                            (onClick)="addFRCorporate()"
+                        >
+                            <span class="material-icons text-base">add</span>
+                        </p-button>
+                        <div>
+                            <div class="mb-1 font-semibold text-gray-800 text-sm">
+                                اضافه‌کردن مشتری حقوقی خارجی
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
