@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { NgIf } from '@angular/common';
 
 interface SelectItem {
     label: string;
@@ -25,19 +26,19 @@ interface SelectItem {
         InputTextModule,
         RadioButtonModule,
         ButtonModule,
-        DividerModule
-    ]
+        DividerModule,
+        NgIf,
+    ],
 })
 export class BaseInfoFormComponent {
-
     baseInfoTypes: SelectItem[] = [
         { label: 'نوع ۱', value: '1' },
-        { label: 'نوع ۲', value: '2' }
+        { label: 'نوع ۲', value: '2' },
     ];
 
     comboCodes: SelectItem[] = [
         { label: 'کد ۱', value: '1' },
-        { label: 'کد ۲', value: '2' }
+        { label: 'کد ۲', value: '2' },
     ];
 
     form = {
@@ -47,7 +48,7 @@ export class BaseInfoFormComponent {
         enTitle: '',
         isDefault: 'no' as 'yes' | 'no',
         status: 'active' as 'active' | 'inactive',
-        visibility: 'both' as 'real' | 'legal' | 'both'
+        visibility: 'both' as 'real' | 'legal' | 'both',
     };
 
     onCreate() {
@@ -83,7 +84,7 @@ export class BaseInfoFormComponent {
             enTitle: '',
             isDefault: 'no',
             status: 'active',
-            visibility: 'both'
+            visibility: 'both',
         };
     }
 }
