@@ -106,8 +106,12 @@ export default [
             .then(c => c.LoanSettlmentComponent)
     },
     {
-        path: 'not-established', loadComponent: () => import('./components/not-established/not-established.component')
+        path: 'not-established', loadComponent: () => import('./components/client-corporate/not-established/not-established.component')
             .then(c => c.NotEstablishedComponent)
+    },
+    {
+        path: 'basic-info', loadComponent: () => import('./components/base-info-form/base-info-form.component')
+            .then(c => c.BaseInfoFormComponent)
     },
     {
         path: 'about',

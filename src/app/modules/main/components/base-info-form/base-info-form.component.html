@@ -1,17 +1,21 @@
-<form class="page" dir="rtl" (ngSubmit)="onSubmit()">
-    <!-- هدر بالا -->
-    <div class="header">
-        سامانه بانکداری متمرکز
+<div>
+    <div class="w-full header-card">
+        <div class="p-8 rounded-xl shadow-sm  mx-auto">
+            <div class="flex flex-col w-full p-4">
+                <div class="flex flex-col items-start text-right w-full">
+                    <h1 class="text-4xl font-bold text-gray-800">اطلاعات پایه</h1>
+                    <div class="flex flex-row-reverse items-center gap-2 mt-2">
+                        <!--
+                                                <p class="text-base text-gray-500">تعداد کل مشتریان حقیقی: ۱۷۴۵</p>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- ساب هدر -->
-    <div class="sub-header">
-        مدیریت پارامترها - اطلاعات پایه
-    </div>
-
-    <!-- نوار دکمه‌ها -->
-    <p-toolbar styleClass="toolbar">
-        <div class="p-toolbar-group-left toolbar-buttons">
+    <div class="p-6 space-y-6">
+        <div
+            class="px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
             <button
                 pButton
                 type="button"
@@ -44,158 +48,156 @@
                 (click)="onCreate()"
             ></button>
         </div>
-    </p-toolbar>
-
-    <!-- ردیف دراپ‌داون‌ها -->
-    <div class="form-row">
-        <div class="field">
-            <label for="baseInfoType">نوع اطلاعات پایه</label>
-            <p-dropdown
-                id="baseInfoType"
-                name="baseInfoType"
-                [options]="baseInfoTypes"
-                [(ngModel)]="form.baseInfoType"
-                optionLabel="label"
-                optionValue="value"
-                placeholder="انتخاب کنید"
-            ></p-dropdown>
-        </div>
-
-        <div class="field">
-            <label for="comboCode">شناسه کدینگ جزئیات</label>
-            <p-dropdown
-                id="comboCode"
-                name="comboCode"
-                [options]="comboCodes"
-                [(ngModel)]="form.comboCode"
-                optionLabel="label"
-                optionValue="value"
-                placeholder="انتخاب کنید"
-            ></p-dropdown>
-        </div>
-    </div>
-
-    <p-divider></p-divider>
-
-    <!-- ردیف عنوان فارسی + پیش‌فرض -->
-    <div class="form-row">
-        <div class="field">
-            <label for="faTitle">عنوان فارسی کمبو جزئیات</label>
-            <input
-                id="faTitle"
-                name="faTitle"
-                pInputText
-                [(ngModel)]="form.faTitle"
-                class="text-input"
-            />
-        </div>
-
-        <div class="field field-radio">
-            <label>پیش‌فرض</label>
-            <div class="radio-group">
-                <p-radioButton
-                    name="isDefault"
-                    inputId="defaultYes"
-                    [value]="'yes'"
-                    [(ngModel)]="form.isDefault"
-                ></p-radioButton>
-                <label for="defaultYes">بله</label>
-
-                <p-radioButton
-                    name="isDefault"
-                    inputId="defaultNo"
-                    [value]="'no'"
-                    [(ngModel)]="form.isDefault"
-                ></p-radioButton>
-                <label for="defaultNo">خیر</label>
+        <div
+            class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label class="mb-1 text-sm text-gray-700 font-medium">نوع اطلاعات پایه:</label>
+                <p-dropdown
+                    class="normal-dropdown"
+                    [options]="baseInfoTypes"
+                    [(ngModel)]="form.baseInfoType"
+                    optionLabel="label"
+                    optionValue="value"
+                ></p-dropdown>
             </div>
-        </div>
-    </div>
-
-    <!-- ردیف عنوان لاتین + وضعیت -->
-    <div class="form-row">
-        <div class="field">
-            <label for="enTitle">عنوان لاتین کمبو جزئیات</label>
-            <input
-                id="enTitle"
-                name="enTitle"
-                pInputText
-                [(ngModel)]="form.enTitle"
-                class="text-input"
-            />
-        </div>
-
-        <div class="field field-radio">
-            <label>وضعیت</label>
-            <div class="radio-group">
-                <p-radioButton
-                    name="status"
-                    inputId="statusActive"
-                    [value]="'active'"
-                    [(ngModel)]="form.status"
-                ></p-radioButton>
-                <label for="statusActive">فعال</label>
-
-                <p-radioButton
-                    name="status"
-                    inputId="statusInactive"
-                    [value]="'inactive'"
-                    [(ngModel)]="form.status"
-                ></p-radioButton>
-                <label for="statusInactive">غیرفعال</label>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="comboCode">شناسه کدینگ جزئیات</label>
+                <p-dropdown
+                    class="normal-dropdown"
+                    [options]="comboCodes"
+                    [(ngModel)]="form.comboCode"
+                    optionLabel="label"
+                    optionValue="value"
+                ></p-dropdown>
             </div>
-        </div>
-    </div>
-
-    <!-- ردیف قابلیت مشاهده مشتری -->
-    <div class="form-row single-row">
-        <div class="field field-radio full-width">
-            <label>قابلیت مشاهده مشتری</label>
-            <div class="radio-group">
-                <p-radioButton
-                    name="visibility"
-                    inputId="visibilityBoth"
-                    [value]="'both'"
-                    [(ngModel)]="form.visibility"
-                ></p-radioButton>
-                <label for="visibilityBoth">هر دو</label>
-
-                <p-radioButton
-                    name="visibility"
-                    inputId="visibilityReal"
-                    [value]="'real'"
-                    [(ngModel)]="form.visibility"
-                ></p-radioButton>
-                <label for="visibilityReal">حقیقی</label>
-
-                <p-radioButton
-                    name="visibility"
-                    inputId="visibilityLegal"
-                    [value]="'legal'"
-                    [(ngModel)]="form.visibility"
-                ></p-radioButton>
-                <label for="visibilityLegal">حقوقی</label>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
             </div>
+
+            <div class="col-span-12 md:col-span-8 flex flex-col">
+                <label for="comboCode">عنوان فارسی کدینگ جزئیات</label>
+                <input
+                    id="faTitle"
+                    name="faTitle"
+                    pInputText
+                    [(ngModel)]="form.faTitle"
+                    class="normal-input"
+                />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4">
+                <label class="mb-0">پیش‌فرض</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        [(ngModel)]="form.isDefault"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">است</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        [(ngModel)]="form.isDefault"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">نیست</label>
+                </div>
+            </div>
+
+
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+            </div>
+
+            <div class="col-span-12 md:col-span-8 flex flex-col">
+                <label for="comboCode">عنوان لاتین کدینگ جزئیات</label>
+                <input
+                    id="faTitle"
+                    name="faTitle"
+                    pInputText
+                    [(ngModel)]="form.faTitle"
+                    class="normal-input"
+                />
+            </div>
+
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4">
+                <label class="mb-0">وضعیت</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        [(ngModel)]="form.isDefault"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">است</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        [(ngModel)]="form.isDefault"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">نیست</label>
+                </div>
+            </div>
+
+
         </div>
-    </div>
+        <div
+            class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
 
-    <!-- دکمه‌های پایین -->
-    <div class="footer-buttons">
-        <button
-            pButton
-            type="button"
-            label="انصراف"
-            icon="pi pi-ban"
-            class="p-button-danger p-button-sm"
-            (click)="onCancel()"
-        ></button>
 
-        <button
-            pButton
-            type="submit"
-            label="تایید"
-            icon="pi pi-save"
-            class="p-button-sm"
-        ></button>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4">
+                <label class="mb-0">قابلیت مشاهده مشتری</label>
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="visibility"
+                        inputId="visibilityBoth"
+                        [value]="'both'"
+                        [(ngModel)]="form.visibility"
+                    ></p-radioButton>
+                    <label for="visibilityBoth">هر دو</label>
+
+                    <p-radioButton
+                        name="visibility"
+                        inputId="visibilityReal"
+                        [value]="'real'"
+                        [(ngModel)]="form.visibility"
+                    ></p-radioButton>
+                    <label for="visibilityReal">حقیقی</label>
+
+                    <p-radioButton
+                        name="visibility"
+                        inputId="visibilityLegal"
+                        [value]="'legal'"
+                        [(ngModel)]="form.visibility"
+                    ></p-radioButton>
+                    <label for="visibilityLegal">حقوقی</label>
+                </div>
+            </div>
+
+
+        </div>
+
+            <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start app-card p-4" dir="ltr">
+                <button
+                    pButton
+                    label="انصراف"
+                    icon="pi pi-ban"
+                    severity="danger"
+                    [outlined]="true"
+                    (click)="onCancel()"
+                ></button>
+
+                <button
+                    pButton
+                    label="تایید"
+                    icon="pi pi-save"
+                    severity="success"
+                    (click)="onSubmit()"
+                ></button>
+            </div>
     </div>
-</form>
+</div>
