@@ -114,6 +114,10 @@ export default [
             .then(c => c.BaseInfoFormComponent)
     },
     {
+        path: 'account-interest', loadComponent: () => import('./components/account-interest/account-interest.component')
+            .then(c => c.AccountInterestComponent)
+    },
+    {
         path: 'about',
         loadComponent: () => import('./components/about/about.component')
             .then(c => c.AboutComponent)
