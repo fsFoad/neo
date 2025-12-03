@@ -3,7 +3,7 @@
         <div class="p-8 rounded-xl shadow-sm  mx-auto">
             <div class="flex flex-col w-full p-4">
                 <div class="flex flex-col items-start text-right w-full">
-                    <h1 class="text-4xl font-bold text-gray-800">سود نمایه</h1>
+                    <h1 class="text-4xl font-bold text-gray-800">مدیریت سود</h1>
                     <div class="flex flex-row-reverse items-center gap-2 mt-2">
                         <!--
                                                 <p class="text-base text-gray-500">تعداد کل مشتریان حقیقی: ۱۷۴۵</p>
@@ -14,307 +14,532 @@
         </div>
     </div>
 </div>
-<div class="p-6 space-y-6 ">
-    <div
-        class="px-5 mb-5  app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
-        <button pButton type="button" label="جدید" icon="pi pi-plus" class="p-button-sm"></button>
-        <button pButton type="button" label="ویرایش" icon="pi pi-pencil" class="p-button-sm p-button-secondary"></button>
-        <button pButton type="button" label="حذف" icon="pi pi-trash" class="p-button-sm p-button-danger p-button-text"></button>
-        <button pButton type="button" label="انتقال" icon="pi pi-arrow-left-right" class="p-button-sm p-button-text"></button>
-        <button pButton type="button" label="انتقال/ادغام" icon="pi pi-copy" class="p-button-sm p-button-text"></button>
-        <button pButton type="button" label="کپی" icon="pi pi-clone" class="p-button-sm p-button-text"></button>
-
-    </div>
-    <p-table
-        class="mt-5"
-        [value]="interestList"
-        [paginator]="true"
-        [rows]="5"
-        [rowsPerPageOptions]="[5,10,25,50]"
-        selectionMode="single"
-        styleClass="normal-table"
-    >
-
-        <ng-template pTemplate="header">
-            <tr>
-                <th>کد نمایه</th>
-                <th>عنوان</th>
-
-                <th> تاریخ شروع</th>
-                <th>
-                    تاریخ انقضا
-                </th>
-
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
-            <tr [pSelectableRow]="customer">
-                <!--
-                   customerId: '1001',
-            legalCustomerName: 'شرکت توسعه فناوری',
-            nationalId: '14001234567',
-            ownershipType: 'خصوصی',
-            legalCustomerType: 'شرکت',
-            privateCompanyType: 'سهامی خاص',
-            status: 'active'
-                -->
-                <td data-label="ردیف">{{ rowIndex + 1 }}</td>
-                <td data-label="شماره مشتری">{{ customer.customerId }}</td>
-                <td data-label="نام مشتری">{{ customer.legalCustomerName }}</td>
-                <td data-label="شناسه ملی">{{ customer.nationalId }}</td>
-
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="9" class="text-center py-4 text-gray-500">
-                    {{ searchPerformed ? 'موردی یافت نشد' : 'لطفا معیارهای جستجو را وارد نمایید' }}
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-    <div
-        class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
-        <div class="col-span-12 md:col-span-4 flex flex-col">
-
-        </div>
-</div>
-<div class="account-interest" dir="rtl">
-    <!-- نوار بالا شبیه تصویر -->
-    <div >
-        <div class="p-toolbar-group-right flex gap-2">
+<form [formGroup]="interestForm" (ngSubmit)="onSubmit()">
+    <div class="p-6 space-y-6 ">
+        <div
+            class="px-5 mb-5  app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
             <button pButton type="button" label="جدید" icon="pi pi-plus" class="p-button-sm"></button>
-            <button pButton type="button" label="ویرایش" icon="pi pi-pencil" class="p-button-sm p-button-secondary"></button>
-            <button pButton type="button" label="حذف" icon="pi pi-trash" class="p-button-sm p-button-danger p-button-text"></button>
-            <button pButton type="button" label="انتقال" icon="pi pi-arrow-left-right" class="p-button-sm p-button-text"></button>
-            <button pButton type="button" label="انتقال/ادغام" icon="pi pi-copy" class="p-button-sm p-button-text"></button>
+            <button pButton type="button" label="ویرایش" icon="pi pi-pencil"
+                    class="p-button-sm p-button-secondary"></button>
+            <button pButton type="button" label="حذف" icon="pi pi-trash"
+                    class="p-button-sm p-button-danger p-button-text"></button>
+            <button pButton type="button" label="انتقال" icon="pi pi-arrow-left-right"
+                    class="p-button-sm p-button-text"></button>
+            <button pButton type="button" label="انتقال/ادغام" icon="pi pi-copy"
+                    class="p-button-sm p-button-text"></button>
             <button pButton type="button" label="کپی" icon="pi pi-clone" class="p-button-sm p-button-text"></button>
+
+        </div>
+        <p-table
+            class="mt-5"
+            [value]="interestList"
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5,10,25,50]"
+            selectionMode="single"
+            styleClass="normal-table"
+        >
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>کد نمایه</th>
+                    <th>عنوان</th>
+
+                    <th> تاریخ شروع</th>
+                    <th>
+                        تاریخ انقضا
+                    </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="customer">
+
+                    <td data-label="ردیف">{{ rowIndex + 1 }}</td>
+                    <td data-label="شماره مشتری">{{ customer.customerId }}</td>
+                    <td data-label="نام مشتری">{{ customer.legalCustomerName }}</td>
+                    <td data-label="شناسه ملی">{{ customer.nationalId }}</td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="9" class="text-center py-4 text-gray-500">
+                        {{ interestList ? 'موردی یافت نشد' : 'لطفا معیارهای جستجو را وارد نمایید' }}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <div
+            class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="facilityCode">کد نمایه</label>
+                <input
+                    class="normal-input"
+                    id="facilityCode"
+                    type="text"
+                    pInputText
+                    formControlName="facilityCode"
+                />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="title">عنوان</label>
+                <input class="normal-input" pInputText formControlName="title" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="startDate">تاریخ شروع</label>
+                <p-persian-calendar
+                    id="startDate"
+                    class="normal-persian-calendar"
+                    formControlName="startDate"
+                ></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="endDate">تاریخ انقضا</label>
+                <p-persian-calendar
+                    class="normal-persian-calendar"
+                    formControlName="endDate"
+                ></p-persian-calendar>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="title">نرخ ارز</label>
+                <input class="normal-input" pInputText formControlName="title" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="title">نرخ سود پایه</label>
+                <input class="normal-input" pInputText formControlName="title" />
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <label for="title">نرخ سود پایه قطعی</label>
+                <input class="normal-input" pInputText formControlName="title" />
+            </div>
+
+
+
+        </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">وضعیت</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">فعال</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">غیرفعال</label>
+                </div>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">مبنای زمان اعمال نرخ جدید</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">زمان افتتاح حساب</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">بعد از واریز</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">دوره محاسبه سود</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">روزانه</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ماهانه</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">سالانه</label>
+                </div>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">دوره محاسبه سود/نوع فرمول محاسباتی</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">روزانه</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ماهانه</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">سالانه</label>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">امکان واریز سود به حساب اصلی</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+
+                </div>
+
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">امکان واریز سود به حساب دیگران</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">مبنای زمان پرداخت سود</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">روز سر رسید</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">دوره ای</label>
+
+                </div>
+
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">محاسبه پلکانی</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+
+                </div>
+
+            </div>
         </div>
 
-        <div class="p-toolbar-group-left">
-            <span class="form-title">شناسنامه سود</span>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-12 flex items-center gap-4 self-center">
+                <label class="mb-0">مبنای محاسبه مانده روز</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">حداقل مانده روز</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">میانگین  مانده روز</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">مانده پایان روز</label>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-12 flex items-center gap-4 self-center">
+                <label class="mb-0">نحوه رندینگ سود</label>
 
-    <p-card>
-        <form [formGroup]="interestForm" (ngSubmit)="onSubmit()">
-            <!-- مشخصات کلی -->
-            <div class="section-header">مشخصات تسهیلات</div>
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">رو به بالا</label>
 
-            <div class="p-fluid formgrid grid">
-                <div class="field col-12 md:col-3">
-                    <label for="facilityCode">کد تسهیلات</label>
-                    <input
-                        id="facilityCode"
-                        type="text"
-                        pInputText
-                        formControlName="facilityCode"
-                    />
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">رو به پایین</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">معمولی</label>
                 </div>
 
-                <div class="field col-12 md:col-3">
-                    <label for="title">عنوان</label>
-                    <input id="title" type="text" pInputText formControlName="title" />
-                </div>
+            </div>
+        </div>
 
-                <div class="field col-12 md:col-3">
-                    <label for="startDate">تاریخ شروع</label>
-                    <p-persian-calendar
-                        id="startDate"
-                        formControlName="startDate"
-                    ></p-persian-calendar>
-                </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">مبلغ حداقل مانده برای محاسبه سود</label>
+                <p-inputNumber
+                    formControlName="amount"
+                    [useGrouping]="true"
+                    class="normal-input-number-w-1"
+                ></p-inputNumber>
+                <label class="mb-0">روز</label>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">مدت انتظار برای محاسبه سود</label>
+                <p-inputNumber
+                    formControlName="amount"
+                    [useGrouping]="true"
+                    class="normal-input-number-w-1"
+                ></p-inputNumber>
+                <label class="mb-0">روز</label>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">ماه واریز سود</label>
+                <p-inputNumber
+                    formControlName="amount"
+                    [useGrouping]="true"
+                    class="normal-input-number-w-1"
+                ></p-inputNumber>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">روز واریز سود</label>
+                <p-inputNumber
+                    formControlName="amount"
+                    [useGrouping]="true"
+                    class="normal-input-number-w-1"
+                ></p-inputNumber>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+                <label class="mb-0">امکان تغییر روز واریز سود</label>
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
 
-                <div class="field col-12 md:col-3">
-                    <label for="endDate">تاریخ قطع</label>
-                    <p-persian-calendar
-                        id="endDate"
-                        formControlName="endDate"
-                    ></p-persian-calendar>
-                </div>
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+            </div>
             </div>
 
-            <!-- تنظیمات محاسبه سود -->
-            <div class="section-header">تنظیمات محاسبه سود</div>
+        </div>
+        <div class="account-interest" dir="rtl">
 
-            <div class="p-fluid formgrid grid">
-                <div class="field col-12 md:col-3">
-                    <label for="interestType">نوع تسهیلات / سود</label>
-                    <p-dropdown
-                        id="interestType"
-                        formControlName="interestType"
-                        [options]="interestTypes"
-                        optionLabel="label"
-                        optionValue="value"
-                        placeholder="انتخاب کنید"
-                    ></p-dropdown>
-                </div>
+            <p-card>
+                <p-table
+                    [value]="tiers.controls"
+                    [responsiveLayout]="'scroll'"
+                    styleClass="normal-table"
+                >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>از مبلغ</th>
+                            <th>تا مبلغ</th>
+                            <th>درصد سود</th>
+                            <th>درصد جریمه</th>
+                            <th>توضیحات</th>
+                            <th style="width: 4rem; text-align: center">عملیات</th>
+                        </tr>
+                    </ng-template>
 
-                <div class="field col-12 md:col-3">
-                    <label for="calcMethod">روش محاسبه</label>
-                    <p-dropdown
-                        id="calcMethod"
-                        formControlName="calcMethod"
-                        [options]="calcMethods"
-                        optionLabel="label"
-                        optionValue="value"
-                    ></p-dropdown>
-                </div>
+                    <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                        <tr [formGroup]="row">
+                            <td>
+                                <input
+                                    type="number"
+                                    pInputText
+                                    formControlName="fromAmount"
+                                />
+                            </td>
+                            <td>
+                                <input type="number" pInputText formControlName="toAmount" />
+                            </td>
+                            <td>
+                                <p-inputNumber
+                                    formControlName="rate"
+                                    [minFractionDigits]="2"
+                                    [maxFractionDigits]="2"
+                                    suffix=" %"
+                                ></p-inputNumber>
+                            </td>
+                            <td>
+                                <p-inputNumber
+                                    formControlName="penaltyRate"
+                                    [minFractionDigits]="2"
+                                    [maxFractionDigits]="2"
+                                    suffix=" %"
+                                ></p-inputNumber>
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    pInputText
+                                    formControlName="description"
+                                />
+                            </td>
+                            <td class="text-center">
+                                <button
+                                    pButton
+                                    type="button"
+                                    icon="pi pi-trash"
+                                    class="p-button-rounded p-button-text p-button-sm"
+                                    (click)="removeTier(rowIndex)"
+                                ></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
 
-                <div class="field col-12 md:col-3">
-                    <label for="periodType">دوره پرداخت سود</label>
-                    <p-dropdown
-                        id="periodType"
-                        formControlName="periodType"
-                        [options]="periodTypes"
-                        optionLabel="label"
-                        optionValue="value"
-                    ></p-dropdown>
-                </div>
-
-                <div class="field col-12 md:col-3">
-                    <label>مبنای محاسبه سود</label>
-                    <div class="flex flex-wrap gap-3 mt-2">
-                        <div
-                            *ngFor="let opt of calcBaseOptions"
-                            class="field-radiobutton flex align-items-center"
-                        >
-                            <p-radioButton
-                                [inputId]="opt.value"
-                                name="calcBase"
-                                [value]="opt.value"
-                                formControlName="calcBase"
-                            ></p-radioButton>
-                            <label [for]="opt.value" class="mr-2">{{ opt.label }}</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- چک‌باکس‌ها -->
-            <div class="p-fluid formgrid grid">
-                <div class="field-checkbox col-12 md:col-3">
-                    <p-checkbox
-                        binary="true"
-                        formControlName="isActive"
-                        inputId="isActive"
-                    ></p-checkbox>
-                    <label for="isActive">سود فعال باشد</label>
-                </div>
-
-                <div class="field-checkbox col-12 md:col-3">
-                    <p-checkbox
-                        binary="true"
-                        formControlName="isDefault"
-                        inputId="isDefault"
-                    ></p-checkbox>
-                    <label for="isDefault">سود پیش‌فرض</label>
-                </div>
-
-                <div class="field-checkbox col-12 md:col-3">
-                    <p-checkbox
-                        binary="true"
-                        formControlName="allowNegativeInterest"
-                        inputId="allowNegativeInterest"
-                    ></p-checkbox>
-                    <label for="allowNegativeInterest">امکان ثبت سود منفی</label>
-                </div>
-            </div>
-
-            <!-- جدول پایین شبیه گرید تصویر -->
-            <div class="section-header">طبقات سود</div>
-
-            <p-table
-                [value]="tiers.controls"
-                [responsiveLayout]="'scroll'"
-                styleClass="p-datatable-sm interest-tiers-table"
-            >
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>از مبلغ</th>
-                        <th>تا مبلغ</th>
-                        <th>درصد سود</th>
-                        <th>درصد جریمه</th>
-                        <th>توضیحات</th>
-                        <th style="width: 4rem; text-align: center">عملیات</th>
-                    </tr>
-                </ng-template>
-
-                <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
-                    <tr [formGroup]="row">
-                        <td>
-                            <input
-                                type="number"
-                                pInputText
-                                formControlName="fromAmount"
-                            />
-                        </td>
-                        <td>
-                            <input type="number" pInputText formControlName="toAmount" />
-                        </td>
-                        <td>
-                            <p-inputNumber
-                                formControlName="rate"
-                                [minFractionDigits]="2"
-                                [maxFractionDigits]="2"
-                                suffix=" %"
-                            ></p-inputNumber>
-                        </td>
-                        <td>
-                            <p-inputNumber
-                                formControlName="penaltyRate"
-                                [minFractionDigits]="2"
-                                [maxFractionDigits]="2"
-                                suffix=" %"
-                            ></p-inputNumber>
-                        </td>
-                        <td>
-                            <input
-                                type="text"
-                                pInputText
-                                formControlName="description"
-                            />
-                        </td>
-                        <td class="text-center">
-                            <button
-                                pButton
-                                type="button"
-                                icon="pi pi-trash"
-                                class="p-button-rounded p-button-text p-button-sm"
-                                (click)="removeTier(rowIndex)"
-                            ></button>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-
-            <button
-                pButton
-                type="button"
-                label="افزودن ردیف"
-                icon="pi pi-plus"
-                class="p-button-sm mt-2"
-                (click)="addTier()"
-            ></button>
-
-            <!-- دکمه‌های پایین فرم -->
-            <div class="actions mt-4">
                 <button
                     pButton
                     type="button"
-                    class="p-button-secondary p-button-sm ml-2"
-                    label="انصراف"
-                    (click)="onCancel()"
+                    label="افزودن ردیف"
+                    icon="pi pi-plus"
+                    class="p-button-sm mt-2"
+                    (click)="addTier()"
                 ></button>
 
-                <button
-                    pButton
-                    type="submit"
-                    label="تأیید"
-                    class="p-button-sm"
-                    [disabled]="interestForm.invalid"
-                ></button>
-            </div>
-        </form>
-    </p-card>
-</div>
+                <!-- دکمه‌های پایین فرم -->
+                <div class="actions mt-4">
+                    <button
+                        pButton
+                        type="button"
+                        class="p-button-secondary p-button-sm ml-2"
+                        label="انصراف"
+                        (click)="onCancel()"
+                    ></button>
+
+                    <button
+                        pButton
+                        type="submit"
+                        label="تأیید"
+                        class="p-button-sm"
+                        [disabled]="interestForm.invalid"
+                    ></button>
+                </div>
+
+            </p-card>
+        </div>
+    </div>
+</form>

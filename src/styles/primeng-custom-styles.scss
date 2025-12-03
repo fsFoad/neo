@@ -407,7 +407,7 @@
 }
 
 
-p-persian-calendar.app-persian-calendar-style {
+p-persian-calendar.normal-persian-calendar {
     .ui-datepicker-buttonbar .p-button {
         border-radius: 0.75rem;
     }
@@ -2010,6 +2010,9 @@ html:root {
 .normal-input-number {
     @apply rounded-xl transition w-3/4  !important;
 }
+.normal-input-number-w-1 {
+    @apply rounded-xl transition w-[10%]  !important;
+}
 .full-input-number {
     @apply rounded-xl transition w-full  !important;
 }
@@ -2160,7 +2163,7 @@ html:root {
 }
 
 
-p-persian-calendar.app-persian-calendar-style {
+p-persian-calendar.normal-persian-calendar {
     .ui-datepicker-buttonbar .p-button {
         border-radius: 0.75rem;
     }
@@ -2601,6 +2604,7 @@ anglerighticon {
 .p-inputnumber {
     @apply w-3/4;
 }
+
 /*
 
 .p-inputnumber-input {

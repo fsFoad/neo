@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonDirective } from 'primeng/button';
 import { Card } from 'primeng/card';
 import { PersianCalendarComponent } from '../../../shared/components/persian-calendar/persian-calendar.module';
@@ -10,6 +10,7 @@ import { Checkbox } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
 import { InputNumber } from 'primeng/inputnumber';
 import { Tooltip } from 'primeng/tooltip';
+import { InputText } from 'primeng/inputtext';
 
 interface SelectOption {
     label: string;
@@ -33,11 +34,13 @@ interface SelectOption {
         InputNumber,
         NgIf,
         Tooltip,
+        InputText,
+        FormsModule,
     ],
 })
 export class AccountInterestComponent implements OnInit {
     interestForm!: FormGroup;
-    interestList:any[]=[]
+    interestList: any[] = [];
     interestTypes: SelectOption[] = [
         { label: 'عادی', value: 'normal' },
         { label: 'جاری', value: 'current' },
@@ -97,6 +100,7 @@ export class AccountInterestComponent implements OnInit {
             rate: [null, Validators.required],
             penaltyRate: [null],
             description: [''],
+            amount: [''],
         });
     }
 
