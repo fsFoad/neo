@@ -9,7 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RippleModule } from 'primeng/ripple';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass, NgStyle } from '@angular/common';
 import { Card } from 'primeng/card';
 import { RadioButton } from 'primeng/radiobutton';
 import { InputSwitch } from 'primeng/inputswitch';
@@ -43,6 +43,7 @@ import { Fieldset } from 'primeng/fieldset';
         ToggleSwitch,
         Fieldset,
         DatePipe,
+        NgStyle,
     ],
     templateUrl: './product-client-management.component.html',
     styleUrl: './product-client-management.component.scss',
