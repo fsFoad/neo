@@ -1,0 +1,170 @@
+<div class="w-full bg-white">
+    <div class="p-8 rounded-xl shadow-sm mx-auto">
+        <h2 class="text-2xl font-semibold mb-2">انتخاب محصول</h2>
+    </div>
+</div>
+<div class="p-6 space-y-6 rounded-2xl">
+    <div [formGroup]="productInformationForm">
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
+
+            <p-table [value]="customerTable" styleClass="normal-table"
+                     class="p-6 space-y-6">
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-between">
+                        <h3 class="text-base font-semibold">اطلاعات مشتری</h3>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>ردیف</th>
+                        <th>شماره مشتری</th>
+                        <th>نام مشتری</th>
+                        <th>کد/شناسه ملی مشتری</th>
+                        <th>تابعیت</th>
+                        <th>نوع</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row let-index="rowIndex">
+                    <tr>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ row.customerNumber }}</td>
+                        <td>{{ row.customerName }}</td>
+                        <td>{{ row.customerNationalCode }}</td>
+                        <td>{{ row.tabeiyat }}</td>
+                        <td>{{ row.type }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">کد محصول:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="productCode">
+                </div>
+
+                <div class="flex flex-col">
+
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1 font-medium">عنوان محصول:</label>
+                    <input type="text"
+                           pInputText
+                           readonly
+                           class="normal-input"
+                           formControlName="productTitle">
+                </div>
+
+
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200 mt-4">
+
+            <p-table
+                [value]="productTable"
+                styleClass="normal-table"
+                class="p-6 space-y-6"
+                dataKey="productTitle"
+                selectionMode="single"
+                [(selection)]="selectedProduct"
+            >
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-between">
+                        <h3 class="text-base font-semibold">محصولات تسهیلاتی</h3>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>جزئیات</th>
+                        <th>نوع ارز</th>
+                        <th>حداکثر مدت تسهیلات</th>
+                        <th>حداکثر مبلغ تسهیلات</th>
+                        <th>عنوان محصول</th>
+                        <th></th> <!-- ستون رادیو -->
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row>
+                    <tr [pSelectableRow]="row">
+                        <!-- لینک جزئیات -->
+                        <td>
+                            <button
+                                pButton
+                                type="button"
+                                class="p-button-link"
+                                (click)="detail(row)"
+                            >
+                                جزئیات
+                            </button>
+                        </td>
+
+                        <!-- نوع ارز -->
+                        <td>{{ row.currencyType }}</td>
+
+                        <!-- حداکثر مدت تسهیلات -->
+                        <td>{{ row.maxLoanDuration }}</td>
+
+                        <!-- حداکثر مبلغ تسهیلات -->
+                        <td>{{ row.maxLoanAmount  }} ریال</td>
+
+                        <!-- عنوان محصول -->
+                        <td>{{ row.productTitle }}</td>
+
+                        <!-- رادیو مثل عکس -->
+                        <td class="text-center">
+                            <p-tableRadioButton [value]="row"></p-tableRadioButton>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="bg-white p-4 rounded-xl border border-slate-200 mt-3">
+    <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start " dir="ltr">
+
+        <button
+            icon="pi pi-arrow-left"
+            pButton
+            label="ادامه"
+            (click)="goNext()"
+            class=" p-button-success normal-button"
+        ></button>
+        <button
+            icon="pi pi-arrow-left"
+            pButton
+            label="انصراف"
+            (click)="goCanceled()"
+            class=" p-button-success normal-button"
+        ></button>
+        <button
+            icon="pi pi-arrow-left"
+            pButton
+            label="بازگشت"
+            (click)="goBack()"
+            class=" p-button-success normal-button"
+        ></button>
+
+    </div>
+</div>
+
+
+
+
+
+
+
