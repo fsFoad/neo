@@ -1,0 +1,34 @@
+.account-interest {
+    direction: rtl;
+    font-size: 0.85rem;
+
+    .form-title {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .section-header {
+        margin: 1rem 0 0.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 0.25rem;
+    }
+
+    .field,
+    .field-checkbox,
+    .field-radiobutton {
+        margin-bottom: 0.75rem;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .interest-tiers-table td,
+    .interest-tiers-table th {
+        text-align: right;
+        vertical-align: middle;
+    }
+}

@@ -5,6 +5,7 @@ import { TableModule } from 'primeng/table';
 import { Dialog } from 'primeng/dialog';
 import { ButtonDirective } from 'primeng/button';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { Tooltip } from 'primeng/tooltip';
 
 @Component({
     selector: 'app-lon-request',
@@ -15,13 +16,13 @@ import { InputSwitchModule } from 'primeng/inputswitch';
         TableModule,
         Dialog,
         ButtonDirective,
-        InputSwitchModule
+        InputSwitchModule,
+        Tooltip,
     ],
     templateUrl: './lon-request.component.html',
-    styleUrl: './lon-request.component.scss'
+    styleUrl: './lon-request.component.scss',
 })
 export class LonRequestComponent implements OnInit {
-
     // فرم جستجو
     filterForm!: FormGroup;
 

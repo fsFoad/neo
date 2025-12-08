@@ -62,7 +62,7 @@
             <label class="mb-1">
                 <span>{{ 'تاریخ ورود به بورس' | transloco }}:</span>
             </label>
-            <p-persian-calendar class="app-persian-calendar-style"
+            <p-persian-calendar class="normal-persian-calendar"
                                 [ngModelOptions]="{ standalone: true }"
                                 [(ngModel)]="income"></p-persian-calendar>
 
@@ -329,7 +329,7 @@
                 <label class="form-label">تاریخ شروع:</label>
                 <p-persian-calendar
                     appendTo="body"
-                    class="app-persian-calendar-style"
+                    class="normal-persian-calendar"
                     formControlName="startDate"></p-persian-calendar>
             </div>
 
@@ -337,7 +337,7 @@
                 <label class="form-label">تاریخ پایان:</label>
                 <p-persian-calendar
                     appendTo="body"
-                    class="app-persian-calendar-style"
+                    class="normal-persian-calendar"
                     formControlName="endDate"></p-persian-calendar>
             </div>
 
@@ -405,7 +405,7 @@
                 </label>
                 <p-persian-calendar
                     appendTo="body"
-                    class="app-persian-calendar-style"
+                    class="normal-persian-calendar"
                     formControlName="issueDate"></p-persian-calendar>
             </div>
 
@@ -416,7 +416,7 @@
                 </label>
                 <p-persian-calendar
                     appendTo="body"
-                    class="app-persian-calendar-style"
+                    class="normal-persian-calendar"
                     formControlName="expiryDate"></p-persian-calendar>
             </div>
             <div class="col-span-12 md:col-span-12 flex flex-col">

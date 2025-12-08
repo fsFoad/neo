@@ -9,33 +9,10 @@
                 </div>
             </div>
         </div>
-        <!--<div class="my-6">
-            <div class="flex gap-6">
-                <div
-                    class="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all">
-                    <p-button
-                        styleClass="btn-icon-2xl"
-                        severity="primary"
-                        [text]="false"
-                        (onClick)="addProduct()">
-                        <span class="material-icons text-base">add</span>
-                    </p-button>
-                    <div>
-                        <div class="mb-1 font-semibold text-gray-800 text-sm">
-                            اضافه‌کردن دلیل مراجعه
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>-->
     </div>
 </div>
 <p-card header="فرم نمایه" class="p-6 rounded-xl m-6">
-    <!-- اینجا items-end اضافه شد -->
     <div class="grid grid-cols-12 gap-4 items-end">
-
-        <!-- کد نمایه -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="profileCode">کد نمایه:</label>
             <input
@@ -46,7 +23,6 @@
             />
         </div>
 
-        <!-- دکمه‌ها کنار کد نمایه، در همان ردیف -->
         <div class="col-span-12 md:col-span-8 flex flex-wrap gap-2">
             <button
                 pButton
@@ -80,7 +56,6 @@
             ></button>
         </div>
 
-        <!-- عنوان نمایه -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="profileTitle">عنوان نمایه:</label>
             <input
@@ -89,28 +64,25 @@
                 [(ngModel)]="profileTitle"
             />
         </div>
-        <!-- تاریخ شروع -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="startDate">تاریخ شروع:</label>
             <p-persian-calendar
                 id="startDate"
-                class="app-persian-calendar-style"
+                class="normal-persian-calendar"
                 [ngModelOptions]="{ standalone: true }"
                 [(ngModel)]="startDate"
             ></p-persian-calendar>
         </div>
-        <!-- تاریخ انقضا -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="endDate">تاریخ انقضا:</label>
             <p-persian-calendar
                 id="endDate"
-                class="app-persian-calendar-style"
+                class="normal-persian-calendar"
                 [ngModelOptions]="{ standalone: true }"
                 [(ngModel)]="endDate"
             ></p-persian-calendar>
         </div>
 
-        <!-- نوع ارز -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="currencyType">نوع ارز:</label>
             <p-dropdown
@@ -122,7 +94,6 @@
                 [(ngModel)]="currencyType"
             ></p-dropdown>
         </div>
-        <!-- نوع مشتری (رادیو) -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label>نوع مشتری:</label>
             <div class="flex flex-wrap gap-4 mt-2">
@@ -157,8 +128,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- جنسیت (رادیو) -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label>جنسیت:</label>
             <div class="flex flex-wrap gap-4 mt-2">
@@ -184,7 +153,6 @@
             </div>
         </div>
 
-        <!-- حداقل مبلغ زمان افتتاح -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="minOpeningAmount">حداقل مبلغ زمان افتتاح:</label>
             <p-inputNumber
@@ -194,7 +162,6 @@
             ></p-inputNumber>
         </div>
 
-        <!-- حداقل موجودی -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="minBalance">حداقل موجودی:</label>
             <p-inputNumber
@@ -204,13 +171,11 @@
             ></p-inputNumber>
         </div>
 
-        <!-- وضعیت (ToggleSwitch) -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label class="mb-1">وضعیت:</label>
             <p-toggleswitch [(ngModel)]="status"></p-toggleswitch>
         </div>
 
-        <!-- چک‌باکس‌ها -->
         <div class="col-span-12 flex flex-wrap gap-6">
             <div class="flex items-center gap-2">
                 <p-checkbox
@@ -257,7 +222,6 @@
             </div>
         </div>
 
-        <!-- حداقل مبلغ جهت تعیین منبع -->
         <div class="col-span-12 md:col-span-4 flex flex-col">
             <label for="minSourceAmount">حداقل مبلغ جهت تعیین منبع:</label>
             <p-inputNumber
@@ -267,7 +231,6 @@
             ></p-inputNumber>
         </div>
 
-        <!-- فیلدست راکدپذیر بودن -->
         <div class="col-span-12">
             <p-fieldset legend="راکدپذیر بودن">
                 <div class="grid grid-cols-12 gap-4">
@@ -324,10 +287,8 @@
             </p-fieldset>
         </div>
 
-
-        <!-- جدول نمایه‌ها -->
         <div class="col-span-12">
-            <p-table [value]="profiles">
+            <p-table [value]="profiles"   styleClass="normal-table">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>کد نمایه</th>

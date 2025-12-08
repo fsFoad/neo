@@ -6,6 +6,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { Router } from '@angular/router';
+import {
+    ProductInformationRequestComponent
+} from './product-information-request/product-information-request.component';
 
 @Component({
     selector: 'app-loan-request',
@@ -17,17 +21,19 @@ import { TableModule } from 'primeng/table';
         ButtonDirective,
         InputGroup,
         TableModule,
+        ProductInformationRequestComponent,
     ],
     templateUrl: './loan-request.component.html',
     styleUrl: './loan-request.component.scss',
 })
 export class LoanRequestComponent implements OnInit {
-   /* @Output() next = new EventEmitter<void>();
-    @Output() cancel = new EventEmitter<void>();*/
-
     showForm = false;
     requestForm!: FormGroup;
     createDialogVisible = false;
+
+    /** مرحله فعلی: 1 = فرم درخواست، 2 = فرم اطلاعات محصول */
+    currentStep = 1;
+
     customerTypeList: [] = [];
     requestTypeList: [] = [];
     customerTable = [
@@ -42,10 +48,13 @@ export class LoanRequestComponent implements OnInit {
             type: 'فرعی',
         },
     ];
+
+    constructor(private fb: FormBuilder) {}
+
     ngOnInit() {
         this.buildForms();
     }
-    constructor(private fb: FormBuilder) {}
+
     private buildForms(): void {
         this.requestForm = this.fb.group({
             customerNationalCode: [''],
@@ -54,11 +63,16 @@ export class LoanRequestComponent implements OnInit {
             requestType: [''],
         });
     }
+
+    /** دکمه "بعدی" در والد */
     goNext() {
-      /*  this.next.emit();*/
+        this.currentStep = 2; // ✅ برو به فرزند
     }
 
-    onCancel() {
-
+    /** اگر خواستی از فرزند برگردی */
+    goBackFromChild() {
+        this.currentStep = 1;
     }
+
+    onCancel() {}
 }
