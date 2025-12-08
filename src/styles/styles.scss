@@ -923,7 +923,6 @@ form .bg-white {
 }*/
 
 .header-card {
-
     border-bottom-right-radius: var(--card-radius) !important;
     border-bottom-left-radius: var(--card-radius) !important;
 }
@@ -937,7 +936,7 @@ html.p-dark .card,
 html.p-dark .app-card,
 html.p-dark .header-card,
 html.p-dark .mat-mdc-toolbar.mat-primary {
-    background-color: #232938 !important;
+    background-color: #343b4f !important;
     color: #F7F7F7 !important;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); /* اختیاری، خط جداکننده زیر تولبار */
 }
@@ -948,7 +947,6 @@ html.p-dark .bg-card {
     border-color: rgba(247, 247, 247, 0.08) !important;
 }
 
-/*
 html.p-dark .card,
 html.p-dark .app-card,
 html.p-dark .header-card, {
@@ -956,11 +954,10 @@ html.p-dark .header-card, {
     color: #ffffff !important;
     border-color: rgba(247, 247, 247, 0.08) !important;
 }
-*/
 html.p-dark .card,
 html.p-dark .app-card,
 html.p-dark .header-card {
-    background-color: var(--card-bg) !important;
+    background-color: #343b4f !important;
     color: var(--color-on-surface) !important;
     border-color: rgba(247, 247, 247, 0.08) !important;
 }

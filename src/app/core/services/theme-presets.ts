@@ -17,7 +17,6 @@ export const PRESET_NAMES = [
     "Jade Twilight",
     "Indigo Quartz",
     "Ashen Opal",
-
     "Ocean Lapis",
     "Emerald Grove",
     "Ruby Sunset",
