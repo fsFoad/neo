@@ -25,4 +25,7 @@ export class ProductsInformationComponent implements OnInit {
     ngOnInit() {}
     constructor() {
     }
+    goNext(){}
+    goCancel(){}
+    goBack(){}
 }
