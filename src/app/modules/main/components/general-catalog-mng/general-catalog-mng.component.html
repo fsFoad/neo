@@ -1,0 +1,334 @@
+<div class="w-full app-card ">
+    <div class="p-8 rounded-b-xl shadow-sm  mx-auto">
+        <div class="flex flex-col w-full p-4">
+            <div class="flex flex-col items-start text-right w-full">
+                <h1 class="text-4xl font-bold text-gray-800">مدیریت نمایه عمومی سپرده ها</h1>
+                <div class="flex flex-row-reverse items-center gap-2 mt-2">
+                    <p class="text-base text-gray-500">تعداد محصول: 54</p>
+                    <span class="material-icons text-gray-500 text-3xl">group</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-card class="p-6 rounded-xl m-6">
+    <div class="grid grid-cols-12 gap-4 items-end">
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="profileCode">کد نمایه:</label>
+            <input
+                id="profileCode"
+                pInputText
+                class="normal-input"
+                [(ngModel)]="profileCode"
+            />
+        </div>
+
+        <div class="col-span-12 md:col-span-8 flex flex-wrap gap-2">
+            <button
+                pButton
+                class="normal-button"
+                label="کپی"
+                icon="pi pi-copy"
+                (click)="onCopyCode()"
+            ></button>
+
+            <button
+                pButton
+                class="normal-button"
+                label="ویرایش"
+                icon="pi pi-pencil"
+            ></button>
+
+            <button
+                pButton
+                class="normal-button"
+                label="حذف"
+                icon="pi pi-trash"
+                severity="danger"
+                [outlined]="true"
+            ></button>
+
+            <button
+                pButton
+                class="normal-button"
+                label="فعال/غیرفعال"
+                icon="pi pi-power-off"
+            ></button>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="profileTitle">عنوان نمایه:</label>
+            <input
+                id="profileTitle"
+                pInputText class="normal-input"
+                [(ngModel)]="profileTitle"
+            />
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="startDate">تاریخ شروع:</label>
+            <p-persian-calendar
+                id="startDate"
+                class="normal-persian-calendar"
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="startDate"
+            ></p-persian-calendar>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="endDate">تاریخ انقضا:</label>
+            <p-persian-calendar
+                id="endDate"
+                class="normal-persian-calendar"
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="endDate"
+            ></p-persian-calendar>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="currencyType">نوع ارز:</label>
+            <p-dropdown
+                id="currencyType"
+                class="dropdown-normal"
+                [options]="currencyTypes"
+                optionLabel="label"
+                optionValue="value"
+                [(ngModel)]="currencyType"
+            ></p-dropdown>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label>نوع مشتری:</label>
+            <div class="flex flex-wrap gap-4 mt-2">
+                <div class="flex items-center">
+                    <p-radioButton
+                        inputId="customerType1"
+                        name="customerType"
+                        value="REAL"
+                        [(ngModel)]="customerType"
+                    ></p-radioButton>
+                    <label for="customerType1" class="ml-2">مشتری حقیقی</label>
+                </div>
+
+                <div class="flex items-center">
+                    <p-radioButton
+                        inputId="customerType2"
+                        name="customerType"
+                        value="LEGAL"
+                        [(ngModel)]="customerType"
+                    ></p-radioButton>
+                    <label for="customerType2" class="ml-2">مشتری حقوقی</label>
+                </div>
+
+                <div class="flex items-center">
+                    <p-radioButton
+                        inputId="customerType3"
+                        name="customerType"
+                        value="BOTH"
+                        [(ngModel)]="customerType"
+                    ></p-radioButton>
+                    <label for="customerType3" class="ml-2">هردو</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label>جنسیت:</label>
+            <div class="flex flex-wrap gap-4 mt-2">
+                <div class="flex items-center">
+                    <p-radioButton
+                        inputId="gender1"
+                        name="gender"
+                        value="MALE"
+                        [(ngModel)]="gender"
+                    ></p-radioButton>
+                    <label for="gender1" class="ml-2">مرد</label>
+                </div>
+
+                <div class="flex items-center">
+                    <p-radioButton
+                        inputId="gender2"
+                        name="gender"
+                        value="FEMALE"
+                        [(ngModel)]="gender"
+                    ></p-radioButton>
+                    <label for="gender2" class="ml-2">زن</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="minOpeningAmount">حداقل مبلغ زمان افتتاح:</label>
+            <p-inputNumber
+                id="minOpeningAmount"
+                [(ngModel)]="minOpeningAmount"
+                [useGrouping]="true"
+            ></p-inputNumber>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="minBalance">حداقل موجودی:</label>
+            <p-inputNumber
+                id="minBalance"
+                [(ngModel)]="minBalance"
+                [useGrouping]="true"
+            ></p-inputNumber>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label class="mb-1">وضعیت:</label>
+            <p-toggleswitch [(ngModel)]="status"></p-toggleswitch>
+        </div>
+
+        <div class="col-span-12 flex flex-wrap gap-6">
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="canPaymentOrder"
+                    [binary]="true"
+                    [(ngModel)]="canPaymentOrder"
+                ></p-checkbox>
+                <label for="canPaymentOrder" class="text-sm">
+                    امکان تعریف دستور پرداخت
+                </label>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="canOnlineOpen"
+                    [binary]="true"
+                    [(ngModel)]="canOnlineOpen"
+                ></p-checkbox>
+                <label for="canOnlineOpen" class="text-sm">
+                    امکان افتتاح حساب اینترنتی
+                </label>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="canSupportOthers"
+                    [binary]="true"
+                    [(ngModel)]="canSupportOthers"
+                ></p-checkbox>
+                <label for="canSupportOthers" class="text-sm">
+                    امکان حساب پشتیبان حساب دیگران
+                </label>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <p-checkbox
+                    inputId="requireDepositAmount"
+                    [binary]="true"
+                    [(ngModel)]="requireDepositAmount"
+                ></p-checkbox>
+                <label for="requireDepositAmount" class="text-sm">
+                    الزام تعیین مبلغ سپرده
+                </label>
+            </div>
+        </div>
+
+        <div class="col-span-12 md:col-span-4 flex flex-col">
+            <label for="minSourceAmount">حداقل مبلغ جهت تعیین منبع:</label>
+            <p-inputNumber
+                id="minSourceAmount"
+                [(ngModel)]="minSourceAmount"
+                [useGrouping]="true"
+            ></p-inputNumber>
+        </div>
+
+        <div class="col-span-12">
+            <p-fieldset legend="راکدپذیر بودن">
+                <div class="grid grid-cols-12 gap-4">
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantMinBalance">حداقل موجودی برای راکد شدن:</label>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p-inputNumber
+                                id="dormantMinBalance"
+                                [(ngModel)]="dormantMinBalance"
+                                [useGrouping]="true"
+                            ></p-inputNumber>
+                            <span>ریال</span>
+                        </div>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantToDormantMonths">
+                            مدت رکود قبل از تبدیل به راکدی:
+                        </label>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p-inputNumber
+                                id="dormantToDormantMonths"
+                                [(ngModel)]="dormantToDormantMonths"
+                            ></p-inputNumber>
+                            <span>ماه</span>
+                        </div>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantToUnclaimedMonths">
+                            مدت رکود قبل از تبدیل به مطالبه نشده:
+                        </label>
+                        <p-inputNumber
+                            id="dormantToUnclaimedMonths"
+                            [(ngModel)]="dormantToUnclaimedMonths"
+                        ></p-inputNumber>
+                    </div>
+
+                    <div class="col-span-12 md:col-span-4 flex flex-col">
+                        <label for="dormantToUnpaidMonths">
+                            مدت رکود جهت تبدیل به وجوه بلا تکلیف:
+                        </label>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p-inputNumber
+                                id="dormantToUnpaidMonths"
+                                [(ngModel)]="dormantToUnpaidMonths"
+                            ></p-inputNumber>
+                            <span>ماه</span>
+                        </div>
+                    </div>
+
+                </div>
+            </p-fieldset>
+        </div>
+
+        <div class="col-span-12">
+            <p-table [value]="profiles"   styleClass="normal-table">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>کد نمایه</th>
+                        <th>عنوان نمایه</th>
+                        <th>تاریخ شروع</th>
+                        <th>تاریخ انقضا</th>
+                        <th>وضعیت</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td>{{ row.code }}</td>
+                        <td>{{ row.title }}</td>
+                        <td>{{ row.startDate }}</td>
+                        <td>{{ row.endDate }}</td>
+                        <td>{{ row.active ? 'فعال' : 'غیرفعال' }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+</p-card>
+<div class="app-card p-4 rounded-xl border border-slate-200 mt-3">
+    <div class="grid grid-cols-12 gap-3 md:gap-4 items-start justify-start " dir="ltr">
+        <button
+            pButton
+            label="انصراف"
+            severity="danger"
+            [outlined]="true"
+            type="button"
+            class="p-button-secondary col-span-6 md:col-span-1 h-[40px]"
+        ></button>
+        <button
+            pButton
+            label="ذخیره"
+            severity="success"
+            type="submit"
+            class="p-button-primary col-span-6 md:col-span-1 h-[40px]"
+        ></button>
+    </div>
+</div>

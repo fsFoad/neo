@@ -100,9 +100,9 @@ export class ThemePickerComponent implements OnInit {
         }
 
         /* 5) هماهنگی Background Preset */
-        const savedBg = localStorage.getItem('app_background');
-        if (savedBg && BACKGROUND_PRESETS[savedBg as BackgroundPresetName]) {
-            this.themeService.setBackgroundPreset(savedBg as BackgroundPresetName);
+        const savedBg = localStorage.getItem('app_background') as BackgroundPresetName | null;
+        if (savedBg && BACKGROUND_PRESETS[savedBg]) {
+            this.themeService.setBackgroundPreset(savedBg);
         }
     }
     /* ------------------------------

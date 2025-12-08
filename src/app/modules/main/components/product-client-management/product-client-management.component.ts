@@ -1,212 +1,157 @@
-import { Component } from '@angular/core';
-import { Button } from 'primeng/button';
-import { InputText } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
-import { Checkbox } from 'primeng/checkbox';
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { CheckboxModule } from 'primeng/checkbox';
-import { RippleModule } from 'primeng/ripple';
-import { DatePipe, NgClass, NgStyle } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Card } from 'primeng/card';
+import { ButtonDirective } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
 import { RadioButton } from 'primeng/radiobutton';
-import { InputSwitch } from 'primeng/inputswitch';
-import { InputNumber } from 'primeng/inputnumber';
 import { PersianCalendarComponent } from '../../../shared/components/persian-calendar/persian-calendar.module';
-import { ToggleSwitch } from 'primeng/toggleswitch';
-import { Fieldset } from 'primeng/fieldset';
+import { Textarea } from 'primeng/textarea';
+import { InputText } from 'primeng/inputtext';
+import { NgForOf } from '@angular/common';
+
+interface Option {
+    label: string;
+    value: any;
+}
+
+interface TariffRow {
+    key: string;
+    label: string;
+    options: Option[];
+}
 
 @Component({
     selector: 'app-product-client-management',
-    imports: [
-        Button,
-        InputText,
-        FormsModule,
-        DropdownModule,
-        Checkbox,
-        TableModule,
-        FormsModule,
-        TableModule,
-        ButtonModule,
-        InputTextModule,
-        DropdownModule,
-        CheckboxModule,
-        RippleModule,
-        NgClass,
-        Card,
-        RadioButton,
-        InputSwitch,
-        InputNumber,
-        PersianCalendarComponent,
-        ToggleSwitch,
-        Fieldset,
-        DatePipe,
-        NgStyle,
-    ],
     templateUrl: './product-client-management.component.html',
-    styleUrl: './product-client-management.component.scss',
+    imports: [
+        Card,
+        ButtonDirective,
+        ReactiveFormsModule,
+        DropdownModule,
+        RadioButton,
+        PersianCalendarComponent,
+        Textarea,
+        InputText,
+        NgForOf,
+    ],
+    styleUrls: ['./product-client-management.component.scss'],
 })
-export class ProductClientManagementComponent {
-    searchValue: string = '';
-    nameValue: string = '';
-    fameValue: string = '';
-    selectedCategory: any = null;
-    selectedStatus: any = null;
-    isActive: boolean = false;
-    isApproved: boolean = false;
-    products: Product[] = [
-        {
-            id: 1,
-            name: 'علی رضایی',
-            fame: 'برنامه نویس',
-            category: 'دسته اول',
-            status: 'فعال',
-            date: '۱۴۰۲/۰۳/۱۵',
-        },
-        {
-            id: 2,
-            name: 'مریم احمدی',
-            fame: 'طراح',
-            category: 'دسته دوم',
-            status: 'غیرفعال',
-            date: '۱۴۰۲/۰۴/۲۰',
-        },
-        {
-            id: 3,
-            name: 'محمد حسینی',
-            fame: 'مدیر پروژه',
-            category: 'دسته اول',
-            status: 'فعال',
-            date: '۱۴۰۲/۰۲/۱۰',
-        },
-        {
-            id: 4,
-            name: 'فاطمه محمدی',
-            fame: 'تحلیلگر',
-            category: 'دسته سوم',
-            status: 'در انتظار',
-            date: '۱۴۰۲/۰۵/۰۵',
-        },
-        {
-            id: 5,
-            name: 'رضا اکبری',
-            fame: 'توسعه دهنده',
-            category: 'دسته دوم',
-            status: 'فعال',
-            date: '۱۴۰۲/۰۱/۲۵',
-        },
-        {
-            id: 6,
-            name: 'سارا کریمی',
-            fame: 'تستر نرم‌افزار',
-            category: 'دسته سوم',
-            status: 'فعال',
-            date: '۱۴۰۲/۰۶/۱۲',
-        },
-    ];
-    profiles: any[] = [];
+export class ProductClientManagementComponent implements OnInit {
+    form!: FormGroup;
 
-    // گزینه‌های منوی کشویی دسته‌بندی
-    categories = [
-        { name: 'دسته اول', value: 'cat1' },
-        { name: 'دسته دوم', value: 'cat2' },
-        { name: 'دسته سوم', value: 'cat3' },
+    depositAccountGroups: Option[] = [
+        { label: 'گروه ۱', value: 1 },
+        { label: 'گروه ۲', value: 2 },
     ];
 
-    // گزینه‌های منوی کشویی وضعیت
-    statuses = [
-        { name: 'فعال', value: 'active' },
-        { name: 'غیرفعال', value: 'inactive' },
-        { name: 'در انتظار', value: 'pending' },
-    ];
-
-    // آرایه‌ای از محصولات برای نمایش در جدول
-
-    constructor() {}
-
-    ngOnInit(): void {}
-
-    // تابع برای جستجو
-    onSearch(): void {
-        console.log('جستجو با مقادیر:', {
-            search: this.searchValue,
-            name: this.nameValue,
-            fame: this.fameValue,
-            category: this.selectedCategory,
-            status: this.selectedStatus,
-            isActive: this.isActive,
-            isApproved: this.isApproved,
-        });
-        // در اینجا می‌توانید منطق فیلتر کردن داده‌ها را پیاده‌سازی کنید
-    }
-
-    // تابع برای بازنشانی فرم
-    onReset(): void {
-        this.searchValue = '';
-        this.nameValue = '';
-        this.fameValue = '';
-        this.selectedCategory = null;
-        this.selectedStatus = null;
-        this.isActive = false;
-        this.isApproved = false;
-    }
-    addProduct() {}
-    // تابع برای خروجی گرفتن از داده‌ها
-    onExport(): void {
-        console.log('صدور داده‌ها');
-    }
-
-    // تابع برای افزودن رکورد جدید
-    onAddNew(): void {
-        console.log('افزودن رکورد جدید');
-    }
-
-    profileCode = '';
-    profileTitle = '';
-    profileTitle2 = '';
-
-    startDate?: Date;
-    endDate?: Date;
-
-    currencyType: string | null = null;
-    currencyTypes = [
+    currencyTypes: Option[] = [
         { label: 'ریال', value: 'IRR' },
         { label: 'دلار', value: 'USD' },
-        { label: 'یورو', value: 'EUR' },
     ];
 
-    customerType: 'REAL' | 'LEGAL' | 'BOTH' = 'BOTH';
-    gender: 'MALE' | 'FEMALE' | null = null;
+    products: Option[] = [
+        { label: 'محصول ۱', value: 1 },
+        { label: 'محصول ۲', value: 2 },
+    ];
 
-    minOpeningAmount?: number;
-    minBalance?: number;
-    status = true;
+    // تعرفه‌های هر ردیف – فعلاً همه از یک لیست نمونه استفاده می‌کنند
+    tariffOptions: Option[] = [
+        { label: 'تعرفه ۱', value: 1 },
+        { label: 'تعرفه ۲', value: 2 },
+    ];
 
-    canPaymentOrder = false;
-    canOnlineOpen = false;
-    canSupportOthers = false;
-    requireDepositAmount = false;
+    tariffRows: TariffRow[] = [
+        {
+            key: 'generalTariff',
+            label: 'نمایه عمومی',
+            options: this.tariffOptions,
+        },
+        {
+            key: 'paymentInstrumentTariff',
+            label: 'نمایه ابزار برداشت مجاز',
+            options: this.tariffOptions,
+        },
+        {
+            key: 'lotteryTariff',
+            label: 'نمایه قرعه‌کشی',
+            options: this.tariffOptions,
+        },
+        {
+            key: 'interestTariff',
+            label: 'نمایه سود',
+            options: this.tariffOptions,
+        },
+        {
+            key: 'physicalSettleTariff',
+            label: 'نمایه تسویه / برداشت فقره‌ای',
+            options: this.tariffOptions,
+        },
+        {
+            key: 'allowedUnitsTariff',
+            label: 'نمایه واحدهای عملیاتی مجاز',
+            options: this.tariffOptions,
+        },
+        {
+            key: 'branchTariff',
+            label: 'نمایه تمدید',
+            options: this.tariffOptions,
+        },
+    ];
 
-    minSourceAmount?: number;
+    constructor(private fb: FormBuilder) {}
 
-    dormantMinBalance?: number;
-    dormantToDormantMonths?: number;
-    dormantToUnclaimedMonths?: number;
-    dormantToUnpaidMonths?: number;
+    ngOnInit(): void {
+        this.form = this.fb.group({
+            depositAccountGroup: [null],
+            currencyType: [null],
+            product: [null],
+            productTitle: [''],
+            status: ['ACTIVE'],
+            startDate: [null],
+            endDate: [null],
+            settlementDetails: [''],
 
-    onCopyCode() {
-        if (navigator && navigator.clipboard) {
-            navigator.clipboard.writeText(this.profileCode || '');
-        }
+            // فیلدهای تعرفه‌ها
+            generalTariff: [null],
+            paymentInstrumentTariff: [null],
+            lotteryTariff: [null],
+            interestTariff: [null],
+            physicalSettleTariff: [null],
+            allowedUnitsTariff: [null],
+            branchTariff: [null],
+        });
     }
-}
-interface Product {
-    id: number;
-    name: string;
-    fame: string;
-    category: string;
-    status: string;
-    date: string;
+
+    onCreate(): void {
+        this.form.reset({
+            status: 'ACTIVE',
+        });
+    }
+
+    onEdit(): void {
+        // اینجا بر اساس ردیف انتخاب‌شده، فرم را با داده‌ها پر کن
+    }
+
+    onDelete(): void {
+        // حذف محصول انتخاب‌شده
+    }
+
+    showTariffDetails(key: string): void {
+        // نمایش دیالوگ/صفحه‌ی جزئیات تعرفه
+        console.log('show details for', key, this.form.get(key)?.value);
+    }
+
+    onCancel(): void {
+        // بسته‌شدن فرم یا برگشت به صفحه قبل
+    }
+
+    onSubmit(): void {
+        if (this.form.invalid) {
+            this.form.markAllAsTouched();
+            return;
+        }
+
+        console.log('form value', this.form.value);
+        // ارسال به سرویس بک‌اند
+    }
 }

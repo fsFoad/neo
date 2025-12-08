@@ -1163,7 +1163,7 @@ anglerighticon {
     box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
 }
 .card {
-    background: var(--bg-card);
+    background: var(--card-bg);
 }
 .p-inputtext,
 input,
@@ -1186,7 +1186,6 @@ textarea {
     border-radius: var(--radius-md);
 }
 .p-button {
-    background: var(--bg-button);
     border-radius: var(--radius-md);
     height: var(--button-height);
 }
@@ -1196,8 +1195,6 @@ textarea {
 }
 .p-card,
 .card {
-    background: var(--bg-card);
-    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     padding: 1rem;
@@ -1213,7 +1210,7 @@ textarea {
 }
 
 .p-datatable th {
-    background: var(--bg-card);
+    background: var(--card-bg);
     color: var(--text-body);
 }
 
@@ -1239,7 +1236,7 @@ textarea {
 }
 
 .p-message {
-    background: var(--bg-card);
+    background: var(--card-bg);
     border-radius: var(--radius-md);
 }
 .p-chip {
@@ -1307,6 +1304,7 @@ textarea,
     border: 1px solid var(--color-border);
 }
 
+/*
 .p-button,
 .p-splitbutton,
 .p-speeddial-button {
@@ -1314,6 +1312,13 @@ textarea,
     color: #fff;
     border-radius: var(--radius-md);
     border: none;
+}
+*/
+.p-button,
+.p-splitbutton,
+.p-speeddial-button {
+    border-radius: var(--radius-md);
+    height: var(--button-height);
 }
 
 .p-button:hover,
@@ -1482,17 +1487,17 @@ textarea,
 .dark-mode .p-radiobutton .p-radiobutton-box {
     border-color: var(--color-border);
 }
-.dark-mode .p-button,
+/*.dark-mode .p-button,
 .dark-mode .p-splitbutton,
 .dark-mode .p-speeddial-button {
     background: var(--color-primary);
     color: #fff;
-}
-
+}*/
+/*
 .dark-mode .p-button:hover,
 .dark-mode .p-speeddial-button:hover {
     background: var(--color-primary-hover);
-}
+}*/
 .dark-mode .p-dataview,
 .dark-mode .p-orderlist,
 .dark-mode .p-organizationchart,
@@ -2837,4 +2842,22 @@ table thead > tr > th:last-child {
 .p-datatable .p-datatable-caption {
     border-top-right-radius: var(--card-radius);
     border-top-left-radius: var(--card-radius);
+}
+html .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+}
+
+/* hover / focus روی آیتم‌ها (غیر انتخاب‌شده) */
+html .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface) 90%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* اگر برای دارک مود بخوای کمی فرق داشته باشه: */
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--color-primary) 16%, #1e2434 84%) !important;
+    color: #ffffff !important;
 }

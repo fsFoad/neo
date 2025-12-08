@@ -1,11 +1,15 @@
+
+const DARK_BG = '#232938';
+const DARK_SURFACE = '#232938';
+const DARK_TEXT = '#F7F7F7';
 /* ---------------------------------------------------
  * 1) PRESET NAMES
  * --------------------------------------------------- */
 export const PRESET_NAMES = [
     "Amber Spark",
     "Sapphire Ember",
-    "Coral Horizon",
-    "Royal Sapphire",
+   /* "Coral Horizon",*/
+   /* "Royal Sapphire",*/
     "Soft Amber",
     "Flame Citrine",
     "Obsidian Frost",
@@ -74,7 +78,13 @@ export const BACKGROUND_PRESET_NAMES = [
     "pattern-dots",
     "pattern-lines",
     "card-surface",
-    "metal-blue"
+    "metal-blue",
+    "indigo-quartz",
+    "amber-spark",
+    "dark-deep-navy",
+    "dark-carbon",
+    "dark-emerald",
+    "dark-violet"
 ] as const;
 
 export type BackgroundPresetName = typeof BACKGROUND_PRESET_NAMES[number];
@@ -128,65 +138,34 @@ export const BACKGROUND_PRESETS: Record<BackgroundPresetName, BackgroundPreset> 
         light: "linear-gradient(135deg, #E0F7FA, #B2EBF2, #80DEEA)",
         dark: "linear-gradient(135deg, #004D40, #00695C, #00796B)"
     },
-    /* -------------------------------
-        1) Ultra Clean (فرم و بانکداری)
-     --------------------------------*/
-    "clean-white": {
-        light: "#F7F9FC",
-        dark: "#101010"
-    },
-
-    /* -------------------------------
-       2) Neobank Blue (گرادینت)
-    --------------------------------*/
-    "neobank-blue": {
-        light: "linear-gradient(135deg, #E9EEFF 0%, #FFFFFF 100%)",
-        dark: "linear-gradient(135deg, #0A1A33 0%, #0F2C55 100%)"
-    },
-
-    /* -------------------------------
-       3) Neobank Orange
-    --------------------------------*/
-    "neobank-orange": {
-        light: "linear-gradient(135deg, #FFF0E0 0%, #FFFFFF 100%)",
-        dark: "linear-gradient(135deg, #2B1200 0%, #4A2600 100%)"
-    },
-
-    /* -------------------------------
-       4) Soft Finance (بانکی خیلی تمیز)
-    --------------------------------*/
-    "finance-soft": {
-        light: "linear-gradient(145deg, #EEF1F5 0%, #FFFFFF 100%)",
-        dark: "linear-gradient(145deg, #121212 0%, #1E1E1E 100%)"
-    },
-
-    /* -------------------------------
-       5) Executive Gray (سازمانی)
-    --------------------------------*/
-    "enterprise-gray": {
-        light: "#ECEFF1",
-        dark: "#0F0F0F"
-    },
-
-    /* -------------------------------
-       6) Glassmorphism
-    --------------------------------*/
     glass: {
         light: "rgba(255,255,255,0.55)",
         dark: "rgba(0,0,0,0.40)"
     },
-
-    /* -------------------------------
-       7) Subtle Pattern Dot
-    --------------------------------*/
+    "clean-white": {
+        light: "#eef8f4",
+        dark: "#101010"
+    },
+    "neobank-blue": {
+        light: "linear-gradient(135deg, #E9EEFF 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #0A1A33 0%, #0F2C55 100%)"
+    },
+    "neobank-orange": {
+        light: "linear-gradient(135deg, #FFF0E0 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(135deg, #2B1200 0%, #4A2600 100%)"
+    },
+    "finance-soft": {
+        light: "linear-gradient(145deg, #EEF1F5 0%, #FFFFFF 100%)",
+        dark: "linear-gradient(145deg, #121212 0%, #1E1E1E 100%)"
+    },
+    "enterprise-gray": {
+        light: "#ECEFF1",
+        dark: "#0F0F0F"
+    },
     "pattern-dots": {
         light: `repeating-radial-gradient(circle at 0 0, #EDEDED 0, #EDEDED 3px, #FFFFFF 3px, #FFFFFF 12px)`,
         dark: `repeating-radial-gradient(circle at 0 0, #1E1E1E 0, #1E1E1E 3px, #0E0E0E 3px, #0E0E0E 12px)`
     },
-
-    /* -------------------------------
-       8) Subtle Line Pattern
-    --------------------------------*/
     "pattern-lines": {
         light: `repeating-linear-gradient(
               90deg,
@@ -203,48 +182,68 @@ export const BACKGROUND_PRESETS: Record<BackgroundPresetName, BackgroundPreset> 
               #141414 40px
             )`
     },
-
-    /* -------------------------------
-       9) Card Layout Background
-    --------------------------------*/
     "card-surface": {
         light: "linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%)",
         dark: "linear-gradient(145deg, #1A1A1A 0%, #111111 100%)"
     },
-
-    /* -------------------------------
-       10) Banking Steel Blue
-    --------------------------------*/
     "metal-blue": {
         light: "linear-gradient(135deg, #E6ECF5 0%, #FFFFFF 100%)",
         dark: "linear-gradient(135deg, #0D1521 0%, #111C2A 100%)"
+    },
+    "indigo-quartz": {
+        light: "rgba(136,135,135,0.36)",
+        dark: "linear-gradient(145deg, #020617 0%, #050818 45%, #020617 100%)"
+        // #020617 و #050818 هر دو از #1e2434 و #343b4f تیره‌ترن
+    },
+    "amber-spark": {
+        light: "#f5e5e0",
+        dark: "linear-gradient(145deg, #020617 0%, #050818 45%, #020617 100%)"
+        // #020617 و #050818 هر دو از #1e2434 و #343b4f تیره‌ترن
+    },
+    "dark-deep-navy": {
+        light: "#b3c4dc",
+        dark: "linear-gradient(145deg, #020617 0%, #050818 45%, #020617 100%)"
+        // #020617 و #050818 هر دو از #1e2434 و #343b4f تیره‌ترن
+    },
+    "dark-carbon": {
+        light: "#F5F5F5",
+        dark: "radial-gradient(circle at top, #050505 0%, #020202 40%, #000000 100%)"
+        // بک‌گراند تقریبا مشکی → منو و کارت خاکستری تیره و روشن‌تر به چشم میان
+    },
+    "dark-emerald": {
+        light: "#F3FBF7",
+        dark: "linear-gradient(145deg, #020b07 0%, #02130c 50%, #020b07 100%)"
+        // خیلی تیره، ته‌مایه سبز خیلی خیلی ملایم
+    },
+    "dark-violet": {
+        light: "#F6F2FF",
+        dark: "linear-gradient(145deg, #070518 0%, #09041f 45%, #050314 100%)"
+        // بک‌گراند بنفش-مشکی خیلی تیره، عالی کنار کارت‌های #343b4f
     }
 };
 
-/* ---------------------------------------------------
- * 5) THEME PRESETS (کامل، بدون حذف)
- * --------------------------------------------------- */
 export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Sapphire Ember": {
         name: "Sapphire Ember",
         displayName: "یاقوت کبودِ گداخته",
-        backgroundPreset: "ocean",
+        backgroundPreset: "dark-deep-navy",
         light: {
             primary: "rgb(0,49,229)",
             accent: "rgb(254,95,2)",
             warn: "#e53935",
-            background: "#ffffff",
+            background: "#f3c8b1",
             surface: "#fcfcfc",
+
             onSurface: "#1a1a1a"
         },
         dark: {
             primary: "#5c6bff",
             accent: "rgb(254,95,2)",
             warn: "#ef9a9a",
-            background: "#141414",
-            surface: "#1d1d1d",
-            onSurface: "#e0e0e0"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -264,16 +263,19 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#B5B5B5",
             accent: "#63B3FF",
             warn: "#FF7B82",
-            background: "#121212",
-            surface: "#1D1D1D",
-            onSurface: "#EAEAEA"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
     "Amethyst Breeze": {
         name: "Amethyst Breeze",
         displayName:"نسیم آمتیست",
-        backgroundPreset: "pattern-dots",
+
+        // قبلاً pattern-dots بود
+        backgroundPreset: "dark-violet",
+
         light: {
             primary: "#B388EB",
             accent: "#8BC6EC",
@@ -286,9 +288,10 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#D3B3FF",
             accent: "#A5DFFF",
             warn: "#FF9A9A",
-            background: "#221832",
-            surface: "#322545",
-            onSurface: "#F0E6FF"
+
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -300,7 +303,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#005F73",
             accent: "#94D2BD",
             warn: "#EE6055",
-            background: "#F1FAFA",
+            background: "#bde7e7",
             surface: "#FFFFFF",
             onSurface: "#102A34"
         },
@@ -308,9 +311,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#6CC5BD",
             accent: "#A8E8D7",
             warn: "#FF8C7C",
-            background: "#0C1D1E",
-            surface: "#143235",
-            onSurface: "#DFF3F2"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -318,7 +321,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
     "Indigo Quartz": {
         name: "Indigo Quartz",
         displayName:"کوارتز نیلی",
-        backgroundPreset: "finance-soft",
+        backgroundPreset: "indigo-quartz",
         light: {
             primary: "#3F3D56",
             accent: "#00A8E8",
@@ -331,16 +334,16 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#9EA0D9",
             accent: "#4ECDFB",
             warn: "#FF8991",
-            background: "#12141A",
-            surface: "#1C1D26",
-            onSurface: "#E6E6E6"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
     "Amber Spark": {
         name: "Amber Spark",
         displayName:"جرقهٔ کهربا",
-        backgroundPreset: "gradientBlue",
+        backgroundPreset: "amber-spark",
         light: {
             primary: "rgb(254,95,2)",
             accent: "#0031E5",
@@ -353,15 +356,16 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "rgb(254,95,2)",
             accent: "#5c6bff",
             warn: "#ff8a80",
-            background: "#121212",
-            surface: "#1e1e1e",
-            onSurface: "#eeeeee"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
-    "Coral Horizon": {
+  /*  "Coral Horizon": {
         name: "Coral Horizon",
         displayName:"افق مرجانی",
+        backgroundPreset: "dark-deep-navy",
         light: {
             primary: "#ff6a00",
             accent: "rgb(0,49,229)",
@@ -374,15 +378,17 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#ff8a50",
             accent: "#5c6bff",
             warn: "#ff8a80",
-            background: "#121212",
-            surface: "#1f1f1f",
-            onSurface: "#e6e6e6"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
-    },
+    },*/
 
+/*
     "Royal Sapphire": {
         name: "Royal Sapphire",
         displayName:"یاقوت کبود شاهانه",
+        backgroundPreset: "dark-deep-navy",
         light: {
             primary: "rgb(0,49,229)",
             accent: "#ff6f00",
@@ -395,11 +401,12 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#6d7cff",
             accent: "#ff8a50",
             warn: "#ff8a65",
-            background: "#181818",
-            surface: "#232323",
-            onSurface: "#e0e0e0"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
+*/
 
     "Soft Amber": {
         name: "Soft Amber",
@@ -416,9 +423,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#ffb380",
             accent: "#ffcc80",
             warn: "#ff8a80",
-            background: "#121212",
-            surface: "#1c1c1c",
-            onSurface: "#efefef"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
     "Flame Citrine": {
@@ -436,9 +443,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#ffab91",
             accent: "#ff8a65",
             warn: "#ff8a80",
-            background: "#141414",
-            surface: "#1f1f1f",
-            onSurface: "#eeeeee"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -460,9 +467,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#90CAF9",
             accent: "#B0BEC5",
             warn: "#FF8A80",
-            background: "#1E1E1E",
-            surface: "#2A2A2A",
-            onSurface: "#E0E0E0"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -481,9 +488,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#4EA8C8",
             accent: "#FFB347",
             warn: "#ff8a80",
-            background: "#0F1B24",
-            surface: "#1A2A33",
-            onSurface: "#E0E0E0"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -502,9 +509,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#40916C",
             accent: "#E6C8A8",
             warn: "#ff8a80",
-            background: "#1B2C22",
-            surface: "#25382C",
-            onSurface: "#E8E6E3"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -524,9 +531,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#FF6B6B",
             accent: "#FFD870",
             warn: "#ff8a65",
-            background: "#2A1B1A",
-            surface: "#3A2A28",
-            onSurface: "#F5EDEB"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -545,9 +552,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#9D7AD0",
             accent: "#FFCDD5",
             warn: "#ff80ab",
-            background: "#2A1A3A",
-            surface: "#3A294C",
-            onSurface: "#EEDDF7"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -566,9 +573,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#FF3F9F",
             accent: "#6BA6FF",
             warn: "#ff8a80",
-            background: "#1A1A1D",
-            surface: "#242427",
-            onSurface: "#F5F5F5"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -587,9 +594,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#D5C9C4",
             accent: "#B5AABB",
             warn: "#ff8a80",
-            background: "#2E2A32",
-            surface: "#3A363E",
-            onSurface: "#E8E6EA"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     },
 
@@ -608,9 +615,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             primary: "#00E5FF",
             accent: "#FF4F8B",
             warn: "#ef9a9a",
-            background: "#121212",
-            surface: "#1D1D1D",
-            onSurface: "#E0E0E0"
+            background: DARK_BG,
+            surface: DARK_SURFACE,
+            onSurface: DARK_TEXT
         }
     }
 };
@@ -621,7 +628,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 export const CARD_PRESETS = {
     white: {
         light: {
-            bg: "#FFFFFF",
+            bg: "#ffebee",
             border: "1px solid #E2E8F0",
             shadow: "0 1px 3px rgba(0,0,0,0.06)",
             radius: "14px"
@@ -687,7 +694,7 @@ export const CARD_PRESETS = {
             radius: "20px"
         },
         dark: {
-            bg: "rgba(0,0,0,0.35)",
+            bg: "var(--app-background)",
             border: "1px solid rgba(255,255,255,0.15)",
             shadow: "0 4px 18px rgba(0,0,0,0.55)",
             radius: "20px"
@@ -701,7 +708,7 @@ export const CARD_PRESETS = {
             radius: "18px"
         },
         dark: {
-            bg: "#14202B",
+            bg: "var(--app-background)",
             border: "1px solid rgba(255,255,255,0.08)",
             shadow: "0 4px 16px rgba(0,0,0,0.55)",
             radius: "18px"
@@ -716,7 +723,7 @@ export const CARD_PRESETS = {
             radius: "22px"
         },
         dark: {
-            bg: "rgba(0,0,0,0.25)",
+            bg: "var(--app-background)",
             border: "1px solid rgba(255,255,255,0.12)",
             shadow: "0 8px 32px rgba(0,0,0,0.55)",
             radius: "22px"
@@ -731,7 +738,7 @@ export const CARD_PRESETS = {
             radius: "16px"
         },
         dark: {
-            bg: "#0F1F18",
+            bg: "var(--app-background)",
             border: "1px solid #5EA884",
             shadow: "0 6px 16px rgba(0,0,0,0.55)",
             radius: "16px"
@@ -746,7 +753,7 @@ export const CARD_PRESETS = {
             radius: "12px"
         },
         dark: {
-            bg: "#1B1B1B",
+            bg: "var(--app-background)",
             border: "1px solid rgba(255,255,255,0.05)",
             shadow: "0 2px 8px rgba(0,0,0,0.45)",
             radius: "12px"
@@ -761,22 +768,36 @@ export const CARD_PRESETS = {
             radius: "20px"
         },
         dark: {
-            bg: "linear-gradient(145deg, rgba(30,30,30,0.6), rgba(10,10,10,0.45))",
+            bg: "var(--app-background)",
             border: "1px solid rgba(255,255,255,0.1)",
             shadow: "0 4px 20px rgba(0,0,0,0.6)",
             radius: "20px"
         }
     },
+    sapphireEmberRed: {
+        light: {
+            bg: "#ffebee",                                  // پس‌زمینه قرمز خیلی روشن
+            border: "1px solid #ef5350",                    // بوردر قرمز
+            shadow: "0 8px 20px rgba(239,83,80,0.25)",      // شَدو قرمز نرم
+            radius: "16px"
+        },
+        dark: {
+            bg: "#3b0f12",                                  // قرمز خیلی تیره برای دارک مود
+            border: "1px solid #ef9a9a",
+            shadow: "0 10px 28px rgba(0,0,0,0.75)",
+            radius: "16px"
+        }
+    },
 
     neoBlue: {
         light: {
-            bg: "linear-gradient(135deg, #FFFFFF, #F5F9FF)",
+            bg: "var(--app-background)",
             border: "1px solid #DCE6FF",
             shadow: "0 6px 18px rgba(0,49,229,0.06)",
             radius: "18px"
         },
         dark: {
-            bg: "linear-gradient(135deg, #101B33, #0C1324)",
+            bg: "var(--app-background)",
             border: "1px solid rgba(80,110,235,0.3)",
             shadow: "0 8px 26px rgba(0,0,0,0.6)",
             radius: "18px"
@@ -785,13 +806,13 @@ export const CARD_PRESETS = {
 
     bankPremiumBlack: {
         light: {
-            bg: "linear-gradient(145deg, #FFFFFF, #F3F3F3)",
+            bg: "var(--app-background)",
             border: "1px solid #C4A878",
             shadow: "0 10px 24px rgba(196,168,120,0.2)",
             radius: "20px"
         },
         dark: {
-            bg: "#0C0C0C",
+            bg: "var(--app-background)",
             border: "1px solid #C4A878",
             shadow: "0 10px 32px rgba(0,0,0,0.75)",
             radius: "20px"
@@ -806,7 +827,7 @@ export const CARD_PRESETS = {
             radius: "10px"
         },
         dark: {
-            bg: "#141A23",
+            bg: "var(--app-background)",
             border: "2px solid #4D6A89",
             shadow: "0 3px 12px rgba(0,0,0,0.55)",
             radius: "10px"
@@ -814,3 +835,4 @@ export const CARD_PRESETS = {
     }
 
 };
+

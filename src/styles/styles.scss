@@ -1,19 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
 /*  1) MUST BE FIRST: SCSS @use                                                                          */
 /* ===================================================================================================== */
 @use 'assets/styles/index';
-
-
 
 
 :root {
@@ -34,7 +21,7 @@
     --surface: #ffffff;
     --background: #f5f5f5;
     --on-surface: #212121;
-    --border: rgba(0,0,0,0.16);
+    --border: rgba(0, 0, 0, 0.16);
 
     --color-surface: #ffffff;
     --color-on-surface: #1e1e1e;
@@ -43,15 +30,15 @@
     --color-text: #1e293b;
 
     /* کارت‌ها */
-    --card-bg: #fff;
+    --card-bg: color-mix(in srgb, var(--color-primary) 5%, #ffffff 95%);
     --card-border: 1px solid #ddd;
-    --card-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     --card-radius: 12px;
 
     /* PrimeNG bridge */
     --primary: var(--color-primary);
     --accent: var(--color-accent);
-    --warn:   var(--color-warn);
+    --warn: var(--color-warn);
 
     --p-primary-color: var(--color-primary);
     --p-primary-500: var(--color-primary);
@@ -86,8 +73,7 @@
     --p-checkbox-focus-ring-width: 2px;
     --p-checkbox-focus-ring-style: solid;
     --p-checkbox-focus-ring-offset: 2px;
-    --p-checkbox-focus-ring-shadow:
-        0 0 0 var(--p-checkbox-focus-ring-width) var(--p-checkbox-focus-ring-color);
+    --p-checkbox-focus-ring-shadow: 0 0 0 var(--p-checkbox-focus-ring-width) var(--p-checkbox-focus-ring-color);
 
     /* آیکن تیک */
     --p-checkbox-icon-color: transparent;
@@ -108,6 +94,26 @@
     --btn-gap: 0.5rem;
     --btn-focus-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
 
+    --app-background: var(--background);
+    --brand-primary-bg: var(--p-button-primary-background, var(--color-primary, var(--primary)));
+    --brand-primary-color: var(--p-button-primary-color, #ffffff);
+
+    --p-button-primary-background: var(--color-primary);
+    --p-button-primary-hover-background: var(--color-primary-hover);
+    --p-button-primary-border-color: var(--color-primary);
+    --p-button-primary-hover-border-color: var(--color-primary-hover);
+    --p-button-primary-color: #ffffff;
+
+    --p-select-option-selected-background: var(--brand-primary-bg, var(--color-primary));
+    --p-select-option-selected-color: var(--brand-primary-color, #ffffff);
+
+    /* وقتی همان آیتم هم انتخاب‌شده هم فوکوس دارد (همینی که نوشتی) */
+    --p-select-option-selected-focus-background: var(--brand-primary-bg, var(--color-primary));
+    --p-select-option-selected-focus-color: var(--brand-primary-color, #ffffff);
+
+    /* اگر هاور جدا هم خواستی */
+    --p-select-option-focus-background: color-mix(in srgb, var(--brand-primary-bg) 12%, var(--color-surface) 88%);
+    --p-select-option-focus-color: var(--color-text);
 }
 
 .p-checkbox-input {
@@ -134,6 +140,7 @@
 body, .app-content, .mat-drawer-content, .content, .wrapper {
     background: var(--app-background) !important;
 }
+
 .fuse-main, .fuse-wrapper, .fuse-content {
     background: var(--app-background) !important;
 }
@@ -141,16 +148,78 @@ body, .app-content, .mat-drawer-content, .content, .wrapper {
 
 /* Dark mode */
 html.p-dark {
+    --surface: #232938;
+    --background: #232938;
+    --on-surface: #F7F7F7;
+
+    --surface-variant: #232938;
+    --on-surface-variant: #F7F7F7;
+
+    --outline: #555;
+    --shadow: rgba(0, 0, 0, 0.6);
+
+    /* ===== Fuse layout ===== */
+    --fuse-sidebar: #232938;
+    --fuse-navbar: #232938;
+    --fuse-toolbar: #232938;
+
+    /* ===== Panel/Card پیش‌فرض ===== */
+    --p-panel-bg: #232938;
+    --p-panel-text: #F7F7F7;
+
     --primary: #90caf9;
     --accent: #ff80ab;
-    --warn:   #ef9a9a;
+    --warn: #ef9a9a;
 
-    --surface: #1e1e1e;
-    --background: #121212;
-    --on-surface: #e0e0e0;
-    --border: rgba(255,255,255,0.12);
+    --border: rgba(255, 255, 255, 0.12);
+
+    /* ❌ این را بردار
+    --app-background: var(--background);
+    */
 
     --p-primary-color-text: #000;
+    --card-bg: #232938;
+    --card-border: 1px solid rgba(247, 247, 247, 0.08);
+    --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+
+    --p-select-option-selected-background: color-mix(in srgb, var(--brand-primary-bg) 80%, #1e2434 20%);
+    --p-select-option-selected-focus-background: color-mix(in srgb, var(--brand-primary-bg) 90%, #1e2434 10%);
+
+}
+
+/*html.p-dark .p-card,
+html.p-dark .p-panel,
+html.p-dark .p-dialog,
+html.p-dark .p-sidebar,
+html.p-dark .p-toast,
+html.p-dark .mat-mdc-card,
+html.p-dark .fuse-card {
+    background-color: #232938 !important;
+    color: #F7F7F7 !important;
+    border-color: rgba(247, 247, 247, 0.08) !important;
+}*/
+
+html.p-dark,
+html.p-dark body {
+    color: #F7F7F7;
+}
+
+html.p-dark .p-datatable .p-datatable-tbody > tr,
+html.p-dark .p-datatable .p-datatable-tbody > tr:nth-child(even),
+html.p-dark .p-datatable .p-datatable-tbody > tr:nth-child(odd) {
+    background-color: #232938 !important;
+}
+
+html.p-dark .p-datatable .p-datatable-tbody > tr + tr {
+    border-top: 1px solid rgba(247, 247, 247, 0.06);
+}
+
+html.p-dark .p-datatable .p-datatable-header,
+html.p-dark .p-datatable .p-datatable-thead > tr > th,
+html.p-dark .p-datatable .p-datatable-tfoot > tr > td {
+    background-color: #232938 !important;
+    color: #F7F7F7 !important;
+    border-color: rgba(247, 247, 247, 0.08) !important;
 }
 
 /* ===================================================================================================== */
@@ -201,14 +270,8 @@ html.p-dark {
 /*  Fuse Dynamic Override                                                                                */
 /* ===================================================================================================== */
 
-.fuse-vertical-navigation-item-active {
-    background-color: var(--primary) !important;
-    color: var(--p-primary-color-text) !important;
-}
 
-.fuse-vertical-navigation-item:hover {
-    color: var(--primary) !important;
-}
+
 .p-button.p-button-text,
 .p-button.p-button-text .p-button-icon {
     color: inherit;
@@ -223,6 +286,7 @@ html.p-dark {
 .p-button.p-button-outlined .p-button-icon {
     color: var(--color-primary);
 }
+
 /*
 .p-button.p-button-icon-only .p-button-icon {
     color: var(--primary-text) !important;
@@ -277,6 +341,7 @@ body .p-checkbox .p-checkbox-box.p-highlight {
     border-color: var(--color-primary) !important;
     background: var(--color-primary) !important;
 }
+
 /* رنگ نقطه وسط رادیو و تیک چک‌باکس */
 body .p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
     background-color: #ffffff !important;
@@ -296,7 +361,6 @@ body .p-checkbox .p-checkbox-box.p-focus {
 }
 
 
-
 body .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
     background: var(--color-primary) !important; /* روشن */
 }
@@ -313,8 +377,8 @@ body {
 .bg-surface {
     background-color: var(--surface) !important;
 }
-/* سایر استایل‌های قبلی شما بدون تغییر */
 
+/* سایر استایل‌های قبلی شما بدون تغییر */
 
 
 /* حالت دارک */
@@ -330,10 +394,6 @@ body.dark-mode {
 
 
 /* حالت دارک PrimeNG */
-body.dark-mode {
-    --p-inputtext-bg: color-mix(in srgb, var(--color-surface) 85%, black 15%);
-    --p-inputtext-color: var(--color-on-surface);
-}
 
 
 /*.p-button.p-button-primary {
@@ -350,11 +410,11 @@ body.dark-mode {
 
 /* فقط در حالت RTL اعمال شود */
 [dir='rtl'] {
-   /* !* تب‌ها از راست به چپ چیده شوند، ولی ایندکس‌ها درست بمانند *!
-    .mat-mdc-tab-header .mat-mdc-tab-labels {
-        flex-direction: row-reverse;
-        justify-content: flex-start; // تب اول می‌چسبد به راست
-    }*/
+    /* !* تب‌ها از راست به چپ چیده شوند، ولی ایندکس‌ها درست بمانند *!
+     .mat-mdc-tab-header .mat-mdc-tab-labels {
+         flex-direction: row-reverse;
+         justify-content: flex-start; // تب اول می‌چسبد به راست
+     }*/
 
     /* کمی زیباسازی اختیاری */
     .mat-mdc-tab {
@@ -398,8 +458,8 @@ body.dark-mode {
 input.p-inputtext.normal-input {
     border-width: 1px !important;
     border-style: solid !important;
-    border-color: #d1d5db !important;  /* معادل border-gray-300 */
-    border-radius: 0.75rem !important;   /* تقریباً rounded-xl */
+    border-color: #d1d5db !important; /* معادل border-gray-300 */
+    border-radius: 0.75rem !important; /* تقریباً rounded-xl */
 }
 
 /* فوکوس */
@@ -407,6 +467,7 @@ input.p-inputtext.normal-input:focus {
     border-color: var(--p-inputtext-focus-border-color) !important;
     box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
 }
+
 :root[dir="rtl"] .p-dropdown {
     direction: rtl !important;
 }
@@ -415,6 +476,7 @@ input.p-inputtext.normal-input:focus {
     right: auto;
     left: 0; /* آیکن را سمت چپ می‌آورد */
 }
+
 html, body {
     direction: rtl !important;
 }
@@ -442,7 +504,7 @@ body,
 }
 
 /* Card Theme */
-.p-card,
+/*.p-card,
 .mat-card,
 .card,
 .app-card,
@@ -453,32 +515,30 @@ form .bg-white {
     border: var(--card-border) !important;
     border-radius: var(--card-radius) !important;
     box-shadow: var(--card-shadow) !important;
-}
-.header-card{
+}*/
+.header-card {
     background: var(--card-bg) !important;
     border: var(--card-border) !important;
     border-bottom-left-radius: var(--card-radius) !important;
     border-bottom-right-radius: var(--card-radius) !important;
     box-shadow: var(--card-shadow) !important;
 }
+
 .dark-mode {
-    --color-primary: #6366f1;
-    --color-primary-hover: #818cf8;
-
-    --color-bg: #0f172a;
-    --color-surface: #1e293b;
-    --color-surface-hover: #334155;
-
-    --color-border: #334155;
-    --color-text: #f1f5f9;
-    --color-text-muted: #94a3b8;
-
     --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.4);
     --shadow-md: 0 3px 9px rgb(0 0 0 / 0.55);
+
+
 }
+
 .mat-mdc-tab-body-content {
     background: #fff !important;
     color: #000 !important;
+}
+
+html.p-dark .mat-mdc-tab-body-content {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
 }
 
 .p-radiobutton .p-radiobutton-box,
@@ -486,7 +546,6 @@ form .bg-white {
 .p-inputswitch .p-inputswitch-slider {
     box-shadow: none !important;
 }
-
 
 
 .p-radiobutton input,
@@ -529,8 +588,8 @@ form .bg-white {
     box-shadow: 0 0 0 2px var(--primary) !important;
     border-color: var(--primary) !important;
 }
-/* ================== FIX PRIME RADIO/CHECK/TOGGLE FOCUS ================== */
 
+/* ================== FIX PRIME RADIO/CHECK/TOGGLE FOCUS ================== */
 
 
 /* ۱) همه‌ی outline و box-shadowهای دیفالت PrimeNG و مرورگر رو برای این کنترل‌ها خاموش کن */
@@ -674,11 +733,11 @@ form .bg-white {
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
     background: var(--primary) !important;
 }
+
 /* ================================
    Override نهایی Radio / Checkbox / Switch PrimeNG
    حتماً آخر styles.scss
    ================================ */
-
 
 
 /* 1) رنگ حالت انتخاب‌شده (پُر شده) */
@@ -700,7 +759,6 @@ body .p-checkbox .p-checkbox-box:hover {
 }
 
 
-
 body .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
     background: var(--color-primary) !important;
 }
@@ -718,12 +776,14 @@ body .p-inputswitch.p-inputswitch-checked.p-focus .p-inputswitch-slider {
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
     background: var(--color-primary) !important; /* روشن */
 }
+
 input[type="radio"]:focus-visible,
 input[type="checkbox"]:focus-visible {
     outline: none !important;
     box-shadow: var(--p-focus-ring-shadow) !important;
     border-color: var(--color-primary) !important;
 }
+
 .p-inputswitch {
     /* رنگ پس‌زمینه وقتی خاموش است */
     --p-toggleswitch-background: #cbd5f5; /* هر رنگ خنثی که می‌خوای */
@@ -745,12 +805,14 @@ input[type="checkbox"]:focus-visible {
 .p-checkbox {
     --p-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
+
 .p-radiobutton .p-radiobutton-input,
 .p-checkbox .p-checkbox-input,
 .p-inputswitch .p-inputswitch-input {
     outline: none !important;
     box-shadow: none !important;
 }
+
 /* ================================
    PrimeNG Checkbox / Radiobutton
    override نهایی – آخر styles.scss
@@ -800,7 +862,505 @@ body .p-checkbox .p-checkbox-box:hover,
 body .p-radiobutton .p-radiobutton-box:hover {
     border-color: var(--color-primary) !important;
 }
+
 .shortcut-header {
     background: var(--primary) !important;
     color: var(--p-primary-color-text) !important;
+}
+
+.fuse-main,
+.page-wrapper,
+.layout,
+body {
+    background: var(--app-background) !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+
+body,
+.app-content,
+.mat-drawer-content,
+.content,
+.wrapper,
+.fuse-main,
+.fuse-wrapper,
+.fuse-content {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/*.p-card,
+.mat-card,
+.card,
+.app-card,
+.form-wrapper,
+form,
+form .bg-white {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+}*/
+
+ html.p-dark {
+     --card-bg: #232938;
+     --card-border: 1px solid rgba(247, 247, 247, 0.08);
+     --color-on-surface: #F7F7F7;
+ }
+
+/*.p-card,
+.mat-card,
+.card,
+.app-card,
+.form-wrapper,
+form,
+form .bg-white {
+    background: var(--card-bg) !important;
+    border: var(--card-border) !important;
+    border-radius: var(--card-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+    color: var(--color-on-surface) !important;
+}*/
+
+.header-card {
+
+    border-bottom-right-radius: var(--card-radius) !important;
+    border-bottom-left-radius: var(--card-radius) !important;
+}
+
+html.p-dark .fuse-toolbar,
+html.p-dark .fuse-navbar,
+html.p-dark .mat-toolbar,
+html.p-dark .mat-toolbar.mat-primary,
+html.p-dark .mat-mdc-toolbar,
+html.p-dark .card,
+html.p-dark .app-card,
+html.p-dark .header-card,
+html.p-dark .mat-mdc-toolbar.mat-primary {
+    background-color: #232938 !important;
+    color: #F7F7F7 !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); /* اختیاری، خط جداکننده زیر تولبار */
+}
+
+html.p-dark .bg-card {
+    background-color: #232938 !important;
+    color: #F7F7F7 !important;
+    border-color: rgba(247, 247, 247, 0.08) !important;
+}
+
+/*
+html.p-dark .card,
+html.p-dark .app-card,
+html.p-dark .header-card, {
+    background-color: #343b4f !important;
+    color: #ffffff !important;
+    border-color: rgba(247, 247, 247, 0.08) !important;
+}
+*/
+html.p-dark .card,
+html.p-dark .app-card,
+html.p-dark .header-card {
+    background-color: var(--card-bg) !important;
+    color: var(--color-on-surface) !important;
+    border-color: rgba(247, 247, 247, 0.08) !important;
+}
+/* 🔹 منوی کناری Fuse در حالت دارک */
+html.p-dark fuse-vertical-navigation,
+html.p-dark fuse-vertical-navigation.navigation,
+html.p-dark fuse-vertical-navigation.main-navigation,
+html.p-dark .fuse-vertical-navigation,
+html.p-dark .fuse-vertical-navigation-wrapper {
+    background-color: #1e2434 !important;
+    color: #F7F7F7 !important;
+}
+
+.bg-surface {
+    background-color: var(--surface) !important;
+}
+.bg-card-custom {
+    background-color: var(--card-bg) !important;
+}
+
+/* خط جداکننده کناره منو (اختیاری) */
+html.p-dark .fuse-vertical-navigation,
+html.p-dark .fuse-vertical-navigation-wrapper {
+    border-inline-end: 1px solid rgba(247, 247, 247, 0.08);
+}
+
+body.dark-mode .text-gray-800 {
+    color: #f9fafb !important; /* یا هر خاکستری روشن دیگه */
+    /* یا اگه بخوای با تم هماهنگ باشه: */
+    /* color: var(--color-text, #f9fafb) !important; */
+}
+
+html.p-dark .p-inputtext,
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-multiselect .p-multiselect-label {
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+}
+
+
+html.p-dark .p-inputtext,
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-multiselect .p-multiselect-label {
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+}
+
+html.p-dark .p-inputtext::placeholder,
+html.p-dark .p-dropdown .p-dropdown-label.p-placeholder {
+    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
+}
+
+html.p-dark input,
+html.p-dark select,
+html.p-dark textarea {
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+}
+
+html.p-dark .p-dropdown {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
+}
+
+/* متن داخل دراپ‌داون (هم value، هم placeholder) */
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-dropdown .p-inputtext {
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+}
+
+/* فقط placeholder دراپ‌داون */
+html.p-dark .p-dropdown .p-dropdown-label.p-placeholder,
+html.p-dark .p-dropdown .p-inputtext.p-placeholder {
+    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
+}
+
+/* پنل باز شونده‌ی آیتم‌ها */
+html.p-dark .p-dropdown-panel {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-item {
+    background-color: var(--app-background) !important; /* دیگه transparent نباشه */
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* آیتم انتخاب‌شده / hover شده */
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--app-background) !important;
+    color: #fff !important;
+}
+
+html.p-dark .p-dropdown-panel,
+html.p-dark .p-dropdown-panel .p-dropdown-items {
+    background-color: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight,
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-focus,
+html.p-dark .p-dropdown-panel .p-dropdown-item:hover {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* اگه دوست داری آیتم انتخاب‌شده پرایمری باشد: */
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight.p-focus {
+    background: var(--app-background) !important;
+    color: #fff !important;
+}
+
+html.p-dark .p-dropdown,
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-dropdown .p-inputtext {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
+}
+
+/* placeholder در دارک کمی کم‌رنگ‌تر */
+html.p-dark .p-dropdown .p-dropdown-label.p-placeholder,
+html.p-dark .p-dropdown .p-inputtext.p-placeholder {
+    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
+}
+
+/* خود پنل و لیست آیتم‌ها */
+html.p-dark .p-dropdown-panel,
+html.p-dark .p-dropdown-panel .p-dropdown-items,
+html.p-dark .p-dropdown-panel .p-dropdown-item {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* آیتم انتخاب‌شده / hover – کمی تم‌دارتر از سطح */
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight,
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-focus,
+html.p-dark .p-dropdown-panel .p-dropdown-item:hover {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+html.p-dark {
+    /* خود کنترل بسته‌ی p-select */
+    --p-select-background: var(--color-surface, var(--surface));
+    --p-select-color: var(--color-text, var(--on-surface));
+    --p-select-placeholder-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent);
+    --p-select-border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent);
+    --p-select-hover-border-color: var(--color-primary);
+    --p-select-focus-border-color: var(--color-primary);
+    --p-select-shadow: 0 0 0 0 transparent;
+
+    /* پنل باز شونده (لیست) */
+    --p-select-overlay-background: var(--color-surface, var(--surface));
+    --p-select-overlay-color: var(--color-text, var(--on-surface));
+    --p-select-overlay-border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent);
+    --p-select-overlay-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+
+    /* آیتم‌ها داخل لیست */
+    --p-select-option-color: var(--color-text, var(--on-surface));
+    --p-select-option-focus-background: --app-background;
+
+    --p-select-option-focus-color: var(--color-text, var(--on-surface));
+
+    --p-select-option-selected-background: var(--color-primary);
+    --p-select-option-selected-color: #ffffff;
+
+    --p-select-option-selected-focus-background: color-mix(
+            in srgb,
+            var(--color-primary) 80%,
+            var(--color-surface, var(--surface)) 20%
+    );
+    --p-select-option-selected-focus-color: #ffffff;
+}
+
+html.p-dark .p-select-overlay,
+html.p-dark .p-select-list-container,
+html.p-dark .p-select-list {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+html.p-dark .p-select-option {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* hover / focus / انتخاب‌شده */
+html.p-dark .p-select-option:hover,
+html.p-dark .p-select-option.p-focus {
+    background: var(--primary) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+.fuse-vertical-navigation-item {
+    border-radius: 0.75rem;
+    transition: background-color .15s ease, color .15s ease;
+}
+.fuse-vertical-navigation-item-active {
+    background-color: color-mix(in srgb, var(--brand-primary-bg) 90%, transparent) !important;
+    color: var(--brand-primary-color) !important;
+}
+
+/* دارک مود */
+html.p-dark .fuse-vertical-navigation-item-active {
+    background-color: color-mix(
+            in srgb,
+            var(--brand-primary-bg) 55%,
+            #1e2434 45%
+    ) !important;
+    color: #ffffff !important;
+}
+/*
+!* hover روی آیتم‌های منو (لایت + دارک) *!
+.fuse-vertical-navigation-item:hover {
+    background-color: color-mix(in srgb, var(--brand-primary-bg) 35%, transparent) !important;
+    color: var(--brand-primary-color) !important;
+}*/
+
+/* ۲) hover در لایت‌مود */
+.fuse-vertical-navigation-item:hover {
+    background-color: color-mix(in srgb, var(--primary) 10%, transparent) !important;
+    color: var(--primary) !important;
+}
+
+/*html.p-dark .fuse-vertical-navigation-item-active {
+    background-color: color-mix(
+            in srgb,
+            var(--primary) 28%,
+            #1e2434 72%
+    ) !important; !* از پس‌زمینه کمی روشن‌تر و تمی‌تر *!
+    color: #ffffff !important;
+}*/
+
+
+/*html.p-dark .fuse-vertical-navigation-item:hover {
+    background-color: color-mix(
+            in srgb,
+            var(--primary) 18%,
+            #1e2434 82%
+    ) !important;
+    color: #ffffff !important;
+}*/
+html.p-dark .p-inputtext,
+html.p-dark input:not([type='checkbox']):not([type='radio']),
+html.p-dark textarea,
+html.p-dark .p-inputmask,
+html.p-dark .p-inputnumber-input,
+html.p-dark .p-password input {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain)
+:not(.p-button-secondary):not(.p-button-success):not(.p-button-info)
+:not(.p-button-warning):not(.p-button-help):not(.p-button-danger):not(.p-button-contrast),
+.dark-mode .p-splitbutton:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain),
+.dark-mode .p-speeddial-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain) {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):hover,
+.dark-mode .p-speeddial-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):hover {
+    background: var(--color-primary-hover);
+}
+/*.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--p-dropdown-option-selected-background) !important;
+    color: var(--p-dropdown-option-selected-color) !important;
+}*/
+
+/*.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: var(--p-dropdown-option-focus-background) !important;
+    color: var(--p-dropdown-option-focus-color) !important;
+}*/
+
+/* دارک مود */
+html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--p-dropdown-option-selected-background) !important;
+    color: var(--p-dropdown-option-selected-color) !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
+html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: var(--p-dropdown-option-focus-background) !important;
+    color: var(--p-dropdown-option-focus-color) !important;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--color-primary) !important;       /* رنگ اصلی تم تو */
+    color: #ffffff !important;
+}
+
+/* hover / focus روی آیتم‌ها */
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface) 90%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+.p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--brand-primary-bg) !important;
+    color: var(--brand-primary-color) !important;
+}
+
+/* هاور / فوکوس فقط روی آیتم‌های غیر انتخاب‌شده */
+.p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+.p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 30%, transparent) !important;
+    color: var(--brand-primary-color) !important;
+}
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 25%, #1e2434 75%) !important;
+    color: #ffffff !important;
+}
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item {
+    background: var(--color-surface);
+    color: var(--color-text, var(--on-surface));
+}
+
+/* آیتم انتخاب‌شده (selected) */
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--brand-primary-bg) !important;
+    color: var(--brand-primary-color) !important;
+}
+
+/* هاور برای آیتم‌های غیر انتخاب‌شده */
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 10%, var(--color-surface) 90%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* هاور برای آیتم انتخاب‌شده (که گفتی نداره) */
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item.p-highlight:hover {
+    background: color-mix(in srgb, var(--brand-primary-bg) 18%, var(--color-surface) 82%) !important;
+    color: var(--brand-primary-color) !important;
+}
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: color-mix(in srgb, var(--brand-primary-bg) 80%, #1e2434 20%) !important;
+    color: #ffffff !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 25%, #1e2434 75%) !important;
+    color: #ffffff !important;
+}
+html .p-select-panel .p-select-option.p-select-option-selected,
+html .p-select-panel .p-select-option.p-select-option-selected.p-focus,
+html .p-select-panel .p-select-option.p-select-option-selected:hover {
+    background: var(--brand-primary-bg, var(--color-primary)) !important;
+    color: var(--brand-primary-color, #ffffff) !important;
+}
+.fuse-vertical-navigation-item {
+    border-radius: 0.75rem;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+/* حالت سلکت‌شده – لایت‌مود */
+.fuse-vertical-navigation-item-active,
+.fuse-vertical-navigation-item-active:hover {
+    background-color: color-mix(in srgb, var(--brand-primary-bg) 90%, transparent) !important;
+    color: var(--brand-primary-color) !important;
+}
+
+/* هاور فقط برای آیتم‌های غیر سلکت‌شده – لایت‌مود */
+.fuse-vertical-navigation-item:not(.fuse-vertical-navigation-item-active):hover {
+    background-color: color-mix(in srgb, var(--primary) 10%, transparent) !important;
+    color: var(--primary) !important;
+}
+
+/* حالت سلکت‌شده – دارک‌مود */
+html.p-dark .fuse-vertical-navigation-item-active,
+html.p-dark .fuse-vertical-navigation-item-active:hover {
+    background-color: color-mix(
+            in srgb,
+            var(--brand-primary-bg) 55%,
+            #1e2434 45%
+    ) !important;
+    color: #ffffff !important;
+}
+
+/* هاور فقط برای آیتم‌های غیر سلکت‌شده – دارک‌مود */
+html.p-dark .fuse-vertical-navigation-item:not(.fuse-vertical-navigation-item-active):hover {
+    background-color: color-mix(
+            in srgb,
+            var(--primary) 18%,
+            #1e2434 82%
+    ) !important;
+    color: #ffffff !important;
+}
+.p-card,
+.mat-card,
+.card,
+.app-card {
+    background: var(--card-bg) !important;
+    color: var(--color-on-surface) !important;
+    border: var(--card-border) !important;
+    box-shadow: var(--card-shadow) !important;
 }

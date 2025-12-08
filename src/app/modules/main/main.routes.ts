@@ -186,6 +186,21 @@ export default [
                 './components/account-interest/account-interest.component'
             ).then((c) => c.AccountInterestComponent),
     },
+
+    {
+        path: 'general-catalog',
+        loadComponent: () =>
+            import(
+                './components/general-catalog-mng/general-catalog-mng.component'
+                ).then((c) => c.GeneralCatalogMngComponent),
+    },
+    {
+        path: 'media-catalog',
+        loadComponent: () =>
+            import(
+                './components/media-catalog-mng/media-catalog-mng.component'
+                ).then((c) => c.MediaCatalogMngComponent),
+    },
 /*    {
         path: 'product-information-request',
         loadComponent: () =>

@@ -3,7 +3,7 @@
         <div class="p-8 rounded-xl shadow-sm  mx-auto">
             <div class="flex flex-col w-full p-4">
                 <div class="flex flex-col items-start text-right w-full">
-                    <h1 class="text-4xl font-bold text-gray-800">مدیریت سود</h1>
+                    <h1 class="text-4xl font-bold ">مدیریت سود</h1>
                     <div class="flex flex-row-reverse items-center gap-2 mt-2">
                         <!--
                                                 <p class="text-base text-gray-500">تعداد کل مشتریان حقیقی: ۱۷۴۵</p>
@@ -14,10 +14,9 @@
         </div>
     </div>
 </div>
-<form [formGroup]="interestForm" (ngSubmit)="onSubmit()">
-    <div class="p-6 space-y-6 ">
-        <div
-            class="px-5 mb-5  app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+
+    <div class="p-6 space-y-6 " [formGroup]="interestForm" (ngSubmit)="onSubmit()">
+        <div class="px-5 mb-5  app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
             <button pButton type="button" label="جدید" icon="pi pi-plus" class="p-button-sm"></button>
             <button pButton type="button" label="ویرایش" icon="pi pi-pencil"
                     class="p-button-sm p-button-secondary"></button>
@@ -384,7 +383,106 @@
 
             </div>
         </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-4 self-center">
+                <label class="mb-0">تعلق سود به سود</label>
 
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+
+
+                </div>
+
+            </div>
+            <div class="col-span-12 md:col-span-6 flex items-center gap-4 self-center">
+                <label class="mb-0">تعلق سود به روز افتتاح</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-4 self-center">
+                <label class="mb-0">تعلق سود به مبلغ مسدودی</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+
+
+                </div>
+
+            </div>
+            <div class="col-span-12 md:col-span-6 flex items-center gap-4 self-center">
+                <label class="mb-0">تعلق سود قطعی به سپرده بسته شده</label>
+
+                <div class="radio-group flex items-center gap-3">
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultYes"
+                        [value]="'yes'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultYes" class="mb-0">دارد</label>
+
+                    <p-radioButton
+                        name="isDefault"
+                        inputId="defaultNo"
+                        [value]="'no'"
+                        formControlName="title"
+                    ></p-radioButton>
+                    <label for="defaultNo" class="mb-0">ندارد</label>
+
+
+                </div>
+
+            </div>
+        </div>
         <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
             <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
                 <label class="mb-0">مبلغ حداقل مانده برای محاسبه سود</label>
@@ -405,7 +503,7 @@
                 <label class="mb-0">روز</label>
             </div>
         </div>
-        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+        <div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4 ">
             <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
                 <label class="mb-0">ماه واریز سود</label>
                 <p-inputNumber
@@ -444,10 +542,79 @@
             </div>
 
         </div>
+        <div class="mt-5">
+
+        </div>
         <div class="account-interest" dir="rtl">
 
-            <p-card>
+            <p-card header="اطلاعات جزئیات">
+                <button
+                    pButton
+                    label="افزودن"
+                    icon="pi pi-plus"
+                    class="p-button-sm mt-2"
+                    (click)="addTier()"
+                ></button>
                 <p-table
+                    class="mt-5"
+                    [value]="tiers.controls"
+                    [responsiveLayout]="'scroll'"
+                    [paginator]="true"
+                    [rows]="5"
+                    [rowsPerPageOptions]="[5,10,25,50]"
+                    selectionMode="single"
+                    styleClass="normal-table"
+                >
+
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>کد جزئیات</th>
+                            <th>از مبلغ</th>
+                            <th>تا مبلغ</th>
+                            <th>دور پرداخت سود</th>
+                            <th>نرخ سود</th>
+                            <th>از مبلغ بلوکه</th>
+                            <th>تا مبلغ بلوکه</th>
+                            <th>از مدت سپرده گذاری</th>
+                            <th>تا مدت سپرده گذاری</th>
+                            <th>توضیحات</th>
+                            <th style="width: 4rem; text-align: center">عملیات</th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+                        <tr [pSelectableRow]="customer">
+                            <td data-label="شناسه ملی">{{ customer.fromAmount }}</td>
+                            <td data-label="شناسه ملی">{{ customer.toAmount }}</td>
+                            <td data-label="شناسه ملی">{{ customer.rate }}</td>
+                            <td data-label="شناسه ملی">{{ customer.penaltyRate }}</td>
+                            <td data-label="شناسه ملی">{{ customer.description }}</td>
+                            <td data-label="شناسه ملی">{{ customer.description }}</td>
+                            <td data-label="شناسه ملی">{{ customer.description }}</td>
+                            <td data-label="شناسه ملی">{{ customer.description }}</td>
+                            <td data-label="شناسه ملی">{{ customer.description }}</td>
+                            <td data-label="شناسه ملی">{{ customer.description }}</td>
+
+                            <td class="text-center">
+                                <button
+                                    pButton
+                                    type="button"
+                                    icon="pi pi-trash"
+                                    class="p-button-rounded p-button-text p-button-sm"
+                                    (click)="removeTier(rowIndex)"
+                                ></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="9" class="text-center py-4 text-gray-500">
+                                {{ interestList ? 'موردی یافت نشد' : 'لطفا معیارهای جستجو را وارد نمایید' }}
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+     <!--           <p-table
                     [value]="tiers.controls"
                     [responsiveLayout]="'scroll'"
                     styleClass="normal-table"
@@ -509,19 +676,11 @@
                             </td>
                         </tr>
                     </ng-template>
-                </p-table>
+                </p-table>-->
 
-                <button
-                    pButton
-                    type="button"
-                    label="افزودن ردیف"
-                    icon="pi pi-plus"
-                    class="p-button-sm mt-2"
-                    (click)="addTier()"
-                ></button>
 
                 <!-- دکمه‌های پایین فرم -->
-                <div class="actions mt-4">
+                <div class="actions mt-4" dir="ltr">
                     <button
                         pButton
                         type="button"
@@ -542,4 +701,3 @@
             </p-card>
         </div>
     </div>
-</form>

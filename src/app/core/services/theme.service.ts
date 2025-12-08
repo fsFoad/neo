@@ -65,7 +65,6 @@ export class ThemeService {
             this.setBackgroundPreset(preset.backgroundPreset);
         }
 
-        document.documentElement.style.setProperty('--app-background', palette.background);
     }
 
     /* ----------------------------------------------------
@@ -73,9 +72,10 @@ export class ThemeService {
      * ---------------------------------------------------- */
     setBackgroundPreset(name: BackgroundPresetName) {
         const isDark = document.body.classList.contains('dark-mode');
-        const bg = BACKGROUND_PRESETS[name]?.[isDark ? 'dark' : 'light'] ?? '';
 
+        const bg = BACKGROUND_PRESETS[name]?.[isDark ? 'dark' : 'light'] ?? '';
         document.documentElement.style.setProperty('--app-background', bg);
+
         localStorage.setItem('app_background', name);
     }
     hexToRgbList(hex: string): string {
@@ -322,6 +322,7 @@ export class ThemeService {
         if (savedBg) {
             this.setBackgroundPreset(savedBg);
         }
+
     }
 
     setCssVar(name: string, value: string): void {
@@ -344,16 +345,22 @@ export class ThemeService {
 
     private toggleDarkMode(isDark: boolean): void {
         const body = document.body;
+        const root = document.documentElement; // <html>
 
         if (isDark) {
+            // کلاس روی body برای کارهای خودت
             body.classList.add('dark-mode');
             body.classList.remove('light-mode');
+
+            // ✅ مهم: این برای Fuse و _theme.scss
+            root.classList.add('p-dark');
         } else {
             body.classList.add('light-mode');
             body.classList.remove('dark-mode');
+
+            root.classList.remove('p-dark');
         }
     }
-
     setPreset(preset: MinimalPreset, mode: 'light' | 'dark'): void {
         this.setPalette(preset[mode]);
     }
@@ -383,10 +390,16 @@ export class ThemeService {
     setCardPreset(name: string) {
         const isDark = document.body.classList.contains('dark-mode');
         const preset = CARD_PRESETS[name]?.[isDark ? 'dark' : 'light'];
+        const palette = this._theme$.value;
 
         if (!preset) return;
 
-        this.setVar('--card-bg', preset.bg);
+        const baseSurface = palette?.surface ?? palette?.background ?? '#ffffff';
+
+        // اگر preset.bg خالی بود، از surface تم استفاده کن
+        const finalBg = preset.bg || baseSurface;
+
+        this.setVar('--card-bg', finalBg);
         this.setVar('--card-border', preset.border);
         this.setVar('--card-shadow', preset.shadow);
         this.setVar('--card-radius', preset.radius);

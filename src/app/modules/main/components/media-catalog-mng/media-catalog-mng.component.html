@@ -1,0 +1,163 @@
+<div>
+    <div class="w-full header-card">
+        <div class="p-8 rounded-xl shadow-sm  mx-auto">
+            <div class="flex flex-col w-full p-4">
+                <div class="flex flex-col items-start text-right w-full">
+                    <h1 class="text-4xl font-bold text-gray-800">مدیریت برداشت</h1>
+                    <div class="flex flex-row-reverse items-center gap-2 mt-2">
+                        <!--
+                                                <p class="text-base text-gray-500">تعداد کل مشتریان حقیقی: ۱۷۴۵</p>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div [formGroup]="mediaForm" (ngSubmit)="onSubmit()">
+    <div class="p-6 space-y-6 ">
+        <div
+            class="px-5 mb-5  app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+            <button pButton type="button" label="ویرایش" icon="pi pi-pencil"
+                    class="p-button-sm p-button-secondary"></button>
+            <button pButton type="button" label="حذف" icon="pi pi-trash"
+                    class="p-button-sm p-button-danger p-button-text"></button>
+            <button pButton type="button" label="انتقال" icon="pi pi-arrow-left-right"
+                    class="p-button-sm p-button-text"></button>
+            <button pButton type="button" label="انتقال/ادغام" icon="pi pi-copy"
+                    class="p-button-sm p-button-text"></button>
+            <button pButton type="button" label="کپی" icon="pi pi-clone" class="p-button-sm p-button-text"></button>
+            <button
+                pButton
+                class="normal-button"
+                label="فعال/غیرفعال"
+                icon="pi pi-power-off"
+            ></button>
+        </div>
+    </div>
+
+
+    <div class="formgrid grid">
+
+        <!-- عنوان -->
+        <div class="field col-12 md:col-6">
+            <label for="title">عنوان *</label>
+            <input
+                id="title"
+                type="text"
+                pInputText
+                formControlName="title"
+                placeholder="عنوان مدیا"
+            />
+            <small
+                class="p-error"
+                *ngIf="mediaForm.get('title')?.touched && mediaForm.get('title')?.hasError('required')"
+            >
+                وارد کردن عنوان الزامی است.
+            </small>
+            <small
+                class="p-error"
+                *ngIf="mediaForm.get('title')?.touched && mediaForm.get('title')?.hasError('maxlength')"
+            >
+                حداکثر ۲۰۰ کاراکتر مجاز است.
+            </small>
+        </div>
+
+        <!-- دسته‌بندی -->
+        <div class="field col-12 md:col-3">
+            <label for="category">دسته‌بندی *</label>
+            <p-dropdown
+                id="category"
+                [options]="categories"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="انتخاب دسته‌بندی"
+                formControlName="category"
+            ></p-dropdown>
+            <small
+                class="p-error"
+                *ngIf="mediaForm.get('category')?.touched && mediaForm.get('category')?.hasError('required')"
+            >
+                انتخاب دسته‌بندی الزامی است.
+            </small>
+        </div>
+
+        <!-- زبان -->
+        <div class="field col-12 md:col-3">
+            <label for="language">زبان *</label>
+            <p-dropdown
+                id="language"
+                [options]="languages"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="انتخاب زبان"
+                formControlName="language"
+            ></p-dropdown>
+            <small
+                class="p-error"
+                *ngIf="mediaForm.get('language')?.touched && mediaForm.get('language')?.hasError('required')"
+            >
+                انتخاب زبان الزامی است.
+            </small>
+        </div>
+
+        <!-- تاریخ انتشار -->
+        <div class="field col-12 md:col-4">
+            <label for="publishDate">تاریخ انتشار</label>
+            <p-persian-calendar
+                id="publishDate"
+                formControlName="publishDate"
+                dateFormat="yy-mm-dd"
+                [showIcon]="true"
+            ></p-persian-calendar>
+        </div>
+
+        <!-- فعال / غیرفعال -->
+        <div class="field col-12 md:col-2 flex align-items-center">
+            <p-checkbox
+                inputId="isActive"
+                formControlName="isActive"
+                binary="true"
+            ></p-checkbox>
+            <label for="isActive" class="ml-2">فعال</label>
+        </div>
+
+        <!-- توضیحات -->
+        <div class="field col-12">
+            <label for="description">توضیحات</label>
+            <textarea
+                id="description"
+                pInputTextarea
+                rows="4"
+                formControlName="description"
+                placeholder="توضیحات تکمیلی درباره مدیا"
+            ></textarea>
+            <small
+                class="p-error"
+                *ngIf="mediaForm.get('description')?.touched && mediaForm.get('description')?.hasError('maxlength')"
+            >
+                حداکثر ۱۰۰۰ کاراکتر مجاز است.
+            </small>
+        </div>
+
+    </div>
+
+    <!-- دکمه‌ها -->
+    <div class="flex gap-2 justify-content-end mt-3">
+        <button
+            pButton
+            type="button"
+            label="پاک کردن"
+            class="p-button-secondary"
+            (click)="onReset()"
+        ></button>
+
+        <button
+            pButton
+            type="submit"
+            label="ذخیره"
+            [disabled]="mediaForm.invalid"
+        ></button>
+    </div>
+
+    </div>
