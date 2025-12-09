@@ -1,37 +1,45 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ButtonDirective } from 'primeng/button';
-import { InputText } from 'primeng/inputtext';
-import { PrimeTemplate } from 'primeng/api';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TableModule } from 'primeng/table';
-import { Dialog } from 'primeng/dialog';
 import { NgIf } from '@angular/common';
-import { RequestInformationComponent } from '../request-information/request-information.component';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+    FormBuilder,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { ButtonDirective } from 'primeng/button';
+import { Dialog } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputText } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { PersianCalendarComponent } from '../../../../shared/components/persian-calendar/persian-calendar.module';
+import { LoanRequestRejisterSuccessfullyComponent } from '../loan-request-rejister-successfully/loan-request-rejister-successfully.component';
 
 @Component({
-    selector: 'app-product-information-request',
+    selector: 'app-request-information',
     imports: [
+        Dialog,
         ButtonDirective,
-        InputText,
-        PrimeTemplate,
         ReactiveFormsModule,
         TableModule,
-        Dialog,
+        InputText,
+        PersianCalendarComponent,
+        DropdownModule,
+        FormsModule,
         NgIf,
-        RequestInformationComponent,
+        LoanRequestRejisterSuccessfullyComponent,
     ],
-    templateUrl: './product-information-request.component.html',
-    styleUrl: './product-information-request.component.scss',
+    templateUrl: './request-information.component.html',
+    styleUrl: './request-information.component.scss',
 })
-export class ProductInformationRequestComponent implements OnInit {
+export class RequestInformationComponent implements OnInit {
     @Output() back = new EventEmitter<void>();
-    currentStep = 1;
+    currentStep: number = 1;
     productInformationForm!: FormGroup;
     selectedProduct: any = null;
     createDialogVisible = false;
     showApprovalDetails = false;
     selectedApproval: any = 'غیر تبصره ای /غیر دولتی';
-
+    goalReceiveList = [];
     customerTable = [
         {
             customerNumber: '36911948',
@@ -72,6 +80,23 @@ export class ProductInformationRequestComponent implements OnInit {
         this.productInformationForm = this.fb.group({
             productTitle: [null],
             productCode: [null],
+            amount: [null],
+            description: [null],
+            loanSubject: [null],
+            depositNumber: [null],
+            relatedFileNo: [null],
+            deferralCode: [null],
+            article186CertificateNo: [null],
+            approvalId: [null],
+            sourceType: [null],
+            cbiCode: [null],
+            economicSubsector: [null],
+            economicSector: [null],
+            installmentInterval: [null],
+            receiveGoal: [null],
+            loanDuration: [null],
+            installmentCount: [null],
+            installmentMethod: [null],
         });
     }
 
@@ -79,16 +104,7 @@ export class ProductInformationRequestComponent implements OnInit {
     detail(row: any): void {
         this.selectedProduct = row;
         this.showApprovalDetails = true;
-
-        // اینجا می‌تونی دیالوگ را باز کنی و فرم را با row پر کنی
-        // this.createSourceForm.patchValue({...});
-        // this.createDialogVisible = true;
-
-        console.log('جزئیات محصول انتخاب شده:', row);
     }
-
-
-    goCanceled() {}
 
     goBack() {
         this.back.emit();
@@ -102,5 +118,3 @@ export class ProductInformationRequestComponent implements OnInit {
         this.currentStep = 1;
     }
 }
-
-

@@ -1,32 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PrimeTemplate } from 'primeng/api';
 import { ButtonDirective } from 'primeng/button';
+import { Dialog } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputGroup } from 'primeng/inputgroup';
 import { InputText } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { PersianCalendarComponent } from '../../../../shared/components/persian-calendar/persian-calendar.module';
 
 @Component({
-    selector: 'app-products-information',
+    selector: 'app-loan-request-rejister-successfully',
     imports: [
         ButtonDirective,
+        Dialog,
         DropdownModule,
-        InputGroup,
         InputText,
+        NgIf,
+        PersianCalendarComponent,
         PrimeTemplate,
         ReactiveFormsModule,
         TableModule,
     ],
-    templateUrl: './products-information.component.html',
-    styleUrl: './products-information.component.scss',
+    templateUrl: './loan-request-rejister-successfully.component.html',
+    styleUrl: './loan-request-rejister-successfully.component.scss',
 })
-export class ProductsInformationComponent implements OnInit {
+export class LoanRequestRejisterSuccessfullyComponent implements OnInit {
+    @Output() back = new EventEmitter<void>();
+    currentStep: number = 1;
     productInformationForm!: FormGroup;
     selectedProduct: any = null;
-
-    // برای دیالوگ جزئیات اگر خواستی استفاده کنی
     createDialogVisible = false;
+    showApprovalDetails = false;
+    selectedApproval: any = 'غیر تبصره ای /غیر دولتی';
+    goalReceiveList = [];
     customerTable = [
         {
             customerNumber: '36911948',
@@ -63,27 +70,25 @@ export class ProductsInformationComponent implements OnInit {
             currencyType: 'ریال',
         },
     ];
+    requestInformationTable = [
+        {
+            amount: 110000,
+            installmentCount: 60,
+            installmentInterval: 1,
+            economicSector: 45789833121,
+            description: 'ایرانی',
+        },
+    ];
     ngOnInit() {
         this.productInformationForm = this.fb.group({
-            productTitle: [null],
-            productCode: [null],
+
         });
     }
 
     constructor(private fb: FormBuilder) {}
     detail(row: any): void {
         this.selectedProduct = row;
-
-        // اینجا می‌تونی دیالوگ را باز کنی و فرم را با row پر کنی
-        // this.createSourceForm.patchValue({...});
-        // this.createDialogVisible = true;
-
-        console.log('جزئیات محصول انتخاب شده:', row);
+        this.showApprovalDetails = true;
     }
-
-    goNext() {}
-
-    goCanceled() {}
-
-    goBack() {}
+    closePage(){}
 }
