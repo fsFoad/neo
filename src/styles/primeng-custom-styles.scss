@@ -268,7 +268,8 @@
 .full-input-number {
     @apply rounded-xl transition w-full  !important;
 }
-.normal-auto-complete {
+
+/*.normal-auto-complete {
 
     @apply rounded-xl transition w-3/4  !important;
     .p-autocomplete-input {
@@ -278,18 +279,11 @@
         @apply !w-full;
     }
 }
+
 .normal-auto-complete-overlay {
     @apply w-3/4 min-w-3/4 !important;
-}
+}*/
 
-
-.normal-list-auto-complete {
-    .p-autocomplete-overlay {
-        @apply !w-3/4;
-    }&.p-autocomplete-list-container{
-         @apply !w-3/4;
-     }
-}
 
 .p-button.p-button-icon-only.button-help {
     width: 29px;
@@ -2021,7 +2015,7 @@ html:root {
 .full-input-number {
     @apply rounded-xl transition w-full  !important;
 }
-.normal-auto-complete {
+/*.normal-auto-complete {
 
     @apply rounded-xl transition w-3/4  !important;
     .p-autocomplete-input {
@@ -2033,8 +2027,16 @@ html:root {
 }
 .normal-auto-complete-overlay {
     @apply w-3/4 min-w-3/4 !important;
+}*/
+.normal-auto-complete {
+    @apply w-3/4 transition;
 }
-
+.normal-auto-complete .p-autocomplete-input-multiple {
+    @apply rounded-r-xl;
+}
+.normal-auto-complete .p-autocomplete-dropdown {
+    @apply rounded-l-xl;
+}
 
 .normal-list-auto-complete {
     .p-autocomplete-overlay {

@@ -37,10 +37,7 @@
     </div>
 
     <div class="p-6 space-y-6">
-        <div
-            class="px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4"
-            [formGroup]="guestForm"
-        >
+        <div class="px-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4" [formGroup]="guestForm">
             <div class="w-full px-4 md:px-6">
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -176,6 +173,7 @@
     </div>-->
 
 
+</div>
 </div>
 <div class="col-span-12" *ngIf="addFlag">
     <app-guest-client-register [InputGuest]="guestDto"

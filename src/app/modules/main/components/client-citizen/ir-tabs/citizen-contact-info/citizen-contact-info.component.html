@@ -526,7 +526,8 @@
     header="افزودن اطلاعات تماس"
     contentStyleClass="dialog-body card-filter">
 
-    <form class="form-grid" [formGroup]="form" (ngSubmit)="submitContact()">
+
+    <form class="form-grid app-card p-5 rounded-xl" [formGroup]="form" (ngSubmit)="submitContact()">
 
         <!-- ستون راست -->
         <div class="grid grid-cols-9 gap-3 md:gap-4">
@@ -588,32 +589,34 @@
                 <input pInputText formControlName="value" class="xx-ggg-8-input">
             </div>
         </div>
-        <div class="my-4 flex items-center justify-end gap-3">
-            <button
-                pButton
-                type="submit"
-                label="تایید"
-                icon="pi pi-check"
 
-                class="btn-standard p-button-success">
-            </button>
-            <button
-                pButton
-                type="button"
-                label="انصراف"
-                icon="pi pi-times"
-                severity="danger"
-                [outlined]="true"
-
-                (click)="closeContact()"
-                class="btn-standard p-button-danger">
-            </button>
-        </div>
   <!--      <div class="my-4 flex items-center justify-end gap-5">
             <button pButton label="تایید" severity="success" class="p-button-primary" type="submit"></button>
             <button pButton label="انصراف" severity="danger" [outlined]="true" class="p-button-secondary" type="button"
                     (click)="closeContact()"></button>
         </div>-->
     </form>
+
+    <div class="app-card p-5 rounded-xl flex items-center justify-end gap-3 mt-4">
+        <button
+            pButton
+            type="submit"
+            label="تایید"
+            icon="pi pi-check"
+
+            class="btn-standard p-button-success">
+        </button>
+        <button
+            pButton
+            type="button"
+            label="انصراف"
+            icon="pi pi-times"
+            severity="danger"
+            [outlined]="true"
+
+            (click)="closeContact()"
+            class="btn-standard p-button-danger">
+        </button>
+    </div>
 </p-dialog>
 

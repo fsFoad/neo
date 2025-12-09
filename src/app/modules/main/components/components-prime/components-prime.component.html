@@ -1,1 +1,1019 @@
-<p>components-prime works!</p>
+<div class="app-card content-page" dir="rtl">
+    <!-- پیام‌ها / Toast و Confirm -->
+    <p-toast></p-toast>
+    <p-confirmdialog></p-confirmdialog>
+    <p-confirmpopup></p-confirmpopup>
+
+    <h1 class="text-xl font-bold mb-4">ComponentsPrimeComponent – نمونه تمام کامپوننت‌ها</h1>
+
+    <p-fluid>
+        <div class="grid grid-cols-12 gap-6">
+
+            <!-- ====================== FORM ====================== -->
+            <section class="col-span-12 2xl:col-span-6">
+                <p-panel header="Form" class="w-full">
+                    <div class="in-panel">
+                        <div class="grid grid-cols-12 gap-4">
+
+                            <!-- AutoComplete -->
+                            <div class="col-span-4 md:col-span-4">
+                                <label class="normal-label mb-1">AutoComplete شهر</label>
+                                <p-autocomplete
+                                    styleClass="normal-auto-complete normal-list-auto-complete"
+                                    [(ngModel)]="autoCompleteValue"
+                                    [suggestions]="autoCompleteSuggestions"
+                                    (completeMethod)="searchAutoComplete($event)"
+                                    [multiple]="true"
+                                    [dropdown]="true"
+
+                                    placeholder="شهر را جستجو کنید"
+                                ></p-autocomplete>
+                            </div>
+
+                            <!-- CascadeSelect -->
+                            <div class="col-span-4 md:col-span-4">
+                                <label class="normal-label mb-1">CascadeSelect کشور / استان / شهر</label>
+                                <p-cascadeselect
+                                    class="normal-dropdown"
+                                    [options]="cascadeOptions"
+                                    optionLabel="name"
+                                    optionGroupLabel="name"
+                                    optionGroupChildren="provinces"
+                                    [optionGroupChildren]="['provinces', 'cities']"
+                                    [(ngModel)]="selectedCascade"
+                                    placeholder="کشور / استان / شهر"
+                                    [showClear]="true"
+                                ></p-cascadeselect>
+                            </div>
+
+                            <!-- Checkbox / RadioButton / ToggleButton -->
+                            <div class="col-span-4 md:col-span-4">
+                                <h3 class="font-semibold mb-2">Checkbox / RadioButton / ToggleButton</h3>
+
+                                <div class="flex items-center gap-2 mb-3">
+                                    <p-checkbox
+                                        [(ngModel)]="checkboxValue"
+                                        [binary]="true"
+                                        inputId="chk1"
+                                    ></p-checkbox>
+                                    <label for="chk1" class="normal-label !mb-0">فعال</label>
+                                </div>
+
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="flex items-center gap-1">
+                                        <p-radiobutton
+                                            name="group1"
+                                            value="A"
+                                            [(ngModel)]="radioValue"
+                                            inputId="rbA"
+                                        ></p-radiobutton>
+                                        <label for="rbA">A</label>
+                                    </div>
+
+                                    <div class="flex items-center gap-1">
+                                        <p-radiobutton
+                                            name="group1"
+                                            value="B"
+                                            [(ngModel)]="radioValue"
+                                            inputId="rbB"
+                                        ></p-radiobutton>
+                                        <label for="rbB">B</label>
+                                    </div>
+                                </div>
+
+                                <p-togglebutton
+                                    [(ngModel)]="toggleButtonValue"
+                                    onLabel="روشن"
+                                    offLabel="خاموش"
+                                ></p-togglebutton>
+                            </div>
+
+                            <!-- ColorPicker / DatePicker -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">ColorPicker / DatePicker</h3>
+                                <div class="flex flex-col gap-3">
+                                    <p-colorpicker
+                                        [(ngModel)]="colorValue"
+                                        [inline]="false"
+                                        format="hex"
+                                    ></p-colorpicker>
+
+                                    <p-datepicker
+                                        class="normal-dropdown"
+                                        [(ngModel)]="dateValue"
+                                        [showIcon]="true"
+                                        [showTime]="true"
+                                        hourFormat="24"
+                                        dateFormat="yy/mm/dd"
+                                        placeholder="تاریخ را انتخاب کنید"
+                                    ></p-datepicker>
+                                </div>
+                            </div>
+
+                            <!-- Editor (تمام عرض) -->
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">Editor</h3>
+                                <p-editor [(ngModel)]="editorValue" [style]="{ height: '200px' }"></p-editor>
+                            </div>
+
+                            <!-- FloatLabel / IftaLabel / IconField -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">FloatLabel / IftaLabel</h3>
+
+                                <div class="flex flex-col gap-4">
+                                    <p-floatlabel>
+                                        <input
+                                            pInputText
+                                            id="float-input"
+                                            [(ngModel)]="floatLabelValue"
+                                            class="normal-input"
+                                        />
+                                        <label for="float-input">FloatLabel</label>
+                                    </p-floatlabel>
+
+                                    <p-iftalabel>
+                                        <input
+                                            pInputText
+                                            id="ifta-input"
+                                            [(ngModel)]="iftaLabelValue"
+                                            class="normal-input"
+                                        />
+                                        <label for="ifta-input">IftaLabel</label>
+                                    </p-iftalabel>
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">IconField</h3>
+                                <p-iconfield iconPosition="left">
+                                    <p-inputicon styleClass="pi pi-search"></p-inputicon>
+                                    <input
+                                        type="text"
+                                        pInputText
+                                        placeholder="جستجو"
+                                        [(ngModel)]="iconFieldValue"
+                                        class="normal-input"
+                                    />
+                                </p-iconfield>
+                            </div>
+
+                            <!-- InputGroup -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">InputGroup</h3>
+
+                                <p-inputgroup class="normal-input-group mb-3">
+                                    <p-inputgroup-addon class="normal-inputgroup-addon">
+                                        <i class="pi pi-user"></i>
+                                    </p-inputgroup-addon>
+                                    <input
+                                        pInputText
+                                        [(ngModel)]="inputTextValue"
+                                        placeholder="نام کاربری"
+                                        class="normal-input !w-full"
+                                    />
+                                </p-inputgroup>
+
+                                <p-inputgroup class="normal-input-group">
+                                    <p-inputgroup-addon class="normal-inputgroup-addon">$</p-inputgroup-addon>
+                                    <p-inputnumber
+                                        [(ngModel)]="numberValue"
+                                        placeholder="قیمت"
+                                        class="full-input-number"
+                                    ></p-inputnumber>
+                                    <p-inputgroup-addon>.00</p-inputgroup-addon>
+                                </p-inputgroup>
+                            </div>
+
+                            <!-- InputMask / InputNumber / InputOtp -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">InputMask / InputNumber / InputOtp</h3>
+
+                                <div class="flex flex-col gap-3">
+                                    <p-inputmask
+                                        mask="999-999999"
+                                        placeholder="999-999999"
+                                        [(ngModel)]="maskValue"
+                                        class="normal-input"
+                                    ></p-inputmask>
+
+                                    <p-inputnumber
+                                        [(ngModel)]="numberValue"
+                                        mode="decimal"
+                                        [min]="0"
+                                        [max]="999999"
+                                        [showButtons]="true"
+                                        class="normal-input-number"
+                                    ></p-inputnumber>
+
+                                    <p-inputotp
+                                        length="6"
+                                        [(ngModel)]="otpValue"
+                                    ></p-inputotp>
+                                </div>
+                            </div>
+
+                            <!-- InputText / KeyFilter / Password / Textarea -->
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">InputText / KeyFilter / Password / Textarea</h3>
+
+                                <div class="flex flex-col gap-3">
+                                    <div class="flex flex-wrap gap-3">
+                                        <input
+                                            pInputText
+                                            [(ngModel)]="inputTextValue"
+                                            placeholder="متن ساده"
+                                            class="normal-input"
+                                        />
+
+                                        <input
+                                            pInputText
+                                            pKeyFilter="int"
+                                            [(ngModel)]="keyFilterValue"
+                                            placeholder="فقط عدد"
+                                            class="normal-input"
+                                        />
+
+                                        <p-password
+                                            [(ngModel)]="passwordValue"
+                                            [feedback]="true"
+                                            toggleMask="true"
+                                            class="normal-password"
+                                        ></p-password>
+                                    </div>
+
+                                    <p-textarea
+                                        [(ngModel)]="textareaValue"
+                                        rows="3"
+                                        cols="30"
+                                        class="normal-textarea"
+                                    ></p-textarea>
+                                </div>
+                            </div>
+
+                            <!-- Knob / Slider / Rating -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Knob / Slider / Rating</h3>
+                                <div class="flex flex-wrap items-center gap-4">
+                                    <p-knob
+                                        [(ngModel)]="knobValue"
+                                        [size]="100"
+                                        [max]="100"
+                                    ></p-knob>
+
+                                    <p-slider
+                                        [(ngModel)]="sliderValue"
+                                        [min]="0"
+                                        [max]="100"
+                                        class="flex-1"
+                                    ></p-slider>
+
+                                    <p-rating
+                                        [(ngModel)]="ratingValue"
+                                    ></p-rating>
+                                </div>
+                            </div>
+
+                            <!-- Listbox / MultiSelect / Select / SelectButton / TreeSelect -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">
+                                    Listbox / MultiSelect / Select / SelectButton / TreeSelect
+                                </h3>
+
+                                <div class="flex flex-col gap-3">
+                                    <p-listbox
+                                        [options]="listboxOptions"
+                                        [(ngModel)]="listboxValue"
+                                        optionLabel="label"
+                                    ></p-listbox>
+
+                                    <p-multiselect
+                                        [options]="multiSelectOptions"
+                                        optionLabel="label"
+                                        display="chip"
+                                        [(ngModel)]="multiSelectValue"
+                                        defaultLabel="شهرها"
+                                        class="normal-dropdown"
+                                    ></p-multiselect>
+
+                                    <p-select
+                                        [options]="selectOptions"
+                                        optionLabel="name"
+                                        [(ngModel)]="selectValue"
+                                        placeholder="یک کشور انتخاب کنید"
+                                        class="normal-dropdown"
+                                    ></p-select>
+
+                                    <p-selectbutton
+                                        [options]="selectButtonOptions"
+                                        [(ngModel)]="selectButtonValue"
+                                        optionLabel="label"
+                                        optionValue="value"
+                                    ></p-selectbutton>
+
+                                    <p-treeselect
+                                        [options]="treeSelectNodes"
+                                        [(ngModel)]="treeSelectValue"
+                                        placeholder="یک نود انتخاب کنید"
+                                        display="chip"
+                                        class="normal-dropdown"
+                                    ></p-treeselect>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== BUTTON ====================== -->
+            <section class="col-span-12 md:col-span-6 2xl:col-span-3">
+                <p-panel header="Button" class="w-full">
+                    <div class="in-panel">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button
+                                pButton
+                                type="button"
+                                label="Primary"
+                                icon="pi pi-check"
+                                class="normal-button"
+                                (click)="showToast()"
+                            ></button>
+
+                            <button
+                                pButton
+                                type="button"
+                                label="Loading"
+                                icon="pi pi-spin pi-spinner"
+                                [loading]="buttonLoading"
+                                class="normal-button"
+                            ></button>
+
+                            <p-speeddial
+                                [model]="speedDialItems"
+                                direction="up"
+                                type="linear"
+                            ></p-speeddial>
+
+                            <p-splitbutton
+                                label="ذخیره"
+                                icon="pi pi-save"
+                                [model]="splitButtonItems"
+                            ></p-splitbutton>
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== DATA ====================== -->
+            <section class="col-span-12 2xl:col-span-9">
+                <p-panel header="Data" class="w-full">
+                    <div class="in-panel">
+                        <div class="grid grid-cols-12 gap-4">
+
+                            <!-- DataView -->
+                            <div class="col-span-12 md:col-span-6 xl:col-span-4">
+                                <h3 class="font-semibold mb-2">DataView</h3>
+                                <p-dataview [value]="dataViewItems" layout="grid">
+                                    <ng-template pTemplate="list" let-items>
+                                        <div *ngFor="let item of items" class="text-sm py-1">
+                                            {{ item.name }} - {{ item.price | currency:'USD' }}
+                                        </div>
+                                    </ng-template>
+                                </p-dataview>
+                            </div>
+
+                            <!-- OrderList -->
+                            <div class="col-span-12 md:col-span-6 xl:col-span-4">
+                                <h3 class="font-semibold mb-2">OrderList</h3>
+                                <p-orderlist
+                                    [value]="orderListItems"
+                                    [dragdrop]="true"
+                                    [listStyle]="{ height: '200px' }"
+                                >
+                                    <ng-template let-item pTemplate="item">
+                                        <span>{{ item }}</span>
+                                    </ng-template>
+                                </p-orderlist>
+                            </div>
+
+                            <!-- OrgChart -->
+                            <div class="col-span-12 md:col-span-6 xl:col-span-4">
+                                <h3 class="font-semibold mb-2">OrgChart</h3>
+                                <p-organizationchart [value]="orgChartValue"></p-organizationchart>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">Table</h3>
+                                <p-table
+                                    [value]="tableCustomers"
+                                    [(selection)]="selectedCustomers"
+                                    selectionMode="multiple"
+                                    dataKey="id"
+                                    [paginator]="true"
+                                    [rows]="5"
+                                >
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th pSelectableRowDisabled="true">
+                                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                            </th>
+                                            <th>شناسه</th>
+                                            <th>نام</th>
+                                            <th>کشور</th>
+                                            <th>وضعیت</th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-row>
+                                        <tr [pSelectableRow]="row">
+                                            <td>
+                                                <p-tableCheckbox [value]="row"></p-tableCheckbox>
+                                            </td>
+                                            <td>{{ row.id }}</td>
+                                            <td>{{ row.name }}</td>
+                                            <td>{{ row.country }}</td>
+                                            <td>{{ row.status }}</td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+
+                            <!-- Timeline -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Timeline</h3>
+                                <p-timeline
+                                    [value]="timelineEvents"
+                                    align="alternate"
+                                    layout="vertical"
+                                >
+                                    <ng-template pTemplate="content" let-event>
+                                        {{ event.status }} - {{ event.date }}
+                                    </ng-template>
+                                </p-timeline>
+                            </div>
+
+                            <!-- Tree / TreeTable -->
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Tree / TreeTable</h3>
+
+                                <p-tree
+                                    [value]="treeNodes"
+                                    selectionMode="single"
+                                    [(selection)]="selectedTreeNode"
+                                    class="mb-3"
+                                ></p-tree>
+
+                                <p-treetable [value]="treeTableNodes">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th>نام</th>
+                                            <th>حجم</th>
+                                            <th>نوع</th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                                        <tr>
+                                            <td>
+                                                <p-treetableToggler [rowNode]="rowNode"></p-treetableToggler>
+                                                {{ rowData.name }}
+                                            </td>
+                                            <td>{{ rowData.size }}</td>
+                                            <td>{{ rowData.type }}</td>
+                                        </tr>
+                                    </ng-template>
+                                </p-treetable>
+                            </div>
+
+                            <!-- VirtualScroller -->
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">VirtualScroller</h3>
+                                <p-virtualscroller
+                                    [items]="virtualItems"
+                                    [itemSize]="40"
+                                    style="height: 200px"
+                                >
+                                    <ng-template pTemplate="item" let-item>
+                                        <div class="px-4 py-2">
+                                            {{ item }}
+                                        </div>
+                                    </ng-template>
+                                </p-virtualscroller>
+                            </div>
+
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== PANEL ====================== -->
+            <section class="col-span-12 2xl:col-span-6">
+                <p-panel header="Panel Components" class="w-full">
+                    <div class="in-panel">
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Accordion / Card</h3>
+                                <p-accordion [(activeIndex)]="activeAccordionIndex">
+                                    <p-accordiontab header="تب اول">
+                                        <p-card header="Card داخل Accordion" subheader="Sub">
+                                            <p>متن تستی داخل کارت.</p>
+                                        </p-card>
+                                    </p-accordiontab>
+                                    <p-accordiontab header="تب دوم">
+                                        دومین تب
+                                    </p-accordiontab>
+                                </p-accordion>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Divider / Fieldset / Panel</h3>
+                                <p-divider></p-divider>
+
+                                <p-fieldset legend="Fieldset تستی" [toggleable]="true" class="mb-3">
+                                    داخل Fieldset
+                                </p-fieldset>
+
+                                <p-panel
+                                    header="Panel نمونه"
+                                    [toggleable]="true"
+                                >
+                                    متن ساده داخل پنل
+                                </p-panel>
+                            </div>
+
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">ScrollPanel / Splitter / Stepper / TabView / Toolbar</h3>
+
+                                <p-scrollpanel [style]="{ width: '100%', height: '120px' }" class="mb-3">
+                                    <p>متن طولانی برای تست ScrollPanel...</p>
+                                </p-scrollpanel>
+
+                                <p-splitter styleClass="mt-3" [panelSizes]="[50, 50]">
+                                    <ng-template pTemplate="panel">
+                                        <div class="p-4">پنل چپ</div>
+                                    </ng-template>
+                                    <ng-template pTemplate="panel">
+                                        <div class="p-4">پنل راست</div>
+                                    </ng-template>
+                                </p-splitter>
+
+                                <div class="mt-4">
+                                    <p-stepper [(value)]="stepperIndex" class="basis-[30rem]">
+                                        <p-step-list>
+                                            <p-step [value]="1">مرحله ۱</p-step>
+                                            <p-step [value]="2">مرحله ۲</p-step>
+                                        </p-step-list>
+
+                                        <p-step-panels>
+                                            <p-step-panel [value]="1">
+                                                <ng-template #content let-activateCallback="activateCallback">
+                                                    <div class="flex flex-column gap-3">
+                                                        <p>محتوا مرحله ۱</p>
+                                                        <div class="flex justify-content-end">
+                                                            <p-button
+                                                                label="بعدی"
+                                                                icon="pi pi-arrow-right"
+                                                                iconPos="right"
+                                                                (onClick)="activateCallback(2)"
+                                                            ></p-button>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </p-step-panel>
+
+                                            <p-step-panel [value]="2">
+                                                <ng-template #content let-activateCallback="activateCallback">
+                                                    <div class="flex flex-column gap-3">
+                                                        <p>محتوا مرحله ۲</p>
+                                                        <div class="flex justify-content-start">
+                                                            <p-button
+                                                                label="قبلی"
+                                                                icon="pi pi-arrow-left"
+                                                                (onClick)="activateCallback(1)"
+                                                            ></p-button>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </p-step-panel>
+                                        </p-step-panels>
+                                    </p-stepper>
+                                </div>
+
+                                <div class="mt-4">
+                                    <p-tabview [(activeIndex)]="activeTabIndex">
+                                        <p-tabpanel header="Tab 1">
+                                            تب ۱
+                                        </p-tabpanel>
+                                        <p-tabpanel header="Tab 2">
+                                            تب ۲
+                                        </p-tabpanel>
+                                    </p-tabview>
+                                </div>
+
+                                <div class="mt-4">
+                                    <p-toolbar>
+                                        <div class="p-toolbar-group-left">
+                                            <button pButton icon="pi pi-plus" label="جدید"></button>
+                                        </div>
+                                        <div class="p-toolbar-group-right">
+                                            <button
+                                                pButton
+                                                icon="pi pi-search"
+                                                label="جستجو"
+                                                class="p-button-text"
+                                            ></button>
+                                        </div>
+                                    </p-toolbar>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== OVERLAY ====================== -->
+            <section class="col-span-12 2xl:col-span-6">
+                <p-panel header="Overlay" class="w-full">
+                    <div class="in-panel">
+                        <div class="flex flex-wrap gap-3">
+                            <button
+                                pButton
+                                label="ConfirmDialog"
+                                icon="pi pi-exclamation-triangle"
+                                (click)="confirmSample()"
+                            ></button>
+
+                            <button
+                                pButton
+                                label="Dialog"
+                                icon="pi pi-window-maximize"
+                                (click)="dialogVisible = true"
+                            ></button>
+
+                            <p-dialog
+                                header="Dialog نمونه"
+                                [(visible)]="dialogVisible"
+                                [modal]="true"
+                                [style]="{ width: '30rem' }"
+                            >
+                                متن داخل دیالوگ
+                            </p-dialog>
+
+                            <button
+                                pButton
+                                label="Drawer"
+                                icon="pi pi-arrow-left"
+                                (click)="drawerVisible = true"
+                            ></button>
+
+                            <p-drawer
+                                [(visible)]="drawerVisible"
+                                position="right"
+                                header="Drawer نمونه"
+                            >
+                                متن داخل Drawer
+                            </p-drawer>
+
+                            <p-popover #pop>
+                                <p>محتوای Popover</p>
+                            </p-popover>
+                            <button
+                                pButton
+                                label="Popover"
+                                icon="pi pi-share-alt"
+                                (click)="pop.toggle($event)"
+                            ></button>
+
+                            <button
+                                pButton
+                                label="Tooltip"
+                                icon="pi pi-info-circle"
+                                pTooltip="متن Tooltip"
+                                tooltipPosition="top"
+                            ></button>
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== FILE ====================== -->
+            <section class="col-span-12 md:col-span-6 2xl:col-span-4">
+                <p-panel header="File" class="w-full">
+                    <div class="in-panel">
+                        <h3 class="font-semibold mb-2">FileUpload</h3>
+                        <p-fileupload
+                            name="demo[]"
+                            url="./upload"
+                            (onUpload)="onFileUpload($event)"
+                            [showUploadButton]="false"
+                            [showCancelButton]="false"
+                            chooseLabel="انتخاب فایل"
+                            multiple="true"
+                        ></p-fileupload>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== MENU ====================== -->
+            <section class="col-span-12 md:col-span-6 2xl:col-span-8">
+                <p-panel header="Menu" class="w-full">
+                    <div class="in-panel">
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">Breadcrumb</h3>
+                                <p-breadcrumb
+                                    [model]="breadcrumbItems"
+                                    [home]="breadcrumbHome"
+                                ></p-breadcrumb>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">ContextMenu / Dock</h3>
+                                <p-contextmenu [model]="contextMenuItems" #cm></p-contextmenu>
+                                <div (contextmenu)="cm.show($event)" class="p-3 border border-dashed border-gray-300 rounded-xl text-sm">
+                                    راست‌کلیک برای ContextMenu
+                                </div>
+
+                                <p-dock [model]="dockItems" position="bottom" class="mt-3"></p-dock>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Menu / Menubar / MegaMenu</h3>
+
+                                <p-menu [model]="menuItems"></p-menu>
+                                <p-menubar [model]="menuItems" class="mt-2"></p-menubar>
+                                <p-megamenu [model]="menuItems" class="mt-2"></p-megamenu>
+                            </div>
+
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">PanelMenu / Steps / TieredMenu</h3>
+
+                                <p-panelmenu [model]="panelMenuItems"></p-panelmenu>
+
+                                <p-steps
+                                    [model]="stepsItems"
+                                    [readonly]="false"
+                                    class="mt-3"
+                                ></p-steps>
+
+                                <p-tieredmenu
+                                    [model]="tieredMenuItems"
+                                    class="mt-3"
+                                ></p-tieredmenu>
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== CHART ====================== -->
+            <section class="col-span-12 md:col-span-6">
+                <p-panel header="Chart" class="w-full">
+                    <div class="in-panel">
+                        <h3 class="font-semibold mb-2">Chart.js</h3>
+                        <p-chart
+                            type="line"
+                            [data]="chartData"
+                            [options]="chartOptions"
+                            style="min-height: 250px"
+                        ></p-chart>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== MESSAGES ====================== -->
+            <section class="col-span-12 md:col-span-6">
+                <p-panel header="Messages" class="w-full">
+                    <div class="in-panel">
+                        <h3 class="font-semibold mb-2">Message / Toast</h3>
+
+                        <div class="flex flex-wrap items-center gap-3">
+                            <p-message
+                                severity="info"
+                                [text]="messageValue"
+                            ></p-message>
+
+                            <button
+                                pButton
+                                label="Show Toast"
+                                icon="pi pi-bell"
+                                class="normal-button"
+                                (click)="showToast()"
+                            ></button>
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== MEDIA ====================== -->
+            <section class="col-span-12 2xl:col-span-6">
+                <p-panel header="Media" class="w-full">
+                    <div class="in-panel">
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Carousel</h3>
+                                <p-carousel
+                                    [value]="carouselItems"
+                                    [numVisible]="1"
+                                    [numScroll]="1"
+                                >
+                                    <ng-template pTemplate="item" let-item>
+                                        <p-card [header]="item.title">
+                                            {{ item.text }}
+                                        </p-card>
+                                    </ng-template>
+                                </p-carousel>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-6">
+                                <h3 class="font-semibold mb-2">Galleria</h3>
+                                <p-galleria
+                                    [value]="galleriaImages"
+                                    [showThumbnails]="true"
+                                    [showIndicators]="false"
+                                    [circular]="true"
+                                    [autoPlay]="false"
+                                    [containerStyle]="{ 'max-width': '400px' }"
+                                ></p-galleria>
+                            </div>
+
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">Image / ImageCompare</h3>
+                                <div class="flex flex-wrap gap-4 items-center">
+                                    <p-image
+                                        src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg"
+                                        alt="تصویر"
+                                        width="200"
+                                        [preview]="true"
+                                    ></p-image>
+
+                                    <p-imagecompare
+                                        class="ml-3"
+                                        leftImage="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg"
+                                        rightImage="https://primefaces.org/cdn/primeng/images/demo/product/blue-band.jpg"
+                                    ></p-imagecompare>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== MISC ====================== -->
+            <section class="col-span-12 2xl:col-span-6">
+                <p-panel header="Misc" class="w-full">
+                    <div class="in-panel">
+                        <div class="grid grid-cols-12 gap-4">
+
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">AnimateOnScroll / AutoFocus / FocusTrap / Fluid</h3>
+
+                                <div class="demo-block" pAnimateOnScroll>
+                                    <div pFocusTrap class="p-4 border rounded-xl border-gray-300">
+                                        <p>این باکس FocusTrap است.</p>
+                                        <input pInputText pAutoFocus placeholder="اولین فوکوس" class="normal-input !w-full mb-2" />
+                                        <input pInputText class="normal-input !w-full" placeholder="ورودی بعدی" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">Avatar / Badge / Chip / Tag</h3>
+
+                                <div class="flex flex-wrap items-center gap-3 mb-3">
+                                    <p-avatar
+                                        [label]="avatarText"
+                                        shape="circle"
+                                    ></p-avatar>
+
+                                    <p-badge
+                                        [value]="badgeValue"
+                                        severity="danger"
+                                    ></p-badge>
+                                </div>
+
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <p-chip
+                                        *ngFor="let tech of chipValues"
+                                        [label]="tech"
+                                        removable="true"
+                                    ></p-chip>
+                                </div>
+
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <p-tag value="New" severity="success"></p-tag>
+                                    <p-tag
+                                        value="Warning"
+                                        severity="warning"
+                                    ></p-tag>
+                                </div>
+                            </div>
+
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">BlockUI / MeterGroup / ProgressBar / ProgressSpinner</h3>
+
+                                <p-blockui [blocked]="blockTarget">
+                                    <p-card header="BlockUI">
+                                        <p>زمانی که blocked=true باشد، این باکس بلاک می‌شود.</p>
+                                        <button
+                                            pButton
+                                            label="Toggle Block"
+                                            (click)="blockTarget = !blockTarget"
+                                        ></button>
+                                    </p-card>
+                                </p-blockui>
+
+                                <p-metergroup
+                                    [value]="meterGroupValue"
+                                    class="mt-3"
+                                ></p-metergroup>
+
+                                <p-progressbar
+                                    [value]="progressBarValue"
+                                    showValue="true"
+                                    class="mt-3"
+                                ></p-progressbar>
+
+                                <p-progressspinner class="mt-3"></p-progressspinner>
+                            </div>
+
+                            <div class="col-span-12">
+                                <h3 class="font-semibold mb-2">Ripple / StyleClass / ScrollTop / Skeleton / Inplace / Terminal</h3>
+
+                                <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    label="Ripple Button"
+                                    class="normal-button"
+                                ></button>
+
+                                <div id="styleTarget" style="display:none;margin-top:1rem;">
+                                    با StyleClass نمایش/مخفی می‌شوم.
+                                </div>
+
+                                <button
+                                    pButton
+                                    label="Toggle Box"
+                                    class="ml-2 normal-button"
+                                    pStyleClass="#styleTarget"
+                                    enterClass="fadein"
+                                    leaveClass="fadeout"
+                                ></button>
+
+                                <p-skeleton
+                                    width="10rem"
+                                    height="2rem"
+                                    class="block mt-2"
+                                ></p-skeleton>
+
+                                <p-inplace
+                                    [(active)]="inplaceActive"
+                                    class="block mt-3"
+                                >
+                                    <span pInplaceDisplay>برای ویرایش کلیک کنید</span>
+                                    <span pInplaceContent>
+                                        <input
+                                            pInputText
+                                            [(ngModel)]="inputTextValue"
+                                            class="normal-input"
+                                        />
+                                    </span>
+                                </p-inplace>
+
+                                <p-terminal
+                                    welcomeMessage="PrimeNG Terminal"
+                                    prompt="primeng $"
+                                    class="block mt-3"
+                                ></p-terminal>
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+            </section>
+
+            <!-- ====================== UTILITIES ====================== -->
+            <section class="col-span-12 md:col-span-6">
+                <p-panel header="Utilities" class="w-full">
+                    <div class="in-panel">
+                        <h3 class="font-semibold mb-2">FilterService Demo</h3>
+                        <button
+                            pButton
+                            label="Run FilterService"
+                            icon="pi pi-filter"
+                            class="normal-button"
+                            (click)="doFilterWithFilterService()"
+                        ></button>
+                        <p *ngIf="filterServiceResult !== null" class="mt-2 text-sm">
+                            نتیجه FilterService:
+                            {{ filterServiceResult ? 'true' : 'false' }}
+                        </p>
+                    </div>
+                </p-panel>
+            </section>
+
+        </div>
+    </p-fluid>
+
+    <!-- ScrollTop -->
+    <p-scrolltop target="window"></p-scrolltop>
+</div>

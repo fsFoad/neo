@@ -1,7 +1,8 @@
 import {
-    NgClass,
-    NgForOf,
+    CommonModule,
     NgIf,
+    NgForOf,
+    NgClass,
     NgSwitch,
     NgSwitchCase,
     NgSwitchDefault,
@@ -31,12 +32,12 @@ import { CitizenshipTypePipe } from '../../../shared/pipes/citizenship-type.pipe
 import { NeobankService } from '../../services/neobank.service';
 import { RegisterIrClientCitizen } from './register-ir-client-citizen/register-ir-client-citizen';
 import { RegisterFrClientCitizenComponent } from './register-fr-client-citizen/register-fr-client-citizen.component';
+import { ComponentsPrimeComponent } from '../components-prime/components-prime.component';
+
 
 @Component({
     selector: 'app-client-citizen',
     imports: [
-        NgIf,
-        NgForOf,
         Button,
         Tag,
         Toast,
@@ -56,16 +57,20 @@ import { RegisterFrClientCitizenComponent } from './register-fr-client-citizen/r
         InputGroup,
         InputGroupAddon,
         ReactiveFormsModule,
-        NgClass,
         MatTooltip,
         CitizenshipTypePipe,
         AliveTypePipe,
-        NgSwitch,
-        NgSwitchCase,
-        NgSwitchDefault,
         RegisterIrClientCitizen,
         RegisterFrClientCitizenComponent,
+        ComponentsPrimeComponent,
+        NgIf,
+        NgClass,
+        NgSwitch,
+        NgForOf,
+        NgSwitchCase,
+        NgSwitchDefault,
     ],
+    standalone: true,
     templateUrl: './client-citizen.component.html',
     styleUrl: './client-citizen.component.scss',
 })

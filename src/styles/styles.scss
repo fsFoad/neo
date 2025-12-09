@@ -95,6 +95,7 @@
     --btn-focus-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
 
     --app-background: var(--background);
+    --app-border-radius: 0.75rem;
     --brand-primary-bg: var(--p-button-primary-background, var(--color-primary, var(--primary)));
     --brand-primary-color: var(--p-button-primary-color, #ffffff);
 
@@ -1213,13 +1214,18 @@ html.p-dark .p-password input {
     box-shadow: none !important;
 }
 
-.dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain)
-:not(.p-button-secondary):not(.p-button-success):not(.p-button-info)
-:not(.p-button-warning):not(.p-button-help):not(.p-button-danger):not(.p-button-contrast),
+.dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-help):not(.p-button-danger):not(.p-button-contrast),
 .dark-mode .p-splitbutton:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain),
 .dark-mode .p-speeddial-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain) {
     background: var(--color-primary);
     color: #fff;
+}
+
+/* هاور برای همون دکمه‌های بدون severity */
+.dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-help):not(.p-button-danger):not(.p-button-contrast):hover,
+.dark-mode .p-splitbutton:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):hover,
+.dark-mode .p-speeddial-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):hover {
+    background: var(--color-primary-hover);
 }
 
 .dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):hover,
@@ -1361,3 +1367,21 @@ html.p-dark .fuse-vertical-navigation-item:not(.fuse-vertical-navigation-item-ac
     border: var(--card-border) !important;
     box-shadow: var(--card-shadow) !important;
 }
+body.dark .p-dialog {
+    background: var(--app-background) !important;
+    border-radius: var(--app-border-radius) !important;
+}
+
+/* هدر، کانتنت و فوتر دیالوگ */
+body.dark .p-dialog-header,
+body.dark .p-dialog-content,
+body.dark .p-dialog-footer {
+    background: var(--app-background) !important;
+}
+
+/* اگر خواستی ماسک هم شخصی‌سازی بشه (اختیاری) */
+body.dark .p-dialog-mask {
+    /* مثلا همون پیش‌فرضش یا کمی تیره‌تر */
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+

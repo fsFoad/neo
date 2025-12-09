@@ -69,7 +69,7 @@ interface RegisterTabDef<TTabId extends string> {
     styleUrl: './register-fr-client-citizen.component.scss',
 })
 export class RegisterFrClientCitizenComponent implements OnInit {
-    @Input() InputFrCitizen;
+    @Input() InputFrCitizen: any;
     tabs: RegisterTabDef<FrRegisterTabId>[] = [];
 
     selectedIndex = 0;

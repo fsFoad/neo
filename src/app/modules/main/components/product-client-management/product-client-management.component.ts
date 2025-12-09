@@ -7,7 +7,8 @@ import { RadioButton } from 'primeng/radiobutton';
 import { PersianCalendarComponent } from '../../../shared/components/persian-calendar/persian-calendar.module';
 import { Textarea } from 'primeng/textarea';
 import { InputText } from 'primeng/inputtext';
-import { NgForOf } from '@angular/common';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { TableModule } from 'primeng/table';
 
 interface Option {
     label: string;
@@ -33,12 +34,15 @@ interface TariffRow {
         Textarea,
         InputText,
         NgForOf,
+        NgIf,
+        TableModule,
+        NgClass,
     ],
     styleUrls: ['./product-client-management.component.scss'],
 })
 export class ProductClientManagementComponent implements OnInit {
     form!: FormGroup;
-
+    productList: any[] = [];
     depositAccountGroups: Option[] = [
         { label: 'گروه ۱', value: 1 },
         { label: 'گروه ۲', value: 2 },
