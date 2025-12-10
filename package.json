@@ -28,6 +28,7 @@
     "@angular/router": "^19.1.6",
     "@angular/service-worker": "^19.2.14",
     "@ngneat/transloco": "^6.0.4",
+    "@ngrx/effects": "^20.1.0",
     "@ngrx/store": "^20.0.1",
     "@primeng/themes": "^19.0.5",
     "apexcharts": "^4.4.0",

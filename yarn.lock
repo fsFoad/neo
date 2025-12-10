@@ -2127,6 +2127,13 @@
     replace-in-file "^7.0.1"
     tslib "^2.2.0"
 
+"@ngrx/effects@^20.1.0":
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-20.1.0.tgz#e8947a0840dc76d289eafcaa929113ab303335ea"
+  integrity sha512-wkIu0QnTarBd1zUswk643H5SILO9Be1OeswMe7g4tXlkNLFRPkyu0BUzXT80PsUPP5p0VrdFz3akrn3HHjjTjA==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/store@^20.0.1":
   version "20.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-20.1.0.tgz#107e49efddf816df5f3e5b482ce8320f1eed971a"

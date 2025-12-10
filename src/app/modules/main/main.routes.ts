@@ -1,5 +1,21 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { provideState } from '@ngrx/store';
+import { productClientFeature } from './components/product-client-management/application-NgRx/product-client.reducer';
+
+import { environment } from '../../../environments/environment';
+import {
+    ProductClientRepository
+} from './components/product-client-management/domain/repositories/product-client-repository';
+import { ProductClientEffects } from './components/product-client-management/application-NgRx/product-client.effects';
+import { provideEffects } from '@ngrx/effects';
+import { AppSettings } from '../../AppSetting';
+import {
+     ProductClientRepositoryMockService
+} from './components/product-client-management/infrastructure/product-client-repository.mock.service';
+import {
+    ProductClientRepositoryHttpService
+} from './components/product-client-management/infrastructure/product-client-repository.http.service';
 
 export default [
     {
@@ -21,9 +37,9 @@ export default [
     {
         path: 'loan-funding-sources',
         loadComponent: () =>
-            import(
-                './components/loan-funding-sources/loan-funding-sources.component'
-            ).then((c) => c.LoanFundingSourcesComponent),
+            import('./components/loan-funding-sources/loan-funding-sources.component').then(
+                (c) => c.LoanFundingSourcesComponent
+            ),
     },
     {
         path: 'loan-goal',
@@ -56,9 +72,9 @@ export default [
     {
         path: 'loan-pattern-operation',
         loadComponent: () =>
-            import(
-                './components/loan-pattern-operation/loan-pattern-operation.component'
-            ).then((c) => c.LoanPatternOperationComponent),
+            import('./components/loan-pattern-operation/loan-pattern-operation.component').then(
+                (c) => c.LoanPatternOperationComponent
+            ),
     },
     {
         path: 'lon-plan-type',
@@ -77,9 +93,9 @@ export default [
     {
         path: 'lon-sub-operation',
         loadComponent: () =>
-            import(
-                './components/lon-sub-operation/lon-sub-operation.component'
-            ).then((c) => c.LonSubOperationComponent),
+            import('./components/lon-sub-operation/lon-sub-operation.component').then(
+                (c) => c.LonSubOperationComponent
+            ),
     },
     {
         path: 'client-citizen',
@@ -91,9 +107,9 @@ export default [
     {
         path: 'client-corporate',
         loadComponent: () =>
-            import(
-                './components/client-corporate/client-corporate.component'
-            ).then((c) => c.ClientCorporateComponent),
+            import('./components/client-corporate/client-corporate.component').then(
+                (c) => c.ClientCorporateComponent
+            ),
     },
     {
         path: 'client-guest',
@@ -105,17 +121,28 @@ export default [
     {
         path: 'guest-reason',
         loadComponent: () =>
-            import(
-                './components/guest-reason-management/guest-reason-management.component'
-            ).then((c) => c.GuestReasonManagementComponent),
+            import('./components/guest-reason-management/guest-reason-management.component').then(
+                (c) => c.GuestReasonManagementComponent
+            ),
     },
     {
         path: 'product-management',
         loadComponent: () =>
-            import(
-                './components/product-client-management/product-client-management.component'
-            ).then((c) => c.ProductClientManagementComponent),
+            import('./components/product-client-management/product-client-management.component').then(
+                (c) => c.ProductClientManagementComponent
+            ),
+        providers: [
+            provideState(productClientFeature),
+            provideEffects(ProductClientEffects),
+            {
+                provide: ProductClientRepository,
+                useClass: AppSettings.IsMock
+                    ? ProductClientRepositoryMockService
+                    : ProductClientRepositoryHttpService,
+            },
+        ],
     },
+
     {
         path: 'loan-contract',
         loadComponent: () =>
@@ -126,16 +153,16 @@ export default [
     {
         path: 'loan-contract-grant',
         loadComponent: () =>
-            import(
-                './components/loan-contract-grant/loan-contract-grant.component'
-            ).then((c) => c.LoanContractGrantComponent),
+            import('./components/loan-contract-grant/loan-contract-grant.component').then(
+                (c) => c.LoanContractGrantComponent
+            ),
     },
     {
         path: 'loan-involved-customer',
         loadComponent: () =>
-            import(
-                './components/loan-involved-customer/loan-involved-customer.component'
-            ).then((c) => c.LoanInvolvedCustomerComponent),
+            import('./components/loan-involved-customer/loan-involved-customer.component').then(
+                (c) => c.LoanInvolvedCustomerComponent
+            ),
     },
     {
         path: 'loan-proposed',
@@ -168,9 +195,9 @@ export default [
     {
         path: 'not-established',
         loadComponent: () =>
-            import(
-                './components/client-corporate/not-established/not-established.component'
-            ).then((c) => c.NotEstablishedComponent),
+            import('./components/client-corporate/not-established/not-established.component').then(
+                (c) => c.NotEstablishedComponent
+            ),
     },
     {
         path: 'basic-info',
@@ -182,26 +209,26 @@ export default [
     {
         path: 'account-interest',
         loadComponent: () =>
-            import(
-                './components/account-interest/account-interest.component'
-            ).then((c) => c.AccountInterestComponent),
+            import('./components/account-interest/account-interest.component').then(
+                (c) => c.AccountInterestComponent
+            ),
     },
 
     {
         path: 'general-catalog',
         loadComponent: () =>
-            import(
-                './components/general-catalog-mng/general-catalog-mng.component'
-                ).then((c) => c.GeneralCatalogMngComponent),
+            import('./components/general-catalog-mng/general-catalog-mng.component').then(
+                (c) => c.GeneralCatalogMngComponent
+            ),
     },
     {
         path: 'media-catalog',
         loadComponent: () =>
-            import(
-                './components/media-catalog-mng/media-catalog-mng.component'
-                ).then((c) => c.MediaCatalogMngComponent),
+            import('./components/media-catalog-mng/media-catalog-mng.component').then(
+                (c) => c.MediaCatalogMngComponent
+            ),
     },
-/*    {
+    /*    {
         path: 'product-information-request',
         loadComponent: () =>
             import(

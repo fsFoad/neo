@@ -7,7 +7,7 @@ import { Observable, of, delay } from 'rxjs';
 // import { delay } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class CitizenRepositoryHttp implements CitizenRepository {
+export class CitizenRepositoryHttpService implements CitizenRepository {
     // private http = inject(HttpClient); // وقتی API واقعی داری، فعال کن
 
     loadMainInfo(id: string): Observable<IdentityInfo> {
