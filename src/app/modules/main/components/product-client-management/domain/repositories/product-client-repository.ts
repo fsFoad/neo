@@ -12,6 +12,7 @@ export interface ProductClientPage {
     total: number;
 }
 
+
 export abstract class ProductClientRepository {
     abstract loadMetadata(): Observable<any>;
 

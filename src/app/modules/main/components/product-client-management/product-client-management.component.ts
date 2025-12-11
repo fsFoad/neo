@@ -4,33 +4,22 @@ import { Card } from 'primeng/card';
 import { ButtonDirective } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButton } from 'primeng/radiobutton';
-import { PersianCalendarComponent } from '../../../shared/components/persian-calendar/persian-calendar.module';
 import { Textarea } from 'primeng/textarea';
 import { InputText } from 'primeng/inputtext';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { TableModule } from 'primeng/table';
 
-interface Option {
-    label: string;
-    value: any;
-}
-
-interface TariffRow {
-    key: string;
-    label: string;
-    options: Option[];
-}
-
 @Component({
     selector: 'app-product-client-management',
+    standalone: true,
     templateUrl: './product-client-management.component.html',
+    styleUrls: ['./product-client-management.component.scss'],
     imports: [
         Card,
         ButtonDirective,
         ReactiveFormsModule,
         DropdownModule,
         RadioButton,
-        PersianCalendarComponent,
         Textarea,
         InputText,
         NgForOf,
@@ -38,11 +27,11 @@ interface TariffRow {
         TableModule,
         NgClass,
     ],
-    styleUrls: ['./product-client-management.component.scss'],
 })
 export class ProductClientManagementComponent implements OnInit {
     form!: FormGroup;
     productList: any[] = [];
+
     depositAccountGroups: Option[] = [
         { label: 'گروه ۱', value: 1 },
         { label: 'گروه ۲', value: 2 },
@@ -58,64 +47,23 @@ export class ProductClientManagementComponent implements OnInit {
         { label: 'محصول ۲', value: 2 },
     ];
 
-    // تعرفه‌های هر ردیف – فعلاً همه از یک لیست نمونه استفاده می‌کنند
-    tariffOptions: Option[] = [
-        { label: 'تعرفه ۱', value: 1 },
-        { label: 'تعرفه ۲', value: 2 },
-    ];
-
-    tariffRows: TariffRow[] = [
-        {
-            key: 'generalTariff',
-            label: 'نمایه عمومی',
-            options: this.tariffOptions,
-        },
-        {
-            key: 'paymentInstrumentTariff',
-            label: 'نمایه ابزار برداشت مجاز',
-            options: this.tariffOptions,
-        },
-        {
-            key: 'lotteryTariff',
-            label: 'نمایه قرعه‌کشی',
-            options: this.tariffOptions,
-        },
-        {
-            key: 'interestTariff',
-            label: 'نمایه سود',
-            options: this.tariffOptions,
-        },
-        {
-            key: 'physicalSettleTariff',
-            label: 'نمایه تسویه / برداشت فقره‌ای',
-            options: this.tariffOptions,
-        },
-        {
-            key: 'allowedUnitsTariff',
-            label: 'نمایه واحدهای عملیاتی مجاز',
-            options: this.tariffOptions,
-        },
-        {
-            key: 'branchTariff',
-            label: 'نمایه تمدید',
-            options: this.tariffOptions,
-        },
-    ];
-
     constructor(private fb: FormBuilder) {}
 
     ngOnInit(): void {
         this.form = this.fb.group({
+            // فیلدهای فیلتر / فرم
             depositAccountGroup: [null],
             currencyType: [null],
             product: [null],
+
+            // اگر بعداً خواستی از اینها استفاده کنی، همین‌جا نگه‌شون دار
             productTitle: [''],
             status: ['ACTIVE'],
             startDate: [null],
             endDate: [null],
             settlementDetails: [''],
 
-            // فیلدهای تعرفه‌ها
+            // فیلدهای تعرفه‌ها (فعلاً در UI جدید استفاده نشده‌اند)
             generalTariff: [null],
             paymentInstrumentTariff: [null],
             lotteryTariff: [null],
@@ -126,27 +74,23 @@ export class ProductClientManagementComponent implements OnInit {
         });
     }
 
-    onCreate(): void {
+    onSearch(): void {
+        // اینجا بر اساس this.form.value فیلتر بفرست برای backend یا NgRx
+        console.log('SEARCH', this.form.value);
+    }
+
+    onClear(): void {
         this.form.reset({
-            status: 'ACTIVE',
+            depositAccountGroup: null,
+            currencyType: null,
+            product: null,
+            settlementDetails: '',
         });
     }
 
-    onEdit(): void {
-        // اینجا بر اساس ردیف انتخاب‌شده، فرم را با داده‌ها پر کن
-    }
-
-    onDelete(): void {
-        // حذف محصول انتخاب‌شده
-    }
-
-    showTariffDetails(key: string): void {
-        // نمایش دیالوگ/صفحه‌ی جزئیات تعرفه
-        console.log('show details for', key, this.form.get(key)?.value);
-    }
-
     onCancel(): void {
-        // بسته‌شدن فرم یا برگشت به صفحه قبل
+        // لاجیک انصراف (مثلاً مسیر قبلی، یا reset کامل فرم)
+        this.form.reset();
     }
 
     onSubmit(): void {
@@ -155,7 +99,12 @@ export class ProductClientManagementComponent implements OnInit {
             return;
         }
 
-        console.log('form value', this.form.value);
-        // ارسال به سرویس بک‌اند
+        console.log('SUBMIT', this.form.value);
+        // اینجا می‌تونی facade.save(...) یا سرویس Http رو صدا بزنی
     }
+}
+
+interface Option {
+    label: string;
+    value: any;
 }

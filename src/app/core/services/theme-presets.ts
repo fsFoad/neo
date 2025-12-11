@@ -10,7 +10,7 @@ export const PRESET_NAMES = [
     "Sapphire Ember",
    /* "Coral Horizon",*/
    /* "Royal Sapphire",*/
-    "Soft Amber",
+    // "Soft Amber",
     "Flame Citrine",
     "Obsidian Frost",
     "Amethyst Breeze",
@@ -361,72 +361,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-  /*  "Coral Horizon": {
-        name: "Coral Horizon",
-        displayName:"افق مرجانی",
-        backgroundPreset: "dark-deep-navy",
-        light: {
-            primary: "#ff6a00",
-            accent: "rgb(0,49,229)",
-            warn: "#ff1744",
-            background: "#ffffff",
-            surface: "#ffffff",
-            onSurface: "#222"
-        },
-        dark: {
-            primary: "#ff8a50",
-            accent: "#5c6bff",
-            warn: "#ff8a80",
-            background: DARK_BG,
-            surface: DARK_SURFACE,
-            onSurface: DARK_TEXT
-        }
-    },*/
 
-/*
-    "Royal Sapphire": {
-        name: "Royal Sapphire",
-        displayName:"یاقوت کبود شاهانه",
-        backgroundPreset: "dark-deep-navy",
-        light: {
-            primary: "rgb(0,49,229)",
-            accent: "#ff6f00",
-            warn: "#d84315",
-            background: "#f8f8f8",
-            surface: "#ffffff",
-            onSurface: "#222"
-        },
-        dark: {
-            primary: "#6d7cff",
-            accent: "#ff8a50",
-            warn: "#ff8a65",
-            background: DARK_BG,
-            surface: DARK_SURFACE,
-            onSurface: DARK_TEXT
-        }
-    },
-*/
-
-    "Soft Amber": {
-        name: "Soft Amber",
-        displayName:"کهربای نرم",
-        light: {
-            primary: "rgb(254,95,2)",
-            accent: "#ff9800",
-            warn: "#e53935",
-            background: "#ffffff",
-            surface: "#ffffff",
-            onSurface: "#1e1e1e"
-        },
-        dark: {
-            primary: "#ffb380",
-            accent: "#ffcc80",
-            warn: "#ff8a80",
-            background: DARK_BG,
-            surface: DARK_SURFACE,
-            onSurface: DARK_TEXT
-        }
-    },
     "Flame Citrine": {
         name: "Flame Citrine",
         displayName:"سیترین شعله‌ای",

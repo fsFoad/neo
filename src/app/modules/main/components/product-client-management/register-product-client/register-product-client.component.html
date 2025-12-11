@@ -1,1 +1,318 @@
-<p>register-product-client works!</p>
+<div
+    class="px-5 mb-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <!-- نوار بالا -->
+    <button pButton type="button" label="ایجاد" icon="pi pi-plus"
+            class="p-button-success p-mr-2"
+            (click)="onCreate()"></button>
+    <button pButton type="button" label="ویرایش" icon="pi pi-pencil"
+            class="p-button-warning p-mr-2"
+            (click)="onEdit()"></button>
+    <button pButton type="button" label="حذف" icon="pi pi-trash"
+            class="p-button-danger"
+            (click)="onDelete()"></button>
+</div>
+<div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="depositAccountGroup"
+            class="text-sm font-medium"
+        >گروه حساب سپرده :</label>
+        <p-dropdown
+            class="normal-dropdown"
+            id="depositAccountGroup"
+            formControlName="depositAccountGroup"
+            [options]="depositAccountGroups"
+            optionLabel="label"
+            placeholder="انتخاب کنید">
+        </p-dropdown>
+    </div>
+
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="currencyType"
+            class="text-sm font-medium"
+        >نوع ارز :</label>
+        <p-dropdown
+            class="normal-dropdown"
+            id="currencyType"
+            formControlName="currencyType"
+            [options]="currencyTypes"
+            optionLabel="label"
+            placeholder="انتخاب کنید">
+        </p-dropdown>
+    </div>
+
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="product"
+            class="text-sm font-medium"
+        >محصول :</label>
+        <p-dropdown
+            id="product"
+            class="normal-dropdown"
+            formControlName="product"
+            [options]="products"
+            optionLabel="label"
+            placeholder="انتخاب کنید">
+        </p-dropdown>
+    </div>
+</div>
+
+<div
+    class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="productTitle"
+            class="text-sm font-medium"
+        >عنوان محصول :</label>
+        <input id="productTitle" pInputText formControlName="productTitle" class="normal-input" />
+    </div>
+
+    <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+        <label class="mb-0 text-sm font-medium">وضعیت</label>
+
+        <div class="radio-group flex items-center gap-3">
+            <p-radioButton
+                name="isDefault"
+                inputId="defaultYes"
+                [value]="'yes'"
+                formControlName="title"
+            ></p-radioButton>
+            <label for="defaultYes" class="mb-0">فعال</label>
+
+            <p-radioButton
+                name="isDefault"
+                inputId="defaultNo"
+                [value]="'no'"
+                formControlName="title"
+            ></p-radioButton>
+            <label for="defaultNo" class="mb-0">غیرفعال</label>
+        </div>
+    </div>
+</div>
+
+<div
+    class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="startDate"
+            class="text-sm font-medium"
+        >تاریخ شروع اعتبار :</label>
+        <p-persian-calendar id="startDate" class="normal-persian-calendar"></p-persian-calendar>
+    </div>
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="endDate"
+            class="text-sm font-medium"
+        >تاریخ پایان اعتبار :</label>
+        <p-persian-calendar id="endDate" class="normal-persian-calendar"></p-persian-calendar>
+    </div>
+</div>
+
+<!-- بخش تعرفه‌ها + جزئیات تسویه -->
+<div
+    class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <!-- ستون تعرفه‌ها -->
+
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-3 text-right">
+        <div class="flex flex-col gap-1" *ngFor="let t of tariffRows">
+            <label
+                class="text-sm font-medium"
+                [for]="t.key">
+                {{ t.label }} :
+            </label>
+
+            <div class="flex items-center gap-2">
+                <p-dropdown
+                    [styleClass]="'normal-dropdown'"
+                    [id]="t.key"
+                    [formControlName]="t.key"
+                    [options]="t.options"
+                    optionLabel="label"
+                    placeholder="انتخاب کنید">
+                </p-dropdown>
+
+                <button
+                    pButton
+                    type="button"
+                    label="مشاهده جزئیات"
+                    icon="pi pi-eye"
+                    iconPos="right"
+                    class="p-button-secondary p-button-sm"
+                    (click)="showTariffDetails(t.key)">
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--
+            <div class="col-span-12 md:col-span-2 flex flex-col gap-3 text-right"></div>
+    -->
+    <!-- ستون جزئیات تسویه -->
+    <div class="col-span-12 md:col-span-8 flex flex-col gap-1 text-right">
+        <label for="settlementDetails" class="text-sm font-medium">جزئیات تسویه :</label>
+        <textarea
+            class="normal-textarea"
+            id="settlementDetails"
+            pInputTextarea
+            rows="21"
+            autoResize="true"
+            formControlName="settlementDetails">
+            </textarea>
+    </div>
+</div> <div
+    class="px-5 mb-5 app-card p-4 rounded-xl shadow-md flex flex-col md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <!-- نوار بالا -->
+    <button pButton type="button" label="ایجاد" icon="pi pi-plus"
+            class="p-button-success p-mr-2"
+            (click)="onCreate()"></button>
+    <button pButton type="button" label="ویرایش" icon="pi pi-pencil"
+            class="p-button-warning p-mr-2"
+            (click)="onEdit()"></button>
+    <button pButton type="button" label="حذف" icon="pi pi-trash"
+            class="p-button-danger"
+            (click)="onDelete()"></button>
+</div>
+<div class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="depositAccountGroup"
+            class="text-sm font-medium"
+        >گروه حساب سپرده :</label>
+        <p-dropdown
+            class="normal-dropdown"
+            id="depositAccountGroup"
+            formControlName="depositAccountGroup"
+            [options]="depositAccountGroups"
+            optionLabel="label"
+            placeholder="انتخاب کنید">
+        </p-dropdown>
+    </div>
+
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="currencyType"
+            class="text-sm font-medium"
+        >نوع ارز :</label>
+        <p-dropdown
+            class="normal-dropdown"
+            id="currencyType"
+            formControlName="currencyType"
+            [options]="currencyTypes"
+            optionLabel="label"
+            placeholder="انتخاب کنید">
+        </p-dropdown>
+    </div>
+
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="product"
+            class="text-sm font-medium"
+        >محصول :</label>
+        <p-dropdown
+            id="product"
+            class="normal-dropdown"
+            formControlName="product"
+            [options]="products"
+            optionLabel="label"
+            placeholder="انتخاب کنید">
+        </p-dropdown>
+    </div>
+</div>
+
+<div
+    class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="productTitle"
+            class="text-sm font-medium"
+        >عنوان محصول :</label>
+        <input id="productTitle" pInputText formControlName="productTitle" class="normal-input" />
+    </div>
+
+    <div class="col-span-12 md:col-span-4 flex items-center gap-4 self-center">
+        <label class="mb-0 text-sm font-medium">وضعیت</label>
+
+        <div class="radio-group flex items-center gap-3">
+            <p-radioButton
+                name="isDefault"
+                inputId="defaultYes"
+                [value]="'yes'"
+                formControlName="title"
+            ></p-radioButton>
+            <label for="defaultYes" class="mb-0">فعال</label>
+
+            <p-radioButton
+                name="isDefault"
+                inputId="defaultNo"
+                [value]="'no'"
+                formControlName="title"
+            ></p-radioButton>
+            <label for="defaultNo" class="mb-0">غیرفعال</label>
+        </div>
+    </div>
+</div>
+
+<div
+    class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="startDate"
+            class="text-sm font-medium"
+        >تاریخ شروع اعتبار :</label>
+        <p-persian-calendar id="startDate" class="normal-persian-calendar"></p-persian-calendar>
+    </div>
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-1 text-right">
+        <label
+            for="endDate"
+            class="text-sm font-medium"
+        >تاریخ پایان اعتبار :</label>
+        <p-persian-calendar id="endDate" class="normal-persian-calendar"></p-persian-calendar>
+    </div>
+</div>
+
+<div
+    class="grid grid-cols-12 gap-3 px-5 app-card p-4 rounded-xl shadow-md md:flex-row md:flex-wrap md:items-start md:gap-4">
+
+    <div class="col-span-12 md:col-span-4 flex flex-col gap-3 text-right">
+        <div class="flex flex-col gap-1" *ngFor="let t of tariffRows">
+            <label
+                class="text-sm font-medium"
+                [for]="t.key">
+                {{ t.label }} :
+            </label>
+
+            <div class="flex items-center gap-2">
+                <p-dropdown
+                    [styleClass]="'normal-dropdown'"
+                    [id]="t.key"
+                    [formControlName]="t.key"
+                    [options]="t.options"
+                    optionLabel="label"
+                    placeholder="انتخاب کنید">
+                </p-dropdown>
+
+                <button
+                    pButton
+                    type="button"
+                    label="مشاهده جزئیات"
+                    icon="pi pi-eye"
+                    iconPos="right"
+                    class="p-button-secondary p-button-sm"
+                    (click)="showTariffDetails(t.key)">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-span-12 md:col-span-8 flex flex-col gap-1 text-right">
+        <label for="settlementDetails" class="text-sm font-medium">جزئیات تسویه :</label>
+        <textarea
+            class="normal-textarea"
+            id="settlementDetails"
+            pInputTextarea
+            rows="21"
+            autoResize="true"
+            formControlName="settlementDetails">
+            </textarea>
+    </div>
+</div>
