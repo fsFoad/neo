@@ -3,6 +3,16 @@
     --p-checkbox-checked-bg: var(--color-primary);
     --p-checkbox-checked-border-color: var(--color-primary);
     --p-checkbox-hover-border-color: var(--color-primary-hover, var(--color-primary));
+    --ac-active-border: var(--p-button-primary-border-color, var(--p-primary-color, var(--color-primary)));
+    --theme-active: var(--p-button-primary-border-color, var(--p-primary-color, var(--color-primary)));
+
+    /* InputText tokens: focus + hover را کامل کن تا fallback سبز نگیری */
+    --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
+    --p-inputtext-focus-border-color: var(--theme-active);
+    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--theme-active) 40%, transparent);
+
+    --p-inputtext-hover-border-color: var(--theme-active);
+    --p-inputtext-hover-ring-color: color-mix(in srgb, var(--theme-active) 25%, transparent);
 
 }
 .normal-input {
@@ -358,13 +368,6 @@
 }
 
 
-.p-select.p-paginator-rpp-dropdown {
-    width: 100px !important;
-    height: 50px !important;
-    padding: 0.25rem 0.5rem !important;
-    font-size: 0.875rem !important;
-    border-radius: 0.75rem !important;
-}
 
 .mt-5-5 {
     margin-top: 1.45rem /* 20px */
@@ -777,14 +780,13 @@ anglerighticon {
     color: red !important;
     border-color: red !important;
 }
-
-::ng-deep .panel-snackbar-error {
+ .panel-snackbar-error {
     z-index: 9999 !important;
 }
-::ng-deep .panel-snackbar-warning {
+.panel-snackbar-warning {
     z-index: 9999 !important;
 }
-::ng-deep .panel-snackbar-success {
+.panel-snackbar-success {
     z-index: 9999 !important;
 }
 .p-divider-content {
@@ -793,22 +795,18 @@ anglerighticon {
     border-radius: 0.75rem 0.75rem 0.75rem 0.75rem !important;
     color: var(--p-divider-content-color);
 }
-.p-dropdown-panel.p-dropdown-flipped {
-    top: auto !important;
-    bottom: 100% !important;
-}
+
 
 .endpointPath{
     direction: ltr !important;
 }
-
-::ng-deep .panel-snackbar-error {
+.panel-snackbar-error {
     z-index: 9999 !important;
 }
-::ng-deep .panel-snackbar-warning {
+.panel-snackbar-warning {
     z-index: 9999 !important;
 }
-::ng-deep .panel-snackbar-success {
+.panel-snackbar-success {
     z-index: 9999 !important;
 }
 
@@ -974,7 +972,7 @@ anglerighticon {
 /* ---------------------------
    TAB HEADER (سربرگ تب‌ها)
 ---------------------------- */
-:host ::ng-deep .app-tabs .mat-mdc-tab-header {
+.app-tabs .mat-mdc-tab-header {
     background: var(--surface);
     border-bottom: 1px solid color-mix(in srgb, var(--on-surface) 15%, transparent);
 }
@@ -982,7 +980,7 @@ anglerighticon {
 /* ---------------------------
    SINGLE TAB
 ---------------------------- */
-:host ::ng-deep .app-tabs .mat-mdc-tab {
+.app-tabs .mat-mdc-tab {
     border-radius: 12px 12px 0 0;
     min-height: 40px;
     padding: 0 1rem;
@@ -993,34 +991,34 @@ anglerighticon {
     --mdc-ripple-color: var(--primary);
     --mdc-ripple-press-opacity: .12;
 }
-:host ::ng-deep .app-tabs .mat-mdc-tab .mat-icon {
+.app-tabs .mat-mdc-tab .mat-icon {
     color: var(--on-surface) !important;
     transition: color .2s ease;
 }
 /* HOVER */
-:host ::ng-deep .app-tabs .mat-mdc-tab:hover .mdc-tab__text-label,
-:host ::ng-deep .app-tabs .mat-mdc-tab:hover .mat-icon {
+ .app-tabs .mat-mdc-tab:hover .mdc-tab__text-label,
+ .app-tabs .mat-mdc-tab:hover .mat-icon {
     color: var(--primary) !important;
 }
 /* ACTIVE */
-:host ::ng-deep .app-tabs .mdc-tab--active .mdc-tab__text-label,
-:host ::ng-deep .app-tabs .mdc-tab--active .mat-icon {
+ .app-tabs .mdc-tab--active .mdc-tab__text-label,
+ .app-tabs .mdc-tab--active .mat-icon {
     color: var(--primary) !important;
     font-weight: 700;
 }
 
 /* INDICATOR */
-:host ::ng-deep .app-tabs .mdc-tab-indicator__content--underline {
+ .app-tabs .mdc-tab-indicator__content--underline {
     background: var(--primary);
 }
 /* Hover */
-:host ::ng-deep .app-tabs .mat-mdc-tab:hover {
+ .app-tabs .mat-mdc-tab:hover {
     background: color-mix(in srgb, var(--primary) 20%, transparent);
     color: var(--primary);
 }
 
 /* Active tab label */
-:host ::ng-deep .app-tabs .mat-mdc-tab .mdc-tab__text-label {
+.app-tabs .mat-mdc-tab .mdc-tab__text-label {
     color: var(--on-surface) !important;
     transition: color .2s ease;
 }
@@ -1028,7 +1026,7 @@ anglerighticon {
 /* ---------------------------
    INDICATOR (خط زیر تب فعال)
 ---------------------------- */
-:host ::ng-deep .app-tabs .mdc-tab-indicator__content--underline {
+.app-tabs .mdc-tab-indicator__content--underline {
     height: 4px;
     border-radius: 999px;
     background: linear-gradient(
@@ -1131,31 +1129,7 @@ anglerighticon {
     border-top-width: 4px !important;
     border-radius: 999px !important;
 }
-.p-dropdown.dropdown-normal {
-    width: 75% !important;                              /* مثل normal-input با w-3/4 */
-    min-height: var(--p-dropdown-height);
-    border-radius: var(--p-dropdown-border-radius) !important;
-    border: 1px solid var(--p-inputtext-border-color);
-    background: var(--p-inputtext-background);
-    display: inline-flex;
-    align-items: center;
-}
 
-/* لیبل داخل دراپ‌داون */
-.p-dropdown.dropdown-normal .p-select-label {
-    font-size: 1rem;          /* text-sm */
-}
-
-/* تریگر (آیکن فلش) */
-.p-dropdown.dropdown-normal .p-select-dropdown {
-    padding-inline: 0.75rem !important;
-}
-
-/* فوکوس – مثل اینپوت‌ */
-.p-dropdown.dropdown-normal.p-focus {
-    border-color: var(--p-inputtext-focus-border-color) !important;
-    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
-}
 .card {
     background: var(--card-bg);
 }
@@ -1174,11 +1148,7 @@ textarea {
     border-color: var(--color-border);
 }
 
-.p-dropdown,
-.p-multiselect {
-    background: var(--bg-input);
-    border-radius: var(--radius-md);
-}
+
 .p-button {
     border-radius: var(--radius-md);
     height: var(--button-height);
@@ -1255,16 +1225,6 @@ textarea,
     padding: 8px 12px;
 }
 
-/* Select-like components */
-.p-dropdown,
-.p-cascadeselect,
-.p-multiselect,
-.p-listbox {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    color: var(--color-text);
-}
 
 /* Checkbox & Radio */
 .p-checkbox .p-checkbox-box,
@@ -2038,14 +1998,6 @@ html:root {
     @apply rounded-l-xl;
 }
 
-.normal-list-auto-complete {
-    .p-autocomplete-overlay {
-        @apply !w-3/4;
-    }&.p-autocomplete-list-container{
-         @apply !w-3/4;
-     }
-}
-
 
 .normal-inputgroup-addon {
 }
@@ -2525,39 +2477,19 @@ anglerighticon {
     border-color: red !important;
 }
 
-::ng-deep .panel-snackbar-error {
-    z-index: 9999 !important;
-}
-::ng-deep .panel-snackbar-warning {
-    z-index: 9999 !important;
-}
-::ng-deep .panel-snackbar-success {
-    z-index: 9999 !important;
-}
+
 .p-divider-content {
     z-index: 1;
     background:#dadde4;
     border-radius: 0.75rem 0.75rem 0.75rem 0.75rem !important;
     color: var(--p-divider-content-color);
 }
-.p-dropdown-panel.p-dropdown-flipped {
-    top: auto !important;
-    bottom: 100% !important;
-}
 
 .endpointPath{
     direction: ltr !important;
 }
 
-::ng-deep .panel-snackbar-error {
-    z-index: 9999 !important;
-}
-::ng-deep .panel-snackbar-warning {
-    z-index: 9999 !important;
-}
-::ng-deep .panel-snackbar-success {
-    z-index: 9999 !important;
-}
+
 
 .mdc-snackbar__label {
     white-space: pre-wrap !important;
@@ -2597,7 +2529,7 @@ anglerighticon {
         transform: scaleX(-1) !important;
     }
 }
-:host ::ng-deep .p-picklist-header {
+.p-picklist-header {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -2845,21 +2777,194 @@ table thead > tr > th:last-child {
     border-top-right-radius: var(--card-radius);
     border-top-left-radius: var(--card-radius);
 }
-html .p-dropdown-panel .p-dropdown-item.p-highlight {
-    background: var(--color-primary) !important;
-    color: #ffffff !important;
+
+
+
+.normal-auto-complete.p-autocomplete {
+    @apply w-3/4 transition;
 }
 
-/* hover / focus روی آیتم‌ها (غیر انتخاب‌شده) */
-html .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
-html .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
-    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface) 90%) !important;
+/* single و multiple هر دو را کاور می‌کند */
+.normal-auto-complete.p-autocomplete
+.p-autocomplete-input,
+.normal-auto-complete.p-autocomplete
+.p-autocomplete-multiple-container {
+    @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm;
+
+    background: var(--p-inputtext-bg);
+    color: var(--p-inputtext-color);
+    border-color: var(--p-inputtext-border-color);
+}
+
+/* فوکوس مثل input/dropdown */
+.normal-auto-complete.p-autocomplete.p-inputwrapper-focus
+.p-autocomplete-input,
+.normal-auto-complete.p-autocomplete.p-inputwrapper-focus
+.p-autocomplete-multiple-container {
+    border-color: var(--p-inputtext-focus-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}
+
+/* دکمه‌ی dropdown سمت چپ – مثل rounded-r / rounded-l در RTL */
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown {
+    @apply rounded-l-xl;
+}
+
+[dir='rtl'] .normal-auto-complete.p-autocomplete
+.p-autocomplete-multiple-container,
+[dir='rtl'] .normal-auto-complete.p-autocomplete
+.p-autocomplete-input {
+    @apply rounded-r-xl rounded-l-none;
+}
+
+.normal-list-auto-complete .p-autocomplete-panel {
+    background: var(--color-surface) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12) !important;
+    overflow: hidden;
+}
+
+.normal-list-auto-complete .p-autocomplete-panel .p-autocomplete-items {
+    padding: 0.25rem 0;
+}
+
+.normal-list-auto-complete .p-autocomplete-panel .p-autocomplete-item {
+    background: var(--color-surface) !important;
     color: var(--color-text, var(--on-surface)) !important;
 }
 
-/* اگر برای دارک مود بخوای کمی فرق داشته باشه: */
-html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
-html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
-    background: color-mix(in srgb, var(--color-primary) 16%, #1e2434 84%) !important;
-    color: #ffffff !important;
+/* آیتم انتخاب‌شده (highlight) مثل dropdown */
+.normal-list-auto-complete
+.p-autocomplete-panel
+.p-autocomplete-item.p-highlight {
+    background: var(--brand-primary-bg, var(--color-primary)) !important;
+    color: var(--brand-primary-color, #ffffff) !important;
 }
+
+/* هاور / فوکوس – غیر انتخاب‌شده‌ها */
+.normal-list-auto-complete
+.p-autocomplete-panel
+.p-autocomplete-item:not(.p-highlight):hover,
+.normal-list-auto-complete
+.p-autocomplete-panel
+.p-autocomplete-item:not(.p-highlight).p-focus {
+    background: color-mix(
+            in srgb,
+            var(--brand-primary-bg) 10%,
+            var(--color-surface) 90%
+    ) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* حالت عادی: هر دو طرف از یک border پایه استفاده کنند */
+.normal-auto-complete.p-autocomplete
+.p-autocomplete-multiple-container,
+.normal-auto-complete.p-autocomplete
+.p-autocomplete-dropdown {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: var(--p-inputtext-border-color, var(--color-border)) !important;
+}
+
+/* دارک مود: جلوی border transparent هایی که قبلاً ست کردی را بگیر */
+html.p-dark .normal-auto-complete.p-autocomplete
+.p-autocomplete-multiple-container,
+html.p-dark .normal-auto-complete.p-autocomplete
+.p-autocomplete-dropdown {
+    border-color: var(--p-inputtext-border-color, color-mix(in srgb, #fff 18%, transparent)) !important;
+}
+
+/* وقتی فوکوس/اکتیو شد: هر دو طرف دقیقاً یک رنگ بگیرند */
+.normal-auto-complete.p-autocomplete.p-inputwrapper-focus
+.p-autocomplete-multiple-container,
+.normal-auto-complete.p-autocomplete.p-inputwrapper-focus
+.p-autocomplete-dropdown,
+.normal-auto-complete.p-autocomplete.p-inputwrapper-focus
+.p-autocomplete-dropdown.p-button {
+    border-color: var(--ac-active-border) !important;
+}
+
+/* رینگ فوکوس را فقط روی container بگذار تا یکپارچه دیده شود */
+.normal-auto-complete.p-autocomplete.p-inputwrapper-focus
+.p-autocomplete-multiple-container {
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color, var(--p-focus-ring-color)) !important;
+}
+
+/* دکمه خودش رینگ/outline نگیرد */
+.normal-auto-complete.p-autocomplete
+.p-autocomplete-dropdown:focus,
+.normal-auto-complete.p-autocomplete
+.p-autocomplete-dropdown:focus-visible {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+/* یکدست کردن مرز مشترک بین input و button */
+[dir='rtl'] .normal-auto-complete.p-autocomplete .p-autocomplete-multiple-container { border-left-width: 0 !important; }
+[dir='rtl'] .normal-auto-complete.p-autocomplete .p-autocomplete-dropdown { border-right-width: 1px !important; }
+
+[dir='ltr'] .normal-auto-complete.p-autocomplete .p-autocomplete-multiple-container { border-right-width: 0 !important; }
+[dir='ltr'] .normal-auto-complete.p-autocomplete .p-autocomplete-dropdown { border-left-width: 1px !important; }
+
+
+html.p-dark .p-autocomplete:not(.p-inputwrapper-focus):not(:focus-within),
+html.p-dark .p-inputtext:not(:focus),
+html.p-dark .p-inputtext:not(:focus-visible) {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+.normal-auto-complete.p-autocomplete:focus-within
+.p-autocomplete-multiple-container,
+.normal-auto-complete.p-autocomplete:focus-within
+.p-autocomplete-dropdown {
+    border-color: var(--ac-active-border) !important;
+}
+
+/* رینگ فقط روی container تا یکپارچه دیده شود */
+.normal-auto-complete.p-autocomplete:focus-within
+.p-autocomplete-multiple-container {
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color, var(--p-focus-ring-color)) !important;
+}
+
+/* دکمه خودش رینگ نگیرد */
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown:focus,
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown:focus-visible {
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+.p-inputtext:enabled:hover {
+    border-color: var(--p-inputtext-hover-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-hover-ring-color) !important;
+}
+/* دارک مود (اختیاری) */
+html.p-dark {
+    --p-inputtext-border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent);
+}
+.normal-auto-complete.p-autocomplete
+.p-autocomplete-multiple-container {
+    border: 1px solid var(--p-inputtext-border-color) !important;
+}
+
+/* hover (همان رفتار inputtext) */
+.normal-auto-complete.p-autocomplete:hover
+.p-autocomplete-multiple-container {
+    border-color: var(--p-inputtext-hover-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-hover-ring-color) !important;
+}
+
+/* focus واقعی: focus-within */
+.normal-auto-complete.p-autocomplete:focus-within
+.p-autocomplete-multiple-container,
+.normal-auto-complete.p-autocomplete:focus-within
+.p-autocomplete-dropdown {
+    border-color: var(--p-inputtext-focus-border-color) !important;
+}
+
+.normal-auto-complete.p-autocomplete:focus-within
+.p-autocomplete-multiple-container {
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}
+
+

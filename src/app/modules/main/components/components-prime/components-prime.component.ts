@@ -117,6 +117,9 @@ import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TagModule } from 'primeng/tag';
 import { TerminalModule, TerminalService } from 'primeng/terminal';
+import { DropdownModule } from 'primeng/dropdown';
+import { PersianCalendarComponent } from '../../../shared/components/persian-calendar/persian-calendar.module';
+import { TranslocoPipe } from '@ngneat/transloco';
 @Component({
     selector: 'app-components-prime',
     imports: [
@@ -236,8 +239,12 @@ import { TerminalModule, TerminalService } from 'primeng/terminal';
         TerminalModule,
         FormsModule,
         TabView,
+        DropdownModule,
+        ReactiveFormsModule,
+        PersianCalendarComponent,
+        TranslocoPipe,
     ],
-    providers: [MessageService,   TerminalService,ConfirmationService ],
+    providers: [MessageService, TerminalService, ConfirmationService],
 
     templateUrl: './components-prime.component.html',
     styleUrl: './components-prime.component.scss',

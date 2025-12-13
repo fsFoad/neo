@@ -300,3 +300,132 @@ input[type=text]::-ms-clear {
     padding: 1em 0;
   }
 }
+/* ===================== Theme-driven (Light/Dark via ThemeService vars) ===================== */
+/* ریشه تقویم */
+:host ::ng-deep .ui-datepicker {
+    background: var(--app-background, #ffffff);
+    color: var(--color-text, #111827);
+    border: 1px solid var(--color-border, rgba(17,24,39,.2));
+    box-shadow: var(--card-shadow, 0 10px 30px rgba(0,0,0,.12));
+}
+
+/* Header */
+:host ::ng-deep .ui-datepicker .ui-datepicker-header {
+    background: var(--app-background, #ffffff);
+    color: var(--color-text, #111827);
+    border-bottom: 1px solid var(--color-border, rgba(17,24,39,.2));
+}
+
+/* title / dropdowns */
+:host ::ng-deep .ui-datepicker .ui-datepicker-title,
+:host ::ng-deep .ui-datepicker .ui-datepicker-title span {
+    color: var(--color-text, #111827);
+}
+
+:host ::ng-deep .ui-datepicker .ui-datepicker-title select {
+    background: var(--app-background, #ffffff);
+    color: var(--color-text, #111827);
+    border: 1px solid var(--color-border, rgba(17,24,39,.2));
+    border-radius: 8px;
+    padding: .25rem .5rem;
+}
+
+/* جدول */
+:host ::ng-deep .ui-datepicker th {
+    color: var(--color-text, #111827);
+    opacity: 0.85;
+}
+
+/* روزها */
+:host ::ng-deep .ui-datepicker td > a.ui-state-default,
+:host ::ng-deep .ui-datepicker td > span.ui-state-default {
+    color: var(--color-text, #111827);
+    background: transparent;
+    border-radius: 8px;
+}
+
+/* Hover روز */
+:host ::ng-deep .ui-datepicker td > a.ui-state-default:hover {
+    background: var(--color-surface-hover, rgba(0,0,0,.06));
+}
+
+/* Today */
+:host ::ng-deep .ui-datepicker td.ui-datepicker-today > a,
+:host ::ng-deep .ui-datepicker td > a.ui-state-highlight {
+    background: color-mix(in srgb, var(--color-primary, #0ea5e9) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary, #0ea5e9) 35%, transparent);
+}
+
+/* Selected */
+:host ::ng-deep .ui-datepicker td > a.ui-state-active,
+:host ::ng-deep .ui-datepicker td.ui-datepicker-current-day > a {
+    background: var(--color-primary, #0ea5e9);
+    color: #fff;
+    border: 1px solid var(--color-primary, #0ea5e9);
+}
+
+/* روزهای ماه دیگر */
+:host ::ng-deep .ui-datepicker td.ui-datepicker-other-month > a,
+:host ::ng-deep .ui-datepicker td.ui-datepicker-other-month > span {
+    color: var(--color-text, #111827);
+    opacity: 0.55;
+}
+
+/* Disabled */
+:host ::ng-deep .ui-datepicker td > span.ui-state-disabled,
+:host ::ng-deep .ui-datepicker td > a.ui-state-disabled,
+:host ::ng-deep .ui-datepicker td.ui-datepicker-weeknumber {
+    color: var(--color-text, #111827);
+    opacity: 0.35;
+}
+
+/* Month picker */
+:host ::ng-deep .ui-monthpicker .ui-monthpicker-month {
+    color: var(--color-text, #111827);
+    border-radius: 10px;
+}
+:host ::ng-deep .ui-monthpicker .ui-monthpicker-month:hover {
+    background: var(--color-surface-hover, rgba(0,0,0,.06));
+}
+:host ::ng-deep .ui-monthpicker .ui-monthpicker-month.ui-state-active {
+    background: var(--color-primary, #0ea5e9);
+    color: #fff;
+}
+:host ::ng-deep .ui-monthpicker .ui-monthpicker-month.ui-state-disabled {
+    opacity: 0.35;
+}
+
+/* Timepicker */
+:host ::ng-deep .ui-timepicker {
+    background: var(--color-surface, #ffffff);
+    border-top: 1px solid var(--color-border, rgba(17,24,39,.2));
+    color: var(--color-text, #111827);
+}
+:host ::ng-deep .ui-timepicker a,
+:host ::ng-deep .ui-timepicker span {
+    color: var(--color-text, #111827);
+}
+
+/* Button bar */
+:host ::ng-deep .ui-datepicker .ui-datepicker-buttonbar {
+    background: var(--app-background, #ffffff);
+    border-top: 1px solid var(--color-border, rgba(17,24,39,.2));
+}
+
+/* Icon colors (next/prev) */
+:host ::ng-deep .ui-datepicker-next-icon,
+:host ::ng-deep .ui-datepicker-prev-icon {
+    color: var(--color-primary, #0ea5e9);
+}
+
+/* Input خود کامپوننت (pInputText) */
+:host ::ng-deep input[pInputText] {
+    background: var(--p-inputtext-bg, var(--color-surface, #fff));
+    color: var(--p-inputtext-color, var(--color-text, #111827));
+    border: 1px solid var(--p-inputtext-border-color, var(--color-border, rgba(17,24,39,.2)));
+}
+:host ::ng-deep input[pInputText]:focus {
+    border-color: var(--p-inputtext-focus-border-color, var(--color-primary, #0ea5e9));
+    box-shadow: 0 0 0 3px var(--p-inputtext-focus-ring-color, rgba(14,165,233,.35));
+    outline: none;
+}

@@ -115,6 +115,14 @@
     /* اگر هاور جدا هم خواستی */
     --p-select-option-focus-background: color-mix(in srgb, var(--brand-primary-bg) 12%, var(--color-surface) 88%);
     --p-select-option-focus-color: var(--color-text);
+    --app-input-bg: var(--app-background);
+    --app-input-text: var(--color-text, var(--on-surface));
+
+    --app-input-border: color-mix(in srgb, var(--app-input-text) 18%, transparent);
+    --app-input-border-hover: color-mix(in srgb, var(--app-input-text) 28%, transparent);
+    --app-input-border-focus: var(--color-primary);
+
+    --app-input-ring: color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 
 .p-checkbox-input {
@@ -247,11 +255,6 @@ html.p-dark .p-datatable .p-datatable-tfoot > tr > td {
     color: var(--on-surface) !important;
 }
 
-/* Dropdown highlight */
-.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-    background: var(--primary) !important;
-    color: #fff !important;
-}
 
 /* ===================================================================================================== */
 /*  Material M3 Dynamic Override                                                                        */
@@ -469,14 +472,7 @@ input.p-inputtext.normal-input:focus {
     box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
 }
 
-:root[dir="rtl"] .p-dropdown {
-    direction: rtl !important;
-}
 
-:root[dir="rtl"] .p-dropdown .p-select-dropdown {
-    right: auto;
-    left: 0; /* آیکن را سمت چپ می‌آورد */
-}
 
 html, body {
     direction: rtl !important;
@@ -991,25 +987,6 @@ body.dark-mode .text-gray-800 {
     /* color: var(--color-text, #f9fafb) !important; */
 }
 
-html.p-dark .p-inputtext,
-html.p-dark .p-dropdown .p-dropdown-label,
-html.p-dark .p-multiselect .p-multiselect-label {
-    color: var(--color-text, var(--on-surface)) !important;
-    background: var(--app-background) !important;
-}
-
-
-html.p-dark .p-inputtext,
-html.p-dark .p-dropdown .p-dropdown-label,
-html.p-dark .p-multiselect .p-multiselect-label {
-    color: var(--color-text, var(--on-surface)) !important;
-    background: var(--app-background) !important;
-}
-
-html.p-dark .p-inputtext::placeholder,
-html.p-dark .p-dropdown .p-dropdown-label.p-placeholder {
-    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
-}
 
 html.p-dark input,
 html.p-dark select,
@@ -1018,90 +995,7 @@ html.p-dark textarea {
     background: var(--app-background) !important;
 }
 
-html.p-dark .p-dropdown {
-    background: var(--app-background) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-    border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
-}
 
-/* متن داخل دراپ‌داون (هم value، هم placeholder) */
-html.p-dark .p-dropdown .p-dropdown-label,
-html.p-dark .p-dropdown .p-inputtext {
-    color: var(--color-text, var(--on-surface)) !important;
-    background: var(--app-background) !important;
-}
-
-/* فقط placeholder دراپ‌داون */
-html.p-dark .p-dropdown .p-dropdown-label.p-placeholder,
-html.p-dark .p-dropdown .p-inputtext.p-placeholder {
-    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
-}
-
-/* پنل باز شونده‌ی آیتم‌ها */
-html.p-dark .p-dropdown-panel {
-    background: var(--app-background) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-}
-
-html.p-dark .p-dropdown-panel .p-dropdown-item {
-    background-color: var(--app-background) !important; /* دیگه transparent نباشه */
-    color: var(--color-text, var(--on-surface)) !important;
-}
-
-/* آیتم انتخاب‌شده / hover شده */
-html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight {
-    background: var(--app-background) !important;
-    color: #fff !important;
-}
-
-html.p-dark .p-dropdown-panel,
-html.p-dark .p-dropdown-panel .p-dropdown-items {
-    background-color: var(--app-background) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-}
-
-html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight,
-html.p-dark .p-dropdown-panel .p-dropdown-item.p-focus,
-html.p-dark .p-dropdown-panel .p-dropdown-item:hover {
-    background: var(--app-background) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-}
-
-/* اگه دوست داری آیتم انتخاب‌شده پرایمری باشد: */
-html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight.p-focus {
-    background: var(--app-background) !important;
-    color: #fff !important;
-}
-
-html.p-dark .p-dropdown,
-html.p-dark .p-dropdown .p-dropdown-label,
-html.p-dark .p-dropdown .p-inputtext {
-    background: var(--app-background) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-    border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
-}
-
-/* placeholder در دارک کمی کم‌رنگ‌تر */
-html.p-dark .p-dropdown .p-dropdown-label.p-placeholder,
-html.p-dark .p-dropdown .p-inputtext.p-placeholder {
-    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
-}
-
-/* خود پنل و لیست آیتم‌ها */
-html.p-dark .p-dropdown-panel,
-html.p-dark .p-dropdown-panel .p-dropdown-items,
-html.p-dark .p-dropdown-panel .p-dropdown-item {
-    background: var(--app-background) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-}
-
-/* آیتم انتخاب‌شده / hover – کمی تم‌دارتر از سطح */
-html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight,
-html.p-dark .p-dropdown-panel .p-dropdown-item.p-focus,
-html.p-dark .p-dropdown-panel .p-dropdown-item:hover {
-    background: var(--app-background) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-}
 
 html.p-dark {
     /* خود کنترل بسته‌ی p-select */
@@ -1205,6 +1099,7 @@ html.p-dark .fuse-vertical-navigation-item-active {
     color: #ffffff !important;
 }*/
 html.p-dark .p-inputtext,
+html.p-dark .p-autocomplete,
 html.p-dark input:not([type='checkbox']):not([type='radio']),
 html.p-dark textarea,
 html.p-dark .p-inputmask,
@@ -1212,8 +1107,30 @@ html.p-dark .p-inputnumber-input,
 html.p-dark .p-password input {
     border-color: transparent !important;
     box-shadow: none !important;
+    background: var(--app-input-bg) !important;
+    color: var(--app-input-text) !important;
+}
+/* hover */
+html.p-dark input.p-inputtext:hover,
+html.p-dark input.normal-input:hover,
+html.p-dark textarea.p-inputtext:hover,
+html.p-dark textarea:hover {
+    border-color: var(--app-input-border-hover) !important;
 }
 
+/* focus */
+html.p-dark input.p-inputtext:focus,
+html.p-dark input.normal-input:focus,
+html.p-dark textarea.p-inputtext:focus,
+html.p-dark textarea:focus,
+html.p-dark input.p-inputtext:focus-visible,
+html.p-dark input.normal-input:focus-visible,
+html.p-dark textarea.p-inputtext:focus-visible,
+html.p-dark textarea:focus-visible {
+    border-color: var(--app-input-border-focus) !important;
+    box-shadow: 0 0 0 2px var(--app-input-ring) !important;
+    outline: none !important;
+}
 .dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-help):not(.p-button-danger):not(.p-button-contrast),
 .dark-mode .p-splitbutton:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain),
 .dark-mode .p-speeddial-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain) {
@@ -1232,94 +1149,7 @@ html.p-dark .p-password input {
 .dark-mode .p-speeddial-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):hover {
     background: var(--color-primary-hover);
 }
-/*.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-    background: var(--p-dropdown-option-selected-background) !important;
-    color: var(--p-dropdown-option-selected-color) !important;
-}*/
 
-/*.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
-.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
-    background: var(--p-dropdown-option-focus-background) !important;
-    color: var(--p-dropdown-option-focus-color) !important;
-}*/
-
-/* دارک مود */
-html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-    background: var(--p-dropdown-option-selected-background) !important;
-    color: var(--p-dropdown-option-selected-color) !important;
-}
-
-html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
-html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
-    background: var(--p-dropdown-option-focus-background) !important;
-    color: var(--p-dropdown-option-focus-color) !important;
-}
-.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-    background: var(--color-primary) !important;       /* رنگ اصلی تم تو */
-    color: #ffffff !important;
-}
-
-/* hover / focus روی آیتم‌ها */
-.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
-.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
-    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface) 90%) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-}
-.p-dropdown-panel .p-dropdown-item.p-highlight {
-    background: var(--brand-primary-bg) !important;
-    color: var(--brand-primary-color) !important;
-}
-
-/* هاور / فوکوس فقط روی آیتم‌های غیر انتخاب‌شده */
-.p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
-.p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
-    background: color-mix(in srgb, var(--brand-primary-bg) 30%, transparent) !important;
-    color: var(--brand-primary-color) !important;
-}
-html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
-html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
-    background: color-mix(in srgb, var(--brand-primary-bg) 25%, #1e2434 75%) !important;
-    color: #ffffff !important;
-}
-html:not(.p-dark) .p-dropdown-panel .p-dropdown-item {
-    background: var(--color-surface);
-    color: var(--color-text, var(--on-surface));
-}
-
-/* آیتم انتخاب‌شده (selected) */
-html:not(.p-dark) .p-dropdown-panel .p-dropdown-item.p-highlight {
-    background: var(--brand-primary-bg) !important;
-    color: var(--brand-primary-color) !important;
-}
-
-/* هاور برای آیتم‌های غیر انتخاب‌شده */
-html:not(.p-dark) .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
-html:not(.p-dark) .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
-    background: color-mix(in srgb, var(--brand-primary-bg) 10%, var(--color-surface) 90%) !important;
-    color: var(--color-text, var(--on-surface)) !important;
-}
-
-/* هاور برای آیتم انتخاب‌شده (که گفتی نداره) */
-html:not(.p-dark) .p-dropdown-panel .p-dropdown-item.p-highlight:hover {
-    background: color-mix(in srgb, var(--brand-primary-bg) 18%, var(--color-surface) 82%) !important;
-    color: var(--brand-primary-color) !important;
-}
-html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight {
-    background: color-mix(in srgb, var(--brand-primary-bg) 80%, #1e2434 20%) !important;
-    color: #ffffff !important;
-}
-
-html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
-html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
-    background: color-mix(in srgb, var(--brand-primary-bg) 25%, #1e2434 75%) !important;
-    color: #ffffff !important;
-}
-html .p-select-panel .p-select-option.p-select-option-selected,
-html .p-select-panel .p-select-option.p-select-option-selected.p-focus,
-html .p-select-panel .p-select-option.p-select-option-selected:hover {
-    background: var(--brand-primary-bg, var(--color-primary)) !important;
-    color: var(--brand-primary-color, #ffffff) !important;
-}
 .fuse-vertical-navigation-item {
     border-radius: 0.75rem;
     transition: background-color .15s ease, color .15s ease;
@@ -1385,3 +1215,486 @@ body.dark .p-dialog-mask {
     background: rgba(0, 0, 0, 0.7) !important;
 }
 
+html.p-dark .normal-list-auto-complete .p-autocomplete-panel {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border-color: color-mix(
+            in srgb,
+            var(--color-text, var(--on-surface)) 18%,
+            transparent
+    ) !important;
+}
+
+html.p-dark
+.normal-list-auto-complete
+.p-autocomplete-panel
+.p-autocomplete-item {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* آیتم انتخاب‌شده در دارک‌مود */
+html.p-dark
+.normal-list-auto-complete
+.p-autocomplete-panel
+.p-autocomplete-item.p-highlight {
+    background: color-mix(
+            in srgb,
+            var(--brand-primary-bg) 80%,
+            #1e2434 20%
+    ) !important;
+    color: #ffffff !important;
+}
+
+/* هاور / فوکوس روی آیتم‌های غیر انتخاب‌شده */
+html.p-dark
+.normal-list-auto-complete
+.p-autocomplete-panel
+.p-autocomplete-item:not(.p-highlight):hover,
+html.p-dark
+.normal-list-auto-complete
+.p-autocomplete-panel
+.p-autocomplete-item:not(.p-highlight).p-focus {
+    background: color-mix(
+            in srgb,
+            var(--brand-primary-bg) 25%,
+            #1e2434 75%
+    ) !important;
+    color: #ffffff !important;
+}
+.normal-ac-panel.p-autocomplete-panel {
+    background: var(--color-surface) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 0.75rem !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,.15) !important;
+}
+
+/* List wrapper */
+.normal-ac-panel .p-autocomplete-items {
+    padding: 0.25rem 0 !important;
+}
+
+/* Item default */
+.normal-ac-panel .p-autocomplete-item {
+    background: transparent !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* Hover / Focus (روی آیتم‌های غیر انتخاب‌شده) */
+.normal-ac-panel .p-autocomplete-item:not(.p-highlight):hover,
+.normal-ac-panel .p-autocomplete-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface) 88%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* Selected (Highlight) */
+.normal-ac-panel .p-autocomplete-item.p-highlight {
+    background: var(--brand-primary-bg, var(--color-primary)) !important;
+    color: var(--brand-primary-color, #fff) !important;
+}
+
+html.p-dark .normal-ac-panel.p-autocomplete-panel {
+    background: var(--app-background) !important;
+    border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,.55) !important;
+}
+
+html.p-dark .normal-ac-panel .p-autocomplete-item:not(.p-highlight):hover,
+html.p-dark .normal-ac-panel .p-autocomplete-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 25%, #1e2434 75%) !important;
+    color: #fff !important;
+}
+
+html.p-dark .normal-ac-panel .p-autocomplete-item.p-highlight {
+    background: color-mix(in srgb, var(--brand-primary-bg) 80%, #1e2434 20%) !important;
+    color: #fff !important;
+}
+/* token/chip داخل input */
+.p-autocomplete-multiple-container .p-autocomplete-token {
+    background: color-mix(in srgb, var(--brand-primary-bg) 18%, var(--color-surface) 82%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border-radius: 999px !important;
+}
+
+/* دارک مود */
+html.p-dark .p-autocomplete-multiple-container .p-autocomplete-token {
+    background: color-mix(in srgb, var(--brand-primary-bg) 28%, #1e2434 72%) !important;
+    color: #fff !important;
+}
+
+/* آیکن حذف (x) */
+.p-autocomplete-token .p-autocomplete-token-icon {
+    color: currentColor !important;
+    opacity: .8;
+}
+.p-autocomplete-token .p-autocomplete-token-icon:hover {
+    opacity: 1;
+}
+
+
+/* Overlay */
+.normal-ac-panel.p-autocomplete-overlay {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border: 1px solid color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
+    border-radius: 0.75rem !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,.55) !important;
+}
+
+/* Option default */
+.normal-ac-panel .p-autocomplete-option {
+    background: transparent !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* Hover / Focus (روی گزینه‌های غیر انتخاب‌شده) */
+.normal-ac-panel .p-autocomplete-option:not(.p-autocomplete-option-selected):hover,
+.normal-ac-panel .p-autocomplete-option:not(.p-autocomplete-option-selected).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg, var(--color-primary)) 25%, #1e2434 75%) !important;
+    color: #fff !important;
+}
+
+/* Selected */
+.normal-ac-panel .p-autocomplete-option.p-autocomplete-option-selected {
+    background: color-mix(in srgb, var(--brand-primary-bg, var(--color-primary)) 80%, #1e2434 20%) !important;
+    color: #fff !important;
+}
+
+.p-autocomplete-chip {
+    background: color-mix(in srgb, var(--brand-primary-bg, var(--color-primary)) 18%, var(--color-surface, #fff) 82%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border-radius: 999px !important;
+}
+
+html.p-dark .p-autocomplete-chip {
+    background: color-mix(in srgb, var(--brand-primary-bg, var(--color-primary)) 28%, #1e2434 72%) !important;
+    color: #fff !important;
+}
+
+.p-autocomplete-chip-icon {
+    color: currentColor !important;
+    opacity: .85;
+}
+
+.p-autocomplete-chip-icon:hover {
+    opacity: 1;
+}
+
+html.p-dark .p-autocomplete-input-multiple,
+html.p-dark .p-autocomplete-input-multiple:enabled,
+html.p-dark .p-autocomplete-input-multiple:focus {
+    background: var(--app-background) !important;
+    color: var(--p-inputtext-color, var(--color-text, var(--on-surface))) !important;
+}
+
+/* در PrimeNG معمولاً این container بک‌گراند اصلی را تعیین می‌کند */
+html.p-dark .p-autocomplete-multiple-container {
+    background: var(--app-background) !important;
+    color: var(--p-inputtext-color, var(--color-text, var(--on-surface))) !important;
+    border-color: var(--border) !important;
+}
+
+/* placeholder داخل multiple */
+html.p-dark .p-autocomplete-multiple-container .p-autocomplete-input::placeholder,
+html.p-dark .p-autocomplete-input-multiple::placeholder {
+    color: var(--p-select-placeholder-color, color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent)) !important;
+}
+html.p-dark .normal-auto-complete.p-autocomplete
+.p-autocomplete-multiple-container,
+html.p-dark .normal-auto-complete.p-autocomplete
+.p-autocomplete-input-multiple {
+    background: var(--app-background) !important;
+}
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown {
+    background: var(--p-button-primary-background, var(--color-primary)) !important;
+    border-color: var(--p-button-primary-border-color, var(--color-primary)) !important;
+    color: var(--p-button-primary-color, #fff) !important;
+}
+
+/* هاور */
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown:hover {
+    background: var(--p-button-primary-hover-background, var(--color-primary-hover)) !important;
+    border-color: var(--p-button-primary-hover-border-color, var(--color-primary-hover)) !important;
+}
+
+/* آیکن داخل دکمه */
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown .p-button-icon,
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown .p-icon {
+    color: var(--p-button-primary-color, #fff) !important;
+}
+
+/* Ripple (اختیاری: اگر می‌خوای موج هم تمی باشه) */
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown .p-ink {
+    background: color-mix(in srgb, var(--p-button-primary-color, #fff) 35%, transparent) !important;
+}
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown {
+    border-left-radius: 0.75rem !important;
+}
+:root[dir="rtl"] .p-dropdown {
+    direction: rtl !important;
+}
+
+:root[dir="rtl"] .p-dropdown .p-select-dropdown {
+    right: auto;
+    left: 0; /* آیکن را سمت چپ می‌آورد */
+}
+html.p-dark .p-dropdown {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
+}
+
+
+/* فقط placeholder دراپ‌داون */
+html.p-dark .p-dropdown .p-dropdown-label.p-placeholder,
+html.p-dark .p-dropdown .p-inputtext.p-placeholder {
+    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
+}
+
+/* پنل باز شونده‌ی آیتم‌ها */
+html.p-dark .p-dropdown-panel {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-item {
+    background-color: var(--app-background) !important; /* دیگه transparent نباشه */
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* آیتم انتخاب‌شده / hover شده */
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--app-background) !important;
+    color: #fff !important;
+}
+
+html.p-dark .p-dropdown-panel,
+html.p-dark .p-dropdown-panel .p-dropdown-items {
+    background-color: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight,
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-focus,
+html.p-dark .p-dropdown-panel .p-dropdown-item:hover {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* اگه دوست داری آیتم انتخاب‌شده پرایمری باشد: */
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight.p-focus {
+    background: var(--app-background) !important;
+    color: #fff !important;
+}
+
+
+
+/* placeholder در دارک کمی کم‌رنگ‌تر */
+html.p-dark .p-dropdown .p-dropdown-label.p-placeholder,
+html.p-dark .p-dropdown .p-inputtext.p-placeholder {
+    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
+}
+
+/* خود پنل و لیست آیتم‌ها */
+html.p-dark .p-dropdown-panel,
+html.p-dark .p-dropdown-panel .p-dropdown-items,
+html.p-dark .p-dropdown-panel .p-dropdown-item {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* آیتم انتخاب‌شده / hover – کمی تم‌دارتر از سطح */
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight,
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-focus,
+html.p-dark .p-dropdown-panel .p-dropdown-item:hover {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+.p-dropdown.dropdown-normal {
+    width: 75% !important;                              /* مثل normal-input با w-3/4 */
+    min-height:  var(--input-height) !important;
+    border-radius: var(--p-dropdown-border-radius) !important;
+    border: 1px solid var(--p-inputtext-border-color);
+    background: var(--p-inputtext-background);
+    display: inline-flex;
+    align-items: center;
+}
+
+/* لیبل داخل دراپ‌داون */
+.p-dropdown.dropdown-normal .p-select-label {
+    font-size: 1rem;          /* text-sm */
+}
+
+/* تریگر (آیکن فلش) */
+.p-dropdown.dropdown-normal .p-select-dropdown {
+    padding-inline: 0.75rem !important;
+}
+
+/* فوکوس – مثل اینپوت‌ */
+.p-dropdown.dropdown-normal.p-focus {
+    border-color: var(--p-inputtext-focus-border-color) !important;
+    box-shadow: 0 0 0 2px var(--p-inputtext-focus-ring-color) !important;
+}
+.p-dropdown,
+.p-multiselect {
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+}
+/* Select-like components */
+.p-dropdown,
+.p-cascadeselect,
+.p-multiselect,
+.p-listbox {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+}
+.p-dropdown-panel.p-dropdown-flipped {
+    top: auto !important;
+    bottom: 100% !important;
+}
+html .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+}
+/* hover / focus روی آیتم‌ها (غیر انتخاب‌شده) */
+html .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface) 90%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* اگر برای دارک مود بخوای کمی فرق داشته باشه: */
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--color-primary) 16%, #1e2434 84%) !important;
+    color: #ffffff !important;
+}
+
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item {
+    background: var(--color-surface);
+    color: var(--color-text, var(--on-surface));
+}
+
+/* آیتم انتخاب‌شده (selected) */
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--brand-primary-bg) !important;
+    color: var(--brand-primary-color) !important;
+}
+
+/* هاور برای آیتم‌های غیر انتخاب‌شده */
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 10%, var(--color-surface) 90%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+
+/* هاور برای آیتم انتخاب‌شده (که گفتی نداره) */
+html:not(.p-dark) .p-dropdown-panel .p-dropdown-item.p-highlight:hover {
+    background: color-mix(in srgb, var(--brand-primary-bg) 18%, var(--color-surface) 82%) !important;
+    color: var(--brand-primary-color) !important;
+}
+/* متن داخل دراپ‌داون (هم value، هم placeholder) */
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-dropdown .p-inputtext {
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+}
+html.p-dark .p-dropdown,
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-dropdown .p-inputtext {
+    background: var(--app-background) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+    border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent) !important;
+}
+
+/* Dropdown highlight */
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--primary) !important;
+    color: #fff !important;
+}
+html.p-dark .p-inputtext,
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-multiselect .p-multiselect-label {
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+}
+
+
+html.p-dark .p-inputtext,
+html.p-dark .p-dropdown .p-dropdown-label,
+html.p-dark .p-multiselect .p-multiselect-label {
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+}
+
+html.p-dark .p-inputtext::placeholder,
+html.p-dark .p-dropdown .p-dropdown-label.p-placeholder {
+    color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent) !important;
+}
+/* دارک مود */
+html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--p-dropdown-option-selected-background) !important;
+    color: var(--p-dropdown-option-selected-color) !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
+html.p-dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: var(--p-dropdown-option-focus-background) !important;
+    color: var(--p-dropdown-option-focus-color) !important;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--color-primary) !important;       /* رنگ اصلی تم تو */
+    color: #ffffff !important;
+}
+
+/* hover / focus روی آیتم‌ها */
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface) 90%) !important;
+    color: var(--color-text, var(--on-surface)) !important;
+}
+.p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: var(--brand-primary-bg) !important;
+    color: var(--brand-primary-color) !important;
+}
+
+/* هاور / فوکوس فقط روی آیتم‌های غیر انتخاب‌شده */
+.p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+.p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 30%, transparent) !important;
+    color: var(--brand-primary-color) !important;
+}
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 25%, #1e2434 75%) !important;
+    color: #ffffff !important;
+}
+html.p-dark .p-dropdown-panel .p-dropdown-item.p-highlight {
+    background: color-mix(in srgb, var(--brand-primary-bg) 80%, #1e2434 20%) !important;
+    color: #ffffff !important;
+}
+
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight):hover,
+html.p-dark .p-dropdown-panel .p-dropdown-item:not(.p-highlight).p-focus {
+    background: color-mix(in srgb, var(--brand-primary-bg) 25%, #1e2434 75%) !important;
+    color: #ffffff !important;
+}
+html .p-select-panel .p-select-option.p-select-option-selected,
+html .p-select-panel .p-select-option.p-select-option-selected.p-focus,
+html .p-select-panel .p-select-option.p-select-option-selected:hover {
+    background: var(--brand-primary-bg, var(--color-primary)) !important;
+    color: var(--brand-primary-color, #ffffff) !important;
+}
+.p-select.p-paginator-rpp-dropdown {
+    width: 100px !important;
+    min-height: 500px !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 0.75rem !important;
+}

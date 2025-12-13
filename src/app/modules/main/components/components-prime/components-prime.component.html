@@ -16,16 +16,47 @@
                         <div class="grid grid-cols-12 gap-4">
 
                             <!-- AutoComplete -->
+                            <div class="col-span-12 md:col-span-4 flex flex-col">
+                                <label class="form-label">زمینه فعالیت:</label>
+                                <p-dropdown
+                                    class="dropdown-normal"
+                                    [options]=""
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    placeholder="-"
+                                    formControlName="fatherName" >
+                                </p-dropdown>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
+                            <div class="col-span-12 md:col-span-4 flex flex-col">
+                                <label class="mb-1">
+                                    <span>{{ 'citizen.identity.birthDate' | transloco }}:</span>
+                                </label>
+                                <p-persian-calendar
+                                    class="normal-persian-calendar"
+                                    formControlName="fatherName"
+                                ></p-persian-calendar>
+                            </div>
+                            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
+                            <div class="col-span-12 md:col-span-4 flex flex-col">
+                                <label class="mb-1">
+                                    <span class="red-color-text">* </span>
+                                    <span>{{ 'citizen.identity.fatherName' | transloco }}:</span>
+                                </label>
+                                <input pInputText formControlName="fatherName" class="normal-input" />
+                            </div>
+                            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
                             <div class="col-span-4 md:col-span-4">
                                 <label class="normal-label mb-1">AutoComplete شهر</label>
                                 <p-autocomplete
-                                    styleClass="normal-auto-complete normal-list-auto-complete"
+                                    styleClass="normal-auto-complete"
+                                    [panelStyleClass]="'normal-ac-panel'"
                                     [(ngModel)]="autoCompleteValue"
                                     [suggestions]="autoCompleteSuggestions"
                                     (completeMethod)="searchAutoComplete($event)"
                                     [multiple]="true"
                                     [dropdown]="true"
-
                                     placeholder="شهر را جستجو کنید"
                                 ></p-autocomplete>
                             </div>

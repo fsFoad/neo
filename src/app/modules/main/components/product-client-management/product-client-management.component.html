@@ -184,7 +184,6 @@
     </div>
 </div>
 
-<!-- فرم اصلی فیلتر + جدول + دکمه‌ها -->
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="p-6 space-y-6">
         <div
@@ -192,7 +191,6 @@
         >
             <div class="w-full px-4 md:px-6">
                 <div class="grid grid-cols-12 gap-4">
-                    <!-- گروه حساب سپرده -->
                     <div class="col-span-12 md:col-span-4 flex flex-col">
                         <label for="depositAccountGroup">گروه حساب سپرده:</label>
                         <p-dropdown
@@ -204,8 +202,6 @@
                             optionValue="value"
                         ></p-dropdown>
                     </div>
-
-                    <!-- نوع ارز -->
                     <div class="col-span-12 md:col-span-4 flex flex-col">
                         <label for="currencyType"><span>نوع ارز:</span></label>
                         <p-dropdown
@@ -217,8 +213,6 @@
                             optionValue="value"
                         ></p-dropdown>
                     </div>
-
-                    <!-- دکمه‌های جستجو / پاکسازی -->
                     <div
                         class="col-span-12 md:col-span-4 flex flex-wrap justify-end gap-2 mt-4"
                     >
@@ -241,8 +235,6 @@
                             (click)="onClear()"
                         ></button>
                     </div>
-
-                    <!-- محصول -->
                     <div class="col-span-12 md:col-span-4 flex flex-col">
                         <label for="product">محصول:</label>
                         <p-dropdown
@@ -259,8 +251,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- جدول محصولات -->
         <p-table
             [value]="productList"
             [paginator]="true"
