@@ -26,7 +26,7 @@
 
 
 .dropdown-normal .p-dropdown {
-    @apply  border w-3/4 border-gray-300 rounded-xl px-3 py-2 text-sm;
+    @apply  border w-3/4  rounded-xl px-3 py-2.5 text-sm;
 }
 
 .layout-config {
@@ -189,61 +189,7 @@
     padding-right: 10px;
 }
 
-.lblDetails {
-    border: 2px solid #3b83eb;
-    border-radius: 5px;
-    width: 50%;
-    min-width: 50%;
-    max-width: 100%;
-}
 
-.lblDetailsLeft {
-    border: 2px solid #3b83eb;
-    border-radius: 5px;
-    width: 50%;
-    min-width: 50%;
-    max-width: 100%;
-    text-align: left;
-    padding: 2px;
-    margin-left: 2px;
-}
-
-.lblDetailsRight {
-    border: 2px solid #3b83eb;
-    border-radius: 5px;
-    width: 50%;
-    min-width: 50%;
-    max-width: 100%;
-    text-align: right;
-    padding: 2px;
-    margin-right: 2px;
-}
-
-.lblDetailsDia {
-    border: 2px solid #3b83eb;
-    border-radius: 5px;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-}
-
-.ftextDetails {
-    font-size: 15px !important;
-    color: #30188f;
-    justify-content: left;
-    text-align: left;
-    text-indent: -10px;
-    margin: 3px
-}
-
-.p-panel .p-panel-header {
-    padding: 1rem;
-    background-color: var(--p-button-primary-background);
-    border: 1px solid var(--p-button-primary-border-color);
-    color: var(--p-button-primary-color);
-    border-top-right-radius: 2px;
-    border-top-left-radius: 2px;
-}
 
 .p-fieldset{
     background: none !important;
@@ -251,9 +197,6 @@
 /*.p-fieldset-legend{
     background: none !important;
 }*/
-.p-panel {
-    background: var(--surface-ground) !important;
-}
 
 
 
@@ -326,9 +269,6 @@
 }
 .content-page{
     @apply  flex flex-col w-full px-4 gap-4 my-10;
-}
-.p-panel-content{
-    padding: 0 !important;
 }
 .in-panel{
     @apply p-5;
@@ -414,6 +354,7 @@ p-persian-calendar.normal-persian-calendar {
 
         & > input {
             padding-block: 0.425rem;
+            border: 1px solid red !important;
             border-radius: 0 0.75rem 0.75rem 0 !important;
             width: 65.3% !important;
             min-width: 54.3% !important;
@@ -954,7 +895,7 @@ anglerighticon {
     background: var(--p-inputtext-background);
     padding-block: var(--p-inputtext-padding-y);
     padding-inline: var(--p-inputtext-padding-x);
-    border: 1px solid var(--p-inputtext-border-color);
+    border: 1px solid var(--p-inputtext-border-color) !important;
     transition: background var(--p-inputtext-transition-duration), color var(--p-inputtext-transition-duration), border-color var(--p-inputtext-transition-duration), outline-color var(--p-inputtext-transition-duration), box-shadow var(--p-inputtext-transition-duration);
     appearance: none;
     border-radius: var(--p-inputtext-border-radius);
@@ -1138,7 +1079,7 @@ input,
 textarea {
     background: var(--bg-input);
     color: var(--text-body);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--p-inputtext-border-color) !important;
     border-radius: var(--radius-md);
     height: var(--input-height);
     padding: 0 12px;
@@ -1165,8 +1106,10 @@ textarea {
 }
 
 .p-panel {
-    background: var(--bg-panel);
-    border-radius: var(--radius-md);
+    border: 1px solid var(--p-panel-border-color);
+    border-radius: var(--app-border-radius) !important;
+    background: var(--p-panel-background);
+    color: var(--p-panel-color);
 }
 .p-datatable {
     background: var(--color-surface);
@@ -1313,7 +1256,7 @@ textarea,
 .p-tabs,
 .p-toolbar {
     background: var(--color-surface);
-    border-radius: var(--radius-lg);
+    border-radius: var(--app-border-radius);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
 }
@@ -1434,7 +1377,9 @@ textarea,
 .dark-mode .p-cascadeselect {
     background: var(--color-surface);
     color: var(--color-text);
+    /*
     border: 1px solid var(--color-border);
+    */
 }
 
 .dark-mode .p-checkbox .p-checkbox-box,
@@ -1496,7 +1441,7 @@ textarea,
 .dark-mode .p-message,
 .dark-mode .p-toast {
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--p-inputtext-border-color) !important;
     color: var(--color-text);
 }
 .dark-mode .p-carousel,
@@ -1924,10 +1869,10 @@ html:root {
 .p-panel .p-panel-header {
     padding: 1rem;
     background-color: var(--p-button-primary-background);
-    border: 1px solid var(--p-button-primary-border-color);
+    border: 1px solid var(--color-border);
     color: var(--p-button-primary-color);
-    border-top-right-radius: 2px;
-    border-top-left-radius: 2px;
+    border-top-right-radius: var(--app-border-radius);
+    border-top-left-radius: var(--app-border-radius);
 }
 
 .p-fieldset{
@@ -1938,6 +1883,8 @@ html:root {
 }*/
 .p-panel{
     background: none !important;
+    border-top-right-radius: var(--app-border-radius);
+    border-top-left-radius: var(--app-border-radius);
 }
 
 
@@ -1990,12 +1937,6 @@ html:root {
 }*/
 .normal-auto-complete {
     @apply w-3/4 transition;
-}
-.normal-auto-complete .p-autocomplete-input-multiple {
-    @apply rounded-r-xl;
-}
-.normal-auto-complete .p-autocomplete-dropdown {
-    @apply rounded-l-xl;
 }
 
 
@@ -2081,7 +2022,7 @@ html:root {
 
 .p-select.p-paginator-rpp-dropdown {
     width: 100px !important;
-    height: 50px !important;
+   /* height: 50px !important;*/
     padding: 0.25rem 0.5rem !important;
     font-size: 0.875rem !important;
     border-radius: 0.75rem !important;
@@ -2779,6 +2720,12 @@ table thead > tr > th:last-child {
 }
 
 
+.normal-auto-complete .p-autocomplete-input-multiple {
+    @apply rounded-r-xl ;
+}
+.normal-auto-complete .p-autocomplete-dropdown {
+    @apply rounded-l-xl ;
+}
 
 .normal-auto-complete.p-autocomplete {
     @apply w-3/4 transition;
@@ -2902,18 +2849,37 @@ html.p-dark .normal-auto-complete.p-autocomplete
 }
 
 /* یکدست کردن مرز مشترک بین input و button */
-[dir='rtl'] .normal-auto-complete.p-autocomplete .p-autocomplete-multiple-container { border-left-width: 0 !important; }
+[dir='rtl'] .normal-auto-complete.p-autocomplete .p-autocomplete-multiple-container {
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
+
+    min-height: var(--app-input-height) !important;
+    height: var(--app-input-height) !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    /* اگر توکن‌ها باعث افزایش ارتفاع می‌شوند، این‌ها کنترلش می‌کند */
+    flex-wrap: nowrap !important;
+    overflow: hidden !important;
+
+    padding-block: 0 !important;
+}
 [dir='rtl'] .normal-auto-complete.p-autocomplete .p-autocomplete-dropdown { border-right-width: 1px !important; }
 
-[dir='ltr'] .normal-auto-complete.p-autocomplete .p-autocomplete-multiple-container { border-right-width: 0 !important; }
 [dir='ltr'] .normal-auto-complete.p-autocomplete .p-autocomplete-dropdown { border-left-width: 1px !important; }
-
 
 html.p-dark .p-autocomplete:not(.p-inputwrapper-focus):not(:focus-within),
 html.p-dark .p-inputtext:not(:focus),
 html.p-dark .p-inputtext:not(:focus-visible) {
     border-color: transparent !important;
     box-shadow: none !important;
+
+}
+html.p-dark .p-autocomplete:not(.p-inputwrapper-focus):not(:focus-within)
+ {
+    border-radius:var(--app-border-radius) !important;
+
 }
 .normal-auto-complete.p-autocomplete:focus-within
 .p-autocomplete-multiple-container,
@@ -2968,3 +2934,32 @@ html.p-dark {
 }
 
 
+.normal-auto-complete.p-autocomplete .p-autocomplete-input-multiple {
+    height: calc(var(--app-input-height) - 2px) !important;
+    line-height: 1 !important;
+    padding-block: 0 !important;
+}
+
+/* دکمه‌ی dropdown: هم‌قد container */
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown {
+    height: var(--app-input-height) !important;
+    min-height: var(--app-input-height) !important;
+
+    //width: var(--app-input-height) !important; /* مربع قشنگ */
+    //min-width: var(--app-input-height) !important;
+    width: 12.5% !important;
+    min-width: 12.5% !important;
+    margin: 0 0 0 0;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;              /* چون width را ست کردیم */
+    line-height: 1 !important;
+}
+
+/* آیکن داخل دکمه */
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown .p-button-icon,
+.normal-auto-complete.p-autocomplete .p-autocomplete-dropdown .p-icon {
+    font-size: 1rem; /* در صورت نیاز کوچک/بزرگ کن */
+}

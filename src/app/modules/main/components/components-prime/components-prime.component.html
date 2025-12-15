@@ -20,15 +20,13 @@
                                 <label class="form-label">زمینه فعالیت:</label>
                                 <p-dropdown
                                     class="dropdown-normal"
-                                    [options]=""
+                                    [options]="listboxOptions"
                                     optionLabel="label"
                                     optionValue="value"
                                     placeholder="-"
                                     formControlName="fatherName" >
                                 </p-dropdown>
                             </div>
-
-                            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
                             <div class="col-span-12 md:col-span-4 flex flex-col">
                                 <label class="mb-1">
                                     <span>{{ 'citizen.identity.birthDate' | transloco }}:</span>
@@ -38,7 +36,6 @@
                                     formControlName="fatherName"
                                 ></p-persian-calendar>
                             </div>
-                            <div class="col-span-12 md:col-span-8 flex flex-col"></div>
                             <div class="col-span-12 md:col-span-4 flex flex-col">
                                 <label class="mb-1">
                                     <span class="red-color-text">* </span>
@@ -47,6 +44,9 @@
                                 <input pInputText formControlName="fatherName" class="normal-input" />
                             </div>
                             <div class="col-span-12 md:col-span-8 flex flex-col"></div>
+
+                            <div class="col-span-12 md:col-span-4 flex flex-col"></div>
+                            <div class="col-span-4 md:col-span-4"></div>
                             <div class="col-span-4 md:col-span-4">
                                 <label class="normal-label mb-1">AutoComplete شهر</label>
                                 <p-autocomplete
@@ -141,11 +141,6 @@
                                 </div>
                             </div>
 
-                            <!-- Editor (تمام عرض) -->
-                            <div class="col-span-12">
-                                <h3 class="font-semibold mb-2">Editor</h3>
-                                <p-editor [(ngModel)]="editorValue" [style]="{ height: '200px' }"></p-editor>
-                            </div>
 
                             <!-- FloatLabel / IftaLabel / IconField -->
                             <div class="col-span-12 md:col-span-6">
