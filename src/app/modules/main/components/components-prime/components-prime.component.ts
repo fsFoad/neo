@@ -406,8 +406,8 @@ export class ComponentsPrimeComponent {
                     {
                         name: 'تهران',
                         cities: [
-                            { cname: 'تهران', code: 'THR' },
-                            { cname: 'ری', code: 'REY' },
+                            { name: 'تهران', code: 'THR' },
+                            { name: 'ری', code: 'REY' },
                         ],
                     },
                     {

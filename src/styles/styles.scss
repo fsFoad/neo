@@ -26,7 +26,7 @@
     --color-surface: #ffffff;
     --color-on-surface: #1e1e1e;
     --color-bg: #f8fafc;
-    --color-border: #e2e8f0;
+    --color-border: #1768d5;
     --color-text: #1e293b;
 
     /* کارت‌ها */
@@ -48,8 +48,6 @@
     --p-inputtext-bg: var(--color-surface);
     --p-inputtext-color: var(--color-on-surface);
     --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
-    --p-inputtext-focus-border-color: var(--color-primary);
-    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
 
     /* فوکوس عمومی */
     --p-focus-ring-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
@@ -59,7 +57,7 @@
     /* ظاهر باکس */
     --p-checkbox-background: #ffffff;
     --p-checkbox-border-color: #cbd5e1;
-    --p-checkbox-hover-border-color: var(--color-primary);
+    //--p-checkbox-hover-border-color: var(--color-primary);
     --p-checkbox-focus-border-color: var(--color-primary);
 
     /* حالت چک‌شده */
@@ -125,6 +123,19 @@
 
     --app-input-ring: color-mix(in srgb, var(--color-primary) 40%, transparent);
     --input-height: 2.8rem;
+    --p-dropdown-border-radius: 0.75rem;
+    --p-checkbox-checked-bg: var(--color-primary);
+    --p-checkbox-hover-border-color: var(--color-primary-hover, var(--color-primary));
+    --ac-active-border: var(--p-button-primary-border-color, var(--p-primary-color, var(--color-primary)));
+    --theme-active: var(--p-button-primary-border-color, var(--p-primary-color, var(--color-primary)));
+
+    /* InputText tokens: focus + hover را کامل کن تا fallback سبز نگیری */
+    --p-inputtext-focus-border-color: var(--theme-active);
+    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--theme-active) 40%, transparent);
+
+    --p-inputtext-hover-border-color: var(--theme-active);
+    --p-inputtext-hover-ring-color: color-mix(in srgb, var(--theme-active) 25%, transparent);
+
 }
 
 .p-checkbox-input {
@@ -144,21 +155,37 @@
     box-shadow: var(--p-checkbox-focus-ring-shadow) !important;
     border-color: var(--color-primary) !important;
 }
-
-/* ===================================================================================================== */
-/*  Dynamic Global Theme Variables (Minimal)                                                              */
-/* ===================================================================================================== */
-body, .app-content, .mat-drawer-content, .content, .wrapper {
-    background: var(--app-background) !important;
-}
-
-.fuse-main, .fuse-wrapper, .fuse-content {
-    background: var(--app-background) !important;
-}
-
-
-/* Dark mode */
 html.p-dark {
+    /* خود کنترل بسته‌ی p-select */
+    --p-select-background: var(--color-surface, var(--surface));
+    --p-select-color: var(--color-text, var(--on-surface));
+    --p-select-placeholder-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent);
+    --p-select-border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent);
+    --p-select-hover-border-color: var(--color-primary);
+    --p-select-focus-border-color: var(--color-primary);
+    --p-select-shadow: 0 0 0 0 transparent;
+
+    /* پنل باز شونده (لیست) */
+    --p-select-overlay-background: var(--color-surface, var(--surface));
+    --p-select-overlay-color: var(--color-text, var(--on-surface));
+    --p-select-overlay-border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent);
+    --p-select-overlay-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+
+    /* آیتم‌ها داخل لیست */
+    --p-select-option-color: var(--color-text, var(--on-surface));
+    --p-select-option-focus-background: --app-background;
+
+    --p-select-option-focus-color: var(--color-text, var(--on-surface));
+
+    --p-select-option-selected-background: var(--color-primary);
+    --p-select-option-selected-color: #ffffff;
+
+    --p-select-option-selected-focus-background: color-mix(
+            in srgb,
+            var(--color-primary) 80%,
+            var(--color-surface, var(--surface)) 20%
+    );
+    --p-select-option-selected-focus-color: #ffffff;
     --surface: #232938;
     --background: #232938;
     --on-surface: #F7F7F7;
@@ -193,10 +220,19 @@ html.p-dark {
     --card-border: 1px solid rgba(247, 247, 247, 0.08);
     --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 
-    --p-select-option-selected-background: color-mix(in srgb, var(--brand-primary-bg) 80%, #1e2434 20%);
-    --p-select-option-selected-focus-background: color-mix(in srgb, var(--brand-primary-bg) 90%, #1e2434 10%);
 
 }
+/* ===================================================================================================== */
+/*  Dynamic Global Theme Variables (Minimal)                                                              */
+/* ===================================================================================================== */
+body, .app-content, .mat-drawer-content, .content, .wrapper {
+    background: var(--app-background) !important;
+}
+
+.fuse-main, .fuse-wrapper, .fuse-content {
+    background: var(--app-background) !important;
+}
+
 
 /*html.p-dark .p-card,
 html.p-dark .p-panel,
@@ -945,18 +981,6 @@ body,
     color: var(--color-text, var(--on-surface)) !important;
 }
 
-/*.p-card,
-.mat-card,
-.card,
-.app-card,
-.form-wrapper,
-form,
-form .bg-white {
-    background: var(--card-bg) !important;
-    border: var(--card-border) !important;
-    border-radius: var(--card-radius) !important;
-    box-shadow: var(--card-shadow) !important;
-}*/
 
  html.p-dark {
      --card-bg: #232938;
@@ -964,19 +988,7 @@ form .bg-white {
      --color-on-surface: #F7F7F7;
  }
 
-/*.p-card,
-.mat-card,
-.card,
-.app-card,
-.form-wrapper,
-form,
-form .bg-white {
-    background: var(--card-bg) !important;
-    border: var(--card-border) !important;
-    border-radius: var(--card-radius) !important;
-    box-shadow: var(--card-shadow) !important;
-    color: var(--color-on-surface) !important;
-}*/
+
 
 .header-card {
     border-bottom-right-radius: var(--card-radius) !important;
@@ -1056,38 +1068,7 @@ html.p-dark textarea {
 
 
 
-html.p-dark {
-    /* خود کنترل بسته‌ی p-select */
-    --p-select-background: var(--color-surface, var(--surface));
-    --p-select-color: var(--color-text, var(--on-surface));
-    --p-select-placeholder-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 55%, transparent);
-    --p-select-border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent);
-    --p-select-hover-border-color: var(--color-primary);
-    --p-select-focus-border-color: var(--color-primary);
-    --p-select-shadow: 0 0 0 0 transparent;
 
-    /* پنل باز شونده (لیست) */
-    --p-select-overlay-background: var(--color-surface, var(--surface));
-    --p-select-overlay-color: var(--color-text, var(--on-surface));
-    --p-select-overlay-border-color: color-mix(in srgb, var(--color-text, var(--on-surface)) 18%, transparent);
-    --p-select-overlay-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
-
-    /* آیتم‌ها داخل لیست */
-    --p-select-option-color: var(--color-text, var(--on-surface));
-    --p-select-option-focus-background: --app-background;
-
-    --p-select-option-focus-color: var(--color-text, var(--on-surface));
-
-    --p-select-option-selected-background: var(--color-primary);
-    --p-select-option-selected-color: #ffffff;
-
-    --p-select-option-selected-focus-background: color-mix(
-            in srgb,
-            var(--color-primary) 80%,
-            var(--color-surface, var(--surface)) 20%
-    );
-    --p-select-option-selected-focus-color: #ffffff;
-}
 
 html.p-dark .p-select-overlay,
 html.p-dark .p-select-list-container,
@@ -1119,19 +1100,9 @@ html.p-dark .p-select-option.p-focus {
 
 /* دارک مود */
 html.p-dark .fuse-vertical-navigation-item-active {
-    background-color: color-mix(
-            in srgb,
-            var(--brand-primary-bg) 55%,
-            #1e2434 45%
-    ) !important;
+    background-color: color-mix(in srgb, var(--brand-primary-bg) 55%,#1e2434 45%) !important;
     color: #ffffff !important;
 }
-/*
-!* hover روی آیتم‌های منو (لایت + دارک) *!
-.fuse-vertical-navigation-item:hover {
-    background-color: color-mix(in srgb, var(--brand-primary-bg) 35%, transparent) !important;
-    color: var(--brand-primary-color) !important;
-}*/
 
 /* ۲) hover در لایت‌مود */
 .fuse-vertical-navigation-item:hover {
@@ -1139,24 +1110,7 @@ html.p-dark .fuse-vertical-navigation-item-active {
     color: var(--primary) !important;
 }
 
-/*html.p-dark .fuse-vertical-navigation-item-active {
-    background-color: color-mix(
-            in srgb,
-            var(--primary) 28%,
-            #1e2434 72%
-    ) !important; !* از پس‌زمینه کمی روشن‌تر و تمی‌تر *!
-    color: #ffffff !important;
-}*/
 
-
-/*html.p-dark .fuse-vertical-navigation-item:hover {
-    background-color: color-mix(
-            in srgb,
-            var(--primary) 18%,
-            #1e2434 82%
-    ) !important;
-    color: #ffffff !important;
-}*/
 html.p-dark .p-inputtext,
 html.p-dark .p-autocomplete,
 html.p-dark input:not([type='checkbox']):not([type='radio']),
@@ -1195,7 +1149,11 @@ html.p-dark .p-inputtext:focus-visible,
 html.p-dark .p-inputwrapper-focus .p-inputtext,
 html.p-dark .p-dropdown.p-focus,
 html.p-dark .p-dropdown:focus,
-html.p-dark .p-dropdown:focus-visible {
+html.p-dark .p-dropdown:focus-visible,
+html.p-dark .p-cascadeselect.p-focus,
+html.p-dark .p-cascadeselect:focus,
+html.p-dark .p-cascadeselect:focus-visible,
+{
     border-color: var(--app-input-border-focus) !important;
     box-shadow: 0 0 0 2px var(--app-input-ring) !important;
     outline: none !important;
@@ -1206,15 +1164,7 @@ html.p-dark .p-dropdown:focus-visible {
    /*  padding-block-start: 0 !important;
      padding-block-end:0 !important;*/
 }
-/*html.p-dark .p-autocomplete-chip {
-    background: var(--app-input-bg) !important;
-    color: var(--app-input-text) !important;
-    border: 1px solid var(--color-border) !important;
-}*/
 
-/*html.p-dark .p-autocomplete-chip .p-chip-remove-icon {
-    color: var(--app-input-text) !important;
-}*/
  html.p-dark input.p-autocomplete-dd-input,
  html.p-dark .p-autocomplete-input-multiple input {
      all: revert !important;  /* همه استایل‌های override شده رو برمی‌گردونه به حالت پیش‌فرض PrimeNG */
@@ -1399,13 +1349,29 @@ html.p-dark .p-autocomplete-chip {
 .p-autocomplete-chip-icon:hover {
     opacity: 1;
 }
-
+html.p-dark .p-autocomplete-input-multiple{
+    border-color: var(--color-border) !important;
+}
+.p-autocomplete-input-multiple{
+    border-color: var(--color-border) !important;
+}
+html.p-dark .p-autocomplete-input-multiple:hover{
+    border-color: var(--p-inputtext-hover-border-color) !important;
+}
+/*
 html.p-dark .p-autocomplete-input-multiple,
+*/
+
 html.p-dark .p-autocomplete-input-multiple:enabled,
-html.p-dark .p-autocomplete-input-multiple:focus {
+html.p-dark .p-autocomplete-input-multiple:active,
+html.p-dark .p-autocomplete-input-multiple:focus,
+html.p-dark .p-autocomplete-input-multiple:focus-within,
+html.p-dark .p-autocomplete-input-multiple:focus-visible {
     background: var(--app-background) !important;
     color: var(--p-inputtext-color, var(--color-text, var(--on-surface))) !important;
     border-color: var(--app-input-border-focus) !important;
+    border: 1px solid var(--app-input-border-focus)!important;
+    border-right-radius: var(--app-border-radius) !important;
 }
 
 /* در PrimeNG معمولاً این container بک‌گراند اصلی را تعیین می‌کند */
@@ -1425,11 +1391,13 @@ html.p-dark .normal-auto-complete.p-autocomplete
 html.p-dark .normal-auto-complete.p-autocomplete
 .p-autocomplete-input-multiple {
     background: var(--app-background) !important;
+
 }
 .normal-auto-complete.p-autocomplete .p-autocomplete-dropdown {
     background: var(--p-button-primary-background, var(--color-primary)) !important;
     border-color: var(--p-button-primary-border-color, var(--color-primary)) !important;
     color: var(--p-button-primary-color, #fff) !important;
+
 }
 
 /* هاور */
@@ -1455,34 +1423,14 @@ html.p-dark .normal-auto-complete.p-autocomplete
 .p-autocomplete {
     /* خود wrapper اصلی */
     background: var(--p-inputtext-background) !important;
-    border: 1px solid var(--p-inputtext-border-color) !important;
-    border-radius: var(--p-inputtext-border-radius, 0.75rem) !important;
+    //border: 1px solid var(--p-inputtext-border-color) !important;
+    border-radius: var(--app-border-radius) !important;
     transition: all 0.15s ease !important;
     box-shadow: none !important;
-
+    //border: 1px solid var(--color-border)!important;
+    border-color: var(--color-border) !important;
     min-height: var(--input-height, 2.8rem) !important;
 }
-/*!* hover *!
-html.p-dark input.p-inputtext:hover,
-html.p-dark input.normal-input:hover,
-html.p-dark textarea.p-inputtext:hover,
-html.p-dark textarea:hover {
-    border-color: var(--app-input-border-hover) !important;
-}
-
-!* focus *!
-html.p-dark input.p-inputtext:focus,
-html.p-dark input.normal-input:focus,
-html.p-dark textarea.p-inputtext:focus,
-html.p-dark textarea:focus,
-html.p-dark input.p-inputtext:focus-visible,
-html.p-dark input.normal-input:focus-visible,
-html.p-dark textarea.p-inputtext:focus-visible,
-html.p-dark textarea:focus-visible {
-    border-color: var(--app-input-border-focus) !important;
-    box-shadow: 0 0 0 2px var(--app-input-ring) !important;
-    outline: none !important;
-}*/
 .dark-mode .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain):not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-help):not(.p-button-danger):not(.p-button-contrast),
 .dark-mode .p-splitbutton:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain),
 .dark-mode .p-speeddial-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-plain) {
@@ -1839,4 +1787,51 @@ html .p-select-panel .p-select-option.p-select-option-selected:hover {
     min-height: var(--input-height) !important;
     display: inline-flex !important;
     align-items: center !important;
+}
+
+
+.p-cascadeselect, .p-cascadeselect.normal-cascadeSelect {
+    @apply w-3/4  !important;
+}
+.p-cascadeselect {
+    height: var(--input-height) !important;
+    min-height: var(--input-height) !important;
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    color: var(--color-text, var(--on-surface)) !important;
+    background: var(--app-background) !important;
+    border: 1px solid var(--color-border)!important;
+    border-color: var(--color-border) !important;
+    border-radius: var(--app-border-radius)!important;
+    outline-color: transparent;
+}
+
+html.p-dark .p-cascadeselect:enabled,
+html.p-dark .p-cascadeselect:active,
+html.p-dark .p-cascadeselect:focus,
+html.p-dark .p-cascadeselect:focus-within,
+html.p-dark .p-cascadeselect:focus-visible {
+    background: var(--app-background) !important;
+    color: var(--p-inputtext-color, var(--color-text, var(--on-surface))) !important;
+    border-color: var(--app-input-border-focus) !important;
+    border: 1px solid var(--app-input-border-focus)!important;
+    border-right-radius: var(--app-border-radius) !important;
+}
+html.p-dark .p-cascadeselect :not(.p-highlight):hover{
+    border-color: var(--p-inputtext-hover-border-color) !important;
+}
+.p-cascadeselect-label {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1 1 auto;
+    width: 1%;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    padding: var(--p-cascadeselect-padding-y) var(--p-cascadeselect-padding-x);
+    background: transparent;
+    border: 0 none;
+    outline: 0 none;
 }

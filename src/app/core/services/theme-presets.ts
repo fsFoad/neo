@@ -6,11 +6,8 @@ const DARK_TEXT = '#F7F7F7';
  * 1) PRESET NAMES
  * --------------------------------------------------- */
 export const PRESET_NAMES = [
-    "Amber Spark",
+    /*  "Amber Spark",*/
     "Sapphire Ember",
-   /* "Coral Horizon",*/
-   /* "Royal Sapphire",*/
-    // "Soft Amber",
     "Flame Citrine",
     "Obsidian Frost",
     "Amethyst Breeze",
@@ -192,32 +189,26 @@ export const BACKGROUND_PRESETS: Record<BackgroundPresetName, BackgroundPreset> 
     "indigo-quartz": {
         light: "rgba(136,135,135,0.36)",
         dark: "linear-gradient(145deg, #020617 0%, #050818 45%, #020617 100%)"
-        // #020617 و #050818 هر دو از #1e2434 و #343b4f تیره‌ترن
     },
     "amber-spark": {
         light: "#f5e5e0",
         dark: "linear-gradient(145deg, #020617 0%, #050818 45%, #020617 100%)"
-        // #020617 و #050818 هر دو از #1e2434 و #343b4f تیره‌ترن
     },
     "dark-deep-navy": {
         light: "#b3c4dc",
         dark: "linear-gradient(145deg, #020617 0%, #050818 45%, #020617 100%)"
-        // #020617 و #050818 هر دو از #1e2434 و #343b4f تیره‌ترن
     },
     "dark-carbon": {
         light: "#F5F5F5",
         dark: "radial-gradient(circle at top, #050505 0%, #020202 40%, #000000 100%)"
-        // بک‌گراند تقریبا مشکی → منو و کارت خاکستری تیره و روشن‌تر به چشم میان
     },
     "dark-emerald": {
         light: "#F3FBF7",
         dark: "linear-gradient(145deg, #020b07 0%, #02130c 50%, #020b07 100%)"
-        // خیلی تیره، ته‌مایه سبز خیلی خیلی ملایم
     },
     "dark-violet": {
         light: "#F6F2FF",
         dark: "linear-gradient(145deg, #070518 0%, #09041f 45%, #050314 100%)"
-        // بک‌گراند بنفش-مشکی خیلی تیره، عالی کنار کارت‌های #343b4f
     }
 };
 
@@ -225,7 +216,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Sapphire Ember": {
         name: "Sapphire Ember",
-        displayName: "یاقوت کبودِ گداخته",
+        displayName: "ژرفای اقیانوس",
         backgroundPreset: "dark-deep-navy",
         light: {
             primary: "rgb(0,49,229)",
@@ -248,7 +239,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Obsidian Frost": {
         name: "Obsidian Frost",
-        displayName:"یخ‌مهٔ ابسیدین",
+        displayName:"قهوه‌ی تلخ",
         backgroundPreset: "softGray",
         light: {
             primary: "#444444",
@@ -270,7 +261,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Amethyst Breeze": {
         name: "Amethyst Breeze",
-        displayName:"نسیم آمتیست",
+        displayName:"ارغوان بهاری",
 
         // قبلاً pattern-dots بود
         backgroundPreset: "dark-violet",
@@ -296,7 +287,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Jade Twilight": {
         name: "Jade Twilight",
-        displayName:"غروب یشم",
+        displayName:"جنگل تاریک",
         backgroundPreset: "clean-white",
         light: {
             primary: "#005F73",
@@ -319,7 +310,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Indigo Quartz": {
         name: "Indigo Quartz",
-        displayName:"کوارتز نیلی",
+        displayName:"گرگ‌ومیش ارغوانی",
         backgroundPreset: "indigo-quartz",
         light: {
             primary: "#3F3D56",
@@ -339,9 +330,9 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
         }
     },
 
-    "Amber Spark": {
+    /*"Amber Spark": {
         name: "Amber Spark",
-        displayName:"جرقهٔ کهربا",
+        displayName:"پرتقالی",
         backgroundPreset: "amber-spark",
         light: {
             primary: "rgb(254,95,2)",
@@ -359,12 +350,12 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
             surface: DARK_SURFACE,
             onSurface: DARK_TEXT
         }
-    },
+    },*/
 
 
     "Flame Citrine": {
         name: "Flame Citrine",
-        displayName:"سیترین شعله‌ای",
+        displayName:"پرتقالی",
         light: {
             primary: "rgb(254,95,2)",
             accent: "#ff7043",
@@ -387,7 +378,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Ashen Opal": {
         name: "Ashen Opal",
-        displayName:"اوپال خاکستری",
+        displayName:"آسمان صاف",
         backgroundPreset: "softGray",
         light: {
             primary: "#8AB4F8",
@@ -409,7 +400,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Ocean Lapis": {
         name: "Ocean Lapis",
-        displayName:"لاجورد اقیانوس",
+        displayName:"پرِ طاووس",
         light: {
             primary: "#2E86AB",
             accent: "#F18F01",
@@ -430,7 +421,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Emerald Grove": {
         name: "Emerald Grove",
-        displayName:"بیشهٔ زمردی",
+        displayName:"بیشهٔ",
         light: {
             primary: "#2D6A4F",
             accent: "#D4A373",
@@ -452,7 +443,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Ruby Sunset": {
         name: "Ruby Sunset",
-        displayName:"غروب یاقوتی",
+        displayName:"یاقوت",
         light: {
             primary: "#E63946",
             accent: "#F1C40F",
@@ -473,7 +464,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Violet Amethyst": {
         name: "Violet Amethyst",
-        displayName:"آمتیست بنفش",
+        displayName:"آمتیست",
         light: {
             primary: "#6A4C93",
             accent: "#F7B2AD",
@@ -515,7 +506,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Ivory Quartz": {
         name: "Ivory Quartz",
-        displayName:"کوارتز عاجی",
+        displayName:"هلویی",
         light: {
             primary: "#C9ADA7",
             accent: "#9A8C98",
@@ -536,7 +527,7 @@ export const THEME_PRESETS: Record<MinimalPresetName, MinimalPreset> = {
 
     "Onyx Surge": {
         name: "Onyx Surge",
-        displayName:"موج اونیکس",
+        displayName:"فیروزه",
         light: {
             primary: "#00BCD4",
             accent: "#E91E63",

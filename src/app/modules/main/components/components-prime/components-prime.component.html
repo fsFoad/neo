@@ -14,6 +14,20 @@
                 <p-panel header="Form" class="w-full">
                     <div class="in-panel">
                         <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 md:col-span-4">
+                                <label class="normal-label mb-1">CascadeSelect کشور / استان / شهر</label>
+                                <p-cascadeselect
+                                    class="normal-cascadeSelect"
+                                    [options]="cascadeOptions"
+                                    optionLabel="name"
+                                    optionGroupLabel="name"
+                                    optionGroupChildren="provinces"
+                                    [optionGroupChildren]="['provinces', 'cities']"
+                                    [(ngModel)]="selectedCascade"
+                                    placeholder="کشور / استان / شهر"
+                                    [showClear]="true"
+                                ></p-cascadeselect>
+                            </div>
 
                             <!-- AutoComplete -->
                             <div class="col-span-12 md:col-span-4 flex flex-col">
@@ -27,15 +41,7 @@
                                     formControlName="fatherName" >
                                 </p-dropdown>
                             </div>
-                            <div class="col-span-12 md:col-span-4 flex flex-col">
-                                <label class="mb-1">
-                                    <span>{{ 'citizen.identity.birthDate' | transloco }}:</span>
-                                </label>
-                                <p-persian-calendar
-                                    class="normal-persian-calendar"
-                                    formControlName="fatherName"
-                                ></p-persian-calendar>
-                            </div>
+
                             <div class="col-span-12 md:col-span-4 flex flex-col">
                                 <label class="mb-1">
                                     <span class="red-color-text">* </span>
@@ -46,7 +52,6 @@
                             <div class="col-span-12 md:col-span-8 flex flex-col"></div>
 
                             <div class="col-span-12 md:col-span-4 flex flex-col"></div>
-                            <div class="col-span-4 md:col-span-4"></div>
                             <div class="col-span-4 md:col-span-4">
                                 <label class="normal-label mb-1">AutoComplete شهر</label>
                                 <p-autocomplete
@@ -57,25 +62,18 @@
                                     (completeMethod)="searchAutoComplete($event)"
                                     [multiple]="true"
                                     [dropdown]="true"
-                                    placeholder="شهر را جستجو کنید"
                                 ></p-autocomplete>
                             </div>
-
-                            <!-- CascadeSelect -->
-                            <div class="col-span-4 md:col-span-4">
-                                <label class="normal-label mb-1">CascadeSelect کشور / استان / شهر</label>
-                                <p-cascadeselect
-                                    class="normal-dropdown"
-                                    [options]="cascadeOptions"
-                                    optionLabel="name"
-                                    optionGroupLabel="name"
-                                    optionGroupChildren="provinces"
-                                    [optionGroupChildren]="['provinces', 'cities']"
-                                    [(ngModel)]="selectedCascade"
-                                    placeholder="کشور / استان / شهر"
-                                    [showClear]="true"
-                                ></p-cascadeselect>
+                            <div class="col-span-12 md:col-span-4 flex flex-col">
+                                <label class="mb-1">
+                                    <span>{{ 'citizen.identity.birthDate' | transloco }}:</span>
+                                </label>
+                                <p-persian-calendar
+                                    class="normal-persian-calendar"
+                                    formControlName="fatherName"
+                                ></p-persian-calendar>
                             </div>
+                            <!-- CascadeSelect -->
 
                             <!-- Checkbox / RadioButton / ToggleButton -->
                             <div class="col-span-4 md:col-span-4">

@@ -1,20 +1,4 @@
-:root {
-    --p-dropdown-border-radius: 0.75rem;
-    --p-checkbox-checked-bg: var(--color-primary);
-    --p-checkbox-checked-border-color: var(--color-primary);
-    --p-checkbox-hover-border-color: var(--color-primary-hover, var(--color-primary));
-    --ac-active-border: var(--p-button-primary-border-color, var(--p-primary-color, var(--color-primary)));
-    --theme-active: var(--p-button-primary-border-color, var(--p-primary-color, var(--color-primary)));
 
-    /* InputText tokens: focus + hover را کامل کن تا fallback سبز نگیری */
-    --p-inputtext-border-color: color-mix(in srgb, var(--color-on-surface) 20%, transparent);
-    --p-inputtext-focus-border-color: var(--theme-active);
-    --p-inputtext-focus-ring-color: color-mix(in srgb, var(--theme-active) 40%, transparent);
-
-    --p-inputtext-hover-border-color: var(--theme-active);
-    --p-inputtext-hover-ring-color: color-mix(in srgb, var(--theme-active) 25%, transparent);
-
-}
 .normal-input {
     @apply border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition w-3/4 focus:outline-none focus:ring-2 focus:ring-primary;
 }
@@ -214,6 +198,9 @@
 .normal-inputgroup-addon {
     @apply bg-gray-200 text-gray-700 rounded-l-xl   py-4 rounded-r-none !important;
 }
+html.p-dark .normal-inputgroup-addon {
+    @apply bg-gray-200 text-white rounded-l-xl   py-4 rounded-r-none !important;
+}
 
 .normal-input-number {
     @apply rounded-xl transition w-3/4  !important;
@@ -243,14 +230,20 @@
     height: 27px;
 }
 
+
 .normal-dropdown {
     @apply border  rounded-xl px-1 py-[2px]  transition w-3/4  !important;
 }
+
 .full-dropdown {
     @apply border  rounded-xl px-1 py-[2px]  transition w-full  !important;
 }
+
 .normal-label {
     @apply text-gray-700 block font-medium;
+}
+html.p-dark .normal-label {
+    @apply text-white block font-medium  !important;;
 }
 
 .normal-button,
@@ -354,7 +347,7 @@ p-persian-calendar.normal-persian-calendar {
 
         & > input {
             padding-block: 0.425rem;
-            border: 1px solid red !important;
+
             border-radius: 0 0.75rem 0.75rem 0 !important;
             width: 65.3% !important;
             min-width: 54.3% !important;
@@ -539,6 +532,7 @@ p-persian-calendar.app-persian-calendar-w10 {
         }
     }
 }
+
 p-datepicker.app-gregorian-calendar-style {
     .p-datepicker-buttonbar .p-button {
         border-radius: 0.75rem;
@@ -561,6 +555,7 @@ p-datepicker.app-gregorian-calendar-style {
         border-radius: 0.75rem;
     }
 }
+
 .p-inputgroup {
     direction: rtl !important;
 }
@@ -658,13 +653,14 @@ anglerighticon {
     margin-right: auto !important;
 }
 
-
 .p-overlay.p-component {
     inset-inline-start: auto;
 }
+
 .p-select-overlay{
     position: static !important;
 }
+
 /*    color: var(--p-button-primary-color);*/
 
 .mat-mdc-snack-bar-container .mat-mdc-snackbar-surface{
@@ -1079,7 +1075,9 @@ input,
 textarea {
     background: var(--bg-input);
     color: var(--text-body);
+    /*
     border: 1px solid var(--p-inputtext-border-color) !important;
+    */
     border-radius: var(--radius-md);
     height: var(--input-height);
     padding: 0 12px;
@@ -1438,12 +1436,12 @@ textarea,
     background: var(--color-surface);
     border-radius: var(--radius-md);
 }
-.dark-mode .p-message,
+/*.dark-mode .p-message,
 .dark-mode .p-toast {
     background: var(--color-surface);
     border: 1px solid var(--p-inputtext-border-color) !important;
     color: var(--color-text);
-}
+}*/
 .dark-mode .p-carousel,
 .dark-mode .p-galleria,
 .dark-mode .p-image,
@@ -1954,9 +1952,7 @@ html:root {
 .full-dropdown {
     @apply border  rounded-xl px-1 py-[2px]  transition w-full  !important;
 }
-.normal-label {
-    @apply text-gray-700 block font-medium;
-}
+
 
 .normal-button {
     @apply rounded-xl !important;
